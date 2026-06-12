@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Comparison — WC 2026 | Debapam Ghosh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0d0f12;--bg-card:#131720;--bg-card2:#1a1f2e;--bg-pill:#1e2536;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --text:#f0f2f5;--text2:#8b95a8;--text3:#556070;
+  --gold:#f4b942;--gold2:#e8a020;
+  --green:#2dd4a0;--green2:#1a9970;
+  --blue:#4d9cf7;--red:#f0645a;--amber:#f4a030;--purple:#a98df4;
+  --r:10px;--r-sm:6px;
+  --font:'Barlow',sans-serif;--font-cond:'Barlow Condensed',sans-serif;--font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.5;min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px 60px;}
+
+/* Header */
+.site-header{border-bottom:1px solid var(--border);padding:14px 0;display:flex;align-items:center;gap:12px;}
+.logo-text{font-family:var(--font-cond);font-size:18px;font-weight:700;letter-spacing:.06em;}
+.logo-sub{font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;}
+.nav-links{display:flex;gap:8px;margin-left:auto;}
+.nav-btn{display:inline-flex;align-items:center;gap:6px;background:var(--bg-pill);border:1px solid var(--border2);border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--text2);transition:all .2s;}
+.nav-btn:hover{color:var(--text);border-color:var(--gold);}
+.nav-btn.active{background:var(--green2);border-color:var(--green2);color:#fff;}
+
+/* Section label */
+.section-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* Panel */
+.panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;}
+.panel-head{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.panel-title{font-size:13px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.06em;}
+.panel-badge{margin-left:auto;font-size:10px;color:var(--text3);background:var(--bg-pill);border:1px solid var(--border);padding:2px 8px;border-radius:4px;}
+
+/* Tags */
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;letter-spacing:.04em;white-space:nowrap;}
+.tag-green{background:rgba(45,212,160,.12);color:var(--green);border:1px solid rgba(45,212,160,.2);}
+.tag-gold{background:rgba(244,185,66,.12);color:var(--gold);border:1px solid rgba(244,185,66,.2);}
+.tag-red{background:rgba(240,100,90,.12);color:var(--red);border:1px solid rgba(240,100,90,.2);}
+.tag-blue{background:rgba(77,156,247,.15);color:var(--blue);border:1px solid rgba(77,156,247,.25);}
+.tag-gray{background:rgba(255,255,255,.05);color:var(--text2);border:1px solid var(--border2);}
+
+/* Team picker */
+.grp-btn{padding:5px 12px;font-size:11px;font-weight:600;border-radius:4px;cursor:pointer;border:1px solid var(--border2);background:var(--bg-pill);color:var(--text2);font-family:var(--font);transition:all .15s;}
+.grp-btn.active{background:var(--green2);border-color:var(--green2);color:#fff;}
+.team-pick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.team-pick-btn{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 12px;cursor:pointer;display:flex;align-items:center;gap:9px;transition:all .2s;font-family:var(--font);}
+.team-pick-btn:hover{border-color:var(--border2);transform:translateY(-1px);}
+.team-pick-btn.sel-a{border-color:var(--blue);background:rgba(77,156,247,.07);}
+.team-pick-btn.sel-b{border-color:var(--red);background:rgba(240,100,90,.07);}
+.tpb-flag{font-size:20px;flex-shrink:0;}
+.tpb-name{font-size:12px;font-weight:600;color:var(--text);}
+.tpb-sub{font-size:10px;color:var(--text3);}
+
+/* VS hero */
+.vs-hero{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;background:linear-gradient(135deg,var(--bg-card) 0%,#0f1520 100%);border:1px solid var(--border2);border-radius:var(--r);padding:24px;margin-bottom:20px;}
+.vs-team{text-align:center;}
+.vs-flag{font-size:52px;line-height:1;margin-bottom:6px;}
+.vs-name{font-family:var(--font-cond);font-size:26px;font-weight:700;letter-spacing:.02em;margin-bottom:3px;}
+.vs-sub{font-size:11px;color:var(--text3);}
+.vs-divider{text-align:center;}
+.vs-label{font-family:var(--font-cond);font-size:36px;font-weight:700;color:var(--text3);letter-spacing:.1em;}
+.vs-result{margin-top:8px;}
+
+/* Win probability bar */
+.prob-bar-wrap{height:28px;background:var(--bg-pill);border-radius:6px;overflow:hidden;display:flex;margin:12px 0;}
+.prob-a{background:var(--blue);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:700;color:#fff;transition:width 1.2s ease;border-radius:6px 0 0 6px;}
+.prob-draw{background:var(--bg-card2);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:var(--text3);transition:width 1.2s ease;}
+.prob-b{background:var(--red);display:flex;align-items:center;padding-left:8px;font-size:11px;font-weight:700;color:#fff;transition:width 1.2s ease;border-radius:0 6px 6px 0;}
+
+/* Comparison rows */
+.cmp-section{margin-bottom:24px;}
+.cmp-section-title{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.cmp-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.cmp-row{display:grid;grid-template-columns:1fr 60px 1fr;gap:12px;align-items:center;margin-bottom:10px;}
+.cmp-bar-a{height:8px;border-radius:4px;background:var(--blue);transition:width 1s ease;}
+.cmp-bar-b{height:8px;border-radius:4px;background:var(--red);transition:width 1s ease;}
+.cmp-bar-track{height:8px;background:var(--bg-pill);border-radius:4px;overflow:hidden;}
+.cmp-label{font-size:11px;font-weight:600;color:var(--text3);text-align:center;white-space:nowrap;}
+.cmp-val-a{font-family:var(--font-mono);font-size:12px;font-weight:700;text-align:right;}
+.cmp-val-b{font-family:var(--font-mono);font-size:12px;font-weight:700;text-align:left;}
+.cmp-winner-a{color:var(--blue);}
+.cmp-winner-b{color:var(--red);}
+.cmp-equal{color:var(--text3);}
+
+/* Momentum row */
+.mom-row{display:flex;gap:4px;}
+.m-dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;}
+.m-w{background:rgba(45,212,160,.2);color:var(--green);border:1px solid var(--green);}
+.m-d{background:rgba(244,185,66,.15);color:var(--gold);border:1px solid var(--gold);}
+.m-l{background:rgba(240,100,90,.12);color:var(--red);border:1px solid var(--red);}
+
+/* Key players */
+.kp-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;}
+.kp-name{font-size:13px;font-weight:600;color:var(--gold);margin-bottom:4px;}
+.kp-note{font-size:11px;color:var(--text2);line-height:1.5;}
+
+/* Verdict */
+.verdict-card{border-radius:var(--r);padding:20px 24px;margin-bottom:16px;text-align:center;}
+.verdict-flag{font-size:44px;margin-bottom:8px;}
+.verdict-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;}
+.verdict-name{font-family:var(--font-cond);font-size:28px;font-weight:700;margin-bottom:8px;}
+.verdict-reason{font-size:13px;color:var(--text2);line-height:1.6;max-width:600px;margin:0 auto;}
+
+/* H2H history */
+.h2h-mini{display:flex;gap:10px;align-items:center;}
+.h2h-bubble{background:var(--bg-pill);border-radius:8px;padding:8px 14px;text-align:center;flex:1;}
+.h2h-num{font-family:var(--font-cond);font-size:28px;font-weight:700;line-height:1;}
+.h2h-lbl{font-size:10px;color:var(--text3);margin-top:2px;}
+
+/* Placeholder */
+.pick-placeholder{background:var(--bg-card);border:2px dashed var(--border2);border-radius:var(--r);padding:40px 24px;text-align:center;color:var(--text3);}
+.pick-placeholder i{font-size:32px;display:block;margin-bottom:12px;opacity:.4;}
+
+/* Responsive */
+/* ── Responsive ── */
+@media(max-width:800px){
+  .team-pick-grid{grid-template-columns:repeat(2,1fr);}
+  /* VS hero stays 3-col but shrinks */
+  .vs-hero{padding:16px;gap:10px;}
+  .vs-flag{font-size:36px;}
+  .vs-name{font-size:18px;}
+  .vs-sub{font-size:10px;}
+  /* Nav */
+  .nav-links{gap:4px;}
+  .nav-btn{padding:4px 8px;font-size:11px;}
+  /* Key players grid → stack */
+  div[style*="grid-template-columns:1fr 1fr"][class=""]{grid-template-columns:1fr!important;}
+  /* Tactical split → stack */
+  div[style*="grid-template-columns:1fr auto 1fr"]{grid-template-columns:1fr!important;}
+  div[style*="width:1px;background:var(--border)"]{display:none;}
+  /* Momentum grid → stack */
+  div[style*="grid-template-columns:1fr 1fr;gap:16px"]{grid-template-columns:1fr!important;}
+  /* H2H history bubbles */
+  .h2h-bubble{padding:8px 10px;}
+  .h2h-num{font-size:22px;}
+}
+@media(max-width:560px){
+  /* VS hero → stack vertically */
+  .vs-hero{grid-template-columns:1fr!important;text-align:center;}
+  .vs-divider{order:-1;padding:8px 0;}
+  .vs-label{font-size:22px;}
+  .vs-flag{font-size:44px;}
+  .vs-name{font-size:20px;}
+  /* Prob bar text hide on tiny screens */
+  .prob-a,.prob-b{font-size:10px;padding:0 4px;}
+  .prob-draw{font-size:9px;}
+  /* Comparison rows tighter */
+  .cmp-row{grid-template-columns:1fr 46px 1fr;gap:6px;}
+  .cmp-label{font-size:9px;}
+  .cmp-val-a,.cmp-val-b{font-size:11px;}
+  /* Team picker 2 col */
+  .team-pick-grid{grid-template-columns:1fr 1fr;}
+  /* Verdict card */
+  .verdict-flag{font-size:36px;}
+  .verdict-name{font-size:22px;}
+  .verdict-reason{font-size:12px;}
+  /* H2H mini → flex wrap */
+  .h2h-mini{flex-wrap:wrap;}
+  /* WC history rows */
+  .cmp-val-a,.cmp-val-b{font-size:12px;}
+  .wrap{padding:0 14px 40px;}
+}
+@media(max-width:400px){
+  .vs-flag{font-size:36px;}
+  .vs-name{font-size:17px;}
+  .cmp-row{grid-template-columns:1fr 40px 1fr;gap:4px;}
+  .cmp-label{font-size:8px;}
+  .nav-btn span{display:none;}
+  .nav-btn{padding:6px 8px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- Header -->
+<header class="site-header">
+  <img src="wc2026_logo.png" alt="FIFA World Cup 2026" style="height:38px;width:auto;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'">
+  <div style="width:1px;height:32px;background:var(--border2);flex-shrink:0;"></div>
+  <i class="ti ti-trophy" style="font-size:18px;color:var(--gold);"></i>
+  <div>
+    <div class="logo-text">WC 2026 Intelligence</div>
+    <div class="logo-sub">Team Comparison Engine</div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-btn"><i class="ti ti-home" style="font-size:13px;"></i>Dashboard</a>
+    <a href="phase2.html" class="nav-btn"><i class="ti ti-chart-radar" style="font-size:13px;"></i>Analyzer</a>
+    <a href="compare.html" class="nav-btn active"><i class="ti ti-arrows-diff" style="font-size:13px;"></i>Compare</a>
+      <a href="simulator.html" class="nav-btn"><i class="ti ti-player-play" style="font-size:13px;"></i><span>Simulator</span></a>
+  </div>
+</header>
+
+<div style="padding:28px 0 20px;">
+  <h1 style="font-family:var(--font-cond);font-size:36px;font-weight:700;color:var(--text);margin-bottom:6px;">Team <span style="color:var(--gold);">Comparison</span></h1>
+  <p style="color:var(--text2);font-size:14px;">Select any two teams to get a full head-to-head intelligence breakdown</p>
+</div>
+
+<!-- Team Selector -->
+<div class="section-label"><i class="ti ti-cursor-text" style="font-size:13px;"></i>Pick two teams to compare</div>
+<div class="panel" style="margin-bottom:24px;">
+
+  <!-- Legend + Reset -->
+  <div style="display:flex;gap:16px;margin-bottom:14px;flex-wrap:wrap;align-items:center;">
+    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);">
+      <span style="width:12px;height:12px;border-radius:3px;background:var(--blue);display:inline-block;"></span>Team A (Blue)
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2);">
+      <span style="width:12px;height:12px;border-radius:3px;background:var(--red);display:inline-block;"></span>Team B (Red)
+    </div>
+    <span style="font-size:11px;color:var(--text3);">Click a team to assign · Click again to deselect</span>
+    <button id="reset-btn" onclick="resetTeams()" style="margin-left:auto;display:none;align-items:center;gap:6px;background:rgba(240,100,90,.12);border:1px solid rgba(240,100,90,.3);border-radius:6px;padding:5px 12px;font-size:11px;font-weight:600;color:var(--red);cursor:pointer;font-family:var(--font);transition:all .2s;">
+      <i class="ti ti-refresh" style="font-size:12px;"></i>Reset
+    </button>
+  </div>
+
+  <!-- Selected teams status bar -->
+  <div id="selected-bar" style="display:none;background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:10px 14px;margin-bottom:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+    <div id="sel-a" style="display:flex;align-items:center;gap:6px;font-size:12px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--blue);display:inline-block;"></span>
+      <span style="color:var(--text3);">Team A:</span>
+      <span id="sel-a-name" style="font-weight:600;color:var(--blue);">Not selected</span>
+    </div>
+    <span style="color:var(--border2);">|</span>
+    <div id="sel-b" style="display:flex;align-items:center;gap:6px;font-size:12px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--red);display:inline-block;"></span>
+      <span style="color:var(--text3);">Team B:</span>
+      <span id="sel-b-name" style="font-weight:600;color:var(--red);">Not selected</span>
+    </div>
+    <span style="font-size:11px;color:var(--text3);margin-left:auto;" id="sel-hint">Select Team A first</span>
+  </div>
+
+  <!-- Conference filter -->
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;" id="conf-filter">
+    <button class="grp-btn active" data-conf="ALL">All (48)</button>
+    <button class="grp-btn" data-conf="UEFA">UEFA</button>
+    <button class="grp-btn" data-conf="CONMEBOL">CONMEBOL</button>
+    <button class="grp-btn" data-conf="CONCACAF">CONCACAF</button>
+    <button class="grp-btn" data-conf="CAF">CAF</button>
+    <button class="grp-btn" data-conf="AFC">AFC</button>
+    <button class="grp-btn" data-conf="OFC">OFC</button>
+  </div>
+
+  <!-- Search -->
+  <div style="position:relative;margin-bottom:14px;">
+    <i class="ti ti-search" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--text3);pointer-events:none;"></i>
+    <input id="team-search" type="text" placeholder="Search team…" style="width:100%;max-width:300px;background:var(--bg-card2);border:1px solid var(--border2);border-radius:6px;padding:7px 10px 7px 32px;font-size:13px;color:var(--text);font-family:var(--font);outline:none;">
+  </div>
+
+  <!-- Teams grid -->
+  <div class="team-pick-grid" id="teams-grid"></div>
+</div>
+
+<!-- Comparison panel -->
+<div id="compare-panel">
+  <div class="pick-placeholder">
+    <i class="ti ti-arrows-diff"></i>
+    <p style="font-size:14px;font-weight:600;color:var(--text2);margin-bottom:6px;">No teams selected yet</p>
+    <p style="font-size:12px;">Select <span style="color:var(--blue);font-weight:600;">Team A</span> and <span style="color:var(--red);font-weight:600;">Team B</span> from the grid above</p>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <div style="border-top:1px solid var(--border);padding:20px 0;text-align:center;color:var(--text3);font-size:12px;">
+      <p>WC 2026 Command Center · Team Comparison Engine · Data: pre-tournament analyst consensus</p>
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px;">
+        <span style="font-size:13px;color:var(--text3);">Designed &amp; built by</span>
+        <span style="font-family:var(--font-cond);font-size:15px;font-weight:700;letter-spacing:.06em;color:var(--gold);">Debapam Ghosh</span>
+        <span style="color:var(--text3);font-size:12px;">· &copy; 2026 · All rights reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+var TEAMS = [
+  // ═══ GROUP A ═══════════════════════════════════════════════
+  {
+    code:'MEX',flag:'🇲🇽',name:'Mexico',group:'A',conf:'CONCACAF',
+    fifaRank:16,manager:'Javier Aguirre',managerNat:'🇲🇽',managerStyle:'Counter-attack',
+    squadStatus:'preliminary',formation:'4-3-3',
+    styleTag:['Counter-attack','Physical','Pressing'],
+    winProb:4,xG:1.4,groupPos:2,
+    stats:{attack:66,defense:70,midfield:64,setPiece:68,pressing:72},
+    momentum:['W','W','D','W','L','W','D','W','W','D'],
+    bestXI:[
+      {pos:'GK',name:'G. Ochoa',x:50,y:90},
+      {pos:'RB',name:'J. Sánchez',x:80,y:73},{pos:'CB',name:'C. Montes',x:62,y:76},{pos:'CB',name:'J. Vasquez',x:38,y:76},{pos:'LB',name:'G. Arteaga',x:20,y:73},
+      {pos:'CM',name:'E. Álvarez',x:65,y:55},{pos:'CM',name:'L. Romo',x:50,y:50},{pos:'CM',name:'O. Pineda',x:35,y:55},
+      {pos:'RW',name:'H. Lozano',x:80,y:32},{pos:'ST',name:'S. Giménez',x:50,y:25},{pos:'LW',name:'C. Huerta',x:20,y:32}
+    ],
+    injuries:[{name:'Raúl Jiménez',issue:'Thigh — managed',status:'Fit',return:'Available'}],
+    h2h:[{opp:'🇰🇷 South Korea',w:3,d:2,l:1,note:'Comfortable record'},{opp:'🇿🇦 South Africa',w:4,d:1,l:0,note:'Strong dominance'},{opp:'🇨🇿 Czechia',w:1,d:2,l:1,note:'Balanced'}],
+    history:{apps:17,bestFinish:'QF (1986)',goals:178,allTimeRank:13},
+    squadCount:{gk:3,def:9,mid:9,fwd:5},
+    keyPlayer:'Santiago Giménez',keyPlayerNote:'AC Milan striker. Mexico\',s most prolific scorer in Europe. Movement and finishing make him the focal point of the attack.'
+  },
+  {
+    code:'KOR',flag:'🇰🇷',name:'South Korea',group:'A',conf:'AFC',
+    fifaRank:22,manager:'Hong Myung-bo',managerNat:'🇰🇷',managerStyle:'Possession',
+    squadStatus:'confirmed',formation:'4-3-3',
+    styleTag:['Possession','High press','Technical'],
+    winProb:3,xG:1.2,groupPos:3,
+    stats:{attack:62,defense:65,midfield:70,setPiece:60,pressing:75},
+    momentum:['W','L','W','W','D','L','W','W','D','W'],
+    bestXI:[
+      {pos:'GK',name:'Kim Seung-gyu',x:50,y:90},
+      {pos:'RB',name:'Kim Moon-hwan',x:80,y:73},{pos:'CB',name:'Kim Min-jae',x:62,y:76},{pos:'CB',name:'Cho Yu-min',x:38,y:76},{pos:'LB',name:'Lee Ki-hyuk',x:20,y:73},
+      {pos:'CDM',name:'Hwang In-beom',x:60,y:57},{pos:'CDM',name:'Paik Seung-ho',x:40,y:57},
+      {pos:'RAM',name:'Lee Jae-sung',x:75,y:40},{pos:'CAM',name:'Lee Kang-in',x:50,y:38},{pos:'LAM',name:'Hwang Hee-chan',x:25,y:40},
+      {pos:'ST',name:'Son Heung-min',x:50,y:25}
+    ],
+    injuries:[{name:'Son Heung-min',issue:'Fitness monitoring',status:'Fit',return:'Available'}],
+    h2h:[{opp:'🇲🇽 Mexico',w:1,d:2,l:3,note:'Tough historically'},{opp:'🇿🇦 South Africa',w:2,d:1,l:0,note:'Limited meetings'},{opp:'🇨🇿 Czechia',w:1,d:1,l:2,note:'Narrow defeats'}],
+    history:{apps:11,bestFinish:'SF (2002)',goals:99,allTimeRank:20},
+    squadCount:{gk:3,def:10,mid:10,fwd:3},
+    fullSquad:{GK:['Kim Seung-Gyu','Jo Hyeon-woo','Song Bum-keun'],DEF:['Kim Min-jae','Kim Moon-hwan','Seol Young-woo','Cho Yu-min','Lee Tae-seok','Park Jin-seob','Kim Tae-hyeon','Lee Han-beom','Jens Castrop','Lee Ki-hyuk'],MID:['Lee Jae-sung','Hwang Hee-chan','Hwang In-beom','Lee Kang-in','Paik Seung-ho','Kim Jin-gyu','Lee Dong-gyeong','Bae Jun-ho','Eom Ji-Sung','Yang Hyun-jun'],FWD:['Son Heung-min','Cho Gue-sung','Oh Hyeon-gyu']},
+    keyPlayer:'Son Heung-min',keyPlayerNote:'Captain and talisman. Now at LAFC. When Son performs, South Korea are dangerous. Movement and finishing remain elite.',
+  },
+  {
+    code:'ZAF',flag:'🇿🇦',name:'South Africa',group:'A',conf:'CAF',
+    fifaRank:67,manager:'Hugo Broos',managerNat:'🇧🇪',managerStyle:'Defensive',
+    squadStatus:'tbc',formation:'4-3-3',
+    styleTag:['Defensive block','Counter','Physical'],
+    winProb:1,xG:0.9,groupPos:4,
+    stats:{attack:48,defense:65,midfield:52,setPiece:55,pressing:58},
+    momentum:['W','D','L','W','W','D','L','D','W','L'],
+    bestXI:[
+      {pos:'GK',name:'R. Williams',x:50,y:90},
+      {pos:'RB',name:'K. Mashego',x:80,y:73},{pos:'CB',name:'S. Modiba',x:62,y:76},{pos:'CB',name:'T. Mokoena',x:38,y:76},{pos:'LB',name:'T. Mobbie',x:20,y:73},
+      {pos:'RM',name:'M. Tito',x:80,y:48},{pos:'CM',name:'T. Zwane',x:60,y:52},{pos:'CM',name:'L. Aubaas',x:40,y:52},{pos:'LM',name:'Y. Moslemane',x:20,y:48},
+      {pos:'ST',name:'P. Mofokeng',x:60,y:28},{pos:'ST',name:'L. Lepasa',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇲🇽 Mexico',w:0,d:1,l:4,note:'Rarely competitive'},{opp:'🇰🇷 South Korea',w:0,d:1,l:2,note:'Limited record'},{opp:'🇨🇿 Czechia',w:1,d:0,l:1,note:'Balanced'}],
+    history:{apps:3,bestFinish:'R16 (1998)',goals:10,allTimeRank:40},
+    squadCount:{gk:3,def:11,mid:4,fwd:8},
+    fullSquad:{GK:['Ronwen Williams','Ricardo Goss','Sipho Chaine'],DEF:['Aubrey Modiba','Khuliso Mudau','Nkosinathi Sibisi','Mbekezeli Mbokazi','Ime Okon','Samukele Kabini','Khulumani Ndamane','Thabang Matuludi','Kamogelo Sebelebele','Bradley Cross','Olwethu Makhanya'],MID:['Teboho Mokoena','Sphephelo Sithole','Thalente Mbatha','Jayden Adams'],FWD:['Themba Zwane','Lyle Foster','Evidence Makgopa','Oswin Appollis','Iqraam Rayners','Relebohile Mofokeng','Thapelo Maseko','Tshepang Moremi']},
+    keyPlayer:'Percy Tau',keyPlayerNote:'Most experienced international attacker. Creativity from wide positions is Bafana\'s primary threat.',
+  },
+  {
+    code:'CZE',flag:'🇨🇿',name:'Czechia',group:'A',conf:'UEFA',
+    fifaRank:37,manager:'Miroslav Koubek',managerNat:'🇨🇿',managerStyle:'Structured',
+    squadStatus:'preliminary',formation:'3-4-3 / 3-4-2-1',
+    styleTag:['Structured','Set pieces','Physical'],
+    winProb:2,xG:1.1,groupPos:3,
+    stats:{attack:58,defense:67,midfield:62,setPiece:72,pressing:60},
+    momentum:['D','W','W','D','L','W','W','D','W','D'],
+    bestXI:[
+      {pos:'GK',name:'J. Staněk',x:50,y:90},
+      {pos:'RB',name:'V. Coufal',x:80,y:73},{pos:'CB',name:'L. Krejčí',x:62,y:76},{pos:'CB',name:'D. Zima',x:38,y:76},{pos:'LB',name:'J. Bořil',x:20,y:73},
+      {pos:'CDM',name:'T. Souček',x:62,y:57},{pos:'CDM',name:'M. Sadilek',x:38,y:57},
+      {pos:'RAM',name:'V. Černý',x:75,y:40},{pos:'CAM',name:'A. Hložek',x:50,y:38},{pos:'LAM',name:'L. Provod',x:25,y:40},
+      {pos:'ST',name:'P. Schick',x:50,y:25}
+    ],
+    injuries:[{name:'Patrik Schick',issue:'Achilles concern',status:'Doubtful',return:'Jun 10'}],
+    h2h:[{opp:'🇲🇽 Mexico',w:1,d:2,l:1,note:'Evenly matched'},{opp:'🇰🇷 South Korea',w:2,d:1,l:1,note:'Slight edge'},{opp:'🇿🇦 South Africa',w:1,d:0,l:1,note:'Limited meetings'}],
+    history:{apps:9,bestFinish:'SF (1962 as Czechoslovakia)',goals:95,allTimeRank:25},
+    squadCount:{gk:3,def:9,mid:9,fwd:5},
+    keyPlayer:'Tomáš Souček',keyPlayerNote:'Midfield powerhouse. Goals from deep, aerial dominance and energy. Irreplaceable engine for Czechia.',
+  },
+  // ═══ GROUP B ═══════════════════════════════════════════════
+  {
+    code:'CAN',flag:'🇨🇦',name:'Canada',group:'B',conf:'CONCACAF',
+    fifaRank:40,manager:'Jesse Marsch',managerNat:'🇺🇸',managerStyle:'High press',
+    squadStatus:'preliminary',formation:'4-4-2 / 4-2-4',
+    styleTag:['High press','Energetic','Athletic'],
+    winProb:2,xG:1.1,groupPos:3,
+    stats:{attack:60,defense:62,midfield:65,setPiece:58,pressing:80},
+    momentum:['W','W','L','W','D','W','L','D','W','W'],
+    bestXI:[
+      {pos:'GK',name:'M. Crépeau',x:50,y:90},
+      {pos:'RB',name:'R. Laryea',x:80,y:73},{pos:'CB',name:'K. Miller',x:62,y:76},{pos:'CB',name:'D. Cornelius',x:38,y:76},{pos:'LB',name:'A. Davies',x:20,y:73},
+      {pos:'CM',name:'S. Piette',x:65,y:55},{pos:'CM',name:'I. Koné',x:50,y:52},{pos:'CM',name:'S. Eustáquio',x:35,y:55},
+      {pos:'RW',name:'T. Buchanan',x:80,y:32},{pos:'ST',name:'J. David',x:50,y:25},{pos:'LW',name:'C. Larin',x:20,y:32}
+    ],
+    injuries:[{name:'Jonathan David',issue:'Hamstring tightness',status:'75% fit',return:'Jun 6'}],
+    h2h:[{opp:'🇨🇭 Switzerland',w:0,d:1,l:2,note:'Challenging opponent'},{opp:'🇶🇦 Qatar',w:2,d:0,l:0,note:'Strong record'},{opp:'🇧🇦 Bosnia-Herz.',w:1,d:0,l:1,note:'Limited record'}],
+    history:{apps:2,bestFinish:'Group stage',goals:5,allTimeRank:35},
+    squadCount:{gk:3,def:8,mid:10,fwd:5},
+    keyPlayer:'Jonathan David',keyPlayerNote:'Prolific Lille striker. Canada\',s entire attacking structure flows through him. If fit, a game-changer.'
+  },
+  {
+    code:'SUI',flag:'🇨🇭',name:'Switzerland',group:'B',conf:'UEFA',
+    fifaRank:19,manager:'Murat Yakin',managerNat:'🇨🇭',managerStyle:'Structured',
+    squadStatus:'confirmed',formation:'4-3-3',
+    styleTag:['Organised','Disciplined','Counter'],
+    winProb:5,xG:1.5,groupPos:1,
+    stats:{attack:70,defense:74,midfield:72,setPiece:65,pressing:68},
+    momentum:['W','W','D','W','W','D','W','L','W','W'],
+    bestXI:[
+      {pos:'GK',name:'G. Kobel',x:50,y:90},
+      {pos:'RB',name:'S. Widmer',x:80,y:73},{pos:'CB',name:'M. Akanji',x:62,y:76},{pos:'CB',name:'N. Elvedi',x:38,y:76},{pos:'LB',name:'R. Rodríguez',x:20,y:73},
+      {pos:'CDM',name:'G. Xhaka',x:62,y:57},{pos:'CDM',name:'R. Freuler',x:38,y:57},
+      {pos:'RAM',name:'F. Rieder',x:75,y:40},{pos:'CAM',name:'D. Ndoye',x:50,y:38},{pos:'LAM',name:'R. Vargas',x:25,y:40},
+      {pos:'ST',name:'B. Embolo',x:50,y:25}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇨🇦 Canada',w:2,d:1,l:0,note:'Comfortable record'},{opp:'🇶🇦 Qatar',w:3,d:0,l:0,note:'Strong dominance'},{opp:'🇧🇦 Bosnia-Herz.',w:3,d:1,l:1,note:'Historically strong'}],
+    history:{apps:12,bestFinish:'QF (1934, 1938, 1954)',goals:112,allTimeRank:18},
+    squadCount:{gk:3,def:8,mid:10,fwd:5},
+    fullSquad:{GK:['Marvin Keller','Gregor Kobel','Yvon Mvogo'],DEF:['Manuel Akanji','Aurele Amenda','Eray Comert','Nico Elvedi','Luca Jaquez','Miro Muheim','Ricardo Rodriguez','Silvan Widmer'],MID:['Michel Aebischer','Christian Fassnacht','Remo Freuler','Ardon Jashari','Johan Manzambi','Fabian Rieder','Djibril Sow','Ruben Vargas','Granit Xhaka','Denis Zakaria'],FWD:['Zeki Amdouni','Breel Embolo','Cedric Itten','Dan Ndoye','Noah Okafor']},
+    keyPlayer:'Granit Xhaka',keyPlayerNote:'Sunderland captain. 4th World Cup. Passing range, leadership and engine of the Swiss midfield.',
+  },
+  {
+    code:'QAT',flag:'🇶🇦',name:'Qatar',group:'B',conf:'AFC',
+    fifaRank:58,manager:'Julen Lopetegui',managerNat:'🇪🇸',managerStyle:'Possession',
+    squadStatus:'preliminary',formation:'4-2-3-1',
+    styleTag:['Possession','Technical','Organised'],
+    winProb:1,xG:0.9,groupPos:4,
+    stats:{attack:50,defense:58,midfield:60,setPiece:52,pressing:62},
+    momentum:['L','W','D','L','W','W','D','L','W','D'],
+    bestXI:[
+      {pos:'GK',name:'M. Barsham',x:50,y:90},
+      {pos:'RB',name:'P. Correia',x:80,y:73},{pos:'CB',name:'B. Khoukhi',x:62,y:76},{pos:'CB',name:'H. Hassan',x:38,y:76},{pos:'LB',name:'A. Hassan',x:20,y:73},
+      {pos:'CM',name:'K. Boudiaf',x:65,y:55},{pos:'CM',name:'A. Hatem',x:50,y:52},{pos:'CM',name:'A. Madibo',x:35,y:55},
+      {pos:'RW',name:'A. Ali',x:80,y:32},{pos:'ST',name:'A. Afif',x:50,y:25},{pos:'LW',name:'H. Al-Haydos',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇨🇦 Canada',w:0,d:0,l:2,note:'Difficult recent meetings'},{opp:'🇨🇭 Switzerland',w:0,d:0,l:3,note:'Never won'},{opp:'🇧🇦 Bosnia-Herz.',w:1,d:1,l:1,note:'Balanced'}],
+    history:{apps:2,bestFinish:'Group stage (2022)',goals:5,allTimeRank:44},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Akram Afif',keyPlayerNote:'Qatar\'s most dangerous attacker — direct, technical and capable of brilliance.',
+  },
+  {
+    code:'BIH',flag:'🇧🇦',name:'Bosnia-Herz.',group:'B',conf:'UEFA',
+    fifaRank:52,manager:'Sergej Barbarez',managerNat:'🇧🇦',managerStyle:'Counter',
+    squadStatus:'confirmed',formation:'4-4-2',
+    styleTag:['Physical','Direct','Set pieces'],
+    winProb:2,xG:1.0,groupPos:3,
+    stats:{attack:58,defense:60,midfield:58,setPiece:68,pressing:55},
+    momentum:['W','D','W','L','D','W','W','D','L','W'],
+    bestXI:[
+      {pos:'GK',name:'N. Vasilj',x:50,y:90},
+      {pos:'RB',name:'A. Dedić',x:80,y:73},{pos:'CB',name:'D. Hadžikadunic',x:62,y:76},{pos:'CB',name:'N. Katić',x:38,y:76},{pos:'LB',name:'S. Kolašinac',x:20,y:73},
+      {pos:'CDM',name:'A. Hadžiahmetović',x:62,y:57},{pos:'CDM',name:'B. Tahirović',x:38,y:57},
+      {pos:'RAM',name:'E. Bajraktarević',x:75,y:40},{pos:'CAM',name:'A. Gigović',x:50,y:38},{pos:'LAM',name:'E. Demirović',x:25,y:40},
+      {pos:'ST',name:'E. Džeko',x:50,y:25}
+    ],
+    injuries:[{name:'Edin Džeko',issue:'Age management (40)',status:'Fit',return:'Available'}],
+    h2h:[{opp:'🇨🇦 Canada',w:1,d:0,l:1,note:'Limited history'},{opp:'🇨🇭 Switzerland',w:1,d:1,l:3,note:'Switzerland usually edge it'},{opp:'🇶🇦 Qatar',w:1,d:1,l:1,note:'Balanced'}],
+    history:{apps:1,bestFinish:'Group stage (2014)',goals:4,allTimeRank:38},
+    squadCount:{gk:3,def:8,mid:10,fwd:5},
+    fullSquad:{GK:['Nikola Vasilj','Martin Zlomislic','Osman Hadzikic'],DEF:['Sead Kolasinac','Dennis Hadzikadunic','Amar Dedic','Nikola Katic','Tarik Muharemovic','Nihad Mujakic','Stjepan Radeljic','Nidal Celik'],MID:['Amir Hadziahmetovic','Benjamin Tahirovic','Armin Gigovic','Dzenis Burnic','Ivan Basic','Esmir Bajraktarevic','Amar Memic','Ivan Sunjic','Kerim Alajbegovic','Ermin Mahmic'],FWD:['Edin Dzeko','Ermedin Demirovic','Samed Bazdar','Haris Tabakovic','Jovo Lukic']},
+    keyPlayer:'Edin Džeko',keyPlayerNote:'Bosnia\'s all-time top scorer at 40. Still technically sharp. Vast experience could prove decisive.',
+  },
+  // ═══ GROUP C ═══════════════════════════════════════════════
+  {
+    code:'BRA',flag:'🇧🇷',name:'Brazil',group:'C',conf:'CONMEBOL',
+    fifaRank:6,manager:'Carlo Ancelotti',managerNat:'🇮🇹',managerStyle:'Flexible',
+    squadStatus:'confirmed',formation:'4-3-3',
+    styleTag:['Attacking','Flexible','Flair'],
+    winProb:12,xG:2.0,groupPos:1,
+    stats:{attack:88,defense:78,midfield:82,setPiece:72,pressing:76},
+    momentum:['L','D','W','W','L','W','W','D','W','W'],
+    bestXI:[
+      {pos:'GK',name:'Alisson',x:50,y:90},
+      {pos:'RB',name:'Danilo',x:80,y:73},{pos:'CB',name:'Marquinhos',x:62,y:76},{pos:'CB',name:'G. Magalhães',x:38,y:76},{pos:'LB',name:'Alex Sandro',x:20,y:73},
+      {pos:'CDM',name:'Casemiro',x:60,y:57},{pos:'CDM',name:'B. Guimarães',x:40,y:57},
+      {pos:'RAM',name:'Raphinha',x:75,y:40},{pos:'CAM',name:'Paquetá',x:50,y:38},{pos:'LAM',name:'Vinicius Jr',x:25,y:38},
+      {pos:'ST',name:'Endrick',x:50,y:25}
+    ],
+    injuries:[{name:'Neymar',issue:'ACL recovery — included in squad',status:'Managed',return:'Available'},{name:'Bremer',issue:'ACL recovery',status:'Fit',return:'Available'}],
+    h2h:[{opp:'🇲🇦 Morocco',w:3,d:1,l:0,note:'Brazil dominant'},{opp:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland',w:2,d:1,l:0,note:'Never lost'},{opp:'🇭🇹 Haiti',w:4,d:0,l:0,note:'Total dominance'}],
+    history:{apps:22,bestFinish:'Champions (1958,1962,1970,1994,2002)',goals:232,allTimeRank:1},
+    squadCount:{gk:3,def:9,mid:5,fwd:9},
+    fullSquad:{GK:['Alisson','Ederson','Weverton'],DEF:['Marquinhos','Danilo Luiz','Alex Sandro','Gabriel Magalhaes','Bremer','Wesley','Roger Ibanez','Douglas Santos','Leo Pereira'],MID:['Casemiro','Lucas Paqueta','Bruno Guimaraes','Fabinho','Danilo Santos'],FWD:['Neymar','Vinicius Jr','Raphinha','Gabriel Martinelli','Matheus Cunha','Endrick','Luiz Henrique','Igor Thiago','Rayan']},
+    keyPlayer:'Vinicius Jr',keyPlayerNote:'FIFA Best player. Explosive pace, dribbling and finishing. Brazil\',s most dangerous threat.'
+  },
+  {
+    code:'MAR',flag:'🇲🇦',name:'Morocco',group:'C',conf:'CAF',
+    fifaRank:8,manager:'Walid Regragui',managerNat:'🇲🇦',managerStyle:'High press',
+    squadStatus:'tbc',formation:'4-3-3',
+    styleTag:['High press','Organised','Counter'],
+    winProb:7,xG:1.6,groupPos:2,
+    stats:{attack:74,defense:80,midfield:75,setPiece:70,pressing:82},
+    momentum:['W','W','D','W','W','W','D','W','W','W'],
+    bestXI:[
+      {pos:'GK',name:'Y. Bounou',x:50,y:90},
+      {pos:'RB',name:'A. Hakimi',x:80,y:73},{pos:'CB',name:'N. Aguerd',x:62,y:76},{pos:'CB',name:'R. Saïss',x:38,y:76},{pos:'LB',name:'N. Masina',x:20,y:73},
+      {pos:'CM',name:'S. Amrabat',x:65,y:55},{pos:'CM',name:'A. Ounahi',x:50,y:52},{pos:'CM',name:'I. Bennacer',x:35,y:55},
+      {pos:'RW',name:'H. Ziyech',x:80,y:32},{pos:'ST',name:'Y. En-Nesyri',x:50,y:25},{pos:'LW',name:'S. Boufal',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇧🇷 Brazil',w:0,d:1,l:3,note:'Never beaten Brazil'},{opp:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland',w:1,d:1,l:0,note:'Slight edge'},{opp:'🇭🇹 Haiti',w:3,d:1,l:0,note:'Comfortable'}],
+    history:{apps:7,bestFinish:'SF (2022)',goals:44,allTimeRank:16},
+    squadCount:{gk:3,def:8,mid:10,fwd:5},
+    keyPlayer:'Achraf Hakimi',keyPlayerNote:'One of the world\',s best RBs. PSG star. Morocco\'s heartbeat — attacks and defends with equal intensity.'
+  },
+  {
+    code:'SCO',flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',name:'Scotland',group:'C',conf:'UEFA',
+    fifaRank:30,manager:'Steve Clarke',managerNat:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',managerStyle:'Structured',
+    squadStatus:'confirmed',formation:'3-5-2 (fluid)',
+    styleTag:['Organised','Set pieces','Energetic'],
+    winProb:3,xG:1.2,groupPos:3,
+    stats:{attack:60,defense:70,midfield:65,setPiece:72,pressing:70},
+    momentum:['W','D','W','W','L','W','D','W','W','D'],
+    bestXI:[
+      {pos:'GK',name:'A. Gunn',x:50,y:90},
+      {pos:'CB',name:'G. Hanley',x:75,y:78},{pos:'CB',name:'K. Tierney',x:50,y:80},{pos:'CB',name:'A. Robertson',x:25,y:78},
+      {pos:'RWB',name:'A. Hickey',x:85,y:60},{pos:'CM',name:'S. McTominay',x:65,y:55},{pos:'CM',name:'B. Gilmour',x:50,y:52},{pos:'LWB',name:'N. Patterson',x:15,y:60},
+      {pos:'SS',name:'R. Christie',x:65,y:38},{pos:'SS',name:'J. McGinn',x:35,y:38},
+      {pos:'ST',name:'L. Shankland',x:50,y:25}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇧🇷 Brazil',w:0,d:1,l:2,note:'Never beaten Brazil'},{opp:'🇲🇦 Morocco',w:0,d:1,l:1,note:'Close games'},{opp:'🇭🇹 Haiti',w:2,d:0,l:0,note:'Should win'}],
+    history:{apps:8,bestFinish:'Group stage',goals:49,allTimeRank:30},
+    squadCount:{gk:3,def:10,mid:8,fwd:5},
+    fullSquad:{GK:['Angus Gunn','Craig Gordon','Liam Kelly'],DEF:['Andy Robertson','Kieran Tierney','Anthony Ralston','John Souttar','Scott McKenna','Jack Hendry','Aaron Hickey','Nathan Patterson','Grant Hanley','Dominic Hyam'],MID:['Scott McTominay','Billy Gilmour','John McGinn','Kenny McLean','Lewis Ferguson','Ryan Christie','Findlay Curtis','Ben Gannon-Doak'],FWD:['Lawrence Shankland','George Hirst','Che Adams','Ross Stewart','Lyndon Dykes']},
+    keyPlayer:'Scott McTominay',keyPlayerNote:'Goals from midfield, energy, leadership. His form has been sensational. Scotland\',s most dynamic player.'
+  },
+  {
+    code:'HAI',flag:'🇭🇹',name:'Haiti',group:'C',conf:'CONCACAF',
+    fifaRank:83,manager:'Marc Collat',managerNat:'🇫🇷',managerStyle:'Defensive',
+    squadStatus:'confirmed',formation:'4-2-3-1 / 4-3-3',
+    styleTag:['Defensive block','Physical','Counter'],
+    winProb:0.5,xG:0.7,groupPos:4,
+    stats:{attack:40,defense:52,midfield:45,setPiece:48,pressing:50},
+    momentum:['L','D','W','L','D','W','D','L','W','L'],
+    bestXI:[
+      {pos:'GK',name:'J. Placide',x:50,y:90},
+      {pos:'RB',name:'C. Arcus',x:80,y:73},{pos:'CB',name:'M. Experience',x:62,y:76},{pos:'CB',name:'H. Delcroix',x:38,y:76},{pos:'LB',name:'R. Ade',x:20,y:73},
+      {pos:'RM',name:'D. Etienne Jr',x:80,y:50},{pos:'CM',name:'D. Jean Jacques',x:60,y:52},{pos:'CM',name:'J.R. Bellegarde',x:40,y:52},{pos:'LM',name:'R. Providence',x:20,y:50},
+      {pos:'ST',name:'D. Nazon',x:60,y:28},{pos:'ST',name:'F. Pierrot',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇧🇷 Brazil',w:0,d:0,l:4,note:'Outclassed'},{opp:'🇲🇦 Morocco',w:0,d:1,l:3,note:'Limited record'},{opp:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland',w:0,d:0,l:2,note:'Lost both'}],
+    history:{apps:1,bestFinish:'Group stage (1974)',goals:2,allTimeRank:60},
+    squadCount:{gk:3,def:8,mid:6,fwd:9},
+    fullSquad:{GK:['Johny Placide','Alexandre Pierre','Josue Duverger'],DEF:['Ricardo Ade','Carlens Arcus','Martin Experience','Jean-Kevin Duverne','Duke Lacroix','Wilguens Paugain','Hannes Delcroix','Keeto Thermoncy'],MID:['Leverton Pierre','Danley Jean Jacques','Carl Sainte','Jean-Ricner Bellegarde','Woodensky Pierre','Dominique Simon'],FWD:['Duckens Nazon','Frantzdy Pierrot','Derrick Etienne Jr','Louicius Deedson','Ruben Providence','Josue Casimir','Yassin Fortune','Wilson Isidor','Lenny Joseph']},
+    keyPlayer:'Duckens Nazon',keyPlayerNote:'Experienced striker. Haiti\'s most reliable international scorer.',
+  },
+  // ═══ GROUP D ═══════════════════════════════════════════════
+  {
+    code:'USA',flag:'🇺🇸',name:'USA',group:'D',conf:'CONCACAF',
+    fifaRank:11,manager:'Mauricio Pochettino',managerNat:'🇦🇷',managerStyle:'High press',
+    squadStatus:'confirmed',formation:'4-2-3-1 / 3-4-3',
+    styleTag:['High press','Attacking','Athletic'],
+    winProb:8,xG:1.7,groupPos:1,
+    stats:{attack:76,defense:72,midfield:78,setPiece:66,pressing:82},
+    momentum:['W','W','D','W','W','D','W','W','L','W'],
+    bestXI:[
+      {pos:'GK',name:'M. Turner',x:50,y:90},
+      {pos:'RB',name:'S. Dest',x:80,y:73},{pos:'CB',name:'C. Richards',x:62,y:76},{pos:'CB',name:'M. Robinson',x:38,y:76},{pos:'LB',name:'A. Robinson',x:20,y:73},
+      {pos:'CM',name:'T. Adams',x:65,y:55},{pos:'CM',name:'W. McKennie',x:50,y:52},{pos:'CM',name:'Y. Musah',x:35,y:48},
+      {pos:'RW',name:'T. Weah',x:80,y:32},{pos:'ST',name:'R. Pepi',x:50,y:25},{pos:'LW',name:'C. Pulisic',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇦🇺 Australia',w:3,d:2,l:1,note:'Strong recent record'},{opp:'🇵🇾 Paraguay',w:4,d:1,l:0,note:'Dominant'},{opp:'🇹🇷 Türkiye',w:1,d:2,l:1,note:'Competitive'}],
+    history:{apps:11,bestFinish:'SF (1930)',goals:83,allTimeRank:22},
+    squadCount:{gk:3,def:9,mid:6,fwd:8},
+    fullSquad:{GK:['Matt Turner','Chris Brady','Matt Freese'],DEF:['Sergino Dest','Chris Richards','Antonee Robinson','Auston Trusty','Miles Robinson','Tim Ream','Alex Freeman','Mark McKenzie','Joe Scally'],MID:['Tyler Adams','Weston McKennie','Christian Pulisic','Sebastian Berhalter','Cristian Roldan','Malik Tillman'],FWD:['Gio Reyna','Ricardo Pepi','Brenden Aaronson','Max Arfsten','Haji Wright','Folarin Balogun','Tim Weah','Alex Zendejas']},
+    keyPlayer:'Christian Pulisic',keyPlayerNote:'AC Milan star. USA captain and creative force. Set pieces, dribbling, goals — involved in everything good the US do.',
+  },
+  {
+    code:'AUS',flag:'🇦🇺',name:'Australia',group:'D',conf:'AFC',
+    fifaRank:24,manager:'Tony Popovic',managerNat:'🇦🇺',managerStyle:'Physical',
+    squadStatus:'tbc',formation:'3-4-3',
+    styleTag:['Physical','Direct','Counter'],
+    winProb:2,xG:1.0,groupPos:3,
+    stats:{attack:55,defense:62,midfield:58,setPiece:60,pressing:65},
+    momentum:['W','D','L','W','W','D','W','L','W','D'],
+    bestXI:[
+      {pos:'GK',name:'M. Ryan',x:50,y:90},
+      {pos:'RB',name:'N. Atkinson',x:80,y:73},{pos:'CB',name:'H. Souttar',x:62,y:76},{pos:'CB',name:'K. Rowles',x:38,y:76},{pos:'LB',name:'A. Behich',x:20,y:73},
+      {pos:'RM',name:'R. McGree',x:80,y:48},{pos:'CM',name:'J. Irvine',x:60,y:52},{pos:'CM',name:'A. Hrustic',x:40,y:52},{pos:'LM',name:'C. Goodwin',x:20,y:48},
+      {pos:'ST',name:'J. Maclaren',x:60,y:28},{pos:'ST',name:'M. Duke',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇺🇸 USA',w:1,d:2,l:3,note:'USA edge recent record'},{opp:'🇵🇾 Paraguay',w:2,d:1,l:1,note:'Balanced'},{opp:'🇹🇷 Türkiye',w:1,d:0,l:2,note:'Türkiye stronger'}],
+    history:{apps:6,bestFinish:'R16 (2006)',goals:21,allTimeRank:28},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Harry Souttar',keyPlayerNote:'Giant CB. Aerial threat from set pieces and rock-solid defensively. Australia\'s most important player.',
+  },
+  {
+    code:'PAR',flag:'🇵🇾',name:'Paraguay',group:'D',conf:'CONMEBOL',
+    fifaRank:50,manager:'Alfaro Moreno',managerNat:'🇪🇨',managerStyle:'Defensive',
+    squadStatus:'preliminary',formation:'4-4-2 / 4-2-3-1',
+    styleTag:['Defensive','Physical','Counter'],
+    winProb:2,xG:1.0,groupPos:4,
+    stats:{attack:54,defense:64,midfield:58,setPiece:62,pressing:60},
+    momentum:['D','W','L','W','D','L','W','W','D','L'],
+    bestXI:[
+      {pos:'GK',name:'R. Fernández',x:50,y:90},
+      {pos:'RB',name:'J. Espínola',x:80,y:73},{pos:'CB',name:'G. Gómez',x:62,y:76},{pos:'CB',name:'F. Balbuena',x:38,y:76},{pos:'LB',name:'O. Alderete',x:20,y:73},
+      {pos:'RM',name:'D. Almirón',x:80,y:48},{pos:'CM',name:'M. Villasanti',x:60,y:52},{pos:'CM',name:'A. Cubas',x:40,y:52},{pos:'LM',name:'J. Enciso',x:20,y:48},
+      {pos:'ST',name:'A. Sanabria',x:60,y:28},{pos:'ST',name:'I. Romero',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇺🇸 USA',w:0,d:1,l:4,note:'Historically dominated'},{opp:'🇦🇺 Australia',w:1,d:1,l:2,note:'Balanced'},{opp:'🇹🇷 Türkiye',w:1,d:1,l:1,note:'Very limited record'}],
+    history:{apps:9,bestFinish:'QF (2010)',goals:53,allTimeRank:19},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Miguel Almirón',keyPlayerNote:'Atlanta United veteran. Paraguay\'s most creative player with pace and dribbling from wide positions.',
+  },
+  {
+    code:'TUR',flag:'🇹🇷',name:'Türkiye',group:'D',conf:'UEFA',
+    fifaRank:26,manager:'Vincenzo Montella',managerNat:'🇮🇹',managerStyle:'Attacking',
+    squadStatus:'preliminary',formation:'4-2-3-1 / 3-4-2-1',
+    styleTag:['Attacking','Technical','Pressing'],
+    winProb:4,xG:1.4,groupPos:2,
+    stats:{attack:72,defense:66,midfield:70,setPiece:64,pressing:72},
+    momentum:['W','W','D','W','W','L','W','D','W','W'],
+    bestXI:[
+      {pos:'GK',name:'U. Çakır',x:50,y:90},
+      {pos:'RB',name:'Z. Çelik',x:80,y:73},{pos:'CB',name:'M. Demiral',x:62,y:76},{pos:'CB',name:'S. Kabak',x:38,y:76},{pos:'LB',name:'F. Kadıoğlu',x:20,y:73},
+      {pos:'CDM',name:'H. Çalhanoğlu',x:60,y:57},{pos:'CDM',name:'S. Özcan',x:40,y:57},
+      {pos:'RAM',name:'A. Güler',x:75,y:38},{pos:'CAM',name:'K. Yıldız',x:50,y:35},{pos:'LAM',name:'B. Yılmaz',x:25,y:38},
+      {pos:'ST',name:'B. Yılmaz',x:50,y:25}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇺🇸 USA',w:1,d:2,l:1,note:'Competitive'},{opp:'🇦🇺 Australia',w:2,d:0,l:1,note:'Slight edge'},{opp:'🇵🇾 Paraguay',w:1,d:1,l:1,note:'Very limited'}],
+    history:{apps:3,bestFinish:'3rd place (2002)',goals:20,allTimeRank:32},
+    squadCount:{gk:3,def:8,mid:10,fwd:5},
+    keyPlayer:'Arda Güler',keyPlayerNote:'Real Madrid\',s Turkish jewel. Extraordinary technical quality. Could be the tournament\'s breakout star at 21.'
+  },
+  // ═══ GROUP E ═══════════════════════════════════════════════
+  {
+    code:'GER',flag:'🇩🇪',name:'Germany',group:'E',conf:'UEFA',
+    fifaRank:10,manager:'Julian Nagelsmann',managerNat:'🇩🇪',managerStyle:'Possession',
+    squadStatus:'confirmed',formation:'4-2-3-1',
+    styleTag:['Possession','Pressing','Technical'],
+    winProb:9,xG:1.8,groupPos:1,
+    stats:{attack:82,defense:78,midfield:84,setPiece:70,pressing:80},
+    momentum:['W','W','W','D','W','W','D','W','W','W'],
+    bestXI:[
+      {pos:'GK',name:'M. Neuer',x:50,y:90},
+      {pos:'RB',name:'J. Kimmich',x:80,y:73},{pos:'CB',name:'A. Rüdiger',x:62,y:76},{pos:'CB',name:'J. Tah',x:38,y:76},{pos:'LB',name:'D. Raum',x:20,y:73},
+      {pos:'CDM',name:'A. Pavlović',x:60,y:57},{pos:'CDM',name:'A. Stiller',x:40,y:57},
+      {pos:'RAM',name:'J. Musiala',x:75,y:38},{pos:'CAM',name:'F. Wirtz',x:50,y:35},{pos:'LAM',name:'L. Sané',x:25,y:38},
+      {pos:'ST',name:'K. Havertz',x:50,y:25}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇪🇨 Ecuador',w:3,d:0,l:0,note:'Never lost'},{opp:'🇨🇮 Ivory Coast',w:2,d:1,l:0,note:'Comfortable'},{opp:'🇨🇼 Curaçao',w:1,d:0,l:0,note:'Limited'}],
+    history:{apps:20,bestFinish:'Champions (1954,1974,1990,2014)',goals:226,allTimeRank:3},
+    squadCount:{gk:3,def:8,mid:12,fwd:3},
+    fullSquad:{GK:['Manuel Neuer','Oliver Baumann','Alexander Nubel'],DEF:['Antonio Rudiger','Jonathan Tah','Nico Schlotterbeck','Nathaniel Brown','David Raum','Malick Thiaw','Waldemar Anton','Pascal Gross'],MID:['Joshua Kimmich','Leon Goretzka','Lennart Karl','Jamal Musiala','Florian Wirtz','Jamie Leweling','Aleksandar Pavlovic','Maximilian Beier','Nadiem Amiri','Leroy Sane','Angelo Stiller','Felix Nmecha'],FWD:['Kai Havertz','Denis Undav','Nick Woltemeade']},
+    keyPlayer:'Florian Wirtz',keyPlayerNote:'Bayer Leverkusen\',s unbeaten season architect. Technical wizardry, vision and goals. This WC could define his legacy.'
+  },
+  {
+    code:'ECU',flag:'🇪🇨',name:'Ecuador',group:'E',conf:'CONMEBOL',
+    fifaRank:28,manager:'Sebastián Beccacece',managerNat:'🇦🇷',managerStyle:'High press',
+    squadStatus:'tbc',formation:'4-4-2',
+    styleTag:['High press','Athletic','Direct'],
+    winProb:2,xG:1.1,groupPos:3,
+    stats:{attack:62,defense:64,midfield:66,setPiece:56,pressing:74},
+    momentum:['W','L','D','W','W','D','L','W','W','D'],
+    bestXI:[
+      {pos:'GK',name:'H. Galíndez',x:50,y:90},
+      {pos:'RB',name:'A. Preciado',x:80,y:73},{pos:'CB',name:'P. Hincapié',x:62,y:76},{pos:'CB',name:'F. Torres',x:38,y:76},{pos:'LB',name:'P. Estupiñán',x:20,y:73},
+      {pos:'CM',name:'M. Caicedo',x:65,y:55},{pos:'CM',name:'A. Franco',x:50,y:52},{pos:'CM',name:'J. Cifuentes',x:35,y:55},
+      {pos:'RW',name:'G. Plata',x:80,y:32},{pos:'ST',name:'E. Valencia',x:50,y:25},{pos:'LW',name:'J. Sarmiento',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇩🇪 Germany',w:0,d:0,l:3,note:'Never beaten Germany'},{opp:'🇨🇮 Ivory Coast',w:1,d:0,l:0,note:'Limited'},{opp:'🇨🇼 Curaçao',w:2,d:0,l:0,note:'Dominant'}],
+    history:{apps:4,bestFinish:'R16 (2006)',goals:18,allTimeRank:31},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Moisés Caicedo',keyPlayerNote:'Chelsea\',s midfield destroyer. Elite pressing, tackling and passing range. Ecuador\'s entire system is built around him.'
+  },
+  {
+    code:'CIV',flag:'🇨🇮',name:'Ivory Coast',group:'E',conf:'CAF',
+    fifaRank:36,manager:'Faé Emerse',managerNat:'🇨🇮',managerStyle:'Counter',
+    squadStatus:'confirmed',formation:'4-4-2',
+    styleTag:['Counter','Athletic','Physical'],
+    winProb:2,xG:1.0,groupPos:3,
+    stats:{attack:64,defense:60,midfield:62,setPiece:58,pressing:68},
+    momentum:['W','W','D','L','W','W','D','W','L','W'],
+    bestXI:[
+      {pos:'GK',name:'Y. Fofana',x:50,y:90},
+      {pos:'RB',name:'W. Singo',x:80,y:73},{pos:'CB',name:'O. Kossounou',x:62,y:76},{pos:'CB',name:'E. Ndicka',x:38,y:76},{pos:'LB',name:'G. Konan',x:20,y:73},
+      {pos:'CM',name:'F. Kessié',x:65,y:55},{pos:'CM',name:'I. Sangaré',x:50,y:52},{pos:'CM',name:'S. Fofana',x:35,y:55},
+      {pos:'RW',name:'A. Diallo',x:80,y:32},{pos:'ST',name:'E. Wahi',x:50,y:25},{pos:'LW',name:'S. Adingra',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇩🇪 Germany',w:0,d:1,l:2,note:'Difficult opponent'},{opp:'🇪🇨 Ecuador',w:0,d:0,l:1,note:'Limited'},{opp:'🇨🇼 Curaçao',w:1,d:0,l:0,note:'Comfortable'}],
+    history:{apps:4,bestFinish:'Group stage',goals:13,allTimeRank:37},
+    squadCount:{gk:3,def:8,mid:6,fwd:9},
+    fullSquad:{GK:['Yahia Fofana','Alban Lafont','Mohamed Kone'],DEF:['Ghislain Konan','Odilon Kossounou','Wilfried Singo','Evan Ndicka','Emmanuel Agbadou','Guela Doue','Ousmane Diomande','Clement Akpa'],MID:['Franck Kessie','Jean Michael Seri','Ibrahim Sangare','Seko Fofana','Christ Inao Oulai','Parfait Guiagon'],FWD:['Nicolas Pepe','Oumar Diakite','Simon Adingra','Evann Guessand','Amad Diallo','Yan Diomande','Bazoumana Toure','Elye Wahi','Ange Yoan-Bonny']},
+    keyPlayer:'Amad Diallo',keyPlayerNote:'Man United winger. Electric pace, direct dribbling, has emerged as a genuine star this season.',
+  },
+  {
+    code:'CUR',flag:'🇨🇼',name:'Curaçao',group:'E',conf:'CONCACAF',
+    fifaRank:88,manager:'Dick Advocaat',managerNat:'🇳🇱',managerStyle:'Structured',
+    squadStatus:'confirmed',formation:'4-4-3 / 4-2-3-1',
+    styleTag:['Organised','Counter','Physical'],
+    winProb:0.5,xG:0.7,groupPos:4,
+    stats:{attack:42,defense:50,midfield:48,setPiece:46,pressing:52},
+    momentum:['L','W','D','L','W','D','L','W','D','L'],
+    bestXI:[
+      {pos:'GK',name:'E. Room',x:50,y:90},
+      {pos:'RB',name:'J. Brenet',x:80,y:73},{pos:'CB',name:'R. Bazoer',x:62,y:76},{pos:'CB',name:'A. Obispo',x:38,y:76},{pos:'LB',name:'S. Sambo',x:20,y:73},
+      {pos:'RM',name:'T. Chong',x:80,y:48},{pos:'CM',name:'L. Bacuna',x:60,y:52},{pos:'CM',name:'J. Bacuna',x:40,y:52},{pos:'LM',name:'K. Gorre',x:20,y:48},
+      {pos:'ST',name:'J. Locadia',x:60,y:28},{pos:'ST',name:'T. Noslin',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇩🇪 Germany',w:0,d:0,l:1,note:'Outclassed'},{opp:'🇪🇨 Ecuador',w:0,d:0,l:2,note:'Difficult'},{opp:'🇨🇮 Ivory Coast',w:0,d:0,l:1,note:'Tough'}],
+    history:{apps:0,bestFinish:'Debut',goals:0,allTimeRank:99},
+    squadCount:{gk:3,def:8,mid:7,fwd:8},
+    fullSquad:{GK:['Eloy Room','Trevor Doornbusch','Tyrick Bodak'],DEF:['Jurien Gaari','Roshon van Eijma','Sherel Floranus','Joshua Brenet','Shurandy Sambo','Armando Obispo','Riechedly Bazoer','Deveron Fonville'],MID:['Leandro Bacuna','Juninho Bacuna','Godfried Roemeratoe','Kevin Felida','Livano Comenencia','Ar\'jany Martha','Tyrese Noslin'],FWD:['Kenji Gorre','Brandley Kuwas','Gervane Kastaneer','Jeremy Antonisse','Jearl Margaritha','Jurgen Locadia','Sontje Hansen','Tahith Chong']},
+    keyPlayer:'Tahith Chong',keyPlayerNote:'Winger with flair and directness. The face of Curaçao\'s historic campaign.',
+  },
+  // ═══ GROUP F ═══════════════════════════════════════════════
+  {
+    code:'NED',flag:'🇳🇱',name:'Netherlands',group:'F',conf:'UEFA',
+    fifaRank:7,manager:'Ronald Koeman',managerNat:'🇳🇱',managerStyle:'Attacking',
+    squadStatus:'confirmed',formation:'4-3-3',
+    styleTag:['Total football','Technical','Pressing'],
+    winProb:8,xG:1.8,groupPos:1,
+    stats:{attack:80,defense:76,midfield:80,setPiece:68,pressing:76},
+    momentum:['W','W','W','D','W','W','W','D','W','W'],
+    bestXI:[
+      {pos:'GK',name:'B. Verbruggen',x:50,y:90},
+      {pos:'RB',name:'D. Dumfries',x:80,y:73},{pos:'CB',name:'V. van Dijk',x:62,y:76},{pos:'CB',name:'J. Timber',x:38,y:76},{pos:'LB',name:'N. Aké',x:20,y:73},
+      {pos:'CM',name:'F. de Jong',x:65,y:55},{pos:'CM',name:'R. Gravenberch',x:50,y:52},{pos:'CM',name:'T. Reijnders',x:35,y:48},
+      {pos:'RW',name:'D. Malen',x:80,y:32},{pos:'ST',name:'B. Brobbey',x:50,y:25},{pos:'LW',name:'C. Gakpo',x:20,y:32}
+    ],
+    injuries:[{name:'Xavi Simons',issue:'Injured — not in squad',status:'Out',return:'N/A'},{name:'Matthijs de Ligt',issue:'Injured — not in squad',status:'Out',return:'N/A'}],
+    h2h:[{opp:'🇯🇵 Japan',w:2,d:0,l:1,note:'Strong historical record'},{opp:'🇹🇳 Tunisia',w:2,d:1,l:0,note:'Comfortable'},{opp:'🇸🇪 Sweden',w:8,d:4,l:5,note:'Classic rivalry'}],
+    history:{apps:11,bestFinish:'Runners-up (1974,1978,2010)',goals:125,allTimeRank:9},
+    squadCount:{gk:3,def:8,mid:7,fwd:8},
+    fullSquad:{GK:['Mark Flekken','Robin Roefs','Bart Verbruggen'],DEF:['Nathan Ake','Denzel Dumfries','Jorrel Hato','Jurrien Timber','Jan Paul van Hecke','Virgil van Dijk','Micky van de Ven','Mats Wieffer'],MID:['Ryan Gravenberch','Frenkie de Jong','Teun Koopmeijners','Tijjani Reijnders','Maarten de Roon','Guus Til','Quinten Timber'],FWD:['Brian Brobbey','Memphis Depay','Cody Gakpo','Justin Kluivert','Noa Lang','Donyell Malen','Crysencio Summerville','Wout Weghorst']},
+    keyPlayer:'Virgil van Dijk',keyPlayerNote:'World\'s best CB. Organises the entire defence. His presence transforms Netherlands from good to elite.'
+  },
+  {
+    code:'JPN',flag:'🇯🇵',name:'Japan',group:'F',conf:'AFC',
+    fifaRank:14,manager:'Hajime Moriyasu',managerNat:'🇯🇵',managerStyle:'High press',
+    squadStatus:'confirmed',formation:'3-4-2-1',
+    styleTag:['High press','Technical','Compact'],
+    winProb:4,xG:1.5,groupPos:2,
+    stats:{attack:72,defense:70,midfield:74,setPiece:62,pressing:82},
+    momentum:['W','W','W','D','W','W','W','L','W','W'],
+    bestXI:[
+      {pos:'GK',name:'Z. Suzuki',x:50,y:90},
+      {pos:'RB',name:'Y. Sugawara',x:80,y:73},{pos:'CB',name:'T. Tomiyasu',x:62,y:76},{pos:'CB',name:'K. Itakura',x:38,y:76},{pos:'LB',name:'A. Seko',x:20,y:73},
+      {pos:'CM',name:'W. Endo',x:65,y:55},{pos:'CM',name:'A. Tanaka',x:50,y:52},{pos:'CM',name:'D. Kamada',x:35,y:48},
+      {pos:'RW',name:'T. Kubo',x:80,y:32},{pos:'ST',name:'A. Ueda',x:50,y:25},{pos:'LW',name:'R. Doan',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇳🇱 Netherlands',w:1,d:0,l:2,note:'Beat them recently'},{opp:'🇹🇳 Tunisia',w:2,d:0,l:0,note:'Comfortable'},{opp:'🇸🇪 Sweden',w:2,d:1,l:0,note:'Strong record'}],
+    history:{apps:7,bestFinish:'R16 (2002,2018,2022)',goals:33,allTimeRank:24},
+    squadCount:{gk:3,def:9,mid:8,fwd:6},
+    fullSquad:{GK:['Zion Suzuki','Keisuke Osako','Tomoki Hayakawa'],DEF:['Yuto Nagatomo','Takehiro Tomiyasu','Ko Itakura','Shogo Taniguchi','Hiroko Ito','Yukinari Sugawara','Ayumu Seko','Tsuyoshi Watanabe','Junnosuke Suzuki'],MID:['Wataru Endo','Junya Ito','Ritsu Doan','Daichi Kamada','Takefusa Kubo','Ao Tanaka','Keito Nakamura','Kaishu Sano'],FWD:['Ayase Ueda','Daizen Maeda','Koki Ogawa','Yuito Suzuki','Keisuke Goto','Kento Shiogai']},
+    keyPlayer:'Takefusa Kubo',keyPlayerNote:'Real Sociedad star. Technical wizard who can unlock any defence. Japan\'s primary creative threat.'
+  },
+  {
+    code:'SWE',flag:'🇸🇪',name:'Sweden',group:'F',conf:'UEFA',
+    fifaRank:20,manager:'Graham Potter',managerNat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',managerStyle:'Structured',
+    squadStatus:'confirmed',formation:'3-4-3 / 3-4-2-1',
+    styleTag:['Structured','Physical','Counter'],
+    winProb:3,xG:1.3,groupPos:3,
+    stats:{attack:70,defense:68,midfield:64,setPiece:66,pressing:66},
+    momentum:['W','D','W','W','L','W','D','W','W','D'],
+    bestXI:[
+      {pos:'GK',name:'V. Johansson',x:50,y:90},
+      {pos:'RB',name:'E. Holm',x:80,y:73},{pos:'CB',name:'V. Lindelöf',x:62,y:76},{pos:'CB',name:'I. Hien',x:38,y:76},{pos:'LB',name:'G. Gudmundsson',x:20,y:73},
+      {pos:'RM',name:'A. Elanga',x:80,y:48},{pos:'CM',name:'Y. Ayari',x:60,y:52},{pos:'CM',name:'L. Bergvall',x:40,y:52},{pos:'LM',name:'K. Sema',x:20,y:48},
+      {pos:'ST',name:'A. Isak',x:60,y:28},{pos:'ST',name:'V. Gyökeres',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇳🇱 Netherlands',w:5,d:4,l:8,note:'Netherlands historically stronger'},{opp:'🇯🇵 Japan',w:0,d:1,l:2,note:'Japan have the edge'},{opp:'🇹🇳 Tunisia',w:1,d:1,l:0,note:'Slight edge'}],
+    history:{apps:12,bestFinish:'Runners-up (1958)',goals:97,allTimeRank:15},
+    squadCount:{gk:3,def:10,mid:5,fwd:8},
+    fullSquad:{GK:['Kristoffer Nordfeldt','Viktor Johansson','Jacob Widell Zetterstrom'],DEF:['Victor Lindelof','Isak Hien','Gabriel Gudmundsson','Carl Starfelt','Emil Holm','Hjalmar Ekdal','Daniel Svensson','Gustaf Lagerbielke','Eric Smith','Elliot Stroud'],MID:['Mattias Svanberg','Jesper Karlstrom','Yasin Ayari','Lucas Bergvall','Besfort Zeneli'],FWD:['Alexander Isak','Viktor Gyokeres','Ken Sema','Anthony Elanga','Benjamin Nygren','Alexander Bernhardsson','Gustaf Nilsson','Taha Ali']},
+    keyPlayer:'Viktor Gyökeres',keyPlayerNote:'Sporting CP goal machine. His power, pace and finishing alongside Isak gives Sweden a lethal strike force.'
+  },
+  {
+    code:'TUN',flag:'🇹🇳',name:'Tunisia',group:'F',conf:'CAF',
+    fifaRank:34,manager:'Sabri Lamouchi',managerNat:'🇹🇳',managerStyle:'Defensive',
+    squadStatus:'confirmed',formation:'4-3-3 / 4-1-4-1 / 4-2-3-1',
+    styleTag:['Defensive','Organised','Counter'],
+    winProb:1,xG:0.9,groupPos:4,
+    stats:{attack:52,defense:66,midfield:58,setPiece:60,pressing:62},
+    momentum:['W','D','L','W','D','W','L','D','W','D'],
+    bestXI:[
+      {pos:'GK',name:'A. Dahmen',x:50,y:90},
+      {pos:'RB',name:'Y. Valery',x:80,y:73},{pos:'CB',name:'M. Talbi',x:62,y:76},{pos:'CB',name:'D. Bronn',x:38,y:76},{pos:'LB',name:'A. Abdi',x:20,y:73},
+      {pos:'RM',name:'E. Achouri',x:80,y:48},{pos:'CM',name:'E. Shkiri',x:60,y:52},{pos:'CM',name:'H. Mejbri',x:40,y:52},{pos:'LM',name:'A. Ben Slimane',x:20,y:48},
+      {pos:'ST',name:'F. Chaouat',x:60,y:28},{pos:'ST',name:'S. Tounekti',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇳🇱 Netherlands',w:0,d:1,l:2,note:'Outmatched'},{opp:'🇯🇵 Japan',w:0,d:0,l:2,note:'Japan too strong'},{opp:'🇸🇪 Sweden',w:0,d:1,l:1,note:'Slight disadvantage'}],
+    history:{apps:6,bestFinish:'Group stage',goals:17,allTimeRank:33},
+    squadCount:{gk:3,def:9,mid:7,fwd:7},
+    fullSquad:{GK:['Aymen Dahmen','Sabri Ben Hessen','Mouhib Chamakh'],DEF:['Montassar Talbi','Dylan Bronn','Ali Abdi','Yan Valery','Mohamed Amine Ben Hamida','Moutaz Neffati','Omar Rekik','Adem Arous','Raed Chikhaoui'],MID:['Ellyes Shkiri','Hannibal Mejbri','Anis Ben Slimane','Mortadha Ben Ouanes','Ismael Gharbi','Hadj Mahmoud','Rani Khedira'],FWD:['Elias Achouri','Firas Chaouat','Hazem Mastouri','Elias Saad','Sebastian Tounekti','Khalil Ayari','Rayan Elloumi']},
+    keyPlayer:'Hannibal Mejbri',keyPlayerNote:'Tunisia\'s most creative midfielder. Technical quality from Man United academy. The hub of their attacking play.'
+  },
+  // ═══ GROUP G ═══════════════════════════════════════════════
+  {
+    code:'BEL',flag:'🇧🇪',name:'Belgium',group:'G',conf:'UEFA',
+    fifaRank:9,manager:'Rudi Garcia',managerNat:'🇫🇷',managerStyle:'Flexible',
+    squadStatus:'confirmed',formation:'4-2-3-1',
+    styleTag:['Technical','Flexible','Counter'],
+    winProb:7,xG:1.7,groupPos:1,
+    stats:{attack:78,defense:74,midfield:82,setPiece:68,pressing:70},
+    momentum:['W','D','W','W','W','D','W','W','D','W'],
+    bestXI:[
+      {pos:'GK',name:'T. Courtois',x:50,y:90},
+      {pos:'RB',name:'T. Castagne',x:80,y:73},{pos:'CB',name:'Z. Debast',x:62,y:76},{pos:'CB',name:'A. Theate',x:38,y:76},{pos:'LB',name:'M. De Cuyper',x:20,y:73},
+      {pos:'CDM',name:'A. Onana',x:60,y:57},{pos:'CDM',name:'Y. Tielemans',x:40,y:57},
+      {pos:'RAM',name:'J. Doku',x:75,y:38},{pos:'CAM',name:'K. De Bruyne',x:50,y:35},{pos:'LAM',name:'L. Trossard',x:25,y:38},
+      {pos:'ST',name:'R. Lukaku',x:50,y:25}
+    ],
+    injuries:[{name:'Kevin De Bruyne',issue:'Monitoring',status:'Fit',return:'Available'}],
+    h2h:[{opp:'🇮🇷 IR Iran',w:2,d:0,l:0,note:'Always beaten Iran'},{opp:'🇪🇬 Egypt',w:1,d:1,l:0,note:'Comfortable'},{opp:'🇳🇿 New Zealand',w:2,d:0,l:0,note:'Dominant'}],
+    history:{apps:14,bestFinish:'3rd place (2018)',goals:143,allTimeRank:11},
+    squadCount:{gk:3,def:9,mid:6,fwd:8},
+    fullSquad:{GK:['Thibaut Courtois','Senne Lammens','Mike Penders'],DEF:['Thomas Meunier','Timothy Castagne','Arthur Theate','Zeno Debast','Maxim De Cuyper','Brandon Mechele','Koni De Winter','Joaquin Seys','Nathan Ngoy'],MID:['Axel Witsel','Kevin De Bruyne','Youri Tielemans','Hans Vanaken','Amadou Onana','Nicolas Raskin'],FWD:['Romelu Lukaku','Leandro Trossard','Jeremy Doku','Dodi Lukebakio','Charles De Ketelaere','Alexis Saelemakers','Diego Moreira','Matias Fernandez-Pardo']},
+    keyPlayer:'Kevin De Bruyne',keyPlayerNote:'Arguably the world\'s best midfielder when fit. Creates from nothing, controls tempo, scores from distance.'
+  },
+  {
+    code:'EGY',flag:'🇪🇬',name:'Egypt',group:'G',conf:'CAF',
+    fifaRank:33,manager:'Hossam Hassan',managerNat:'🇪🇬',managerStyle:'Counter',
+    squadStatus:'tbc',formation:'4-2-3-1',
+    styleTag:['Counter','Technical','Compact'],
+    winProb:2,xG:1.1,groupPos:3,
+    stats:{attack:68,defense:64,midfield:62,setPiece:60,pressing:60},
+    momentum:['W','D','W','W','L','D','W','W','D','W'],
+    bestXI:[
+      {pos:'GK',name:'M. El-Shenawy',x:50,y:90},
+      {pos:'RB',name:'O. Kamal',x:80,y:73},{pos:'CB',name:'M. Abdelmonem',x:62,y:76},{pos:'CB',name:'I. Fatouh',x:38,y:76},{pos:'LB',name:'A. Hegazy',x:20,y:73},
+      {pos:'CM',name:'T. Hamed',x:65,y:55},{pos:'CM',name:'N. Elassouti',x:50,y:52},{pos:'CM',name:'E. Ashour',x:35,y:55},
+      {pos:'RW',name:'O. Marmoush',x:80,y:32},{pos:'ST',name:'M. Salah',x:50,y:25},{pos:'LW',name:'M. Trezeguet',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇧🇪 Belgium',w:0,d:1,l:1,note:'Belgium edge it'},{opp:'🇮🇷 IR Iran',w:2,d:1,l:0,note:'Strong record'},{opp:'🇳🇿 New Zealand',w:2,d:0,l:0,note:'Comfortable'}],
+    history:{apps:4,bestFinish:'Group stage',goals:12,allTimeRank:35},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Mohamed Salah',keyPlayerNote:'Liverpool legend. Still scoring 20+ goals a season at 34. Egypt\'s all-time greatest. Final World Cup chance.'
+  },
+  {
+    code:'IRN',flag:'🇮🇷',name:'IR Iran',group:'G',conf:'AFC',
+    fifaRank:21,manager:'Amir Ghalenoei',managerNat:'🇮🇷',managerStyle:'Defensive',
+    squadStatus:'tbc',formation:'4-2-3-1 / back-5',
+    styleTag:['Defensive','Compact','Counter'],
+    winProb:2,xG:1.0,groupPos:2,
+    stats:{attack:58,defense:70,midfield:60,setPiece:64,pressing:60},
+    momentum:['W','W','D','W','D','W','W','L','W','W'],
+    bestXI:[
+      {pos:'GK',name:'A. Beiranvand',x:50,y:90},
+      {pos:'RB',name:'S. Moharrami',x:80,y:73},{pos:'CB',name:'S. Hosseini',x:62,y:76},{pos:'CB',name:'M. Pouraliganji',x:38,y:76},{pos:'LB',name:'E. Hajsafi',x:20,y:73},
+      {pos:'CDM',name:'S. Ezatolahi',x:50,y:60},
+      {pos:'RM',name:'M. Taremi',x:78,y:45},{pos:'CM',name:'A. Nourollahi',x:62,y:48},{pos:'CM',name:'S. Amiri',x:38,y:48},{pos:'LM',name:'A. Jahanbakhsh',x:22,y:45},
+      {pos:'ST',name:'S. Azmoun',x:50,y:25}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇧🇪 Belgium',w:0,d:0,l:2,note:'Never beaten Belgium'},{opp:'🇪🇬 Egypt',w:0,d:1,l:2,note:'Egypt edge it'},{opp:'🇳🇿 New Zealand',w:2,d:0,l:0,note:'Strong record'}],
+    history:{apps:6,bestFinish:'Group stage',goals:19,allTimeRank:29},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Mehdi Taremi',keyPlayerNote:'Inter Milan striker. World-class hold-up play, aerial ability and finishing. Iran\'s most complete attacker.'
+  },
+  {
+    code:'NZL',flag:'🇳🇿',name:'New Zealand',group:'G',conf:'OFC',
+    fifaRank:93,manager:'Darren Bazeley',managerNat:'🇳🇿',managerStyle:'Counter',
+    squadStatus:'confirmed',formation:'4-2-3-1',
+    styleTag:['Counter','Physical','Organised'],
+    winProb:0.5,xG:0.7,groupPos:4,
+    stats:{attack:44,defense:52,midfield:48,setPiece:50,pressing:52},
+    momentum:['D','W','L','D','W','L','D','W','L','D'],
+    bestXI:[
+      {pos:'GK',name:'M. Crocombe',x:50,y:90},
+      {pos:'RB',name:'T. Smith',x:80,y:73},{pos:'CB',name:'T. Bindon',x:62,y:76},{pos:'CB',name:'N. Pijnaker',x:38,y:76},{pos:'LB',name:'L. Cacace',x:20,y:73},
+      {pos:'RM',name:'M. Stamenic',x:80,y:48},{pos:'CM',name:'J. Bell',x:60,y:52},{pos:'CM',name:'M. Garbett',x:40,y:52},{pos:'LM',name:'S. Singh',x:20,y:48},
+      {pos:'ST',name:'C. Wood',x:60,y:28},{pos:'ST',name:'B. Waine',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇧🇪 Belgium',w:0,d:0,l:2,note:'Outclassed'},{opp:'🇮🇷 IR Iran',w:0,d:0,l:2,note:'Difficult'},{opp:'🇪🇬 Egypt',w:0,d:0,l:2,note:'Tough'}],
+    history:{apps:3,bestFinish:'Group stage',goals:8,allTimeRank:50},
+    squadCount:{gk:3,def:9,mid:10,fwd:4},
+    fullSquad:{GK:['Max Crocombe','Alex Paulsen','Michael Woud'],DEF:['Tim Payne','Francis de Vries','Tyler Bindon','Michael Boxall','Liberato Cacace','Nando Pijnaker','Finn Surman','Callan Elliot','Tommy Smith'],MID:['Joe Bell','Matthew Garbett','Marko Stamenic','Sarpreet Singh','Elijah Just','Alex Rufer','Ben Old','Callum McCowatt','Ryan Thomas','Lachlan Bayliss'],FWD:['Chris Wood','Kosta Barbarouses','Ben Waine','Jesse Randall']},
+    keyPlayer:'Chris Wood',keyPlayerNote:'Nottingham Forest striker. Consistent Premier League scorer. NZ\'s all-time top scorer and main goal threat.'
+  },
+  // ═══ GROUP H ═══════════════════════════════════════════════
+  {
+    code:'ESP',flag:'🇪🇸',name:'Spain',group:'H',conf:'UEFA',
+    fifaRank:2,manager:'Luis de la Fuente',managerNat:'🇪🇸',managerStyle:'Tiki-taka',
+    squadStatus:'confirmed',formation:'4-3-3 / 4-2-3-1',
+    styleTag:['Tiki-taka','Possession','Technical'],
+    winProb:14,xG:2.1,groupPos:1,
+    stats:{attack:86,defense:80,midfield:90,setPiece:68,pressing:84},
+    momentum:['W','W','W','W','D','W','W','W','D','W'],
+    bestXI:[
+      {pos:'GK',name:'U. Simón',x:50,y:90},
+      {pos:'RB',name:'P. Porro',x:80,y:73},{pos:'CB',name:'P. Cubarsí',x:62,y:76},{pos:'CB',name:'A. Laporte',x:38,y:76},{pos:'LB',name:'A. Grimaldo',x:20,y:73},
+      {pos:'CM',name:'Rodri',x:65,y:55},{pos:'CM',name:'M. Zubimendi',x:50,y:52},{pos:'CM',name:'Pedri',x:35,y:48},
+      {pos:'RW',name:'L. Yamal',x:80,y:32},{pos:'ST',name:'M. Oyarzabal',x:50,y:25},{pos:'LW',name:'N. Williams',x:20,y:32}
+    ],
+    injuries:[{name:'Rodri',issue:'Return from ACL',status:'Fit — managed',return:'Available'}],
+    h2h:[{opp:'🇺🇾 Uruguay',w:6,d:4,l:3,note:'Recent Spain dominance'},{opp:'🇸🇦 Saudi Arabia',w:2,d:0,l:0,note:'Comfortable'},{opp:'🇨🇻 Cape Verde',w:1,d:0,l:0,note:'Limited'}],
+    history:{apps:16,bestFinish:'Champions (2010)',goals:154,allTimeRank:6},
+    squadCount:{gk:3,def:8,mid:7,fwd:8},
+    fullSquad:{GK:['Unai Simon','David Raya','Joan Garcia'],DEF:['Aymeric Laporte','Marc Cucurella','Marcos Llorente','Eric Garcia','Pedro Porro','Alex Grimaldo','Pau Cubarsi','Marc Cubill'],MID:['Rodri','Fabian Ruiz','Mikel Merino','Pedri','Gavi','Martin Zubimendi','Alex Baena'],FWD:['Ferran Torres','Mikel Oyarzabal','Dani Olmo','Nico Williams','Lamine Yamal','Yeremy Pino','Borja Iglesias','Victor Munoz']},
+    keyPlayer:'Lamine Yamal',keyPlayerNote:'18 years old. Already the best RW on the planet. EURO 2024\'s defining player. Can destroy any defence 1v1.'
+  },
+  {
+    code:'URU',flag:'🇺🇾',name:'Uruguay',group:'H',conf:'CONMEBOL',
+    fifaRank:13,manager:'Marcelo Bielsa',managerNat:'🇦🇷',managerStyle:'High press',
+    squadStatus:'tbc',formation:'4-3-3',
+    styleTag:['High press','Intense','Attacking'],
+    winProb:4,xG:1.5,groupPos:2,
+    stats:{attack:72,defense:70,midfield:68,setPiece:66,pressing:78},
+    momentum:['W','W','D','W','L','W','W','D','W','W'],
+    bestXI:[
+      {pos:'GK',name:'S. Rochet',x:50,y:90},
+      {pos:'RB',name:'N. Nández',x:80,y:73},{pos:'CB',name:'R. Araújo',x:62,y:76},{pos:'CB',name:'J.M. Giménez',x:38,y:76},{pos:'LB',name:'M. Olivera',x:20,y:73},
+      {pos:'CM',name:'F. Valverde',x:65,y:55},{pos:'CM',name:'M. Ugarte',x:50,y:52},{pos:'CM',name:'R. Bentancur',x:35,y:55},
+      {pos:'RW',name:'F. Pellistri',x:80,y:32},{pos:'ST',name:'D. Núñez',x:50,y:25},{pos:'LW',name:'N. De La Cruz',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇪🇸 Spain',w:3,d:4,l:6,note:'Spain have the edge recently'},{opp:'🇸🇦 Saudi Arabia',w:2,d:0,l:0,note:'Dominant'},{opp:'🇨🇻 Cape Verde',w:1,d:0,l:0,note:'Limited'}],
+    history:{apps:14,bestFinish:'Champions (1930,1950)',goals:138,allTimeRank:8},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Federico Valverde',keyPlayerNote:'Real Madrid\'s complete midfielder. Energy, goals, pressing, passing — does everything at elite level.'
+  },
+  {
+    code:'KSA',flag:'🇸🇦',name:'Saudi Arabia',group:'H',conf:'AFC',
+    fifaRank:56,manager:'Roberto Mancini',managerNat:'🇮🇹',managerStyle:'Structured',
+    squadStatus:'tbc',formation:'4-2-3-1',
+    styleTag:['Structured','Counter','Organised'],
+    winProb:1,xG:0.9,groupPos:4,
+    stats:{attack:52,defense:60,midfield:56,setPiece:54,pressing:58},
+    momentum:['W','D','L','W','D','W','D','L','W','D'],
+    bestXI:[
+      {pos:'GK',name:'M. Al-Owais',x:50,y:90},
+      {pos:'RB',name:'S. Al-Dawsari',x:80,y:73},{pos:'CB',name:'A. Al-Amri',x:62,y:76},{pos:'CB',name:'A. Al-Bulayhi',x:38,y:76},{pos:'LB',name:'Y. Al-Shahrani',x:20,y:73},
+      {pos:'CM',name:'M. Kanno',x:65,y:55},{pos:'CM',name:'A. Al-Malki',x:50,y:52},{pos:'CM',name:'S. Al-Dawsari',x:35,y:48},
+      {pos:'RW',name:'F. Al-Brikan',x:80,y:32},{pos:'ST',name:'A. Harouni',x:50,y:25},{pos:'LW',name:'S. Al-Dawsari',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇪🇸 Spain',w:0,d:0,l:2,note:'Outclassed (including famous 2022 win in groups)'},{opp:'🇺🇾 Uruguay',w:0,d:0,l:2,note:'Difficult'},{opp:'🇨🇻 Cape Verde',w:1,d:0,l:0,note:'Limited'}],
+    history:{apps:7,bestFinish:'R16 (1994)',goals:20,allTimeRank:27},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Salem Al-Dawsari',keyPlayerNote:'Saudi football icon. Scored THAT goal vs Argentina in 2022. Dangerous from any position.'
+  },
+  {
+    code:'CPV',flag:'🇨🇻',name:'Cape Verde',group:'H',conf:'CAF',
+    fifaRank:72,manager:'Bubista',managerNat:'🇨🇻',managerStyle:'Counter',
+    squadStatus:'confirmed',formation:'4-2-3-1 / 4-3-3',
+    styleTag:['Counter','Physical','Organised'],
+    winProb:0.5,xG:0.7,groupPos:4,
+    stats:{attack:44,defense:54,midfield:48,setPiece:52,pressing:54},
+    momentum:['W','D','L','W','D','W','L','D','W','L'],
+    bestXI:[
+      {pos:'GK',name:'Vozinho',x:50,y:90},
+      {pos:'RB',name:'S. Moreira',x:80,y:73},{pos:'CB',name:'R. Lopes',x:62,y:76},{pos:'CB',name:'L. Costa',x:38,y:76},{pos:'LB',name:'J. Paulo',x:20,y:73},
+      {pos:'RM',name:'G. Rodrigues',x:80,y:48},{pos:'CM',name:'J. Monteiro',x:60,y:52},{pos:'CM',name:'D. Duarte',x:40,y:52},{pos:'LM',name:'R. Mendes',x:20,y:48},
+      {pos:'ST',name:'J. Cabral',x:60,y:28},{pos:'ST',name:'N. da Costa',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇪🇸 Spain',w:0,d:0,l:1,note:'Outclassed'},{opp:'🇺🇾 Uruguay',w:0,d:0,l:1,note:'Tough'},{opp:'🇸🇦 Saudi Arabia',w:0,d:0,l:1,note:'Limited'}],
+    history:{apps:0,bestFinish:'Debut',goals:0,allTimeRank:99},
+    squadCount:{gk:3,def:9,mid:6,fwd:8},
+    fullSquad:{GK:['Vozinho','Marcio Rosa','CJ dos Santos'],DEF:['Stopira','Roberto Lopes','Joao Paulo','Diney','Logan Costa','Steven Moreira','Wagner Pina','Sidny Lopes Cabral','Kelvin Pires'],MID:['Jamiro Monteiro','Kevin Pina','Deroy Duarte','Telmo Arcanjo','Laros Duarte','Yannick Semedo'],FWD:['Ryan Mendes','Garry Rodrigues','Willy Semedo','Jovane Cabral','Gilson Benchimol','Dailon Livramento','Helio Varela','Nuno da Costa']},
+    keyPlayer:'Ryan Mendes',keyPlayerNote:'Cape Verde experienced winger. Pace, directness and creativity on the flanks.'
+  },
+  // ═══ GROUP I ═══════════════════════════════════════════════
+  {
+    code:'FRA',flag:'🇫🇷',name:'France',group:'I',conf:'UEFA',
+    fifaRank:1,manager:'Didier Deschamps',managerNat:'🇫🇷',managerStyle:'Structured',
+    squadStatus:'confirmed',formation:'4-2-3-1',
+    styleTag:['Counter','Structured','Individual quality'],
+    winProb:16,xG:2.0,groupPos:1,
+    stats:{attack:88,defense:84,midfield:82,setPiece:74,pressing:74},
+    momentum:['W','W','W','W','W','D','W','W','W','W'],
+    bestXI:[
+      {pos:'GK',name:'M. Maignan',x:50,y:90},
+      {pos:'RB',name:'J. Koundé',x:80,y:73},{pos:'CB',name:'D. Upamecano',x:62,y:76},{pos:'CB',name:'W. Saliba',x:38,y:76},{pos:'LB',name:'T. Hernandez',x:20,y:73},
+      {pos:'CDM',name:'A. Tchouaméni',x:60,y:57},{pos:'CDM',name:'N. Kanté',x:40,y:57},
+      {pos:'RAM',name:'O. Dembélé',x:75,y:38},{pos:'CAM',name:'M. Olise',x:50,y:35},{pos:'LAM',name:'K. Mbappé',x:25,y:38},
+      {pos:'ST',name:'M. Thuram',x:50,y:25}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇸🇳 Senegal',w:3,d:1,l:1,note:'Historically strong'},{opp:'🇳🇴 Norway',w:4,d:2,l:1,note:'France dominant'},{opp:'🇮🇶 Iraq',w:3,d:0,l:0,note:'Complete dominance'}],
+    history:{apps:16,bestFinish:'Champions (1998, 2018)',goals:166,allTimeRank:4},
+    squadCount:{gk:3,def:9,mid:5,fwd:9},
+    fullSquad:{GK:['Mike Maignan','Brice Samba','Robin Risser'],DEF:['Lucas Digne','Jules Kounde','Theo Hernandez','Lucas Hernandez','Dayot Upamecano','William Saliba','Ibrahima Konate','Malo Gusto','Maxence Lacroix'],MID:['N\'Golo Kante','Adrien Rabiot','Aurelien Tchouameni','Manu Kone','Warren Zaire-Emery'],FWD:['Kylian Mbappe','Ousmane Dembele','Marcus Thuram','Bradley Barcola','Michael Olise','Maghnes Akliouche','Desire Doue','Rayan Cherki','Jean-Philippe Mateta']},
+    keyPlayer:'Kylian Mbappé',keyPlayerNote:'Captain. 2018 winner at 19. Real Madrid talisman. Pace, finishing and leadership make France the favourites.'
+  },
+  {
+    code:'SEN',flag:'🇸🇳',name:'Senegal',group:'I',conf:'CAF',
+    fifaRank:18,manager:'Pape Thiaw',managerNat:'🇸🇳',managerStyle:'Balanced',
+    squadStatus:'confirmed',formation:'4-4-2 / 4-2-3-1',
+    styleTag:['Athletic','Counter','Physical'],
+    winProb:3,xG:1.2,groupPos:2,
+    stats:{attack:66,defense:68,midfield:64,setPiece:60,pressing:72},
+    momentum:['W','W','D','W','L','W','D','W','W','D'],
+    bestXI:[
+      {pos:'GK',name:'E. Mendy',x:50,y:90},
+      {pos:'RB',name:'K. Diatta',x:80,y:73},{pos:'CB',name:'K. Koulibaly',x:62,y:76},{pos:'CB',name:'M. Niakhaté',x:38,y:76},{pos:'LB',name:'I. Jakobs',x:20,y:73},
+      {pos:'CM',name:'I. Gueye',x:65,y:55},{pos:'CM',name:'P.M. Sarr',x:50,y:52},{pos:'CM',name:'L. Camara',x:35,y:55},
+      {pos:'RW',name:'I. Sarr',x:80,y:32},{pos:'ST',name:'N. Jackson',x:50,y:25},{pos:'LW',name:'S. Mané',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇫🇷 France',w:1,d:1,l:3,note:'France historically stronger'},{opp:'🇳🇴 Norway',w:1,d:0,l:1,note:'Balanced'},{opp:'🇮🇶 Iraq',w:2,d:0,l:0,note:'Comfortable'}],
+    history:{apps:3,bestFinish:'QF (2002)',goals:14,allTimeRank:34},
+    squadCount:{gk:3,def:10,mid:7,fwd:8},
+    fullSquad:{GK:['Edouard Mendy','Mory Diaw','Yehvann Diouf'],DEF:['Kalidou Koulibaly','Krepin Diatta','Moussa Niakhate','Ismail Jakobs','Abdoulaye Seck','El Hadj Malick Diouf','Antoine Mendy','Mamadou Sarr','Ilay Camara','Moustapha Mbow'],MID:['Idrissa Gueye','Pape Gueye','Pape Matar Sarr','Pathe Siss','Lamine Camara','Habib Diarra','Bara Sapoko Ndiaye'],FWD:['Sadio Mane','Ismaila Sarr','Iliman Ndiaye','Nicolas Jackson','Bamba Dieng','Cherif Ndiaye','Ibrahim Mbaye','Assane Diao']},
+    keyPlayer:'Sadio Mané',keyPlayerNote:'African football icon. Experience, leadership and big-game mentality. Senegal\'s heartbeat.'
+  },
+  {
+    code:'NOR',flag:'🇳🇴',name:'Norway',group:'I',conf:'UEFA',
+    fifaRank:43,manager:'Ståle Solbakken',managerNat:'🇳🇴',managerStyle:'Direct',
+    squadStatus:'confirmed',formation:'4-3-3 / 4-4-2',
+    styleTag:['Direct','Physical','Counter'],
+    winProb:3,xG:1.4,groupPos:3,
+    stats:{attack:74,defense:62,midfield:66,setPiece:62,pressing:68},
+    momentum:['W','D','W','W','L','W','D','W','W','D'],
+    bestXI:[
+      {pos:'GK',name:'Ø. Nyland',x:50,y:90},
+      {pos:'RB',name:'J. Ryerson',x:80,y:73},{pos:'CB',name:'L. Østigård',x:62,y:76},{pos:'CB',name:'K. Ajer',x:38,y:76},{pos:'LB',name:'D.M. Wolfe',x:20,y:73},
+      {pos:'CM',name:'M. Ødegaard',x:65,y:55},{pos:'CM',name:'S. Berge',x:50,y:52},{pos:'CM',name:'F. Aursnes',x:35,y:55},
+      {pos:'RW',name:'A. Nusa',x:80,y:32},{pos:'ST',name:'E. Haaland',x:50,y:25},{pos:'LW',name:'O. Bobb',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇫🇷 France',w:1,d:2,l:4,note:'France dominant'},{opp:'🇸🇳 Senegal',w:1,d:0,l:1,note:'Balanced'},{opp:'🇮🇶 Iraq',w:2,d:0,l:0,note:'Comfortable'}],
+    history:{apps:3,bestFinish:'R16 (1998)',goals:8,allTimeRank:42},
+    squadCount:{gk:3,def:9,mid:11,fwd:3},
+    fullSquad:{GK:['Orjan Nyland','Egil Selvik','Sander Tangvik'],DEF:['Kristoffer Ajer','Julian Ryerson','Leo Ostigard','Marcus Holmgren Pedersen','David Moller Wolfe','Fredrik Andre Bjorkan','Torbjorn Heggem','Sondre Langas','Henrik Falchener'],MID:['Martin Odegaard','Sander Berge','Patrick Berg','Kristian Thorstvedt','Morten Thorsby','Antonio Nusa','Fredrik Aursnes','Oscar Bobb','Jens Petter Hauge','Andreas Schjelderup','Thelo Aasgaard'],FWD:['Erling Haaland','Alexander Sorloth','Jorgen Strand Larsen']},
+    keyPlayer:'Erling Haaland',keyPlayerNote:'Man City\'s goal machine. First World Cup. Could win Golden Boot. His physical presence and finishing are unmatched in world football.'
+  },
+  {
+    code:'IRQ',flag:'🇮🇶',name:'Iraq',group:'I',conf:'AFC',
+    fifaRank:55,manager:'Jesús Casas',managerNat:'🇪🇸',managerStyle:'Defensive',
+    squadStatus:'tbc',formation:'4-4-2 / 4-2-3-1 / 4-2-2-2',
+    styleTag:['Defensive','Compact','Counter'],
+    winProb:0.5,xG:0.8,groupPos:4,
+    stats:{attack:48,defense:60,midfield:52,setPiece:54,pressing:56},
+    momentum:['D','W','L','W','D','L','W','D','L','W'],
+    bestXI:[
+      {pos:'GK',name:'J. Hameedi',x:50,y:90},
+      {pos:'RB',name:'A. Bayesh',x:80,y:73},{pos:'CB',name:'A. Fadhel',x:62,y:76},{pos:'CB',name:'S. Shakir',x:38,y:76},{pos:'LB',name:'A. Tahseen',x:20,y:73},
+      {pos:'RM',name:'A. Mhawi',x:80,y:48},{pos:'CM',name:'I. Bayesh',x:60,y:52},{pos:'CM',name:'A. Hasan',x:40,y:52},{pos:'LM',name:'A. Al-Rikabi',x:20,y:48},
+      {pos:'ST',name:'A. Al-Mandhar',x:60,y:28},{pos:'ST',name:'M. Ali',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇫🇷 France',w:0,d:0,l:3,note:'Outclassed'},{opp:'🇸🇳 Senegal',w:0,d:0,l:2,note:'Difficult'},{opp:'🇳🇴 Norway',w:0,d:0,l:2,note:'Tough'}],
+    history:{apps:1,bestFinish:'Group stage (1986)',goals:3,allTimeRank:55},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Aymen Hussein',keyPlayerNote:'Iraq\'s most prolific current striker. Carries the nation\'s hopes on his shoulders.'
+  },
+  // ═══ GROUP J ═══════════════════════════════════════════════
+  {
+    code:'ARG',flag:'🇦🇷',name:'Argentina',group:'J',conf:'CONMEBOL',
+    fifaRank:3,manager:'Lionel Scaloni',managerNat:'🇦🇷',managerStyle:'Flexible',
+    squadStatus:'preliminary',formation:'4-4-2 / 4-2-3-1 / 4-3-3',
+    styleTag:['Flexible','Collective','Counter'],
+    winProb:13,xG:1.9,groupPos:1,
+    stats:{attack:86,defense:80,midfield:84,setPiece:76,pressing:76},
+    momentum:['W','W','W','D','W','W','W','W','D','W'],
+    bestXI:[
+      {pos:'GK',name:'E. Martínez',x:50,y:90},
+      {pos:'RB',name:'N. Molina',x:80,y:73},{pos:'CB',name:'C. Romero',x:62,y:76},{pos:'CB',name:'L. Martínez',x:38,y:76},{pos:'LB',name:'N. Tagliafico',x:20,y:73},
+      {pos:'CM',name:'E. Mac Allister',x:65,y:55},{pos:'CM',name:'R. De Paul',x:50,y:52},{pos:'CM',name:'E. Fernández',x:35,y:48},
+      {pos:'RW',name:'L. Messi',x:80,y:32},{pos:'ST',name:'L. Martínez',x:50,y:25},{pos:'LW',name:'J. Álvarez',x:20,y:32}
+    ],
+    injuries:[{name:'Lionel Messi',issue:'Age management (38)',status:'Fit',return:'Available'}],
+    h2h:[{opp:'🇦🇹 Austria',w:4,d:1,l:1,note:'Historically strong'},{opp:'🇩🇿 Algeria',w:2,d:1,l:0,note:'Strong record'},{opp:'🇯🇴 Jordan',w:2,d:0,l:0,note:'Complete dominance'}],
+    history:{apps:18,bestFinish:'Champions (1978, 1986, 2022)',goals:201,allTimeRank:2},
+    squadCount:{gk:3,def:8,mid:7,fwd:8},
+    fullSquad:{GK:['Emiliano Martinez','Geronimo Rulli','Juan Musso'],DEF:['Nicolas Otamendi','Nicolas Tagliafico','Nahuel Molina','Cristian Romero','Gonzalo Montiel','Lisandro Martinez','Leonardo Balerdi','Facundo Medina'],MID:['Rodrigo De Paul','Leandro Paredes','Giovani Lo Celso','Alexis Mac Allister','Enzo Fernandez','Exequiel Palacios','Valentin Barco'],FWD:['Lionel Messi','Julian Alvarez','Lautaro Martinez','Nicolas Gonzalez','Thiago Almada','Giuliano Simeone','Nico Paz','Jose Manuel Lopez']},
+    keyPlayer:'Lionel Messi',keyPlayerNote:'The GOAT. Final World Cup at 38. 2022 winner, Golden Boot, Golden Ball. The last chapter of the greatest story ever told.'
+  },
+  {
+    code:'AUT',flag:'🇦🇹',name:'Austria',group:'J',conf:'UEFA',
+    fifaRank:23,manager:'Ralf Rangnick',managerNat:'🇩🇪',managerStyle:'Gegenpressing',
+    squadStatus:'confirmed',formation:'4-2-3-1 / 4-4-2 / 4-2-4 / 4-2-2-2',
+    styleTag:['Gegenpressing','Intense','Structured'],
+    winProb:3,xG:1.3,groupPos:2,
+    stats:{attack:66,defense:68,midfield:70,setPiece:62,pressing:82},
+    momentum:['W','W','D','W','W','L','W','D','W','W'],
+    bestXI:[
+      {pos:'GK',name:'A. Schlager',x:50,y:90},
+      {pos:'RB',name:'S. Posch',x:80,y:73},{pos:'CB',name:'K. Danso',x:62,y:76},{pos:'CB',name:'P. Lienhart',x:38,y:76},{pos:'LB',name:'P. Mwene',x:20,y:73},
+      {pos:'CDM',name:'N. Seiwald',x:60,y:57},{pos:'CDM',name:'X. Schlager',x:40,y:57},
+      {pos:'RAM',name:'M. Sabitzer',x:75,y:38},{pos:'CAM',name:'C. Baumgartner',x:50,y:35},{pos:'LAM',name:'P. Wimmer',x:25,y:38},
+      {pos:'ST',name:'M. Arnautović',x:50,y:25}
+    ],
+    injuries:[{name:'David Alaba',issue:'Knee recovery',status:'Included — managed',return:'Available'}],
+    h2h:[{opp:'🇦🇷 Argentina',w:1,d:1,l:4,note:'Argentina dominant'},{opp:'🇩🇿 Algeria',w:2,d:0,l:0,note:'Strong record'},{opp:'🇯🇴 Jordan',w:1,d:0,l:0,note:'Limited'}],
+    history:{apps:8,bestFinish:'3rd place (1954)',goals:54,allTimeRank:23},
+    squadCount:{gk:3,def:9,mid:11,fwd:3},
+    fullSquad:{GK:['Alexander Schlager','Florian Wiegele','Patrick Pentz'],DEF:['David Affengruber','Kevin Danso','Stefan Posch','David Alaba','Philipp Lienhart','Phillipp Mwene','Alexander Prass','Marco Friedl','Michael Svoboda'],MID:['Xaver Schlager','Nicolas Seiwald','Marcel Sabitzer','Florian Grillitsch','Carney Chukwuemeka','Romano Schmid','Christoph Baumgartner','Konrad Laimer','Patrick Wimmer','Paul Wanner','Alessandro Schopf'],FWD:['Marko Arnautovic','Michael Gregoritsch','Sasa Kalajdzic']},
+    keyPlayer:'Marcel Sabitzer',keyPlayerNote:'Borussia Dortmund star. Tenacity, goals from midfield and set piece delivery. Austria\'s most complete player.'
+  },
+  {
+    code:'ALG',flag:'🇩🇿',name:'Algeria',group:'J',conf:'CAF',
+    fifaRank:31,manager:'Vladimir Petković',managerNat:'🇧🇦',managerStyle:'Structured',
+    squadStatus:'tbc',formation:'4-3-3',
+    styleTag:['Technical','Counter','Organised'],
+    winProb:2,xG:1.1,groupPos:3,
+    stats:{attack:62,defense:64,midfield:62,setPiece:58,pressing:64},
+    momentum:['W','D','W','L','W','D','W','W','L','W'],
+    bestXI:[
+      {pos:'GK',name:'R. M\'Bolhi',x:50,y:90},
+      {pos:'RB',name:'A. Atal',x:80,y:73},{pos:'CB',name:'R. Aït-Nouri',x:62,y:76},{pos:'CB',name:'A. Mandi',x:38,y:76},{pos:'LB',name:'M. Bensebaini',x:20,y:73},
+      {pos:'CM',name:'I. Bennacer',x:65,y:55},{pos:'CM',name:'N. Zerrouki',x:50,y:52},{pos:'CM',name:'S. Benrahma',x:35,y:48},
+      {pos:'RW',name:'A. Gouiri',x:80,y:32},{pos:'ST',name:'A. Delort',x:50,y:25},{pos:'LW',name:'Y. Belaïli',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇦🇷 Argentina',w:0,d:1,l:2,note:'Argentina stronger'},{opp:'🇦🇹 Austria',w:0,d:0,l:2,note:'Austria edge it'},{opp:'🇯🇴 Jordan',w:2,d:1,l:0,note:'Comfortable'}],
+    history:{apps:5,bestFinish:'R16 (2014)',goals:14,allTimeRank:36},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Ismaël Bennacer',keyPlayerNote:'AC Milan midfielder. Dictates tempo, breaks up play and distributes with precision. Algeria\'s engine room.'
+  },
+  {
+    code:'JOR',flag:'🇯🇴',name:'Jordan',group:'J',conf:'AFC',
+    fifaRank:68,manager:'Hussein Ammouta',managerNat:'🇲🇦',managerStyle:'Counter',
+    squadStatus:'tbc',formation:'3-4-3 / 5-4-1',
+    styleTag:['Counter','Compact','Physical'],
+    winProb:0.5,xG:0.7,groupPos:4,
+    stats:{attack:44,defense:58,midfield:50,setPiece:52,pressing:54},
+    momentum:['D','W','L','D','W','L','W','D','L','W'],
+    bestXI:[
+      {pos:'GK',name:'Y. Moustafa',x:50,y:90},
+      {pos:'RB',name:'A. Hiarsat',x:80,y:73},{pos:'CB',name:'A. Saleh',x:62,y:76},{pos:'CB',name:'A. Rawabdeh',x:38,y:76},{pos:'LB',name:'A. Alwan',x:20,y:73},
+      {pos:'RM',name:'Y. Al-Naimat',x:80,y:48},{pos:'CM',name:'E. Al-Dmeiri',x:60,y:52},{pos:'CM',name:'B. Sahar',x:40,y:52},{pos:'LM',name:'M. Abu Zuraik',x:20,y:48},
+      {pos:'ST',name:'H. Abdel-Rahim',x:60,y:28},{pos:'ST',name:'O. Erekat',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇦🇷 Argentina',w:0,d:0,l:2,note:'Outclassed'},{opp:'🇦🇹 Austria',w:0,d:0,l:1,note:'Tough'},{opp:'🇩🇿 Algeria',w:0,d:1,l:2,note:'Algeria stronger'}],
+    history:{apps:0,bestFinish:'Debut',goals:0,allTimeRank:99},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Yazan Al-Naimat',keyPlayerNote:'Jordan\'s most dangerous attacker. Pace and directness could cause problems on the counter.'
+  },
+  // ═══ GROUP K ═══════════════════════════════════════════════
+  {
+    code:'POR',flag:'🇵🇹',name:'Portugal',group:'K',conf:'UEFA',
+    fifaRank:5,manager:'Roberto Martínez',managerNat:'🇪🇸',managerStyle:'Attacking',
+    squadStatus:'confirmed',formation:'4-3-3',
+    styleTag:['Attacking','Technical','Flexible'],
+    winProb:10,xG:1.9,groupPos:1,
+    stats:{attack:86,defense:78,midfield:80,setPiece:74,pressing:72},
+    momentum:['W','W','W','W','D','W','W','W','W','D'],
+    bestXI:[
+      {pos:'GK',name:'D. Costa',x:50,y:90},
+      {pos:'RB',name:'J. Cancelo',x:80,y:73},{pos:'CB',name:'R. Dias',x:62,y:76},{pos:'CB',name:'A. Silva',x:38,y:76},{pos:'LB',name:'N. Mendes',x:20,y:73},
+      {pos:'CM',name:'B. Fernandes',x:65,y:55},{pos:'CM',name:'V. Horta',x:50,y:52},{pos:'CM',name:'J. Palhinha',x:35,y:55},
+      {pos:'RW',name:'C. Ronaldo',x:80,y:32},{pos:'ST',name:'G. Ramos',x:50,y:25},{pos:'LW',name:'R. Leão',x:20,y:32}
+    ],
+    injuries:[{name:'Cristiano Ronaldo',issue:'Age management (41)',status:'Fit',return:'Available'}],
+    h2h:[{opp:'🇨🇴 Colombia',w:3,d:1,l:1,note:'Comfortable'},{opp:'🇺🇿 Uzbekistan',w:1,d:0,l:0,note:'Very limited'},{opp:'🇨🇩 DR Congo',w:1,d:0,l:0,note:'Limited'}],
+    history:{apps:9,bestFinish:'3rd place (1966)',goals:83,allTimeRank:14},
+    squadCount:{gk:3,def:9,mid:6,fwd:8},
+    fullSquad:{GK:['Diogo Costa','Jose Sa','Rui Silva'],DEF:['Joao Cancelo','Diogo Dalot','Ruben Dias','Goncalo Inaco','Nuno Mendes','Renato Veiga','Matheus Nunes','Nelson Semedo','Tomas Araujo'],MID:['Bruno Fernandes','Joao Neves','Bernardo Silva','Vitinha','Ruben Neves','Samu Costa'],FWD:['Cristiano Ronaldo','Rafael Leao','Pedro Neto','Francisco Conceicao','Joao Felix','Goncalo Guedes','Goncalo Ramos','Francisco Trincao']},
+    keyPlayer:'Cristiano Ronaldo',keyPlayerNote:'41. Final World Cup. His instinct, set piece ability and mentality remain elite. This is the last dance.'
+  },
+  {
+    code:'COL',flag:'🇨🇴',name:'Colombia',group:'K',conf:'CONMEBOL',
+    fifaRank:12,manager:'Néstor Lorenzo',managerNat:'🇦🇷',managerStyle:'Balanced',
+    squadStatus:'confirmed',formation:'4-2-3-1 / 4-3-3',
+    styleTag:['Balanced','Technical','Counter'],
+    winProb:5,xG:1.5,groupPos:2,
+    stats:{attack:72,defense:70,midfield:72,setPiece:66,pressing:70},
+    momentum:['W','W','D','W','W','L','W','D','W','W'],
+    bestXI:[
+      {pos:'GK',name:'D. Ospina',x:50,y:90},
+      {pos:'RB',name:'D. Muñoz',x:80,y:73},{pos:'CB',name:'D. Sánchez',x:62,y:76},{pos:'CB',name:'Y. Mina',x:38,y:76},{pos:'LB',name:'J. Mojica',x:20,y:73},
+      {pos:'CDM',name:'J. Lerma',x:60,y:57},{pos:'CDM',name:'R. Ríos',x:40,y:57},
+      {pos:'RAM',name:'J. Arias',x:75,y:38},{pos:'CAM',name:'James Rodríguez',x:50,y:35},{pos:'LAM',name:'L. Díaz',x:25,y:38},
+      {pos:'ST',name:'Cucho Hernández',x:50,y:25}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇵🇹 Portugal',w:1,d:1,l:3,note:'Portugal edge it'},{opp:'🇺🇿 Uzbekistan',w:1,d:0,l:0,note:'Very limited'},{opp:'🇨🇩 DR Congo',w:1,d:0,l:0,note:'Limited'}],
+    history:{apps:7,bestFinish:'QF (2014)',goals:40,allTimeRank:17},
+    squadCount:{gk:3,def:8,mid:10,fwd:5},
+    fullSquad:{GK:['David Ospina','Camilo Vargas','Alvaro Montero'],DEF:['Davinson Sanchez','Santiago Arias','Yerry Mina','Daniel Munoz','Johan Mojica','Jhon Lucumi','Deiver Machado','Willer Ditta'],MID:['James Rodrigues','Jefferson Lerma','Juan Fernando Quintero','Jhon Arias','Richard Rios','Kevin Castano','Jorge Carrastal','Jaminton Campaz','Juan Portilla','Gustavo Puerta'],FWD:['Luis Diaz','Jhon Cordoba','Luis Suarez','Cucho Hernandez','Andres Gomez']},
+    keyPlayer:'Luis Díaz',keyPlayerNote:'Liverpool winger. Electric pace, dribbling and big-game ability. Colombia\'s most dangerous attacking threat.'
+  },
+  {
+    code:'UZB',flag:'🇺🇿',name:'Uzbekistan',group:'K',conf:'AFC',
+    fifaRank:62,manager:'Srecko Katanec',managerNat:'🇸🇮',managerStyle:'Counter',
+    squadStatus:'tbc',formation:'3-4-3',
+    styleTag:['Counter','Organised','Physical'],
+    winProb:1,xG:0.8,groupPos:3,
+    stats:{attack:50,defense:60,midfield:54,setPiece:56,pressing:58},
+    momentum:['W','W','D','L','W','W','D','W','L','W'],
+    bestXI:[
+      {pos:'GK',name:'E. Nematov',x:50,y:90},
+      {pos:'RB',name:'A. Ganiev',x:80,y:73},{pos:'CB',name:'D. Ismatullaev',x:62,y:76},{pos:'CB',name:'J. Khasanov',x:38,y:76},{pos:'LB',name:'H. Alikulov',x:20,y:73},
+      {pos:'RM',name:'A. Fayzullaev',x:80,y:48},{pos:'CM',name:'O. Ashurmatov',x:60,y:52},{pos:'CM',name:'J. Khodjaev',x:40,y:52},{pos:'LM',name:'I. Jalolov',x:20,y:48},
+      {pos:'ST',name:'E. Shomurodov',x:60,y:28},{pos:'ST',name:'I. Nasimov',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇵🇹 Portugal',w:0,d:0,l:1,note:'Very limited'},{opp:'🇨🇴 Colombia',w:0,d:0,l:1,note:'Limited'},{opp:'🇨🇩 DR Congo',w:1,d:0,l:0,note:'Limited'}],
+    history:{apps:0,bestFinish:'Debut',goals:0,allTimeRank:99},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Eldor Shomurodov',keyPlayerNote:'Roma striker. Uzbekistan\'s all-time top scorer. Physical, hardworking and their main goal threat.'
+  },
+  {
+    code:'COD',flag:'🇨🇩',name:'DR Congo',group:'K',conf:'CAF',
+    fifaRank:47,manager:'Sébastien Desabre',managerNat:'🇫🇷',managerStyle:'Counter',
+    squadStatus:'confirmed',formation:'4-3-3',
+    styleTag:['Athletic','Counter','Physical'],
+    winProb:1,xG:0.9,groupPos:4,
+    stats:{attack:58,defense:58,midfield:56,setPiece:54,pressing:62},
+    momentum:['W','D','L','W','W','D','L','W','D','W'],
+    bestXI:[
+      {pos:'GK',name:'L. Mpasi',x:50,y:90},
+      {pos:'RB',name:'A. Wan-Bissaka',x:80,y:73},{pos:'CB',name:'C. Mbemba',x:62,y:76},{pos:'CB',name:'A. Tuanzebe',x:38,y:76},{pos:'LB',name:'A. Masuaku',x:20,y:73},
+      {pos:'CM',name:'C. Pickel',x:65,y:55},{pos:'CM',name:'E. Kayembe',x:50,y:52},{pos:'CM',name:'S. Moutoussamy',x:35,y:55},
+      {pos:'RW',name:'Y. Wissa',x:80,y:32},{pos:'ST',name:'C. Bakambu',x:50,y:25},{pos:'LW',name:'M. Elia',x:20,y:32}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇵🇹 Portugal',w:0,d:0,l:1,note:'Outmatched'},{opp:'🇨🇴 Colombia',w:0,d:0,l:1,note:'Difficult'},{opp:'🇺🇿 Uzbekistan',w:0,d:0,l:1,note:'Tough'}],
+    history:{apps:2,bestFinish:'Group stage (1974 as Zaire)',goals:3,allTimeRank:48},
+    squadCount:{gk:3,def:9,mid:9,fwd:5},
+    fullSquad:{GK:['Lionel Mpasi','Timothy Fayulu','Matthieu Epolo'],DEF:['Chancel Mbemba','Arthur Masuaku','Gedeon Kalulu','Joris Kayembe','Dylan Batubinsika','Axel Tuanzebe','Aaron Wan-Bissaka','Rocky Bushiri','Steve Kapuadi'],MID:['Meschak Elia','Samuel Moutoussamy','Edo Kayembe','Charles Pickel','Gael Kakuta','Noah Sadiki','Nathanael Mbuku','Ngal\'ayel Mukau','Brian Cipenga'],FWD:['Cedric Bakambu','Theo Bongonba','Fiston Mayele','Yoane Wissa','Simon Banza']},
+    keyPlayer:'Yoane Wissa',keyPlayerNote:'Newcastle forward. Pace, power and finishing. DR Congo\'s most dangerous attacking threat.'
+  },
+  // ═══ GROUP L ═══════════════════════════════════════════════
+  {
+    code:'ENG',flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',name:'England',group:'L',conf:'UEFA',
+    fifaRank:4,manager:'Thomas Tuchel',managerNat:'🇩🇪',managerStyle:'Structured',
+    squadStatus:'confirmed',formation:'4-3-3 / 4-2-3-1',
+    styleTag:['Structured','Counter','Pressing'],
+    winProb:11,xG:1.9,groupPos:1,
+    stats:{attack:84,defense:80,midfield:82,setPiece:78,pressing:76},
+    momentum:['W','W','W','D','W','W','D','W','W','W'],
+    bestXI:[
+      {pos:'GK',name:'J. Pickford',x:50,y:90},
+      {pos:'RB',name:'Reece James',x:80,y:73},{pos:'CB',name:'M. Guehi',x:62,y:76},{pos:'CB',name:'J. Stones',x:38,y:76},{pos:'LB',name:'T. Livramento',x:20,y:73},
+      {pos:'CDM',name:'D. Rice',x:60,y:57},{pos:'CDM',name:'K. Mainoo',x:40,y:57},
+      {pos:'RAM',name:'B. Saka',x:75,y:38},{pos:'CAM',name:'J. Bellingham',x:50,y:35},{pos:'LAM',name:'E. Eze',x:25,y:38},
+      {pos:'ST',name:'H. Kane',x:50,y:25}
+    ],
+    injuries:[],
+    h2h:[{opp:'🇭🇷 Croatia',w:3,d:2,l:3,note:'Painful recent record (2018 SF)'},{opp:'🇵🇦 Panama',w:1,d:0,l:0,note:'Comfortable'},{opp:'🇬🇭 Ghana',w:2,d:0,l:0,note:'Strong'}],
+    history:{apps:16,bestFinish:'Champions (1966)',goals:153,allTimeRank:7},
+    squadCount:{gk:3,def:9,mid:7,fwd:7},
+    fullSquad:{GK:['Jordan Pickford','Dean Henderson','James Trafford'],DEF:['Dan Burn','Marc Guehi','Reece James','Ezri Konsa','Tino Livramento','Nico O\'Reilly','Jarrell Quansah','Djed Spence','John Stones'],MID:['Elliot Anderson','Jude Bellingham','Eberechi Eze','Jordan Henderson','Kobbie Mainoo','Declan Rice','Morgan Rogers'],FWD:['Harry Kane','Anthony Gordon','Noni Madueke','Marcus Rashford','Bukayo Saka','Ivan Toney','Ollie Watkins']},
+    keyPlayer:'Harry Kane',keyPlayerNote:'England captain. Bayern Munich Golden Boot. All-time England top scorer. Finishing, intelligence and leadership are elite.'
+  },
+  {
+    code:'CRO',flag:'🇭🇷',name:'Croatia',group:'L',conf:'UEFA',
+    fifaRank:10,manager:'Zlatko Dalić',managerNat:'🇭🇷',managerStyle:'Counter',
+    squadStatus:'tbc',formation:'4-3-3 / 3-4-2-1',
+    styleTag:['Counter','Experienced','Set pieces'],
+    winProb:5,xG:1.4,groupPos:2,
+    stats:{attack:70,defense:74,midfield:78,setPiece:70,pressing:65},
+    momentum:['W','D','W','W','D','W','D','W','W','D'],
+    bestXI:[
+      {pos:'GK',name:'D. Livaković',x:50,y:90},
+      {pos:'RB',name:'J. Stanišić',x:80,y:73},{pos:'CB',name:'J. Šutalo',x:62,y:76},{pos:'CB',name:'J. Gvardiol',x:38,y:76},{pos:'LB',name:'B. Sosa',x:20,y:73},
+      {pos:'CM',name:'L. Modrić',x:65,y:55},{pos:'CM',name:'M. Kovačić',x:50,y:52},{pos:'CM',name:'M. Brozović',x:35,y:48},
+      {pos:'RW',name:'I. Perišić',x:80,y:32},{pos:'ST',name:'A. Kramarić',x:50,y:25},{pos:'LW',name:'L. Sučić',x:20,y:32}
+    ],
+    injuries:[{name:'Luka Modrić',issue:'Age management (40)',status:'Fit',return:'Available'}],
+    h2h:[{opp:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',w:3,d:2,l:3,note:'Famous 2018 SF win'},{opp:'🇵🇦 Panama',w:2,d:0,l:0,note:'Comfortable'},{opp:'🇬🇭 Ghana',w:2,d:1,l:0,note:'Strong'}],
+    history:{apps:7,bestFinish:'Runners-up (2018)',goals:55,allTimeRank:12},
+    squadCount:{gk:3,def:7,mid:10,fwd:6},
+    fullSquad:{GK:['Dominik Livakovic','Dominik Kotarski','Ivor Pandur'],DEF:['Josko Gvardiol','Duje Caleta-Car','Josip Sutalo','Josip Stanisic','Marin Pongracic','Martin Erlic','Luka Vuskovic'],MID:['Luka Modric','Mateo Kovacic','Mario Pasalic','Nikola Vlasic','Luka Sucic','Martin Baturina','Kristijan Jakic','Petar Sucic','Nikola Moro','Toni Fruk'],FWD:['Ivan Perisic','Andrej Kramaric','Ante Budimir','Marco Pasalic','Petar Musa','Igor Matanovic']},
+    keyPlayer:'Luka Modrić',keyPlayerNote:'40. Most elegant midfielder of his generation. Ballon d\'Or winner. Farewell World Cup. Tempo control remains world-class.'
+  },
+  {
+    code:'PAN',flag:'🇵🇦',name:'Panama',group:'L',conf:'CONCACAF',
+    fifaRank:46,manager:'Thomas Christiansen',managerNat:'🇩🇰',managerStyle:'Structured',
+    squadStatus:'tbc',formation:'3-4-2-1',
+    styleTag:['Physical','Defensive','Counter'],
+    winProb:1,xG:0.8,groupPos:3,
+    stats:{attack:48,defense:62,midfield:54,setPiece:60,pressing:58},
+    momentum:['W','D','L','W','W','D','L','D','W','L'],
+    bestXI:[
+      {pos:'GK',name:'O. Mosquera',x:50,y:90},
+      {pos:'RB',name:'M. Murillo',x:80,y:73},{pos:'CB',name:'F. Escobar',x:62,y:76},{pos:'CB',name:'A. Davis',x:38,y:76},{pos:'LB',name:'E. Davis',x:20,y:73},
+      {pos:'RM',name:'A. Carrasquilla',x:80,y:48},{pos:'CM',name:'C. Martínez',x:60,y:52},{pos:'CM',name:'A. Godoy',x:40,y:52},{pos:'LM',name:'E. Bárcenas',x:20,y:48},
+      {pos:'ST',name:'J. Fajardo',x:60,y:28},{pos:'ST',name:'É. Guerrero',x:40,y:28}
+    ],
+    injuries:[],
+    h2h:[{opp:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',w:0,d:0,l:1,note:'Heavy defeat in 2018'},{opp:'🇭🇷 Croatia',w:0,d:0,l:2,note:'Outmatched'},{opp:'🇬🇭 Ghana',w:1,d:0,l:0,note:'Limited'}],
+    history:{apps:1,bestFinish:'Group stage (2018)',goals:2,allTimeRank:52},
+    squadCount:{gk:3,def:10,mid:9,fwd:4},
+    fullSquad:{GK:['Orlando Mosquera','Luis Mejia','Cesar Samudio'],DEF:['Cesar Blackman','Jorge Gutierrez','Amir Murillo','Fidel Escobar','Andres Andrade','Edgardo Farina','Jose Cordoba','Eric Davis','Jiovany Ramos','Roderick Miller'],MID:['Anibal Godoy','Carlos Harvey','Cristian Martinez','Jose Luis Rodriguez','Cesar Yanis','Yoel Barcenas','Azarias Londono','Adalberto Carrasquilla','Alberto Quintero'],FWD:['Ismael Diaz','Cecilio Waterman','Jose Fajardo','Tomas Rodriguez']},
+    keyPlayer:'Adalberto Carrasquilla',keyPlayerNote:'Panama\'s most creative midfielder. Drives the team forward with energy and technique.'
+  },
+  {
+    code:'GHA',flag:'🇬🇭',name:'Ghana',group:'L',conf:'CAF',
+    fifaRank:42,manager:'Otto Addo',managerNat:'🇬🇭',managerStyle:'Counter',
+    squadStatus:'tbc',formation:'3-4-2-1',
+    styleTag:['Athletic','Counter','Technical'],
+    winProb:1,xG:0.9,groupPos:3,
+    stats:{attack:58,defense:58,midfield:60,setPiece:56,pressing:66},
+    momentum:['W','D','L','W','D','W','W','L','W','D'],
+    bestXI:[
+      {pos:'GK',name:'L. Jojo Wollacott',x:50,y:90},
+      {pos:'RB',name:'T. Lamptey',x:80,y:73},{pos:'CB',name:'M. Salisu',x:62,y:76},{pos:'CB',name:'A. Djiku',x:38,y:76},{pos:'LB',name:'B. Abdul Rahman',x:20,y:73},
+      {pos:'CDM',name:'T. Partey',x:60,y:57},{pos:'CDM',name:'M. Kudus',x:40,y:57},
+      {pos:'RAM',name:'A. Issahaku',x:75,y:38},{pos:'CAM',name:'E. Sulemana',x:50,y:35},{pos:'LAM',name:'I. Williams',x:25,y:38},
+      {pos:'ST',name:'J. Ayew',x:50,y:25}
+    ],
+    injuries:[],
+    h2h:[{opp:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 England',w:0,d:0,l:2,note:'England dominant'},{opp:'🇭🇷 Croatia',w:0,d:1,l:2,note:'Croatia edge it'},{opp:'🇵🇦 Panama',w:0,d:0,l:1,note:'Limited'}],
+    history:{apps:4,bestFinish:'QF (2010)',goals:14,allTimeRank:26},
+    squadCount:{gk:3,def:8,mid:9,fwd:6},
+    keyPlayer:'Mohammed Kudus',keyPlayerNote:'West Ham star. One of the most exciting talents in the Premier League. Dribbling, shooting and unpredictability make him Ghana\'s X-factor.'
+  }
+];
+
+var TACTICAL = {
+  "MEX":{formation:"4-3-3",attack:"Fullbacks High & Wide; Wingers as '10s'; Lots of Crosses for Jimenez/Gimenez; Great Rest-Defence from 3 CMs and 2 CBs",defend:"Rest-Defence from 3 CMs and 2 CBs; (Think Steven Gerrard's Rangers)",stats:"Exceptional from Set-Plays: 5/9 Goals in CONCACAF Gold Cup; Jimenez, Montes, Vasquez & Reyes in the Air; Fans, altitude & exciting football",watch:"Gilberto Mora (CM, 17yo)",profile:"Standout at U20 WC 2025; Tidy Technical Midfielder; 9 Goal Involvements this Season"},
+  "ZAF":{formation:"4-3-3",attack:"Can Be Direct (2nd Most Long Passes); Wingers in 1v1 & FB Beyond; Creative & Crosses (2nd Best Crossers); Most Big Chances Missed in Qualifying",defend:"Great Rest-Defence & Protecting Structure",stats:"2nd Most Long Passes; 2nd Best Crossers; Most Big Chances Missed in Qualifying",watch:"Oswin Appollis (LW)",profile:"Pacey & Direct Dribbler (56% Succ.); Creativity & Goals (6 Goal Involvements in 5)"},
+  "KOR":{formation:"4-3-3",attack:"Fast-paced wide combinations using overlapping fullbacks, looking to open channels for late, blind-side midfield runs into the box.",defend:"Exceptionally drilled mid-block out of possession, though they struggle against highly physical teams playing direct route-one football.",stats:"75.8% Possession in Qualifying (with purpose); 3rd Most Big Chances Missed; Group A exceptionally tight",watch:"Son Heung-min (LW)",profile:"Exceptional inside cutting lanes combined with world-class long-range shooting accuracy."},
+  "CZE":{formation:"3-4-3 / 3-4-2-1",attack:"Wing-Backs High & Wide; Wingers Coming Inside as '10s'; Lots of Crosses (3rd Highest in Europe); 3rd Most Big Chances Missed",defend:"Compact 3-4 block; Wing-Backs tuck in defensively",stats:"Set-Play Kings: 48% of Goals in Qualifying from Corners/IDFKs; 3 of 4 vital Play-Off Goals from Corners",watch:"Pavel Sulc (LW)",profile:"Pacey & Direct Dribbler; Creativity & End Product; 14 Goals+Assists this Season"},
+  "CAN":{formation:"4-4-2 / 4-2-4",attack:"High-tempo verticality using fullbacks for wide overlaps. Floats 3\u20134 players deep into the 18-yard box during crossing phases.",defend:"Highly vulnerable to long balls over the top. The rest-defense is prone to leaving central defenders entirely isolated.",stats:"Host Nation; 39 International Goals for David; 150+ Club Goals; Old-School 4-4-2/4-2-4",watch:"Jonathan David (CF)",profile:"World-class off-the-ball movement and clinical 1v1 execution in tight spaces."},
+  "BIH":{formation:"4-4-2",attack:"2 Big CFs; Wingers & Fullbacks Combining to Cross & Create; Direct & Long; Transition over Possession (29th Avg. Possession)",defend:"Stop Attacks by Fouling (1st in Fouls & Yellow Cards); Low-block 4-4-2",stats:"1st in Fouls & Yellow Cards in Qualifying; 29th Average Possession; Niko Katic at CB; Sasa Papac on Coaching Staff",watch:"Esmir Bajraktarevic (RW, 21yo)",profile:"Direct Dribbler; Creative & Eye for Goal; vs Italy: 6 Chances Created & 8 Successful Dribbles"},
+  "QAT":{formation:"4-2-3-1",attack:"Direct (Most Long Balls per 90); Rotations to Free Akram Afif (11 Assists); Mid-Block to Create Counters",defend:"Mid-Block Set-Up; Worry Defensively (-7 GD in Qualifying)",stats:"Most Long Balls per 90; Akram Afif 11 Assists in Qualifying; -7 Goal Difference in Qualifying",watch:"Akram Afif (CAM)",profile:"Pacey & Skillful Dribbler; Composure In & Around Goal; Creative & Final Pass; 11 Assists in Qualifying"},
+  "SUI":{formation:"4-3-3",attack:"Pacey & Direct Front-3; Fluid Rotations in CM; Great Rest Defence & Structure; 2nd Best Defence & 2nd Lowest xG Against",defend:"2nd Best Defence in Qualifying; 2nd Lowest xG Against; Great Rest Defence",stats:"2nd Best Defence; 2nd Lowest xG Against in Qualifying; Favourite team to watch at Euro 2024",watch:"Breel Embolo (CF)",profile:"Goal-Threat; Pacey & Powerful Runner"},
+  "BRA":{formation:"4-3-3",attack:"High positional freedom for the attacking trio to roam and combine organically, while fullbacks hold extreme high-and-wide widths.",defend:"Drops into a compact mid-to-deep defensive block out of possession; transforms into a lethal, high-speed counter-attacking unit.",stats:"Carlo Ancelotti as manager; Neymar Jnr's return; Endrick 16 Goal Involvements at Lyon in 2026",watch:"Endrick (CF)",profile:"The 19-year-old phenom bringing exceptional bursts of acceleration, raw upper-body power, and intuitive skill."},
+  "MAR":{formation:"4-3-3",attack:"Statistically elite metrics for shots and crosses per 90 mins. Leverages 1v1 isolating wingers supported by highly versatile long/short distribution.",defend:"Elite defensive foundation (best record in AFCON qualifiers) paired with a thoroughly disciplined rest-defense framework.",stats:"Most Shots per 90; Most Crosses per 90; Best Long & Short Passers per 90; New manager using U23 style",watch:"Bilal El Khannouss (CAM)",profile:"High-tempo dribbler operating in half-spaces with elite volume chance-creation numbers."},
+  "HAI":{formation:"4-2-3-1 / 4-3-3",attack:"Fast, vertical transition attacks designed to release wide men into 1v1 space, frequently complemented by underlapping fullback runs.",defend:"Fragile out-of-possession structure; highly prone to collapsing and shipping goals if their initial pressing line gets bypassed.",stats:"William Isidor & Jean-Ricer Bellgarde also vital players; Quick transitions key",watch:"Don Deedson Louicius (RW)",profile:"A dynamic, direct-running winger who serves as the absolute creative engine of the attack."},
+  "SCO":{formation:"3-5-2 (fluid)",attack:"Massive reliance on high-volume wide crossing. Features a signature overlapping/underlapping LCB role alongside late attacking arrivals from deep.",defend:"Drilled mid-block that successfully funnels opposition attacks out wide. Boasts phenomenal set-piece efficiency at both ends.",stats:"First WC since 1998; Set-play strength; McTominay/McGinn big-moment scorers; Doak breakout potential",watch:"Ben Doak (RW)",profile:"A fearless, two-footed wide direct runner possessing electric explosive speed down the flanks."},
+  "USA":{formation:"4-2-3-1 / 3-4-3",attack:"Direct winger isolation plays coupled with explosive, direct runners breaking behind opposition backlines. Highly dangerous on dead-ball variants.",defend:"Shows high tactical fluidity under Pochettino, but the shape looks incredibly soft when midfield lines get stretched or disjointed.",stats:"Host Nation; Pulisic 14 Goal Involvements for AC Milan; 38 Chances Created; Nations League/Gold Cup only competitive games",watch:"Christian Pulisic (FW)",profile:"Brings world-class close control, direct dribbling, and elite final-third productivity from AC Milan."},
+  "PAR":{formation:"4-4-2 / 4-2-3-1",attack:"Relies heavily on individual technical flair out wide to spark creativity, feeding fullbacks who push high to deliver high volumes of crosses.",defend:"Displays a highly naive, unstructured rest-defense that leaves them wide open to being dissected on the counter-attack.",stats:"2nd Most Crosses in CONMEBOL; 4 Set-Play Goals in Qualifying; Rest-Defence Naive/Open",watch:"Julio Enciso (FW)",profile:"A premier tight-space escape artist featuring world-class technical dribbling and ball retention."},
+  "AUS":{formation:"3-4-3",attack:"Employs a highly structured Box-4 midfield (2 CDMs, 2 CAMs). Wing-backs press aggressively past the front line to execute cutbacks to late-arriving runners.",defend:"Shifts rapidly into a rigid 5-4-1 low-block out of possession. Backed by elite qualifying data (2nd best defensive record in AFC).",stats:"2nd Best Defence in AFC Qualifying; Mohamed Toure 10 goals in 13 for Norwich (end of season)",watch:"Mohamed Toure (CF)",profile:"A physical powerhouse forward who excels at holding up play and running channels with raw pace."},
+  "TUR":{formation:"4-2-3-1 / 3-4-2-1",attack:"Wide men isolation duels paired with fullbacks who invert centrally to vacate the flanks. Attacks run through the creative roaming freedom of Arda G\u00fcler.",defend:"Implements a highly protective rest-defense designed to kill counters early; quickly stacks all 11 men behind the ball if breached.",stats:"6 Goals in Qualifying from Set-Plays; Guler/Calhanoglu Deliveries; Big CBs Key to Attack; Guler injury concern",watch:"Arda G\u00fcler (CAM)",profile:"Elite tight-space creator with mesmerizing vision and wicked dead-ball deliveries. Note: Tracking required due to fitness/injury context."},
+  "GER":{formation:"4-2-3-1",attack:"Completely suffocates games via possession dominance (2nd in Euro qualifiers). Features a fluid front four that constantly swaps zones to break markers.",defend:"Executes an aggressive counter-press immediately upon turnovers, supported by a strict rest-defense blueprint.",stats:"2nd in Euro Qualifying; Wirtz 53.5% Dribble Success; 60 Chances Created; 8 Goal Involvements in 'Poor Season'; Raum overlapping key",watch:"Florian Wirtz (CAM)",profile:"A magical half-space creator boasting a 53.5% dribble success rate and elite chance-creation volume."},
+  "CUR":{formation:"4-4-3 / 4-2-3-1",attack:"Ultra-reliant on blistering counter-attacks up top under Dick Advocaat. Wide play uses sharp, rapid one-two combinations between FBs and wingers. Bacuna brothers act as structural transitional pivot.",defend:"Closes ranks behind the ball but leaves the striker completely detached up high; features a dangerously open and erratic rest-defense.",stats:"Bacuna Brothers key; 23 Chances Created by Juninho in Qualifying; 67% Dribbling Success; 5 Goal Involvements",watch:"Juninho Bacuna (CAM)",profile:"The undisputed heartbeat of the team; excellent at carrying lines (67% dribble success) and picking keys (23 chances, 5 goal involvements)."},
+  "CIV":{formation:"4-4-2",attack:"Highly skilled, high-scoring 1v1 wide men who stretch lines to feed dangerous box crosses. Devastatingly quick when breaking from deep.",defend:"Astounding defensive discipline and organization, boasting an elite clean-sheet record (10 clean sheets in 10 qualifiers).",stats:"10 Cleansheets in 10 Qualifying games; 2 Cleansheets on Last-Break; Diomande 118 Successful Dribbles (61%); 20 Goal Involvements at Leipzig",watch:"Yan Diomande (LW)",profile:"19-year-old phenom coming off a massive Leipzig season (20 G/A, 56 chances created, 118 successful dribbles at 61%)."},
+  "ECU":{formation:"4-4-2",attack:"Brave, short build-ups with fullbacks inverting centrally while CMs drift wide. Creates 1v1 isolations out wide to fuel relentless crossing. Devastating counter pace.",defend:"Statistically the premier defense in South America (13 clean sheets in 18 games; only 3 open-play goals leaked). Elite rest-defense structure. Produced 9 separate 0-0 draws.",stats:"13 Cleansheets in 18 Qualifiers (MOST); Only 3 Open-Play Goals Conceded (LOWEST); 9 x 0-0 Draws; Only conceded 1+ goal in 3 of last 37 games",watch:"Enner Valencia (CF)",profile:"The 36yo veteran captain entering the tournament in the absolute peak international scoring form of his career. Lethal pace, power, and clinical profile."},
+  "NED":{formation:"4-3-3",attack:"Pure winger isolation tactics out wide, backed by overlapping fullbacks and an attacking mandate to aggressively flood the box with numbers.",defend:"Applies an intense high-press to win balls back early, but exhibits massive structural vulnerability on the break if that press is broken.",stats:"Transition Concerns noted; bits of everything required to go far; Gakpo goalscoring from range",watch:"Cody Gakpo (LW)",profile:"Exceptional ball-striking threat from long range, paired with a tireless defensive tracking work-rate."},
+  "JPN":{formation:"3-4-2-1",attack:"Isolates dynamic wingers out wide while wing-backs maintain high, overlapping options to fire crosses into a heavily congested penalty area.",defend:"Operates an aggressive, highly organized counter-press founded on an incredible, high-intensity collective work-rate (humble and hard-working).",stats:"Humble, hard-working and full of goals; Ueda 25 goals in Eredivisie",watch:"Ayase Ueda (CF)",profile:"A lethal inside-the-box finisher fresh off a 25-goal Eredivisie season; defends tirelessly from the front."},
+  "SWE":{formation:"3-4-3 / 3-4-2-1",attack:"Plays direct from the defensive line to bypass high presses under Graham Potter. Establishes a rigid Box-4 midfield structure while giving the front three total roaming freedom.",defend:"Drops into a highly disciplined, narrow 5-3-2 mid-block designed to choke central spaces and instantly ignite rapid counter-attacks.",stats:"Small sample-size under Graham Potter; Isak return from injury; 2 CF's of Premier League quality",watch:"Anthony Elanga (RW)",profile:"A lethal, blistering transition winger who thrives on catching high defensive lines out of position. Track Alexander Isak's integration post-injury."},
+  "TUN":{formation:"4-3-3 / 4-1-4-1 / 4-2-3-1",attack:"Drops a central midfielder into the defensive line to build in a Back-3, pushing fullbacks high and wide while inverted No. 10s and wingers stay close to the CF.",defend:"Holds a highly disciplined mid-block out of possession (0 goals conceded in qualifiers), but looks deeply fragile and open to quick, vertical breaks.",stats:"0 Goals Conceded in defensive phases; But easily opened up at times; Concern about transitions",watch:"Hannibal Mejbri (CAM)",profile:"The team's engine room; a highly creative progressor for Burnley with 19 chances created and 5 goal contributions."},
+  "BEL":{formation:"4-2-3-1",attack:"Focuses on unleashing electric wingers in 1v1 isolation duels, heavily supported by dynamic underlapping and overlapping under-runs. Exploits space with pace in-behind.",defend:"Deploys an intense, high-stamina high-press and counter-press system. Note: No longer the 'Golden Generation'; struggles building through compact structures.",stats:"No longer the Golden Generation; still technical & capable vs top teams; Doku pace & power",watch:"Jeremy Doku (LW)",profile:"A world-class 1v1 visual nightmare blending explosive first-step acceleration with immense raw power and direct production."},
+  "EGY":{formation:"4-2-3-1",attack:"A lethal, clinical transition machine. Focuses on hyper-direct attacking sequences, often scoring within fewer than 3 passes of winning possession.",defend:"Sits in a structured, fiercely resilient mid-block out of possession (only 1 open-play goal leaked during the entire qualification run).",stats:"Only 1 Open-Play goal conceded in Qualifying; Goals in \u22643 passes; Salah WC swansong",watch:"Mohamed Salah (RW)",profile:"Legendary elite forward combining iconic pace, physical strength, and game-deciding creative output. Omar Marmoush acts as concurrent difference maker."},
+  "IRN":{formation:"4-2-3-1 / back-5",attack:"Direct, ultra-vertical build-up designed to bypass the midfield entirely. Focuses heavily on lightning-fast counter-attacks before defensive blocks can recover.",defend:"Extremely disorganized when tracking back. Leaves massive, exploitable gaps in central channels during defensive transitions if vertical balls turn over.",stats:"Taremi in-form (scored in friendly); Could use back-5 defensively",watch:"Mehdi Taremi (CF)",profile:"Exceptional aerial and ground hold-up play; highly clinical at linking play and producing moments out of nothing."},
+  "NZL":{formation:"4-2-3-1",attack:"Sets up with three incredibly narrow No. 10s to swamp central zones, allowing fullbacks to bomb high and wide to feed cross after cross to find Chris Wood.",defend:"Deploys a rigid 2-2 rest-defense shield (2 CBs + 2 CMs), but is severely exposed on the break if an opponent breaks past that first line. Hard to gauge exact form.",stats:"Easy qualification path; Run of poor results in friendlies since; Elijah Just player to watch",watch:"Elijah Just (CAM)",profile:"Technically superb, ambidextrous playmaker who doubles as a relentless high-presser from the front line."},
+  "ESP":{formation:"4-3-3 / 4-2-3-1",attack:"Absolute possession dictation with clear purpose. Fullbacks stretch wide to allow creative wingers to cut inside, permanently anchoring 5 players across the front line.",defend:"Implements a highly aggressive, incredibly high-risk rest-defense that leaves them fully exposed to direct counters if their initial press fails.",stats:"Similar to Euro 2024 style; Yamal lit up Euros at 16/17; Tournament favourites",watch:"Lamine Yamal (RW)",profile:"Precocious elite talent featuring world-class direct dribbling, visionary weight of pass, and clutch execution."},
+  "CPV":{formation:"4-2-3-1 / 4-3-3",attack:"Direct, vertical attacking framework featuring intricate positional rotations on the left flank (FB/CAM/LW). Jamiro Monteiro and Dailon Livramento are focal nodes. Lethal on set-pieces.",defend:"Highly robust, physical defensive block (topped group over Cameroon), though they can struggle to slide laterally when facing high-speed switches of play.",stats:"Topped group containing Cameroon in CAF qualifying; Deserve same respect as bigger CAF qualifiers",watch:"Dailon Livramento (CF)",profile:"The qualifying campaign's top scorer; possesses devastating, raw acceleration to destroy high-pressing lines."},
+  "KSA":{formation:"4-2-3-1",attack:"Highly direct build-up routines aimed at injecting instant, vertical pace to exploit the space directly behind opposition backlines rapidly.",defend:"Sets up in a compact 4-4-2 mid-block to squeeze spaces, but their hyper-fast vertical transitions leave them heavily exposed if they turn it over cheaply.",stats:"Beat eventual 2022 WC winners in group stage; Can they go step further & get out group?",watch:"Musab Al Juwayr (CAM)",profile:"A sublime technical operator operating between lines, fresh off a massive 16-goal-contribution club season."},
+  "URU":{formation:"4-3-3",attack:"Attacking Wide & Crosses into Box; Aggressive Build; Third-Man & Combination Play; Counter-Press & Counter-Attacking Goals",defend:"Risky Rest-Defence (Bielsa style); Open to Transition Goals; Can Concede Late Critical Goals",stats:"Bielsa's high-intensity system; Always exciting if not always winners; Open to counters but deadly going forward",watch:"Maxi Ara\u00fajo (Winger)",profile:"9 Goal Contributions for Sporting; Creative with End Product (30 Chances Created); 4 Assists in Qualifying"},
+  "FRA":{formation:"4-2-3-1",attack:"Rigid positional attacking structure keeping 5 players pinned to the opposition front line. Relies heavily on shifting possession to create isolated 1v1 winger duels.",defend:"High-risk rest-defense. If the primary counter-press fails to choke the initial pass, they look completely open to rapid transitions.",stats:"Best combination play at the tournament; if they put it all together, possibly unstoppable; 'France are a vibe'",watch:"Kylian Mbapp\u00e9 (LW)",profile:"Unmatched acceleration, direct ball-carrying, and explosive power when cutting inside."},
+  "SEN":{formation:"4-4-2 / 4-2-3-1",attack:"Wide Combination Play; Crosses into the Box; Exploit Pace in-behind; Press & Counter",defend:"Could Be Exploited Defensively in Wide Areas; compact when at their best",stats:"Exciting WC if defensive part right; pace and creativity in wide areas the key weapons",watch:"Iliman Ndiaye (Winger)",profile:"Goals, Creativity and Assists; Pace & Dribbling; Excellent Crosser"},
+  "NOR":{formation:"4-3-3 / 4-4-2",attack:"Wing-Play 1v1; S\u00f8rloth Rolls Inside as 2nd CF (in 4-3-3); Crosses into S\u00f8rloth & Haaland; Deadly in Transition & In-Behind",defend:"Defensive Discipline & Rest-Defence; compact block when without ball",stats:"Many players hitting peak years; best chance to do something special; Haaland + S\u00f8rloth aerial threat",watch:"Antonio Nusa (LW)",profile:"Goals, Assists & Creativity; Pacey and Skillful Dribbler; Works Back & Counters at Speed"},
+  "IRQ":{formation:"4-4-2 / 4-2-3-1 / 4-2-2-2",attack:"Direct Play for Territory; Wide & Cross; Attack the Box in Numbers",defend:"Drop into Mid-to-Low Block (12 Cleansheets); Play for Set-Plays (deadly from dead balls)",stats:"12 Cleansheets in qualifying; Deadly from Set-Plays; Huge wait for a World Cup \u2014 emotional return",watch:"Ali Jasim (Winger)",profile:"Creative Dribbler & Crosser; Technically Proficient; Young & exciting prospect"},
+  "ARG":{formation:"4-4-2 / 4-2-3-1 / 4-3-3",attack:"Masterclass in suffocating possession. Employs highly fluid positional rotations across the front three, paired with inverted fullbacks creating midfield overloads. Relies on quick vertical ball progression.",defend:"Impeccable counter-press execution and a highly disciplined, risk-aversive rest-defense blueprint.",stats:"Variety of formations \u2014 all same principles; Messi: perfect swansong?; Defending champions",watch:"Lionel Messi (RW/AM)",profile:"The ultimate creative gravity hub; orchestrates tempos and supplies defense-splitting passes."},
+  "ALG":{formation:"4-3-3",attack:"Fluid Movements into Wide Areas; Crosses into the Box; Dangerous In-Behind; Good Structure & High-Press",defend:"Weak in Build-Up; Weak in Set-Play Defending; High-Press can leave gaps",stats:"Amoura 11 Goal Involvements in Bundesliga; 14 Goal Involvements for Algeria in Qualifying; Defensive frailties to correct",watch:"Mohamed Amoura (LW/CAM)",profile:"Quick Direct Dribbler; Great Leap in the Air; Creativity in Final Third; 11 Goal Involvements Bundesliga; 14 Goal Involvements for Algeria in Qualifying"},
+  "AUT":{formation:"4-2-3-1 / 4-4-2 / 4-2-4 / 4-2-2-2",attack:"Wide Play & Crosses; Fluid Rotations (FB Inverted & Wingers Wide); Front-4 Central and Combine with FBs Wide; Counter-Pressing",defend:"Rest-Defence; Man for Man Risk v Reward at the Back; can be exposed by direct play",stats:"Baumgartner 21 Goal Involvements Bundesliga; 37 Chances Created; 19 Goal Involvements in 31 Austria Apps",watch:"Christoph Baumgartner (CAM)",profile:"21 Goal Involvements in Bundesliga; 37 Chances Created; 19 Goal Involvements in 31 Austria Appearances"},
+  "JOR":{formation:"3-4-3 / 5-4-1",attack:"Direct Play to Find Front-3; Wingbacks to Overlap; Crosses into the Box; Quick Play Behind",defend:"Drop into Mid/Low-Block; Big Defensive Gaps in Back-5 Deep; can be bypassed by quality sides",stats:"AFC Cup Final run; Only lost narrowly to impressive Morocco; Arab Cup finalists",watch:"Mousa Al-Tamari (RW)",profile:"Creativity \u2014 34 Chances Created; Pacey Dribbler with 'Mixed' Success; 12 Goal Involvements in Ligue 1"},
+  "POR":{formation:"4-3-3",attack:"Wide Play & Crosses into the Box; Flood Central with Inverted FBs; Counter-Press & High Position; Press High & Man for Man",defend:"Direct Defensive Potential Issue; Set-Play Defending Potential Issue; can be bypassed directly",stats:"Ronaldo's final chance to become World Champion; Bruno Fernandes creative hub; Press High & Man for Man",watch:"Bruno Fernandes (CAM)",profile:"Creativity & Chances Created; Goal Threat from Everywhere; key creative link for Portugal"},
+  "COL":{formation:"4-2-3-1 / 4-3-3",attack:"Play Around to Attack Wide; Crosses into the Box (#1 in South America); Possession With Control; Great in Transition from Low-Block",defend:"Need Stricter Defensive Structure; Great in Transition from Low-Block",stats:"#1 Crosses in South America; D\u00edaz 45 Goal Involvements for Bayern; James Rodr\u00edguez return could repeat Brazil 2014 magic",watch:"Luis D\u00edaz (LW)",profile:"Goals, Assists & Creativity; Direct Dribbling; Pace in Transition; 45 Goal Involvements for Bayern Munich"},
+  "COD":{formation:"4-3-3",attack:"Direct and Transitional Play; Counter at Speed; In-Behind/Wide and Cross",defend:"Block Structure Central; disciplined shape without ball",stats:"Very exciting time for the country; first WC since 1974 (as Zaire); Sadiki driving force in midfield",watch:"Noah Sadiki (CM)",profile:"Driving with the Ball; Tough Tackling & Duel Winner; dynamic midfield presence"},
+  "UZB":{formation:"3-4-3",attack:"Inside 10s & High Wingbacks; Crosses into the Box; Direct Play",defend:"Defend in Block to Avoid Space Behind; compact shape; new manager \u2014 hard to analyse fully",stats:"New manager \u2014 hard to analyse fully; Khusanov vital in defence but can't do it alone; Shomurodov 22 Goals in Turkey",watch:"Eldor Shomurodov (CF)",profile:"22 Goals in Turkey; 9 International Goal Involvements in 16 Apps; physical presence up front"},
+  "ENG":{formation:"4-3-3 / 4-2-3-1",attack:"Play to Get Wingers 1v1; Crosses into the Box; Counter/Transition at Speed; In-Behind",defend:"Block Structure Central; Press Needs to be Better",stats:"Considered one of the poorer 'Style of Play' top nations, but England possess elite individual talent as they always do. The central question remains whether this squad can fully put it together under Thomas Tuchel.",watch:"Harry Kane (CF)",profile:"Best CF in World Football; 60 Goals this Season; Great Link-Up"},
+  "CRO":{formation:"4-3-3 / 3-4-2-1",attack:"Play to Get Wingers (10s) 1v1; Overlapping FBs & WBs; Crosses into the Box",defend:"Block Structure Central; Press Needs to be Better; Open to Counters",stats:"Fluid between 4-3-3 & 3-4-2-1; Baturina as creative fulcrum; upcoming friendlies key to formation decision",watch:"Martin Baturina (CAM)",profile:"Goals, Assists & Creativity; Lovely Dribbler in Tight Areas; Great Long Passer"},
+  "GHA":{formation:"3-4-2-1",attack:"Play to Get Wingers (10s) 1v1; Overlapping FBs & WBs; Crosses into the Box",defend:"Block Structure Central Needed; Very Open in Press; can be exposed in wide areas",stats:"Excellent at top end of pitch; pressing issues to fix; Jordan Ayew set-piece delivery key",watch:"Jordan Ayew (CAM)",profile:"Goals, Assists and Creativity; Final Pass; Good Dribbler; Great Crosser from Set-Plays"},
+  "PAN":{formation:"3-4-2-1",attack:"Play to Get Wingers (10s) 1v1; Overlapping FBs & WBs; Crosses into the Box",defend:"Block Structure Central; Comfortable Low-Block Defending",stats:"Hard group \u2014 will struggle with quality against them; compact and disciplined; never say never",watch:"Jos\u00e9 Luis Rodr\u00edguez (CAM)",profile:"Goals, Assists and Creativity; Excellent Dribbler (64.6%); Great Crosser"}
+};
+
+// ── State ─────────────────────────────────────────────────────
+var teamA = null, teamB = null;
+var currentConf = 'ALL', searchTerm = '';
+
+// ── Render team grid ─────────────────────────────────────────
+function renderGrid() {
+  var grid = document.getElementById('teams-grid');
+  grid.innerHTML = '';
+  var filtered = TEAMS.filter(function(t) {
+    var cm = currentConf === 'ALL' || t.conf === currentConf;
+    var sm = !searchTerm || t.name.toLowerCase().includes(searchTerm) || t.group.toLowerCase().includes(searchTerm);
+    return cm && sm;
+  });
+  filtered.sort(function(a,b){
+    if(a.group<b.group) return -1; if(a.group>b.group) return 1;
+    return a.name.localeCompare(b.name);
+  });
+  if(!filtered.length){
+    grid.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text3);font-size:13px;">No teams match</div>';
+    return;
+  }
+  filtered.forEach(function(t){
+    var isA = teamA && teamA.code === t.code;
+    var isB = teamB && teamB.code === t.code;
+    var cls = 'team-pick-btn' + (isA?' sel-a':'') + (isB?' sel-b':'');
+    var badge = isA?'<span style="font-size:9px;font-weight:700;color:var(--blue);background:rgba(77,156,247,.15);padding:2px 6px;border-radius:3px;margin-left:auto;">A</span>':
+                isB?'<span style="font-size:9px;font-weight:700;color:var(--red);background:rgba(240,100,90,.12);padding:2px 6px;border-radius:3px;margin-left:auto;">B</span>':'';
+    var btn = document.createElement('div');
+    btn.className = cls;
+    btn.innerHTML =
+      '<span class="tpb-flag">'+t.flag+'</span>'+
+      '<div style="min-width:0;flex:1;">'+
+        '<div class="tpb-name">'+t.name+'</div>'+
+        '<div class="tpb-sub">Grp '+t.group+' · #'+t.fifaRank+'</div>'+
+      '</div>'+badge;
+    btn.addEventListener('click', function(){ pickTeam(t); });
+    grid.appendChild(btn);
+  });
+}
+
+function resetTeams() {
+  teamA = null;
+  teamB = null;
+  renderGrid();
+  renderComparison();
+  updateSelectionBar();
+}
+
+function updateSelectionBar() {
+  var bar     = document.getElementById('selected-bar');
+  var resetBtn = document.getElementById('reset-btn');
+  var selAName = document.getElementById('sel-a-name');
+  var selBName = document.getElementById('sel-b-name');
+  var hint     = document.getElementById('sel-hint');
+
+  // Show bar and reset button as soon as anything is selected
+  var anySelected = teamA || teamB;
+  if(bar)      { bar.style.display = anySelected ? 'flex' : 'none'; }
+  if(resetBtn) { resetBtn.style.display = anySelected ? 'inline-flex' : 'none'; }
+
+  if(selAName) { selAName.textContent = teamA ? teamA.flag + ' ' + teamA.name : 'Not selected'; }
+  if(selBName) { selBName.textContent = teamB ? teamB.flag + ' ' + teamB.name : 'Not selected'; }
+
+  if(hint) {
+    if(!teamA && !teamB)   hint.textContent = 'Select Team A first';
+    else if(teamA && !teamB) hint.textContent = 'Now select Team B';
+    else if(!teamA && teamB) hint.textContent = 'Now select Team A';
+    else                     hint.textContent = '✅ Both selected — comparison ready';
+  }
+}
+
+function pickTeam(t) {
+  if(teamA && teamA.code === t.code) {
+    // Deselect A
+    teamA = null;
+  } else if(teamB && teamB.code === t.code) {
+    // Deselect B
+    teamB = null;
+  } else if(!teamA && !teamB) {
+    // Nothing selected — assign to A
+    teamA = t;
+  } else if(teamA && !teamB) {
+    // A set, B empty — assign to B
+    teamB = t;
+  } else if(!teamA && teamB) {
+    // B set, A empty — assign to A
+    teamA = t;
+  } else {
+    // Both full — don't silently swap. Show a hint instead.
+    if(hint) hint.textContent = '⚠️ Reset first to pick new teams';
+    var hint = document.getElementById('sel-hint');
+    if(hint) {
+      hint.textContent = '⚠️ Hit Reset to choose new teams';
+      hint.style.color = 'var(--amber)';
+      setTimeout(function(){ hint.style.color = 'var(--text3)'; updateSelectionBar(); }, 2500);
+    }
+    return; // Don't change anything
+  }
+  renderGrid();
+  renderComparison();
+  updateSelectionBar();
+}
+
+// ── Compute power score ──────────────────────────────────────
+function powerScore(t) {
+  var s = t.stats;
+  // Attack 30%, Midfield 25%, Defense 25%, Form 10%, xG 10%
+  var wins = t.momentum.filter(function(r){return r==='W';}).length;
+  var form = (wins / t.momentum.length) * 100;
+  var raw = s.attack*0.30 + s.midfield*0.25 + s.defense*0.25 + form*0.10 + (t.xG/2.5)*10*0.10;
+  return Math.round(raw);
+}
+
+// ── Win probability ──────────────────────────────────────────
+function calcProbs(a, b) {
+  var pa = powerScore(a), pb = powerScore(b);
+  var diff = pa - pb; // positive = A stronger, negative = B stronger
+
+  var strongerProb = Math.min(72, 50 + Math.abs(diff) * 1.2);
+  var weakerProb   = Math.max(12, 50 - Math.abs(diff) * 1.0);
+  var draw         = Math.max(10, Math.min(26, Math.round(28 - Math.abs(diff) * 0.6)));
+
+  var total = strongerProb + weakerProb + draw;
+  strongerProb = Math.round(strongerProb / total * 100);
+  weakerProb   = Math.round(weakerProb   / total * 100);
+  draw         = 100 - strongerProb - weakerProb;
+
+  var pA = diff >= 0 ? strongerProb : weakerProb;
+  var pB = diff >= 0 ? weakerProb   : strongerProb;
+
+  return { a: pA, d: draw, b: pB };
+}
+
+// ── Winner badge ─────────────────────────────────────────────
+function winnerSide(va, vb) {
+  if(va > vb) return 'a';
+  if(vb > va) return 'b';
+  return 'draw';
+}
+
+function compVal(va, vb, hiGood) {
+  if(hiGood === undefined) hiGood = true;
+  var w = winnerSide(hiGood ? va : -va, hiGood ? vb : -vb);
+  var ca = w==='a'?'cmp-winner-a':w==='b'?'':w==='draw'?'cmp-equal':'';
+  var cb = w==='b'?'cmp-winner-b':w==='a'?'':w==='draw'?'cmp-equal':'';
+  return {ca:ca, cb:cb, w:w};
+}
+
+// ── Momentum score ───────────────────────────────────────────
+function momScore(mom) {
+  return mom.reduce(function(s,r){ return s+(r==='W'?3:r==='D'?1:0); },0);
+}
+
+// ── Render full comparison ────────────────────────────────────
+function renderComparison() {
+  var panel = document.getElementById('compare-panel');
+  if(!teamA && !teamB) {
+    panel.innerHTML = '<div class="pick-placeholder"><i class="ti ti-arrows-diff"></i>'+
+      '<p style="font-size:14px;font-weight:600;color:var(--text2);margin-bottom:6px;">No teams selected</p>'+
+      '<p style="font-size:12px;">Select <span style="color:var(--blue);font-weight:600;">Team A</span> and <span style="color:var(--red);font-weight:600;">Team B</span> above</p></div>';
+    return;
+  }
+  if(!teamA || !teamB) {
+    var picked = teamA || teamB;
+    var color = teamA ? 'var(--blue)' : 'var(--red)';
+    var label = teamA ? 'Team A selected' : 'Team B selected';
+    panel.innerHTML = '<div class="pick-placeholder">'+
+      '<div style="font-size:40px;margin-bottom:8px;">'+picked.flag+'</div>'+
+      '<p style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;">'+picked.name+'</p>'+
+      '<p style="font-size:12px;color:'+color+';margin-bottom:10px;">'+label+'</p>'+
+      '<p style="font-size:12px;color:var(--text3);">Now select the second team to start the comparison</p></div>';
+    return;
+  }
+
+  var a = teamA, b = teamB;
+  var tdA = TACTICAL[a.code] || {};
+  var tdB = TACTICAL[b.code] || {};
+  var probs = calcProbs(a, b);
+  var psA = powerScore(a), psB = powerScore(b);
+
+  // ── H2H lookup (from team a's h2h array) ────────────────────
+  var h2hRecord = null;
+  if(a.h2h) {
+    a.h2h.forEach(function(h){
+      if(h.opp && h.opp.toLowerCase().includes(b.name.toLowerCase().split(' ')[0].toLowerCase())) {
+        h2hRecord = h;
+      }
+    });
+  }
+  // Also check b's h2h
+  if(!h2hRecord && b.h2h) {
+    b.h2h.forEach(function(h){
+      if(h.opp && h.opp.toLowerCase().includes(a.name.toLowerCase().split(' ')[0].toLowerCase())) {
+        h2hRecord = {w:h.l, d:h.d, l:h.w, note:h.note}; // flip
+      }
+    });
+  }
+
+  // Decide verdict
+  var verdict = probs.a > probs.b ? a : (probs.b > probs.a ? b : null);
+  var verdictMargin = Math.abs(probs.a - probs.b);
+  var verdictStrength = verdictMargin > 15 ? 'Strong favourite' : verdictMargin > 8 ? 'Slight edge' : 'Very evenly matched';
+
+  // Build verdict reasoning
+  var reasons = [];
+  if(a.stats.attack > b.stats.attack + 5) reasons.push(a.name + ' have a significantly stronger attack');
+  else if(b.stats.attack > a.stats.attack + 5) reasons.push(b.name + ' have a significantly stronger attack');
+  if(a.fifaRank < b.fifaRank) reasons.push(a.name + ' are ranked higher (FIFA #' + a.fifaRank + ' vs #' + b.fifaRank + ')');
+  else if(b.fifaRank < a.fifaRank) reasons.push(b.name + ' are ranked higher (FIFA #' + b.fifaRank + ' vs #' + a.fifaRank + ')');
+  var msA = momScore(a.momentum), msB = momScore(b.momentum);
+  if(msA > msB + 3) reasons.push(a.name + ' are in significantly better form');
+  else if(msB > msA + 3) reasons.push(b.name + ' are in significantly better form');
+  if(reasons.length === 0) reasons.push('Both teams are remarkably balanced across all key metrics');
+  var reasonText = reasons.slice(0,2).join('. ') + '.';
+
+  // ── Stat comparison rows ─────────────────────────────────────
+  var stats = [
+    {label:'Attack',      va:a.stats.attack,   vb:b.stats.attack,   color:'var(--red)'},
+    {label:'Midfield',    va:a.stats.midfield,  vb:b.stats.midfield, color:'var(--blue)'},
+    {label:'Defense',     va:a.stats.defense,   vb:b.stats.defense,  color:'var(--green)'},
+    {label:'Set Pieces',  va:a.stats.setPiece,  vb:b.stats.setPiece, color:'var(--gold)'},
+    {label:'Pressing',    va:a.stats.pressing,  vb:b.stats.pressing, color:'var(--purple)'},
+    {label:'Power Score', va:psA,               vb:psB,              color:'var(--amber)'},
+    {label:'Avg xG',      va:a.xG*10,           vb:b.xG*10,          color:'var(--green)', raw:true, rawA:a.xG, rawB:b.xG},
+    {label:'Win Prob %',  va:probs.a,            vb:probs.b,          color:'var(--text2)', raw:true, rawA:probs.a+'%', rawB:probs.b+'%'},
+  ];
+
+  var statRows = stats.map(function(s){
+    var c = compVal(s.va, s.vb);
+    var maxVal = Math.max(s.va, s.vb, 1);
+    var wA = Math.round(s.va/100*100); // stats are /100
+    var wB = Math.round(s.vb/100*100);
+    if(s.label==='Avg xG'||s.label==='Win Prob %') { wA=s.va; wB=s.vb; }
+    var dispA = s.raw ? s.rawA : s.va;
+    var dispB = s.raw ? s.rawB : s.vb;
+    return '<div class="cmp-row">'+
+      '<div>'+
+        '<div style="display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-bottom:4px;">'+
+          '<span class="cmp-val-a '+c.ca+'">'+dispA+'</span>'+
+          (c.w==='a'?'<i class="ti ti-chevron-right" style="font-size:12px;color:var(--blue);"></i>':'<span style="width:16px;display:inline-block;"></span>')+
+        '</div>'+
+        '<div class="cmp-bar-track" style="direction:rtl;">'+
+          '<div class="cmp-bar-a" style="width:'+wA+'%;background:var(--blue);"></div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="cmp-label">'+s.label+'</div>'+
+      '<div>'+
+        '<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">'+
+          (c.w==='b'?'<i class="ti ti-chevron-left" style="font-size:12px;color:var(--red);"></i>':'<span style="width:16px;display:inline-block;"></span>')+
+          '<span class="cmp-val-b '+c.cb+'">'+dispB+'</span>'+
+        '</div>'+
+        '<div class="cmp-bar-track">'+
+          '<div class="cmp-bar-b" style="width:'+wB+'%;background:var(--red);"></div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+
+  // ── Momentum dots ──────────────────────────────────────────
+  function momDots(mom) {
+    return '<div class="mom-row">'+
+      mom.map(function(r){return '<div class="m-dot m-'+r.toLowerCase()+'">'+r+'</div>';}).join('')+
+    '</div>';
+  }
+
+  // ── Tactical comparison ────────────────────────────────────
+  var tactRows = [
+    {label:'Formation',  va: (tdA.formation||a.formation||'—'), vb:(tdB.formation||b.formation||'—'), isText:true},
+  ].map(function(s){
+    return '<div class="cmp-row">'+
+      '<div style="text-align:right;font-size:12px;font-weight:600;color:var(--blue);">'+s.va+'</div>'+
+      '<div class="cmp-label">'+s.label+'</div>'+
+      '<div style="text-align:left;font-size:12px;font-weight:600;color:var(--red);">'+s.vb+'</div>'+
+    '</div>';
+  }).join('');
+
+  // ── Style tags ─────────────────────────────────────────────
+  function styleTags(t) {
+    return (t.styleTag||[]).map(function(s){
+      return '<span class="tag tag-gray" style="margin-right:4px;margin-bottom:4px;">'+s+'</span>';
+    }).join('');
+  }
+
+  // ── Rank row ───────────────────────────────────────────────
+  var rankC = compVal(b.fifaRank, a.fifaRank); // lower rank = better
+
+  // ── H2H block ─────────────────────────────────────────────
+  var h2hHtml = '';
+  if(h2hRecord) {
+    h2hHtml =
+      '<div class="h2h-mini">'+
+        '<div class="h2h-bubble"><div class="h2h-num" style="color:var(--blue);">'+h2hRecord.w+'</div><div class="h2h-lbl">'+a.name+' wins</div></div>'+
+        '<div class="h2h-bubble"><div class="h2h-num" style="color:var(--text3);">'+h2hRecord.d+'</div><div class="h2h-lbl">Draws</div></div>'+
+        '<div class="h2h-bubble"><div class="h2h-num" style="color:var(--red);">'+h2hRecord.l+'</div><div class="h2h-lbl">'+b.name+' wins</div></div>'+
+      '</div>'+
+      (h2hRecord.note ? '<p style="font-size:11px;color:var(--text3);margin-top:8px;">'+h2hRecord.note+'</p>' : '');
+  } else {
+    h2hHtml = '<p style="font-size:12px;color:var(--text3);">No direct head-to-head data available for these teams.</p>';
+  }
+
+  // ── WC History ─────────────────────────────────────────────
+  var histC_apps  = compVal(a.history.apps,       b.history.apps);
+  var histC_goals = compVal(a.history.goals,      b.history.goals);
+  var histC_rank  = compVal(b.history.allTimeRank, a.history.allTimeRank);
+
+  // ── Build final HTML ───────────────────────────────────────
+  panel.innerHTML =
+
+    // ── VS Hero ──────────────────────────────────────────────
+    '<div class="vs-hero">'+
+      '<div class="vs-team">'+
+        '<div class="vs-flag">'+a.flag+'</div>'+
+        '<div class="vs-name" style="color:var(--blue);">'+a.name+'</div>'+
+        '<div class="vs-sub">Group '+a.group+' · FIFA #'+a.fifaRank+'</div>'+
+        '<div style="margin-top:8px;">'+styleTags(a)+'</div>'+
+      '</div>'+
+      '<div class="vs-divider">'+
+        '<div class="vs-label">VS</div>'+
+        '<div class="vs-result" style="font-size:11px;color:var(--text3);">Click teams above<br>to swap</div>'+
+      '</div>'+
+      '<div class="vs-team">'+
+        '<div class="vs-flag">'+b.flag+'</div>'+
+        '<div class="vs-name" style="color:var(--red);">'+b.name+'</div>'+
+        '<div class="vs-sub">Group '+b.group+' · FIFA #'+b.fifaRank+'</div>'+
+        '<div style="margin-top:8px;">'+styleTags(b)+'</div>'+
+      '</div>'+
+    '</div>'+
+
+    // ── Win probability bar ───────────────────────────────────
+    '<div class="panel" style="margin-bottom:20px;">'+
+      '<div class="panel-head">'+
+        '<i class="ti ti-percentage" style="font-size:15px;color:var(--text3);"></i>'+
+        '<span class="panel-title">Win probability</span>'+
+        '<span class="panel-badge">Based on FIFA rank, stats &amp; form</span>'+
+      '</div>'+
+      '<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;">'+
+        '<span style="color:var(--blue);font-weight:600;">'+a.name+'</span>'+
+        '<span style="color:var(--text3);">Draw</span>'+
+        '<span style="color:var(--red);font-weight:600;">'+b.name+'</span>'+
+      '</div>'+
+      '<div class="prob-bar-wrap">'+
+        '<div class="prob-a" style="width:'+probs.a+'%;">'+probs.a+'%</div>'+
+        '<div class="prob-draw" style="width:'+probs.d+'%;">'+probs.d+'%</div>'+
+        '<div class="prob-b" style="width:'+probs.b+'%;">'+probs.b+'%</div>'+
+      '</div>'+
+      '<div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-top:6px;">'+
+        '<span>'+a.name+' win: '+probs.a+'%</span>'+
+        '<span>Draw: '+probs.d+'%</span>'+
+        '<span>'+b.name+' win: '+probs.b+'%</span>'+
+      '</div>'+
+    '</div>'+
+
+    // ── Verdict ───────────────────────────────────────────────
+    (verdict ?
+      '<div class="verdict-card" style="background:linear-gradient(135deg,rgba(244,185,66,.08) 0%,rgba(244,185,66,.03) 100%);border:1px solid rgba(244,185,66,.2);">'+
+        '<div style="font-size:10px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">🏆 Analyst Verdict · '+verdictStrength+'</div>'+
+        '<div class="verdict-flag">'+verdict.flag+'</div>'+
+        '<div class="verdict-name" style="color:var(--gold);">'+verdict.name+'</div>'+
+        '<div style="font-size:12px;color:var(--text3);margin-bottom:8px;">'+
+          (verdict.code===a.code?probs.a:probs.b)+'% win probability'+
+        '</div>'+
+        '<div class="verdict-reason">'+reasonText+'</div>'+
+      '</div>'
+    :
+      '<div class="verdict-card" style="background:var(--bg-card);border:1px solid var(--border);">'+
+        '<div style="font-size:28px;margin-bottom:8px;">🤝</div>'+
+        '<div class="verdict-name" style="color:var(--text2);">Too Close to Call</div>'+
+        '<div class="verdict-reason">'+reasonText+'</div>'+
+      '</div>'
+    )+
+
+    // ── Stats comparison ──────────────────────────────────────
+    '<div class="panel" style="margin-bottom:20px;">'+
+      '<div class="panel-head">'+
+        '<i class="ti ti-chart-bar" style="font-size:15px;color:var(--text3);"></i>'+
+        '<span class="panel-title">Full stats comparison</span>'+
+        '<span class="panel-badge" style="color:var(--blue);">'+a.name+'</span>'+
+        '<span style="font-size:11px;color:var(--text3);margin:0 4px;">vs</span>'+
+        '<span class="panel-badge" style="color:var(--red);">'+b.name+'</span>'+
+      '</div>'+
+      statRows+
+    '</div>'+
+
+    // ── Tactical split ────────────────────────────────────────
+    '<div class="panel" style="margin-bottom:20px;">'+
+      '<div class="panel-head">'+
+        '<i class="ti ti-brand-tableau" style="font-size:15px;color:var(--text3);"></i>'+
+        '<span class="panel-title">Tactical breakdown</span>'+
+      '</div>'+
+      tactRows+
+      '<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:12px;margin-top:14px;">'+
+        '<div>'+
+          '<p style="font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">'+a.name+' — Attacking</p>'+
+          '<p style="font-size:11px;color:var(--text2);line-height:1.5;">'+(tdA.attack||'Data pending')+'</p>'+
+        '</div>'+
+        '<div style="width:1px;background:var(--border);"></div>'+
+        '<div>'+
+          '<p style="font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">'+b.name+' — Attacking</p>'+
+          '<p style="font-size:11px;color:var(--text2);line-height:1.5;">'+(tdB.attack||'Data pending')+'</p>'+
+        '</div>'+
+      '</div>'+
+      '<div style="display:grid;grid-template-columns:1fr auto 1fr;gap:12px;margin-top:12px;">'+
+        '<div>'+
+          '<p style="font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">'+a.name+' — Defence</p>'+
+          '<p style="font-size:11px;color:var(--text2);line-height:1.5;">'+(tdA.defend||'Data pending')+'</p>'+
+        '</div>'+
+        '<div style="width:1px;background:var(--border);"></div>'+
+        '<div>'+
+          '<p style="font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">'+b.name+' — Defence</p>'+
+          '<p style="font-size:11px;color:var(--text2);line-height:1.5;">'+(tdB.defend||'Data pending')+'</p>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+
+    // ── Key players ───────────────────────────────────────────
+    '<div class="panel" style="margin-bottom:20px;">'+
+      '<div class="panel-head">'+
+        '<i class="ti ti-star" style="font-size:15px;color:var(--gold);"></i>'+
+        '<span class="panel-title">Key players</span>'+
+      '</div>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">'+
+        '<div class="kp-card" style="border-color:rgba(77,156,247,.25);">'+
+          '<div style="font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">'+a.flag+' '+a.name+'</div>'+
+          '<div class="kp-name">'+a.keyPlayer+'</div>'+
+          '<div class="kp-note">'+a.keyPlayerNote+'</div>'+
+          (tdA.watch&&tdA.watch!==a.keyPlayer?'<div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);"><div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Scout watch</div><div style="font-size:12px;font-weight:600;color:var(--amber);">'+tdA.watch+'</div><div style="font-size:11px;color:var(--text2);">'+tdA.profile+'</div></div>':'')
+        +'</div>'+
+        '<div class="kp-card" style="border-color:rgba(240,100,90,.25);">'+
+          '<div style="font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">'+b.flag+' '+b.name+'</div>'+
+          '<div class="kp-name">'+b.keyPlayer+'</div>'+
+          '<div class="kp-note">'+b.keyPlayerNote+'</div>'+
+          (tdB.watch&&tdB.watch!==b.keyPlayer?'<div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);"><div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">Scout watch</div><div style="font-size:12px;font-weight:600;color:var(--amber);">'+tdB.watch+'</div><div style="font-size:11px;color:var(--text2);">'+tdB.profile+'</div></div>':'')
+        +'</div>'+
+      '</div>'+
+    '</div>'+
+
+    // ── Momentum ──────────────────────────────────────────────
+    '<div class="panel" style="margin-bottom:20px;">'+
+      '<div class="panel-head">'+
+        '<i class="ti ti-trending-up" style="font-size:15px;color:var(--amber);"></i>'+
+        '<span class="panel-title">Recent form — last 10 matches</span>'+
+      '</div>'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">'+
+        '<div>'+
+          '<p style="font-size:11px;font-weight:600;color:var(--blue);margin-bottom:8px;">'+a.flag+' '+a.name+'</p>'+
+          momDots(a.momentum)+
+          '<p style="font-size:11px;color:var(--text3);margin-top:6px;">'+
+            a.momentum.filter(function(r){return r==='W';}).length+'W · '+
+            a.momentum.filter(function(r){return r==='D';}).length+'D · '+
+            a.momentum.filter(function(r){return r==='L';}).length+'L · Form score: '+msA+'/30'+
+          '</p>'+
+        '</div>'+
+        '<div>'+
+          '<p style="font-size:11px;font-weight:600;color:var(--red);margin-bottom:8px;">'+b.flag+' '+b.name+'</p>'+
+          momDots(b.momentum)+
+          '<p style="font-size:11px;color:var(--text3);margin-top:6px;">'+
+            b.momentum.filter(function(r){return r==='W';}).length+'W · '+
+            b.momentum.filter(function(r){return r==='D';}).length+'D · '+
+            b.momentum.filter(function(r){return r==='L';}).length+'L · Form score: '+msB+'/30'+
+          '</p>'+
+        '</div>'+
+      '</div>'+
+    '</div>'+
+
+    // ── H2H history ───────────────────────────────────────────
+    '<div class="panel" style="margin-bottom:20px;">'+
+      '<div class="panel-head">'+
+        '<i class="ti ti-history" style="font-size:15px;color:var(--text3);"></i>'+
+        '<span class="panel-title">Head-to-head history</span>'+
+      '</div>'+
+      h2hHtml+
+    '</div>'+
+
+    // ── WC History ────────────────────────────────────────────
+    '<div class="panel" style="margin-bottom:20px;">'+
+      '<div class="panel-head">'+
+        '<i class="ti ti-award" style="font-size:15px;color:var(--gold);"></i>'+
+        '<span class="panel-title">World Cup history</span>'+
+      '</div>'+
+      '<div class="cmp-row">'+
+        '<div style="text-align:right;"><span class="cmp-val-a '+histC_apps.ca+'">'+a.history.apps+'</span></div>'+
+        '<div class="cmp-label">Appearances</div>'+
+        '<div><span class="cmp-val-b '+histC_apps.cb+'">'+b.history.apps+'</span></div>'+
+      '</div>'+
+      '<div class="cmp-row">'+
+        '<div style="text-align:right;font-size:12px;font-weight:600;color:var(--blue);">'+a.history.bestFinish+'</div>'+
+        '<div class="cmp-label">Best finish</div>'+
+        '<div style="font-size:12px;font-weight:600;color:var(--red);">'+b.history.bestFinish+'</div>'+
+      '</div>'+
+      '<div class="cmp-row">'+
+        '<div style="text-align:right;"><span class="cmp-val-a '+histC_goals.ca+'">'+a.history.goals+'</span></div>'+
+        '<div class="cmp-label">WC Goals</div>'+
+        '<div><span class="cmp-val-b '+histC_goals.cb+'">'+b.history.goals+'</span></div>'+
+      '</div>'+
+      '<div class="cmp-row">'+
+        '<div style="text-align:right;"><span class="cmp-val-a '+histC_rank.ca+'">#'+a.history.allTimeRank+'</span></div>'+
+        '<div class="cmp-label">All-time rank</div>'+
+        '<div><span class="cmp-val-b '+histC_rank.cb+'">#'+b.history.allTimeRank+'</span></div>'+
+      '</div>'+
+    '</div>';
+
+  panel.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// ── Filters ───────────────────────────────────────────────────
+document.getElementById('conf-filter').querySelectorAll('.grp-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('#conf-filter .grp-btn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    currentConf = btn.dataset.conf;
+    renderGrid();
+  });
+});
+document.getElementById('team-search').addEventListener('input',function(e){
+  searchTerm = e.target.value.toLowerCase();
+  renderGrid();
+});
+
+renderGrid();
+updateSelectionBar();
+</script>
+</body>
+</html>

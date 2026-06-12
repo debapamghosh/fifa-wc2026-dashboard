@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 — Command Center | Debapam Ghosh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0d0f12;--bg-card:#131720;--bg-card2:#1a1f2e;--bg-pill:#1e2536;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --text:#f0f2f5;--text2:#8b95a8;--text3:#556070;
+  --gold:#f4b942;--gold2:#e8a020;
+  --green:#2dd4a0;--green2:#1a9970;
+  --blue:#4d9cf7;--blue2:#2e7dd4;
+  --red:#f0645a;--amber:#f4a030;--purple:#a98df4;
+  --r:10px;--r-sm:6px;
+  --font:'Barlow',sans-serif;--font-cond:'Barlow Condensed',sans-serif;--font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.5;min-height:100vh;}
+a{text-decoration:none;color:inherit;}
+
+/* ── Layout ── */
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px 60px;}
+
+/* ── Header ── */
+.site-header{border-bottom:1px solid var(--border);padding:14px 0;display:flex;align-items:center;gap:12px;}
+.logo-text{font-family:var(--font-cond);font-size:18px;font-weight:700;letter-spacing:.06em;}
+.logo-sub{font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;}
+.live-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(45,212,160,.12);color:var(--green);font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;border:1px solid rgba(45,212,160,.3);letter-spacing:.05em;margin-left:auto;}
+.live-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── Hero ── */
+.hero{padding:32px 0 24px;border-bottom:1px solid var(--border);margin-bottom:28px;}
+.hero-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;}
+.hero h1{font-family:var(--font-cond);font-size:40px;font-weight:700;letter-spacing:.02em;line-height:1.1;margin-bottom:6px;}
+.hero h1 span{color:var(--gold);}
+.hero p{color:var(--text2);font-size:14px;}
+.host-flags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.host-flag{background:var(--bg-pill);border:1px solid var(--border2);border-radius:20px;padding:4px 12px;font-size:13px;display:flex;align-items:center;gap:6px;}
+.cd-box{background:var(--bg-card);border:1px solid var(--border2);border-radius:var(--r);padding:18px 22px;text-align:center;min-width:225px;}
+.cd-label{font-size:10px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+.cd-timer{font-family:var(--font-mono);font-size:20px;font-weight:500;color:var(--gold);letter-spacing:.04em;}
+.cd-sub{font-size:11px;color:var(--text3);margin-top:7px;}
+
+/* ── Stats strip ── */
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;}
+.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:16px 18px;}
+.s-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.s-value{font-family:var(--font-cond);font-size:36px;font-weight:700;line-height:1;}
+.s-sub{font-size:11px;color:var(--text3);margin-top:5px;}
+.stat-card.accent .s-value{color:var(--green);}
+
+/* ── Section label ── */
+.section-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── Panel ── */
+.panel{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:20px 22px;}
+.panel-head{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.panel-title{font-size:13px;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.06em;}
+.panel-badge{margin-left:auto;font-size:10px;color:var(--text3);background:var(--bg-pill);border:1px solid var(--border);padding:2px 8px;border-radius:4px;}
+
+/* ── Tags ── */
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;letter-spacing:.04em;white-space:nowrap;}
+.tag-blue{background:rgba(77,156,247,.15);color:var(--blue);border:1px solid rgba(77,156,247,.25);}
+.tag-green{background:rgba(45,212,160,.12);color:var(--green);border:1px solid rgba(45,212,160,.2);}
+.tag-gold{background:rgba(244,185,66,.12);color:var(--gold);border:1px solid rgba(244,185,66,.2);}
+.tag-red{background:rgba(240,100,90,.12);color:var(--red);border:1px solid rgba(240,100,90,.2);}
+.tag-purple{background:rgba(169,141,244,.12);color:var(--purple);border:1px solid rgba(169,141,244,.2);}
+.tag-gray{background:rgba(255,255,255,.05);color:var(--text2);border:1px solid var(--border2);}
+
+/* ── News feed ── */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.news-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;transition:border-color .2s;}
+.news-card:hover{border-color:var(--border2);}
+.news-card a{display:flex;flex-direction:column;height:100%;}
+.news-thumb{height:110px;background:var(--bg-pill);background-size:cover;background-position:center;flex-shrink:0;}
+.news-body{padding:12px;flex:1;display:flex;flex-direction:column;}
+.news-source{font-size:10px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;display:flex;align-items:center;gap:5px;}
+.news-title{font-size:12px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:6px;flex:1;}
+.news-date{font-size:10px;color:var(--text3);margin-top:auto;}
+.news-loading{color:var(--text3);font-size:13px;padding:20px 0;text-align:center;}
+
+/* ── Rankings ── */
+.rank-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.rank-row:last-child{margin-bottom:0;}
+.rank-team{font-size:12px;font-weight:500;color:var(--text);min-width:105px;}
+.rank-bar-wrap{flex:1;height:18px;background:var(--bg-pill);border-radius:3px;overflow:hidden;}
+.rank-bar{height:100%;border-radius:3px;transition:width .9s ease;}
+.rank-pct{font-size:11px;color:var(--text3);min-width:30px;text-align:right;}
+
+/* ── Storylines ── */
+.story-item{padding:11px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start;}
+.story-item:last-child{border-bottom:none;padding-bottom:0;}
+.story-text h4{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.story-text p{font-size:11px;color:var(--text2);line-height:1.4;}
+
+/* ── Groups ── */
+.group-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;}
+.group-title{font-family:var(--font-cond);font-size:16px;font-weight:700;color:var(--gold);letter-spacing:.05em;margin-bottom:10px;}
+.group-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);}
+.group-row:last-child{border-bottom:none;padding-bottom:0;}
+.group-team{font-size:12px;color:var(--text);flex:1;}
+.group-seed{font-size:10px;font-weight:600;color:var(--gold2);}
+
+/* ── Players ── */
+.player-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.player-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;display:flex;gap:10px;align-items:flex-start;transition:border-color .2s;}
+.player-card:hover{border-color:var(--border2);}
+.player-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0;}
+.player-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.player-meta{font-size:11px;color:var(--text3);margin-bottom:6px;}
+
+/* ── Timeline ── */
+.tl-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.tl-row:last-child{border-bottom:none;}
+.tl-date{font-family:var(--font-mono);font-size:11px;color:var(--text3);min-width:78px;}
+.tl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.tl-sq{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.tl-text{font-size:12px;color:var(--text);}
+.tl-text.featured{font-weight:600;color:var(--gold);}
+
+/* ── Host cards ── */
+.host-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px;margin-bottom:10px;}
+.host-card:last-child{margin-bottom:0;}
+.host-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.host-name{font-size:14px;font-weight:600;color:var(--text);}
+.host-venues{font-size:11px;color:var(--text3);}
+.host-stat{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;}
+.host-stat:last-child{margin-bottom:0;}
+.hs-label{color:var(--text3);}
+.hs-val{font-weight:600;color:var(--text);}
+
+/* ── Phase cards ── */
+.phase-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.phase-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;}
+.phase-card.active-phase{border-color:var(--green2);background:rgba(26,153,112,.08);}
+.phase-num{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+.phase-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.phase-desc{font-size:11px;color:var(--text3);line-height:1.4;}
+
+.hashtag-chip{display:inline-flex;align-items:center;gap:4px;background:var(--bg-pill);border:1px solid var(--border2);border-radius:20px;padding:5px 13px;font-size:12px;font-weight:600;color:var(--text);text-decoration:none;transition:all .2s;}
+.hashtag-chip:hover{border-color:var(--hc,var(--blue));color:var(--hc,var(--blue));background:rgba(255,255,255,.04);}
+
+/* ── Grids ── */
+.grid-2{display:grid;grid-template-columns:1.2fr 0.8fr;gap:16px;margin-bottom:28px;align-items:start;}
+.grid-2b{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;align-items:start;}
+
+/* ── Footer ── */
+.site-footer{border-top:1px solid var(--border);padding:20px 0;text-align:center;color:var(--text3);font-size:12px;}
+.site-footer a{color:var(--text3);text-decoration:underline;}
+
+/* ── Responsive ── */
+/* ── Responsive ── */
+@media(max-width:820px){
+  /* Layout */
+  .grid-2,.grid-2b{grid-template-columns:1fr!important;}
+  .hero-inner{flex-direction:column;}
+  .hero h1{font-size:30px;}
+  .cd-box{width:100%;}
+  /* Grids → 2 col */
+  .stats-strip{grid-template-columns:repeat(2,1fr);}
+  .player-grid{grid-template-columns:repeat(2,1fr)!important;}
+  .phase-grid{grid-template-columns:repeat(2,1fr);}
+  .news-grid{grid-template-columns:1fr 1fr;}
+  .grp-row-4{grid-template-columns:repeat(2,1fr)!important;}
+  /* Nav hub 6-col → 3-col */
+  .wrap > div[style*="repeat(6"]{grid-template-columns:repeat(3,1fr)!important;}
+  /* Host card */
+  .host-card{margin-bottom:8px;}
+  /* Group tabs wrap */
+  #grp-tabs{flex-wrap:wrap;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+  /* Opening day 3-col → 1-col */
+  div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  /* H2H comparison within panel */
+  div[style*="grid-template-columns:1fr auto 1fr"]{gap:8px;}
+}
+@media(max-width:540px){
+  /* Single column everything */
+  .stats-strip{grid-template-columns:1fr 1fr;}
+  .news-grid{grid-template-columns:1fr!important;}
+  .player-grid{grid-template-columns:1fr 1fr!important;}
+  .phase-grid{grid-template-columns:1fr 1fr;}
+  .grp-row-4{grid-template-columns:repeat(2,1fr)!important;}
+  /* Nav hub → 2-col */
+  .wrap > div[style*="repeat(6"]{grid-template-columns:repeat(2,1fr)!important;}
+  /* Header social icons */
+  .site-header{flex-wrap:wrap;gap:8px;}
+  /* Hero */
+  .hero h1{font-size:26px;}
+  /* Countdown timer font */
+  .cd-timer{font-size:16px!important;}
+  /* Stat cards */
+  .s-value{font-size:28px!important;}
+  /* Host spotlight stack */
+  #host-spotlight{grid-template-columns:1fr!important;}
+  /* Timeline */
+  .tl-date{min-width:60px!important;font-size:10px;}
+  /* Group table overflow */
+  #grp-display{overflow-x:auto;}
+  /* Opening day fixtures → 1 col */
+  div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  /* Golden boot → 2 col */
+  div[style*="repeat(4,1fr)"].player-grid{grid-template-columns:repeat(2,1fr)!important;}
+  /* Section label font */
+  .section-label{font-size:10px;}
+  /* Wrap padding */
+  .wrap{padding:0 14px 40px;}
+  /* Rankings header → hidden, JS handles mobile layout */
+  #rankings-header{display:none!important;}
+  /* Rankings legend */
+  div[style*="display:flex;gap:14px;margin-bottom:14px"]{flex-wrap:wrap;gap:8px!important;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ══ HEADER ══ -->
+  <header class="site-header">
+  <img src="wc2026_logo.png" alt="FIFA World Cup 2026" style="height:38px;width:auto;object-fit:contain;flex-shrink:0;" onerror="this.style.display='none'">
+  <div style="width:1px;height:32px;background:var(--border2);flex-shrink:0;"></div>
+  <i class="ti ti-trophy" style="font-size:18px;color:var(--gold);" aria-hidden="true"></i>
+    <div>
+      <div class="logo-text">WC 2026 Intelligence</div>
+      <div class="logo-sub">World Cup Command Center · Phase 1</div>
+    </div>
+    <span class="live-badge">Live Data Active</span>
+  <div style="display:flex;gap:6px;margin-left:16px;">
+    <a href="https://x.com/FIFAWorldCup" target="_blank" rel="noopener" title="@FIFAWorldCup on X" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--bg-pill);border:1px solid var(--border2);border-radius:6px;color:var(--text2);text-decoration:none;transition:all .2s;font-size:15px;" onmouseover="this.style.borderColor='var(--text)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text2)'"><i class="ti ti-brand-x"></i></a>
+    <a href="https://www.instagram.com/fifaworldcup/" target="_blank" rel="noopener" title="@fifaworldcup on Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--bg-pill);border:1px solid var(--border2);border-radius:6px;color:var(--text2);text-decoration:none;transition:all .2s;font-size:15px;" onmouseover="this.style.borderColor='#e1306c';this.style.color='#e1306c'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text2)'"><i class="ti ti-brand-instagram"></i></a>
+    <a href="https://www.youtube.com/@FIFA" target="_blank" rel="noopener" title="FIFA on YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--bg-pill);border:1px solid var(--border2);border-radius:6px;color:var(--text2);text-decoration:none;transition:all .2s;font-size:15px;" onmouseover="this.style.borderColor='#ff0000';this.style.color='#ff0000'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--text2)'"><i class="ti ti-brand-youtube"></i></a>
+  </div>
+  </header>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1>World Cup<br><span>Command Center</span></h1>
+        <p>Pre-tournament intelligence dashboard · Live data · Updated automatically</p>
+        <div class="host-flags">
+          <span class="host-flag">🇺🇸 United States</span>
+          <span class="host-flag">🇲🇽 Mexico</span>
+          <span class="host-flag">🇨🇦 Canada</span>
+          <span class="host-flag" style="color:var(--text3);">Jun 11 – Jul 19, 2026</span>
+        </div>
+      </div>
+      <div class="cd-box">
+        <div class="cd-label"><i class="ti ti-clock" aria-hidden="true" style="font-size:12px;margin-right:3px;"></i>Opening match countdown</div>
+        <div class="cd-timer" id="countdown">Loading…</div>
+        <div class="cd-sub">Jun 11, 2026 · Azteca Stadium, Mexico City</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ STATS STRIP ══ -->
+  <div class="stats-strip">
+    <div class="stat-card">
+      <div class="s-label"><i class="ti ti-users" aria-hidden="true"></i>Qualified teams</div>
+      <div class="s-value">48</div>
+      <div class="s-sub">↑ 16 more than Qatar 2022</div>
+    </div>
+    <div class="stat-card">
+      <div class="s-label"><i class="ti ti-ball-football" aria-hidden="true"></i>Total matches</div>
+      <div class="s-value">104</div>
+      <div class="s-sub">Record-breaking tournament</div>
+    </div>
+    <div class="stat-card">
+      <div class="s-label"><i class="ti ti-map-pin" aria-hidden="true"></i>Host venues</div>
+      <div class="s-value">16</div>
+      <div class="s-sub">Across 3 nations</div>
+    </div>
+    <div class="stat-card accent">
+      <div class="s-label"><i class="ti ti-clock" aria-hidden="true"></i>Days to kickoff</div>
+      <div class="s-value" id="days-big">—</div>
+      <div class="s-sub">Final: Jul 19 · MetLife, NJ</div>
+    </div>
+  </div>
+
+  <!-- ══ QUICK NAVIGATION HUB ══ -->
+  <div class="section-label"><i class="ti ti-apps" aria-hidden="true" style="font-size:13px;"></i>Command Center Core Modules</div>
+  <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-bottom: 28px;" class="grp-row-4">
+    <a href="fixtures.html" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
+      <i class="ti ti-calendar-time" style="font-size: 20px; color: var(--gold); margin-bottom: 6px;"></i>
+      <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Full Fixtures</span>
+    </a>
+    <a href="phase2.html" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--blue)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
+      <i class="ti ti-layout-grid" style="font-size: 20px; color: var(--blue); margin-bottom: 6px;"></i>
+      <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Team Analyzer</span>
+    </a>
+    <a href="#opening-spotlight" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--green)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
+      <i class="ti ti-ball-football" style="font-size: 20px; color: var(--green); margin-bottom: 6px;"></i>
+      <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Today's Match</span>
+    </a>
+    <a href="compare.html" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--amber)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
+      <i class="ti ti-arrows-diff" style="font-size: 20px; color: var(--amber); margin-bottom: 6px;"></i>
+      <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Compare Teams</span>
+    </a>
+    <a href="simulator.html" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--purple)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
+      <i class="ti ti-player-play" style="font-size: 20px; color: var(--purple); margin-bottom: 6px;"></i>
+      <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Simulator</span>
+    </a>
+    <a href="#news-feed-section" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--red)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
+      <i class="ti ti-news" style="font-size: 20px; color: var(--red); margin-bottom: 6px;"></i>
+      <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Intelligence Feed</span>
+    </a>
+    <a href="#host-spotlight" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--text2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
+      <i class="ti ti-map-pin-filled" style="font-size: 20px; color: var(--text2); margin-bottom: 6px;"></i>
+      <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Stadium Hub</span>
+    </a>
+  </div>
+
+  <!-- ══ CONTENDER INTELLIGENCE ══ -->
+  <div class="section-label"><i class="ti ti-podium" aria-hidden="true" style="font-size:13px;"></i>Contender intelligence</div>
+  <div style="margin-bottom:28px;">
+    <div class="panel">
+      <div class="panel-head">
+        <i class="ti ti-podium" aria-hidden="true" style="font-size:15px;color:var(--text3);"></i>
+        <span class="panel-title">Power rankings</span>
+        <span class="panel-badge">FIFA Apr 2026 + Form</span>
+      </div>
+      <div style="display:flex;gap:16px;margin-bottom:14px;font-size:11px;color:var(--text3);flex-wrap:wrap;">
+        <span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:var(--green);display:inline-block;"></span>Excellent form</span>
+        <span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:var(--amber);display:inline-block;"></span>Mixed form</span>
+        <span style="display:flex;align-items:center;gap:4px;"><span style="width:9px;height:9px;border-radius:2px;background:var(--red);display:inline-block;"></span>Poor form</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--text3);">Score = 60% FIFA rank · 40% recent form</span>
+      </div>
+      <div id="rankings-header" style="display:grid;grid-template-columns:28px 1fr 72px 90px 120px;gap:6px;align-items:center;padding:0 4px 8px;border-bottom:1px solid var(--border);margin-bottom:4px;">
+        <span style="font-size:10px;color:var(--text3);font-weight:600;">#</span>
+        <span style="font-size:10px;color:var(--text3);font-weight:600;">Team</span>
+        <span style="font-size:10px;color:var(--text3);font-weight:600;text-align:right;">FIFA pts</span>
+        <span style="font-size:10px;color:var(--text3);font-weight:600;text-align:center;">Last 5</span>
+        <span style="font-size:10px;color:var(--text3);font-weight:600;text-align:right;">Power score</span>
+      </div>
+      <div id="rankings-list"></div>
+      <div style="margin-top:12px;font-size:10px;color:var(--text3);display:flex;align-items:center;gap:5px;">
+        <i class="ti ti-info-circle" aria-hidden="true" style="font-size:11px;"></i>
+        FIFA ranking: Official update Apr 1, 2026 · Next update Jun 11, 2026 ·
+        Form based on March 2026 international window results
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TODAY'S SPOTLIGHT ══ -->
+  <div id="opening-spotlight" class="section-label"><i class="ti ti-live-view" aria-hidden="true" style="font-size:13px;"></i>Today's spotlight</div>
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="panel-head">
+      <i class="ti ti-ball-football" aria-hidden="true" style="font-size:15px;color:var(--green);"></i>
+      <span class="panel-title" id="featured-panel-title">Loading match…</span>
+      <span class="panel-badge" id="match-day-badge">Countdown active</span>
+    </div>
+    <div id="featured-match-card" style="background:var(--bg-card2);border:1px solid var(--border2);border-radius:var(--r-sm);padding:20px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;cursor:pointer;transition:all .2s;position:relative;min-height:120px;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border2)'">
+      <span style="color:var(--text3);font-size:12px;width:100%;text-align:center;">Loading featured match…</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;" class="player-grid">
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center;">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;">Group D · Jun 12</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+          <div><div style="font-size:22px;">🇺🇸</div><div style="font-size:11px;font-weight:600;color:var(--text);">USA</div></div>
+          <div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>
+          <div><div style="font-size:22px;">🇵🇾</div><div style="font-size:11px;font-weight:600;color:var(--text);">Paraguay</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--text3);margin-top:6px;">SoFi Stadium · Los Angeles</div>
+      </div>
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center;">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;">Group J · Jun 13</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+          <div><div style="font-size:22px;">🇦🇷</div><div style="font-size:11px;font-weight:600;color:var(--text);">Argentina</div></div>
+          <div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>
+          <div><div style="font-size:22px;">🇩🇿</div><div style="font-size:11px;font-weight:600;color:var(--text);">Algeria</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--text3);margin-top:6px;">MetLife Stadium · New Jersey</div>
+      </div>
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center;">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;">Group I · Jun 13</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+          <div><div style="font-size:22px;">🇫🇷</div><div style="font-size:11px;font-weight:600;color:var(--text);">France</div></div>
+          <div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>
+          <div><div style="font-size:22px;">🇸🇳</div><div style="font-size:11px;font-weight:600;color:var(--text);">Senegal</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--text3);margin-top:6px;">AT&amp;T Stadium · Dallas</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:var(--text3);"><i class="ti ti-info-circle" aria-hidden="true" style="font-size:12px;margin-right:4px;vertical-align:-1px;"></i>Fixture times shown in IST · Live scores will appear here from Jun 11 via <a href="https://www.sofascore.com/football/tournament/world/world-championship/16" target="_blank" rel="noopener" style="color:var(--blue);">SofaScore</a> or <a href="https://www.bbc.co.uk/sport/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">BBC Sport</a></div>
+  </div>
+
+  <!-- ══ GROUP STAGE DRAW ══ -->
+  <div id="group-draw" class="section-label"><i class="ti ti-layout-grid" aria-hidden="true" style="font-size:13px;"></i>Group stage draw</div>
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="panel-head">
+      <i class="ti ti-layout-grid" aria-hidden="true" style="font-size:15px;color:var(--gold);"></i>
+      <span class="panel-title">All 12 groups</span>
+      <span class="panel-badge" id="grp-badge">Official draw · Dec 5, 2025</span>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;" id="grp-tabs"></div>
+    <div id="grp-display"></div>
+    <div style="margin-top:10px;font-size:11px;color:var(--text3);"><i class="ti ti-info-circle" aria-hidden="true" style="font-size:12px;margin-right:4px;vertical-align:-1px;"></i>P=Played W=Won D=Drawn L=Lost GD=Goal Difference Pts=Points · Standings populate from Jun 11</div>
+  </div>
+
+  <!-- ══ TODAY'S MATCHES ══ -->
+  <div class="section-label"><i class="ti ti-calendar-event" aria-hidden="true" style="font-size:13px;"></i><span id="matches-label">Match schedule</span></div>
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="panel-head">
+      <i class="ti ti-ball-football" aria-hidden="true" style="font-size:15px;color:var(--green);"></i>
+      <span class="panel-title">Live & upcoming</span>
+      <span class="panel-badge">Auto-updates every 3 min from Jun 11</span>
+    </div>
+    <a href="fixtures.html" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(244,185,66,.12),var(--bg-pill));border:1px solid rgba(244,185,66,.3);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:14px;transition:all .2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(244,185,66,.3)'">
+      <i class="ti ti-calendar-time" style="font-size:24px;color:var(--gold);flex-shrink:0;" aria-hidden="true"></i>
+      <div style="flex:1;min-width:0;">
+        <div style="font-family:var(--font-cond);font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.03em;">Full Fixture — Local Timing &amp; Channels</div>
+        <div style="font-size:12px;color:var(--text2);">All 104 matches in IST · venues · Zee5 &amp; Unite8 Sports 1 &amp; 2 HD</div>
+      </div>
+      <span style="font-size:12px;font-weight:600;color:var(--gold);white-space:nowrap;">View all →</span>
+    </a>
+    <div id="todays-matches">
+      <!-- ━ Quick links to live score providers ━ -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;" class="grp-row-4">
+        <a href="https://www.sofascore.com/football/tournament/world/world-championship/16" target="_blank" rel="noopener" style="background:var(--bg-pill);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:var(--r-sm);padding:10px 12px;text-decoration:none;display:flex;flex-direction:column;gap:2px;transition:.2s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)';this.style.borderLeftColor='var(--red)'">
+          <span style="font-size:10px;color:var(--red);font-weight:700;letter-spacing:.1em;text-transform:uppercase;">● Live now</span>
+          <span style="font-size:13px;font-weight:600;color:var(--text);">SofaScore</span>
+          <span style="font-size:10px;color:var(--text3);">Goals · stats · xG · momentum</span>
+        </a>
+        <a href="https://www.bbc.co.uk/sport/football/world-cup/scores-fixtures" target="_blank" rel="noopener" style="background:var(--bg-pill);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--r-sm);padding:10px 12px;text-decoration:none;display:flex;flex-direction:column;gap:2px;transition:.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.borderLeftColor='var(--gold)'">
+          <span style="font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.1em;text-transform:uppercase;">● Live text</span>
+          <span style="font-size:13px;font-weight:600;color:var(--text);">BBC Sport</span>
+          <span style="font-size:10px;color:var(--text3);">Live commentary · highlights</span>
+        </a>
+        <a href="https://www.flashscore.com/football/world/world-cup/" target="_blank" rel="noopener" style="background:var(--bg-pill);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:var(--r-sm);padding:10px 12px;text-decoration:none;display:flex;flex-direction:column;gap:2px;transition:.2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)';this.style.borderLeftColor='var(--blue)'">
+          <span style="font-size:10px;color:var(--blue);font-weight:700;letter-spacing:.1em;text-transform:uppercase;">● Live scores</span>
+          <span style="font-size:13px;font-weight:600;color:var(--text);">FlashScore</span>
+          <span style="font-size:10px;color:var(--text3);">Fastest score updates</span>
+        </a>
+      </div>
+
+      <!-- ━ SportBusy WC2026 fixture widget ━ -->
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;">
+        <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--bg-pill);font-size:11px;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;font-weight:600;">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);"></span>
+          Fixtures · live status from SportBusy
+          <a href="https://www.sportbusy.com/world-cup-2026/" target="_blank" rel="noopener" style="margin-left:auto;color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:none;">Open full schedule →</a>
+        </div>
+        <iframe src="https://www.sportbusy.com/embed/world-cup?theme=dark"
+                style="width:100%;height:560px;border:none;background:var(--bg-card2);display:block;"
+                loading="lazy"
+                title="SportBusy World Cup 2026 fixture widget"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div style="margin-top:8px;font-size:11px;color:var(--text3);text-align:center;line-height:1.5;">
+        Widget shows the 2026 schedule with scheduled / live / final status. For in-match goal-by-goal action, tap a live-score provider above.
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ LATEST NEWS ══ -->
+  <div id="news-feed-section" class="section-label"><i class="ti ti-news" aria-hidden="true" style="font-size:13px;"></i>Latest football news</div>
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="panel-head">
+      <i class="ti ti-rss" aria-hidden="true" style="font-size:15px;color:var(--red);"></i>
+      <span class="panel-title">World Cup 2026 news feed</span>
+      <span class="panel-badge">Auto-refreshes on every load</span>
+    </div>
+    <div class="news-grid" id="news-grid">
+      <div class="news-loading" style="grid-column:1/-1;">
+        <i class="ti ti-loader-2" aria-hidden="true" style="font-size:18px;margin-bottom:8px;display:block;animation:spin 1s linear infinite;"></i>
+        Loading latest news from BBC Sport…
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+      <i class="ti ti-filter" aria-hidden="true" style="font-size:12px;"></i>
+      Filtered to World Cup 2026 stories only ·
+      Sources: <a href="https://www.theguardian.com/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">The Guardian</a>
+      · Content © Guardian News &amp; Media ·
+      <a href="https://open-platform.theguardian.com/access/" target="_blank" rel="noopener" style="color:var(--text3);">Get free API key for higher limits</a>
+    </div>
+  </div>
+
+  <!-- ══ SOCIAL BUZZ ══ -->
+  <div class="section-label"><i class="ti ti-brand-x" aria-hidden="true" style="font-size:13px;"></i>Social buzz</div>
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="panel-head">
+      <i class="ti ti-trending-up" aria-hidden="true" style="font-size:15px;color:var(--amber);"></i>
+      <span class="panel-title">World Cup 2026 social hub</span>
+      <span class="panel-badge">Trending topics · Live links</span>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <p style="font-size:11px;color:var(--text3);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:6px;">
+        <i class="ti ti-flame" aria-hidden="true" style="font-size:12px;color:var(--amber);"></i>
+        Trending on X right now — click any tag to explore live
+      </p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="https://x.com/search?q=%23FIFAWorldCup&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--gold);">#FIFAWorldCup</a>
+        <a href="https://x.com/search?q=%23WC2026&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--gold);">#WC2026</a>
+        <a href="https://x.com/search?q=%23WorldCup2026&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--blue);">#WorldCup2026</a>
+        <a href="https://x.com/search?q=%23Mbappe+worldcup&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--blue);">#Mbappé</a>
+        <a href="https://x.com/search?q=%23Messi+worldcup2026&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--gold);">#Messi</a>
+        <a href="https://x.com/search?q=%23Ronaldo+worldcup&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--blue);">#Ronaldo</a>
+        <a href="https://x.com/search?q=%23England+worldcup2026&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--green);">#England</a>
+        <a href="https://x.com/search?q=%23Brazil+worldcup2026&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--gold);">#Brazil</a>
+        <a href="https://x.com/search?q=%23Argentina+worldcup&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--blue);">#Argentina</a>
+        <a href="https://x.com/search?q=%23France+worldcup2026&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--blue);">#France</a>
+        <a href="https://x.com/search?q=%23GoldenBoot+2026&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--gold);">#GoldenBoot</a>
+        <a href="https://x.com/search?q=%23LastDance+Messi+Ronaldo&f=live" target="_blank" rel="noopener" class="hashtag-chip" style="--hc:var(--purple);">#LastDance</a>
+      </div>
+    </div>
+
+    <div>
+      <p style="font-size:11px;color:var(--text3);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:6px;">
+        <i class="ti ti-message-circle" aria-hidden="true" style="font-size:12px;"></i>
+        Hot topics the football world is talking about
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;" class="player-grid">
+        <a href="https://x.com/search?q=Messi+Ronaldo+last+world+cup+2026&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">🐐</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Messi & Ronaldo — Last dance</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">The football world debates the GOAT farewell at WC 2026</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--gold);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=Mbappe+France+world+cup+2026&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">⚡</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Can France go back-to-back?</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">Mbappé leads the FIFA #1 ranked side into the tournament</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--blue);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=England+World+Cup+2026+Kane&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">60 years of hurt — finally?</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">England's best ever squad — Kane, Bellingham & Saka lead the charge</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--green);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=Brazil+world+cup+2026+form&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--amber)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">🇧🇷</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Brazil's alarming form crisis</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">Losses to Bolivia & Japan — can Vinicius Jr save the Selecao?</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--amber);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=Lamine+Yamal+world+cup+2026&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">🌟</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Yamal — the next big thing</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">At just 18, Spain's wunderkind could be the tournament's defining story</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--red);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=Neymar+comeback+world+cup+2026&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">💫</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Neymar's comeback story</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">Back from injury — can he recapture the magic for Brazil one last time?</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--gold);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=Germany+Wirtz+world+cup+2026&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--purple)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">🇩🇪</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Germany's quiet resurgence</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">Florian Wirtz leads a revitalised Germany — dark horse of the tournament?</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--purple);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=Morocco+World+Cup+2026+Africa&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">🇲🇦</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Morocco — Africa's standard bearer</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">FIFA #8, brilliant form — can they match Qatar 2022's sensational run?</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--green);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=Argentina+defending+champions+world+cup+2026&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">🏆</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Can Argentina defend the title?</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">No team has retained the World Cup since Brazil in 1962 — can Scaloni's men defy history?</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--gold);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=Japan+dark+horse+world+cup+2026&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--red)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">🇯🇵</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Japan — Asia's ultimate dark horse</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">Beat England at Wembley in March · UEFA giants are on notice</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--red);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=USA+host+nation+world+cup+2026+pressure&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">🇺🇸</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">Host nation pressure — USA</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">80,000 fans at MetLife — biggest football moment in American history</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--blue);font-weight:600;">Explore on X →</div>
+        </a>
+        <a href="https://x.com/search?q=48+team+format+world+cup+2026+debate&f=live" target="_blank" rel="noopener" style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-decoration:none;display:block;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--text2)'" onmouseout="this.style.borderColor='var(--border)'">
+          <div style="font-size:18px;margin-bottom:6px;">📊</div>
+          <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;">48 teams — too many or perfect?</div>
+          <div style="font-size:11px;color:var(--text3);line-height:1.4;">104 matches, 12 groups — fans & pundits divided on the expanded format</div>
+          <div style="margin-top:8px;font-size:10px;color:var(--text2);font-weight:600;">Explore on X →</div>
+        </a>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:5px;">
+      <i class="ti ti-info-circle" aria-hidden="true" style="font-size:11px;"></i>
+      X timeline embeds are restricted by X/Twitter for non-whitelisted domains · All links open live X searches in a new tab
+    </div>
+  </div>
+
+  <!-- ══ GOLDEN BOOT WATCH ══ -->
+  <div id="golden-boot" class="section-label"><i class="ti ti-medal" aria-hidden="true" style="font-size:13px;"></i>Golden boot watch</div>
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="panel-head">
+      <i class="ti ti-medal" aria-hidden="true" style="font-size:15px;color:var(--gold);"></i>
+      <span class="panel-title">Pre-tournament Golden Boot favourites</span>
+      <span class="panel-badge">Analyst predictions</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;" class="player-grid">
+      <div style="background:var(--bg-card2);border:1px solid var(--border2);border-radius:var(--r-sm);padding:14px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">🥇</div>
+        <div style="font-size:22px;margin-bottom:4px;">🇫🇷</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">K. Mbappé</div>
+        <div style="font-size:11px;color:var(--text3);margin:3px 0;">France · Forward</div>
+        <div style="font-size:10px;font-weight:600;color:var(--gold);">Top pick</div>
+      </div>
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">🥈</div>
+        <div style="font-size:22px;margin-bottom:4px;">🇧🇷</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">Vinicius Jr</div>
+        <div style="font-size:11px;color:var(--text3);margin:3px 0;">Brazil · Forward</div>
+        <div style="font-size:10px;font-weight:600;color:var(--text2);">Strong contender</div>
+      </div>
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">🥉</div>
+        <div style="font-size:22px;margin-bottom:4px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">H. Kane</div>
+        <div style="font-size:11px;color:var(--text3);margin:3px 0;">England · Forward</div>
+        <div style="font-size:10px;font-weight:600;color:var(--text2);">Goals machine</div>
+      </div>
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-align:center;">
+        <div style="font-size:24px;margin-bottom:6px;margin-top:4px;">⚡</div>
+        <div style="font-size:22px;margin-bottom:4px;">🇪🇸</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text);">L. Yamal</div>
+        <div style="font-size:11px;color:var(--text3);margin:3px 0;">Spain · Forward</div>
+        <div style="font-size:10px;font-weight:600;color:var(--red);">Dark horse</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:11px;color:var(--text3);"><i class="ti ti-info-circle" aria-hidden="true" style="font-size:12px;margin-right:4px;vertical-align:-1px;"></i>Live Golden Boot standings will be tracked here from Jun 11 · Predictions based on pre-tournament analyst consensus</div>
+  </div>
+
+  <!-- ══ PLAYERS TO WATCH ══ -->
+  <div class="section-label"><i class="ti ti-star" aria-hidden="true" style="font-size:13px;"></i>Players to watch</div>
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="panel-head">
+      <i class="ti ti-star" aria-hidden="true" style="font-size:15px;color:var(--gold);"></i>
+      <span class="panel-title">Pre-tournament watchlist</span>
+      <span class="panel-badge">Top 8</span>
+    </div>
+    <div class="player-grid" style="grid-template-columns:repeat(4,1fr);">
+      <div class="player-card">
+        <div class="player-avatar" style="background:rgba(77,156,247,.15);color:var(--blue);">KM</div>
+        <div><div class="player-name">Kylian Mbappé</div><div class="player-meta">France · Fwd · Real Madrid</div><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-blue">Captain</span><span class="tag tag-green">Top pick</span></div></div>
+      </div>
+      <div class="player-card">
+        <div class="player-avatar" style="background:rgba(45,212,160,.12);color:var(--green);">JB</div>
+        <div><div class="player-name">Jude Bellingham</div><div class="player-meta">England · Mid · Real Madrid</div><div style="display:flex;gap:5px;"><span class="tag tag-green">Playmaker</span></div></div>
+      </div>
+      <div class="player-card">
+        <div class="player-avatar" style="background:rgba(244,185,66,.12);color:var(--gold);">VJ</div>
+        <div><div class="player-name">Vinicius Jr</div><div class="player-meta">Brazil · Fwd · Real Madrid</div><div style="display:flex;gap:5px;"><span class="tag tag-gold">Key man</span></div></div>
+      </div>
+      <div class="player-card">
+        <div class="player-avatar" style="background:rgba(240,100,90,.12);color:var(--red);">LY</div>
+        <div><div class="player-name">Lamine Yamal</div><div class="player-meta">Spain · Fwd · Barcelona</div><div style="display:flex;gap:5px;"><span class="tag tag-red">Breakout star</span></div></div>
+      </div>
+      <div class="player-card">
+        <div class="player-avatar" style="background:rgba(169,141,244,.12);color:var(--purple);">FW</div>
+        <div><div class="player-name">Florian Wirtz</div><div class="player-meta">Germany · Mid · Leverkusen</div><div style="display:flex;gap:5px;"><span class="tag tag-purple">Dark horse</span></div></div>
+      </div>
+      <div class="player-card">
+        <div class="player-avatar" style="background:rgba(244,185,66,.15);color:var(--gold);">NJ</div>
+        <div><div class="player-name">Neymar Jr</div><div class="player-meta">Brazil · Fwd · Al Hilal</div><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-gold">Comeback king</span></div></div>
+      </div>
+      <div class="player-card" style="border-color:rgba(244,185,66,.3);">
+        <div class="player-avatar" style="background:rgba(244,185,66,.2);color:var(--gold);font-size:11px;">LM</div>
+        <div><div class="player-name" style="display:flex;align-items:center;gap:5px;">Lionel Messi <span>🐐</span></div><div class="player-meta">Argentina · Fwd · Inter Miami</div><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-gold">Last dance</span></div></div>
+      </div>
+      <div class="player-card" style="border-color:rgba(77,156,247,.3);">
+        <div class="player-avatar" style="background:rgba(77,156,247,.2);color:var(--blue);font-size:11px;">CR</div>
+        <div><div class="player-name" style="display:flex;align-items:center;gap:5px;">C. Ronaldo <span>🐐</span></div><div class="player-meta">Portugal · Fwd · Al Nassr</div><div style="display:flex;gap:5px;flex-wrap:wrap;"><span class="tag tag-blue">Last dance</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TIMELINE + HOST NATIONS ══ -->
+  <div id="host-spotlight" class="grid-2">
+    <div class="panel">
+      <div class="panel-head">
+        <i class="ti ti-calendar-event" aria-hidden="true" style="font-size:15px;color:var(--text3);"></i>
+        <span class="panel-title">Tournament timeline</span>
+      </div>
+      <div class="tl-row"><span class="tl-date">Jun 11</span><span class="tl-dot" style="background:var(--green);"></span><span class="tl-text featured">Opening match · Azteca Stadium</span></div>
+      <div class="tl-row"><span class="tl-date">Jun 11–Jul 2</span><span class="tl-sq" style="background:var(--blue);"></span><span class="tl-text">Group stage · 12 groups, 3 matches each</span></div>
+      <div class="tl-row"><span class="tl-date">Jul 4–8</span><span class="tl-sq" style="background:var(--blue);"></span><span class="tl-text">Round of 32</span></div>
+      <div class="tl-row"><span class="tl-date">Jul 9–11</span><span class="tl-sq" style="background:#888;"></span><span class="tl-text">Round of 16</span></div>
+      <div class="tl-row"><span class="tl-date">Jul 13–14</span><span class="tl-sq" style="background:var(--amber);"></span><span class="tl-text">Quarterfinals</span></div>
+      <div class="tl-row"><span class="tl-date">Jul 17–18</span><span class="tl-sq" style="background:var(--amber);"></span><span class="tl-text">Semifinals</span></div>
+      <div class="tl-row"><span class="tl-date">Jul 19</span><span class="tl-dot" style="background:var(--gold);"></span><span class="tl-text featured">The Final · MetLife Stadium, NJ</span></div>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom:12px;">Host nations spotlight</div>
+      <div class="host-card">
+        <div class="host-top"><span style="font-size:22px;">🇺🇸</span><div><div class="host-name">United States</div><div class="host-venues">11 venues · 78 matches</div></div></div>
+        <div class="host-stat"><span class="hs-label">Final venue</span><span class="hs-val">MetLife Stadium, NJ</span></div>
+        <div class="host-stat"><span class="hs-label">Analyst rating</span><span style="color:var(--green);font-weight:600;">QF contender</span></div>
+      </div>
+      <div class="host-card">
+        <div class="host-top"><span style="font-size:22px;">🇲🇽</span><div><div class="host-name">Mexico</div><div class="host-venues">3 venues · 13 matches</div></div></div>
+        <div class="host-stat"><span class="hs-label">Opening match</span><span class="hs-val">Jun 11 · Azteca Stadium</span></div>
+        <div class="host-stat"><span class="hs-label">Analyst rating</span><span style="color:var(--amber);font-weight:600;">Round of 16 likely</span></div>
+      </div>
+      <div class="host-card">
+        <div class="host-top"><span style="font-size:22px;">🇨🇦</span><div><div class="host-name">Canada</div><div class="host-venues">2 venues · 13 matches</div></div></div>
+        <div class="host-stat"><span class="hs-label">Cities</span><span class="hs-val">Toronto · Vancouver</span></div>
+        <div class="host-stat"><span class="hs-label">Analyst rating</span><span style="color:var(--red);font-weight:600;">Group stage exit risk</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROADMAP ══ -->
+  <div class="section-label" style="margin-top:28px;"><i class="ti ti-map" aria-hidden="true" style="font-size:13px;"></i>Dashboard evolution roadmap</div>
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="phase-grid">
+      <div class="phase-card active-phase">
+        <div class="phase-num"><i class="ti ti-check" aria-hidden="true" style="font-size:11px;color:var(--green);margin-right:3px;"></i>Phase 1 · Live</div>
+        <div class="phase-name">Home Dashboard</div>
+        <div class="phase-desc">Live scores · standings · schedule · BBC news · rankings</div>
+      </div>
+      <div class="phase-card active-phase">
+        <div class="phase-num"><i class="ti ti-check" aria-hidden="true" style="font-size:11px;color:var(--blue);margin-right:3px;"></i>Phase 2 · Live</div>
+        <div class="phase-name">Team Analyzer + Compare</div>
+        <div class="phase-desc">Formation · Best XI · xG · Injuries · H2H · History · Head-to-head comparison</div>
+        <div style="display:flex;gap:6px;margin-top:10px;">
+          <a href="phase2.html" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--blue);background:rgba(77,156,247,.1);border:1px solid rgba(77,156,247,.2);padding:3px 9px;border-radius:4px;">Analyzer →</a>
+          <a href="compare.html" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--green);background:rgba(45,212,160,.1);border:1px solid rgba(45,212,160,.2);padding:3px 9px;border-radius:4px;">Compare →</a>
+        </div>
+      </div>
+      <div class="phase-card active-phase">
+        <div class="phase-num"><i class="ti ti-check" aria-hidden="true" style="font-size:11px;color:var(--green);margin-right:3px;"></i>Phase 3 · Live</div>
+        <div class="phase-name">Match Simulator</div>
+        <div class="phase-desc">Simulate any matchup · xG · events · tactics · penalties</div>
+        <a href="simulator.html" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--green);background:rgba(45,212,160,.1);border:1px solid rgba(45,212,160,.2);padding:3px 9px;border-radius:4px;margin-top:10px;">Simulate →</a>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num"><i class="ti ti-lock" aria-hidden="true;margin-right:3px;"></i>Phase 4 · Coming</div>
+        <div class="phase-name">Prediction Engine</div>
+        <div class="phase-desc">Bracket builder · fan polls · AI-powered picks</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    <div class="site-footer">
+      <p>World Cup 2026 Command Center · News via <a href="https://www.theguardian.com/football" target="_blank" rel="noopener">The Guardian</a> · Official info at <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener">FIFA.com</a></p>
+      <p style="margin-top:6px;">For official tournament info visit <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener">FIFA.com</a></p>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px;">
+        <span style="font-size:13px;color:var(--text3);">Designed &amp; built by</span>
+        <span style="font-family:var(--font-cond);font-size:15px;font-weight:700;letter-spacing:.06em;color:var(--gold);">Debapam Ghosh</span>
+        <span style="color:var(--text3);font-size:12px;">· &copy; 2026 · All rights reserved</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// FEATURED-MATCH SCHEDULER  ·  reads matches.json, picks the
+// current/next match by UTC time, renders the Tournament Kickoff
+// card + countdown, re-evaluates every 30 seconds.
+// ══════════════════════════════════════════════════════════════
+(function featuredMatch(){
+  var MATCH_DURATION_MS = 110 * 60 * 1000;   // 90 + 15 ht + 5 it
+  var DATA_URL = 'matches.json';
+  var matchesData = null;
+  var currentMatchId = null;
+
+  function pickFeatured(data){
+    if(!data || !data.matches || !data.matches.length) return null;
+    var now = Date.now();
+    var sorted = data.matches.slice().sort(function(a,b){
+      return new Date(a.kickoffUTC) - new Date(b.kickoffUTC);
+    });
+    for(var i=0;i<sorted.length;i++){
+      var m = sorted[i];
+      var ko = new Date(m.kickoffUTC).getTime();
+      var end = m.estimatedEndUTC ? new Date(m.estimatedEndUTC).getTime() : (ko + MATCH_DURATION_MS);
+      if(now < end){
+        return { match: m, status: now < ko ? 'upcoming' : 'live' };
+      }
+    }
+    return { match: sorted[sorted.length-1], status: 'final' };
+  }
+
+  function fmtIST(utc){
+    var d = new Date(utc);
+    // IST = UTC+5:30
+    var istMs = d.getTime() + (5.5 * 3600000);
+    var ist = new Date(istMs);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[ist.getUTCMonth()] + ' ' + ist.getUTCDate() + ' · ' +
+           String(ist.getUTCHours()).padStart(2,'0') + ':' +
+           String(ist.getUTCMinutes()).padStart(2,'0') + ' IST';
+  }
+
+  function fmtCountdown(targetUtc, status){
+    if(status === 'live') return 'LIVE NOW';
+    if(status === 'final') return 'Full time';
+    var diff = new Date(targetUtc) - new Date();
+    if(diff <= 0) return 'LIVE NOW';
+    var d = Math.floor(diff/86400000);
+    var h = Math.floor((diff%86400000)/3600000);
+    var m = Math.floor((diff%3600000)/60000);
+    if(d > 0) return 'In '+d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m';
+    return 'In '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m';
+  }
+
+  function panelTitle(match, status){
+    var d = new Date(match.kickoffUTC);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var dateStr = months[d.getUTCMonth()] + ' ' + d.getUTCDate();
+    if(status === 'upcoming' && match.tags && match.tags.indexOf('opening-match') !== -1) {
+      return dateStr + ' — Tournament kickoff';
+    }
+    if(status === 'live') return 'Live now — ' + match.home.name + ' vs ' + match.away.name;
+    if(status === 'final') return 'Latest result';
+    return dateStr + ' — Next up';
+  }
+
+  function badgeText(status){
+    if(status === 'live') return 'LIVE · in progress';
+    if(status === 'final') return 'Full time';
+    return 'Countdown active';
+  }
+
+  function hostLabel(team, groupCode){
+    var bits = [];
+    if(team.isHost) bits.push('Host');
+    bits.push('Group ' + groupCode);
+    return bits.join(' · ');
+  }
+
+  function renderCard(match, status){
+    var card = document.getElementById('featured-match-card');
+    var title = document.getElementById('featured-panel-title');
+    var badge = document.getElementById('match-day-badge');
+    if(!card || !title) return;
+
+    title.textContent = panelTitle(match, status);
+    if(badge) badge.textContent = badgeText(status);
+
+    var hasFullPreview = match.previewStatus !== 'pending';
+    var clickable = hasFullPreview; // any match with previewStatus !== 'pending' opens the modal
+    var midLabel = (match.tags && match.tags.indexOf('opening-match') !== -1) ? 'Opening Match' : 'Group ' + match.group;
+    var statusColor = status === 'live' ? 'var(--red)' : 'var(--green)';
+
+    var previewCue = clickable
+      ? '<span style="position:absolute;top:8px;right:10px;font-size:10px;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:3px;"><i class="ti ti-click" style="font-size:12px;"></i>Match preview</span>'
+      : (hasFullPreview ? '' : '<span style="position:absolute;top:8px;right:10px;font-size:10px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Preview in prep</span>');
+
+    var venueBox = '<div style="background:var(--bg-pill);border-radius:var(--r-sm);padding:12px 16px;min-width:180px;">' +
+      '<div style="font-size:11px;color:var(--text3);margin-bottom:6px;display:flex;align-items:center;gap:5px;"><i class="ti ti-map-pin" style="font-size:12px;"></i>' + (match.venue.name || '—') + '</div>' +
+      '<div style="font-size:11px;color:var(--text3);margin-bottom:6px;display:flex;align-items:center;gap:5px;"><i class="ti ti-map" style="font-size:12px;"></i>' + (match.venue.city || '') + (match.venue.country ? ', ' + match.venue.country : '') + '</div>' +
+      '<div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:5px;"><i class="ti ti-clock" style="font-size:12px;"></i>' + fmtIST(match.kickoffUTC) + '</div>' +
+    '</div>';
+
+    card.innerHTML =
+      previewCue +
+      '<div style="display:flex;align-items:center;gap:16px;flex:1;min-width:200px;">' +
+        '<div style="text-align:center;">' +
+          '<div style="font-size:42px;line-height:1;">' + match.home.flag + '</div>' +
+          '<div style="font-size:13px;font-weight:600;color:var(--text);margin-top:4px;">' + match.home.name + '</div>' +
+          '<div style="font-size:11px;color:var(--text3);">' + hostLabel(match.home, match.group) + '</div>' +
+        '</div>' +
+        '<div style="text-align:center;flex:1;">' +
+          '<div style="font-family:var(--font-cond);font-size:28px;font-weight:700;color:var(--gold);letter-spacing:.1em;">VS</div>' +
+          '<div style="font-size:10px;color:var(--text3);margin-top:4px;">' + midLabel + '</div>' +
+          '<div id="featured-cd" style="font-size:11px;color:' + statusColor + ';font-weight:600;margin-top:2px;">' + fmtCountdown(match.kickoffUTC, status) + '</div>' +
+        '</div>' +
+        '<div style="text-align:center;">' +
+          '<div style="font-size:42px;line-height:1;">' + match.away.flag + '</div>' +
+          '<div style="font-size:13px;font-weight:600;color:var(--text);margin-top:4px;">' + match.away.name + '</div>' +
+          '<div style="font-size:11px;color:var(--text3);">' + hostLabel(match.away, match.group) + '</div>' +
+        '</div>' +
+      '</div>' +
+      venueBox;
+
+    // wire click handler — only enable modal for matches that have full preview content
+    card.style.cursor = clickable ? 'pointer' : 'default';
+    card.onclick = clickable ? function(){ if(window.openMatchModal) window.openMatchModal(); } : null;
+  }
+
+  function tick(){
+    if(!matchesData) return;
+    var picked = pickFeatured(matchesData);
+    if(!picked) return;
+
+    // re-render the whole card if the featured match has changed
+    if(picked.match.id !== currentMatchId){
+      currentMatchId = picked.match.id;
+      window.currentFeaturedMatchId = picked.match.id;
+      renderCard(picked.match, picked.status);
+    } else {
+      // just update the countdown line
+      var cd = document.getElementById('featured-cd');
+      if(cd){
+        cd.textContent = fmtCountdown(picked.match.kickoffUTC, picked.status);
+        cd.style.color = picked.status === 'live' ? 'var(--red)' : 'var(--green)';
+      }
+      var badge = document.getElementById('match-day-badge');
+      if(badge) badge.textContent = badgeText(picked.status);
+    }
+  }
+
+  // Load matches.json then start the ticker
+  // (fetch works on Netlify; for local file:// testing, falls back to inline data)
+  var INLINE_FALLBACK = {"matches":[
+    {"id":"can-bih-20260612","group":"B","kickoffUTC":"2026-06-12T19:00:00Z","estimatedEndUTC":"2026-06-12T20:50:00Z","venue":{"name":"BMO Field","city":"Toronto","country":"Canada"},"broadcast":{"india":"Zee5 · Unite8 Sports 1/2 HD"},"tags":["co-host"],"home":{"code":"CA","name":"Canada","flag":"🇨🇦","fifaRank":31,"isHost":true},"away":{"code":"BA","name":"Bosnia and Herzegovina","flag":"🇧🇦","fifaRank":56,"isHost":false},"previewStatus":"complete"},
+    {"id":"usa-par-20260612","group":"D","kickoffUTC":"2026-06-13T01:00:00Z","estimatedEndUTC":"2026-06-13T02:50:00Z","venue":{"name":"SoFi Stadium","city":"Inglewood, Los Angeles","country":"United States"},"broadcast":{"india":"Zee5 · Unite8 Sports 1/2 HD"},"tags":["co-host"],"home":{"code":"US","name":"United States","flag":"🇺🇸","fifaRank":11,"isHost":true},"away":{"code":"PY","name":"Paraguay","flag":"🇵🇾","fifaRank":44,"isHost":false},"previewStatus":"complete"},
+    {"id":"qat-sui-20260613","group":"B","kickoffUTC":"2026-06-13T19:00:00Z","estimatedEndUTC":"2026-06-13T20:50:00Z","venue":{"name":"Levi's Stadium","city":"Santa Clara"},"broadcast":{"india":"Zee5 · Unite8 Sports 1/2 HD"},"home":{"code":"QA","name":"Qatar","flag":"🇶🇦","fifaRank":53},"away":{"code":"CH","name":"Switzerland","flag":"🇨🇭","fifaRank":19},"previewStatus":"pending"},
+    {"id":"bra-mar-20260613","group":"C","kickoffUTC":"2026-06-13T22:00:00Z","estimatedEndUTC":"2026-06-13T23:50:00Z","venue":{"name":"MetLife Stadium","city":"East Rutherford"},"broadcast":{"india":"Zee5 · Unite8 Sports 1/2 HD"},"home":{"code":"BR","name":"Brazil","flag":"🇧🇷","fifaRank":5},"away":{"code":"MA","name":"Morocco","flag":"🇲🇦","fifaRank":12},"previewStatus":"pending"}
+  ]};
+
+  function init(data){
+    matchesData = data;
+    window.MATCHES_DATA = data;
+    tick();
+    setInterval(tick, 30000);
+  }
+
+  fetch(DATA_URL + '?t=' + Date.now())
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(data){ init(data); })
+    .catch(function(err){
+      console.info('matches.json fetch failed (normal for local file:// testing) — using inline fallback');
+      init(INLINE_FALLBACK);
+    });
+})();
+
+// ── Live data — openfootball GitHub (free, no auth needed) ────
+(function buildGroups(){
+  var DATA_URL = 'https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json';
+  var TOURNAMENT_START = new Date('2026-06-11T00:00:00Z');
+  var REFRESH_MS = 5 * 60 * 1000; // 5 min refresh
+
+  var tabsEl    = document.getElementById('grp-tabs');
+  var displayEl = document.getElementById('grp-display');
+  if(!tabsEl || !displayEl) return;
+
+  var active    = 0;
+  var allMatches = [];
+  var liveGroups = null;
+
+  // ── Flag map ────────────────────────────────────────────────
+  var FLAGS = {
+    'Mexico':'🇲🇽','South Africa':'🇿🇦','South Korea':'🇰🇷','Czech Republic':'🇨🇿','Czechia':'🇨🇿',
+    'Canada':'🇨🇦','Switzerland':'🇨🇭','Qatar':'🇶🇦','Bosnia-Herzegovina':'🇧🇦','Bosnia & Herz.':'🇧🇦',
+    'Brazil':'🇧🇷','Morocco':'🇲🇦','Scotland':'🏴󠁧󠁢󠁳󠁣󠁴󠁿','Haiti':'🇭🇹',
+    'United States':'🇺🇸','USA':'🇺🇸','Australia':'🇦🇺','Paraguay':'🇵🇾','Turkey':'🇹🇷','Türkiye':'🇹🇷',
+    'Germany':'🇩🇪','Ecuador':'🇪🇨','Ivory Coast':'🇨🇮',"Côte d'Ivoire":'🇨🇮','Curacao':'🇨🇼','Curaçao':'🇨🇼',
+    'Netherlands':'🇳🇱','Japan':'🇯🇵','Tunisia':'🇹🇳','Sweden':'🇸🇪',
+    'Belgium':'🇧🇪','Iran':'🇮🇷','IR Iran':'🇮🇷','Egypt':'🇪🇬','New Zealand':'🇳🇿',
+    'Spain':'🇪🇸','Uruguay':'🇺🇾','Saudi Arabia':'🇸🇦','Cape Verde':'🇨🇻',
+    'France':'🇫🇷','Senegal':'🇸🇳','Norway':'🇳🇴','Iraq':'🇮🇶',
+    'Argentina':'🇦🇷','Austria':'🇦🇹','Algeria':'🇩🇿','Jordan':'🇯🇴',
+    'Portugal':'🇵🇹','Colombia':'🇨🇴','Uzbekistan':'🇺🇿','DR Congo':'🇨🇩',
+    'England':'🏴󠁧󠁢󠁥󠁮󠁧󠁿','Croatia':'🇭🇷','Panama':'🇵🇦','Ghana':'🇬🇭'
+  };
+  function flag(name){ return FLAGS[name] || '🏳️'; }
+
+  // ── Static groups (pre-tournament fallback) ─────────────────
+  var staticGroups = [
+    {id:'A',teams:[{f:'🇲🇽',n:'Mexico',s:true},{f:'🇰🇷',n:'South Korea'},{f:'🇿🇦',n:'South Africa'},{f:'🇨🇿',n:'Czechia'}]},
+    {id:'B',teams:[{f:'🇨🇦',n:'Canada',s:true},{f:'🇨🇭',n:'Switzerland'},{f:'🇶🇦',n:'Qatar'},{f:'🇧🇦',n:'Bosnia-Herz.'}]},
+    {id:'C',teams:[{f:'🇧🇷',n:'Brazil',s:true},{f:'🇲🇦',n:'Morocco'},{f:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',n:'Scotland'},{f:'🇭🇹',n:'Haiti'}]},
+    {id:'D',teams:[{f:'🇺🇸',n:'USA',s:true},{f:'🇦🇺',n:'Australia'},{f:'🇵🇾',n:'Paraguay'},{f:'🇹🇷',n:'Türkiye'}]},
+    {id:'E',teams:[{f:'🇩🇪',n:'Germany',s:true},{f:'🇪🇨',n:'Ecuador'},{f:'🇨🇮',n:'Ivory Coast'},{f:'🇨🇼',n:'Curaçao'}]},
+    {id:'F',teams:[{f:'🇳🇱',n:'Netherlands',s:true},{f:'🇯🇵',n:'Japan'},{f:'🇹🇳',n:'Tunisia'},{f:'🇸🇪',n:'Sweden'}]},
+    {id:'G',teams:[{f:'🇧🇪',n:'Belgium',s:true},{f:'🇮🇷',n:'IR Iran'},{f:'🇪🇬',n:'Egypt'},{f:'🇳🇿',n:'New Zealand'}]},
+    {id:'H',teams:[{f:'🇪🇸',n:'Spain',s:true},{f:'🇺🇾',n:'Uruguay'},{f:'🇸🇦',n:'Saudi Arabia'},{f:'🇨🇻',n:'Cape Verde'}]},
+    {id:'I',teams:[{f:'🇫🇷',n:'France',s:true},{f:'🇸🇳',n:'Senegal'},{f:'🇳🇴',n:'Norway'},{f:'🇮🇶',n:'Iraq'}]},
+    {id:'J',teams:[{f:'🇦🇷',n:'Argentina',s:true},{f:'🇦🇹',n:'Austria'},{f:'🇩🇿',n:'Algeria'},{f:'🇯🇴',n:'Jordan'}]},
+    {id:'K',teams:[{f:'🇵🇹',n:'Portugal',s:true},{f:'🇨🇴',n:'Colombia'},{f:'🇺🇿',n:'Uzbekistan'},{f:'🇨🇩',n:'DR Congo'}]},
+    {id:'L',teams:[{f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',n:'England',s:true},{f:'🇭🇷',n:'Croatia'},{f:'🇵🇦',n:'Panama'},{f:'🇬🇭',n:'Ghana'}]}
+  ];
+
+  // ── Build standings from match results ──────────────────────
+  function buildStandings(matches) {
+    var groups = {};
+    // First pass: initialize ALL teams in ALL groups from staticGroups (so empty groups still render)
+    staticGroups.forEach(function(g){
+      groups[g.id] = {};
+      g.teams.forEach(function(t){
+        groups[g.id][t.n] = {name:t.n,p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0};
+      });
+    });
+    // Second pass: apply played match results
+    matches.forEach(function(m) {
+      if(!m.group) return;
+      var grp = m.group.replace('Group ','');
+      if(!groups[grp]) return;
+      // Tolerate teams not in staticGroups (e.g., openfootball placeholders) by adding them
+      [m.team1, m.team2].forEach(function(t) {
+        if(!groups[grp][t]) groups[grp][t] = {name:t,p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0};
+      });
+      if(!m.score) return; // not played yet
+      var h = m.score.ft[0], a = m.score.ft[1];
+      groups[grp][m.team1].p++;  groups[grp][m.team2].p++;
+      groups[grp][m.team1].gf += h; groups[grp][m.team1].ga += a;
+      groups[grp][m.team2].gf += a; groups[grp][m.team2].ga += h;
+      if(h > a) { groups[grp][m.team1].w++; groups[grp][m.team1].pts+=3; groups[grp][m.team2].l++; }
+      else if(a > h) { groups[grp][m.team2].w++; groups[grp][m.team2].pts+=3; groups[grp][m.team1].l++; }
+      else { groups[grp][m.team1].d++; groups[grp][m.team1].pts++; groups[grp][m.team2].d++; groups[grp][m.team2].pts++; }
+    });
+    return Object.keys(groups).sort().map(function(grp) {
+      var table = Object.values(groups[grp]).sort(function(a,b){
+        if(b.pts!==a.pts) return b.pts-a.pts;
+        var gdA=(a.gf-a.ga), gdB=(b.gf-b.ga);
+        if(gdB!==gdA) return gdB-gdA;
+        return b.gf-a.gf;
+      });
+      return {id:grp, table:table};
+    });
+  }
+
+  // ── Render live standings ───────────────────────────────────
+  function renderLiveGroup(idx) {
+    if(!liveGroups || !liveGroups[idx]) { renderStaticGroup(idx); return; }
+    var g = liveGroups[idx];
+    var html = '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;"><thead><tr>';
+    ['Team','P','W','D','L','GD','Pts'].forEach(function(c,i){
+      html += '<th style="padding:6px 8px;color:var(--text3);font-weight:600;text-align:'+(i===0?'left':'center')+';border-bottom:1px solid var(--border);font-size:10px;letter-spacing:.04em;white-space:nowrap;">'+c+'</th>';
+    });
+    html += '</tr></thead><tbody>';
+    g.table.forEach(function(row, ri) {
+      var advance = ri < 2;
+      var gd = (row.gf-row.ga);
+      var gdStr = (gd>0?'+':'')+gd;
+      var bg = ri===0?'rgba(45,212,160,.07)':ri===1?'rgba(45,212,160,.03)':'';
+      html += '<tr style="background:'+bg+';">'
+        +'<td style="padding:8px;border-bottom:1px solid var(--border);">'
+        +'<span style="display:flex;align-items:center;gap:7px;">'
+        +(advance?'<span style="width:3px;height:20px;background:var(--green);border-radius:2px;flex-shrink:0;"></span>':'<span style="width:3px;height:20px;flex-shrink:0;"></span>')
+        +'<span style="font-size:15px;">'+flag(row.name)+'</span>'
+        +'<span style="font-size:12px;font-weight:500;color:var(--text);">'+row.name+'</span>'
+        +'</span></td>'
+        +'<td style="padding:8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3);">'+row.p+'</td>'
+        +'<td style="padding:8px;text-align:center;border-bottom:1px solid var(--border);color:var(--green);">'+row.w+'</td>'
+        +'<td style="padding:8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3);">'+row.d+'</td>'
+        +'<td style="padding:8px;text-align:center;border-bottom:1px solid var(--border);color:var(--red);">'+row.l+'</td>'
+        +'<td style="padding:8px;text-align:center;border-bottom:1px solid var(--border);color:'+(gd>0?'var(--green)':gd<0?'var(--red)':'var(--text3)')+';">'+gdStr+'</td>'
+        +'<td style="padding:8px;text-align:center;border-bottom:1px solid var(--border);font-weight:700;font-size:14px;color:var(--text);">'+row.pts+'</td>'
+        +'</tr>';
+    });
+    html += '</tbody></table></div>'
+      +'<div style="display:flex;gap:12px;margin-top:8px;font-size:10px;color:var(--text3);">'
+      +'<span style="display:flex;align-items:center;gap:5px;"><span style="width:3px;height:12px;border-radius:2px;background:var(--green);display:inline-block;"></span>Advance to R32</span>'
+      +'</div>';
+    displayEl.innerHTML = html;
+  }
+
+  // ── Render static group (pre-tournament) ────────────────────
+  function renderStaticGroup(idx) {
+    var g = staticGroups[idx];
+    var html = '<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:12px;"><thead><tr>';
+    ['Team','P','W','D','L','GD','Pts'].forEach(function(c,i){
+      html += '<th style="padding:6px 8px;color:var(--text3);font-weight:600;text-align:'+(i===0?'left':'center')+';border-bottom:1px solid var(--border);font-size:10px;letter-spacing:.04em;white-space:nowrap;">'+c+'</th>';
+    });
+    html += '</tr></thead><tbody>';
+    g.teams.forEach(function(t,ri){
+      var bg = ri===0?'rgba(45,212,160,.05)':ri===1?'rgba(45,212,160,.02)':'';
+      html += '<tr style="background:'+bg+';">'
+        +'<td style="padding:8px;border-bottom:1px solid var(--border);"><span style="display:flex;align-items:center;gap:7px;">'
+        +'<span style="font-size:16px;">'+t.f+'</span>'
+        +'<span style="color:var(--text);font-weight:'+(t.s?'600':'400')+';">'+t.n+'</span>'
+        +(t.s?'<span style="font-size:9px;font-weight:600;color:var(--gold);background:rgba(244,185,66,.1);padding:1px 5px;border-radius:3px;">SEED</span>':'')
+        +'</span></td>'
+        +'<td style="padding:8px;text-align:center;border-bottom:1px solid var(--border);color:var(--text3);" colspan="6">—</td>'
+        +'</tr>';
+    });
+    html += '</tbody></table></div>';
+    displayEl.innerHTML = html;
+  }
+
+  // ── Build group tabs ────────────────────────────────────────
+  function buildTabs(groups) {
+    tabsEl.innerHTML = '';
+    groups.forEach(function(g,i){
+      var btn = document.createElement('button');
+      btn.textContent = 'Group '+(g.id||String.fromCharCode(65+i));
+      btn.style.cssText = 'padding:5px 11px;font-size:11px;font-weight:600;border-radius:4px;cursor:pointer;border:1px solid var(--border2);font-family:var(--font);transition:all .15s;background:'+(i===active?'var(--green2)':'var(--bg-pill)')+';color:'+(i===active?'#fff':'var(--text2)')+';';
+      btn.addEventListener('click', function(){
+        active = i; buildTabs(groups);
+        liveGroups ? renderLiveGroup(i) : renderStaticGroup(i);
+      });
+      tabsEl.appendChild(btn);
+    });
+  }
+
+  function setStatus(msg, color){
+    var b = document.getElementById('grp-badge');
+    if(b){ b.textContent = msg; b.style.color = color||'var(--text3)'; }
+  }
+
+  // ── Render today's / recent matches ─────────────────────────
+  function renderTodaysMatches(matches) {
+    var el = document.getElementById('todays-matches');
+    var lbl = document.getElementById('matches-label');
+    if(!el) return;
+
+    var today = new Date().toISOString().split('T')[0];
+    var yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
+    var tomorrow  = new Date(Date.now()+86400000).toISOString().split('T')[0];
+
+    // Show yesterday's results + today's + tomorrow's upcoming
+    var relevant = matches.filter(function(m){
+      return m.date >= yesterday && m.date <= tomorrow;
+    });
+
+    if(!relevant.length) {
+      el.innerHTML = '<p style="font-size:12px;color:var(--text3);text-align:center;padding:16px 0;">No matches in the next 48 hours</p>';
+      return;
+    }
+
+    if(lbl) lbl.textContent = "Results & upcoming matches";
+
+    var html = relevant.map(function(m) {
+      var hasScore = !!m.score;
+      var isToday  = m.date === today;
+      var scoreStr = hasScore
+        ? '<span style="font-family:var(--font-cond);font-size:18px;font-weight:700;color:var(--gold);">'+m.score.ft[0]+' – '+m.score.ft[1]+'</span>'
+        : '<span style="font-size:11px;color:var(--text3);">vs</span>';
+      var badge = hasScore
+        ? '<div style="font-size:9px;font-weight:600;color:var(--text3);">FT</div>'
+        : isToday
+        ? '<div style="font-size:9px;font-weight:700;color:var(--green);">TODAY</div>'
+        : '<div style="font-size:9px;color:var(--text3);">'+m.date.slice(5)+'</div>';
+      var goalStr = '';
+      if(hasScore && (m.goals1||m.goals2)) {
+        var g1 = (m.goals1||[]).map(function(g){return g.name+(g.penalty?' (P)':'')+(g.owngoal?' (OG)':'');}).join(', ');
+        var g2 = (m.goals2||[]).map(function(g){return g.name+(g.penalty?' (P)':'')+(g.owngoal?' (OG)':'');}).join(', ');
+        if(g1||g2) goalStr = '<div style="font-size:10px;color:var(--text3);margin-top:4px;padding:0 8px;text-align:center;">⚽ '+[g1,g2].filter(Boolean).join(' · ')+'</div>';
+      }
+      return '<div style="padding:10px 0;border-bottom:1px solid var(--border);">'
+        +'<div style="display:flex;align-items:center;gap:8px;">'
+        +'<span style="flex:1;font-size:12px;font-weight:600;color:var(--text);text-align:right;">'+flag(m.team1)+' '+m.team1+'</span>'
+        +'<div style="display:flex;flex-direction:column;align-items:center;gap:1px;min-width:80px;">'
+        +badge+scoreStr
+        +'</div>'
+        +'<span style="flex:1;font-size:12px;font-weight:600;color:var(--text);">'+flag(m.team2)+' '+m.team2+'</span>'
+        +'</div>'+goalStr+'</div>';
+    }).join('');
+
+    el.innerHTML = html;
+  }
+
+  // ── Main fetch — reads results from matches.json ─────────────
+  function fetchData() {
+    var isLive = new Date() >= TOURNAMENT_START;
+    if(!isLive) {
+      buildTabs(staticGroups);
+      renderStaticGroup(active);
+      setStatus('Pre-tournament · Live from Jun 11', 'var(--text3)');
+      return;
+    }
+
+    // window.MATCHES_DATA is set by the featuredMatch IIFE after it loads matches.json.
+    // If it's not ready yet, retry shortly. (This handles the page-load race.)
+    if(!window.MATCHES_DATA){
+      setStatus('Loading standings…', 'var(--amber)');
+      setTimeout(fetchData, 400);
+      return;
+    }
+
+    var results = (window.MATCHES_DATA.results) || [];
+    allMatches = results;
+    liveGroups = buildStandings(results);
+    buildTabs(liveGroups);
+    renderLiveGroup(active);
+
+    var now = new Date();
+    if(results.length === 0){
+      setStatus('Standings populate from Jun 11', 'var(--text3)');
+    } else {
+      setStatus('Live · ' + results.length + ' results · Updated '+
+        String(now.getHours()).padStart(2,'0')+':'+
+        String(now.getMinutes()).padStart(2,'0'), 'var(--green)');
+    }
+  }
+
+  // ── Init ─────────────────────────────────────────────────────
+  fetchData();
+  if(new Date() >= TOURNAMENT_START) {
+    setInterval(fetchData, REFRESH_MS);
+  } else {
+    // Auto-activate exactly at tournament start
+    var msToStart = TOURNAMENT_START - new Date();
+    if(msToStart > 0 && msToStart < 8*24*60*60*1000) {
+      setTimeout(function(){
+        fetchData();
+        setInterval(fetchData, REFRESH_MS);
+      }, msToStart);
+    }
+  }
+})();
+
+
+
+(function tickClock(){
+  var target=new Date('2026-06-11T19:00:00Z');
+  function tick(){
+    var diff=target-new Date();
+    var cd=document.getElementById('countdown');
+    var db=document.getElementById('days-big');
+    if(diff<=0){if(cd)cd.textContent='Tournament is LIVE!';if(db)db.textContent='0';return;}
+    var d=Math.floor(diff/86400000);
+    var h=Math.floor((diff%86400000)/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    var s=Math.floor((diff%60000)/1000);
+    if(cd)cd.textContent=d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(s).padStart(2,'0')+'s';
+    if(db)db.textContent=d;
+  }
+  tick();setInterval(tick,1000);
+})();
+
+// ── Power rankings — real April 2026 FIFA data + form ─────────
+(function buildRankings(){
+  var teams = [
+    { flag:'🇫🇷', name:'France',      rank:1,  pts:1877.32, form:['W','W','W','W','W'], odds:'+500'  },
+    { flag:'🇪🇸', name:'Spain',       rank:2,  pts:1876.40, form:['W','W','W','D','W'], odds:'+475'  },
+    { flag:'🇦🇷', name:'Argentina',   rank:3,  pts:1874.81, form:['W','W','D','D','W'], odds:'+600'  },
+    { flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', name:'England',    rank:4,  pts:1825.97, form:['W','W','D','W','L'], odds:'+700'  },
+    { flag:'🇵🇹', name:'Portugal',    rank:5,  pts:1763.83, form:['W','W','W','W','D'], odds:'+1200' },
+    { flag:'🇧🇷', name:'Brazil',      rank:6,  pts:1761.16, form:['L','D','W','W','L'], odds:'+800'  },
+    { flag:'🇳🇱', name:'Netherlands', rank:7,  pts:1757.87, form:['W','D','W','D','W'], odds:'+1600' },
+    { flag:'🇲🇦', name:'Morocco',     rank:8,  pts:1755.87, form:['W','W','W','D','W'], odds:'+2000' },
+    { flag:'🇧🇪', name:'Belgium',     rank:9,  pts:1734.71, form:['W','W','D','L','W'], odds:'+2500' },
+    { flag:'🇩🇪', name:'Germany',     rank:10, pts:1730.37, form:['W','W','W','D','W'], odds:'+1400' }
+  ];
+
+  var formScore = function(form){
+    return form.reduce(function(s,r){ return s+(r==='W'?3:r==='D'?1:0); },0)/15;
+  };
+  var fifaFactor = function(rank){ return (10-rank)/9; };
+  var powerScore = function(t){
+    var raw = 0.60*fifaFactor(t.rank) + 0.40*formScore(t.form);
+    return Math.round(65 + raw*35);
+  };
+
+  var formColors = { W:'var(--green)', D:'var(--amber)', L:'var(--red)' };
+  var formBg     = { W:'rgba(45,212,160,.12)', D:'rgba(244,160,48,.12)', L:'rgba(240,100,90,.12)' };
+
+  var list = document.getElementById('rankings-list');
+  if(!list) return;
+
+  var isMobile = window.innerWidth < 600;
+
+  teams.forEach(function(t){
+    var score = powerScore(t);
+    var wins  = t.form.filter(function(r){return r==='W';}).length;
+    var barColor = wins>=4 ? 'var(--green)' : wins>=3 ? 'var(--amber)' : 'var(--red)';
+
+    var formHtml = t.form.map(function(r){
+      return '<span style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:3px;font-size:9px;font-weight:700;background:'+formBg[r]+';color:'+formColors[r]+';border:1px solid '+formColors[r]+'33;">'+r+'</span>';
+    }).join('');
+
+    var row = document.createElement('div');
+    row.style.cssText = 'padding:8px 4px;border-bottom:1px solid var(--border);';
+
+    if(isMobile){
+      // ── Mobile layout: rank + flag+name+form | bar+score ──
+      row.innerHTML =
+        '<div style="display:flex;align-items:center;gap:8px;">'+
+          '<span style="font-size:11px;font-weight:600;color:var(--text3);min-width:18px;">'+t.rank+'</span>'+
+          '<div style="flex:1;min-width:0;">'+
+            '<div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;">'+
+              '<span style="font-size:16px;line-height:1;">'+t.flag+'</span>'+
+              '<span style="font-size:13px;font-weight:600;color:var(--text);">'+t.name+'</span>'+
+            '</div>'+
+            '<div style="display:flex;align-items:center;gap:4px;">'+
+              formHtml+
+              '<span style="font-size:9px;color:var(--text3);margin-left:4px;">'+t.pts.toFixed(0)+' pts</span>'+
+            '</div>'+
+          '</div>'+
+          '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;min-width:72px;">'+
+            '<span style="font-size:13px;font-weight:700;color:'+barColor+';">'+score+'</span>'+
+            '<div style="width:64px;height:5px;background:var(--bg-pill);border-radius:3px;overflow:hidden;">'+
+              '<div class="ps-bar" style="width:0%;height:100%;background:'+barColor+';border-radius:3px;transition:width 1s ease;" data-target="'+score+'"></div>'+
+            '</div>'+
+          '</div>'+
+        '</div>';
+    } else {
+      // ── Desktop layout: # | flag+name | pts | form | bar+score ──
+      row.style.cssText += 'display:grid;grid-template-columns:28px 1fr 72px 90px 120px;gap:6px;align-items:center;';
+      row.innerHTML =
+        '<span style="font-size:11px;font-weight:600;color:var(--text3);">'+t.rank+'</span>'+
+        '<span style="font-size:13px;font-weight:500;color:var(--text);">'+t.flag+' '+t.name+'</span>'+
+        '<span style="font-family:var(--font-mono);font-size:10px;color:var(--text3);text-align:right;">'+t.pts.toFixed(0)+'</span>'+
+        '<span style="display:flex;gap:2px;justify-content:center;">'+formHtml+'</span>'+
+        '<span style="display:flex;align-items:center;gap:6px;">'+
+          '<div style="flex:1;height:6px;background:var(--bg-pill);border-radius:3px;overflow:hidden;">'+
+            '<div class="ps-bar" style="width:0%;height:100%;background:'+barColor+';border-radius:3px;transition:width 1s ease;" data-target="'+score+'"></div>'+
+          '</div>'+
+          '<span style="font-size:10px;font-weight:600;color:'+barColor+';min-width:22px;text-align:right;">'+score+'</span>'+
+        '</span>';
+    }
+
+    list.appendChild(row);
+  });
+
+  // Remove the old column header on mobile
+  if(isMobile){
+    var header = list.previousElementSibling;
+    if(header && header.style && header.style.display === 'grid'){
+      header.style.display = 'none';
+    }
+  }
+
+  requestAnimationFrame(function(){
+    setTimeout(function(){
+      list.querySelectorAll('.ps-bar').forEach(function(b){
+        b.style.width = b.dataset.target + '%';
+      });
+    },150);
+  });
+})();
+
+// ── News feed — Guardian API · World Cup 2026 filtered ────────
+(function loadNews(){
+  var container = document.getElementById('news-grid');
+
+  function renderItems(articles) {
+    var seen = {};
+    var unique = articles.filter(function(a){
+      if(seen[a.webUrl]) return false;
+      seen[a.webUrl] = true;
+      return true;
+    });
+    container.innerHTML = '';
+    unique.slice(0,6).forEach(function(a) {
+      var thumb = (a.fields && a.fields.thumbnail) ? a.fields.thumbnail : '';
+      var trail = (a.fields && a.fields.trailText) ? a.fields.trailText : '';
+      var tmp = document.createElement('div');
+      tmp.innerHTML = trail;
+      var desc = (tmp.textContent||'').substring(0,100).trim();
+      if(desc.length===100) desc += '…';
+      var dateStr = '';
+      try{ dateStr = new Date(a.webPublicationDate).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }catch(e){}
+      
+      var title = (a.webTitle||'').toLowerCase();
+      var tagLabel='WC 2026', tagColor='var(--gold)', tagBg='rgba(244,185,66,.12)';
+      if(/squad|roster|player|injury|lineup/.test(title)){tagLabel='Squad news';tagColor='var(--green)';tagBg='rgba(45,212,160,.1)';}
+      else if(/group|draw|fixture|schedule/.test(title)){tagLabel='Groups';tagColor='var(--blue)';tagBg='rgba(77,156,247,.1)';}
+      else if(/messi|ronaldo|mbapp|bellingham|neymar|kane|vini/.test(title)){tagLabel='Star watch';tagColor='var(--purple)';tagBg='rgba(169,141,244,.1)';}
+      else if(/preview|predict|odds|favour|favorite/.test(title)){tagLabel='Analysis';tagColor='var(--amber)';tagBg='rgba(244,160,48,.1)';}
+      
+      var thumbHtml = thumb
+        ? '<div class="news-thumb" style="background-image:url(\''+thumb+'\');" aria-hidden="true"></div>'
+        : '<div class="news-thumb" style="background:var(--bg-pill);display:flex;align-items:center;justify-content:center;"><i class="ti ti-ball-football" style="font-size:28px;color:var(--text3);"></i></div>';
+      var card = document.createElement('div');
+      card.className = 'news-card';
+      card.innerHTML =
+        '<a href="'+a.webUrl+'" target="_blank" rel="noopener">'+
+          thumbHtml+
+          '<div class="news-body">'+
+            '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">'+
+              '<span style="display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;background:'+tagBg+';color:'+tagColor+';letter-spacing:.04em;border:1px solid '+tagColor+'33;">'+tagLabel+'</span>'+
+              '<span style="font-size:10px;color:var(--text3);">The Guardian</span>'+
+            '</div>'+
+            '<div class="news-title">'+a.webTitle+'</div>'+
+            (desc?'<div style="font-size:11px;color:var(--text3);line-height:1.4;margin-bottom:6px;">'+desc+'</div>':'')+
+            '<div class="news-date">'+dateStr+'</div>'+
+          '</div>'+
+        '</a>';
+      container.appendChild(card);
+    });
+  }
+
+  function showError(){
+    container.innerHTML =
+      '<div style="grid-column:1/-1;padding:20px 0;text-align:center;color:var(--text3);font-size:13px;">'+
+        'News feed temporarily unavailable. &nbsp;'+
+        '<a href="https://www.theguardian.com/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">The Guardian WC 2026 →</a>'+
+      '</div>';
+  }
+
+  var base = 'https://content.guardianapis.com/search?section=football&show-fields=thumbnail,trailText&page-size=6&order-by=newest&api-key=test';
+  var queries = [
+    base + '&q=%22world+cup+2026%22',
+    base + '&q=%22World+Cup%22+squad+2026',
+    base + '&q=%22World+Cup+2026%22+preview'
+  ];
+
+  Promise.allSettled(queries.map(function(url){
+    return fetch(url).then(function(r){ return r.json(); });
+  })).then(function(results){
+    var all = [];
+    results.forEach(function(r){
+      if(r.status==='fulfilled' && r.value && r.value.response && r.value.response.results){
+        all = all.concat(r.value.response.results);
+      }
+    });
+    if(!all.length){ showError(); return; }
+    all.sort(function(a,b){ return new Date(b.webPublicationDate)-new Date(a.webPublicationDate); });
+    renderItems(all);
+  }).catch(showError);
+})();
+
+// ── Interactive Tactical Spotlight Engine ──────────────────────
+(function tacticalSpotlight() {
+  var formationPresets = {
+    "4-3-3": [
+      {pos: [90, 50], r: "GK"}, {pos: [70, 15], r: "RB"}, {pos: [75, 38], r: "CB"}, {pos: [75, 62], r: "CB"}, {pos: [70, 85], r: "LB"},
+      {pos: [58, 50], r: "DM"}, {pos: [45, 30], r: "CM"}, {pos: [45, 70], r: "CM"}, {pos: [22, 18], r: "RW"}, {pos: [15, 50], r: "ST"},
+      {pos: [22, 82], r: "LW"}
+    ],
+    "4-2-3-1": [
+      {pos: [90, 50], r: "GK"}, {pos: [70, 18], r: "RB"}, {pos: [76, 38], r: "CB"}, {pos: [76, 62], r: "CB"}, {pos: [70, 82], r: "LB"},
+      {pos: [56, 35], r: "DM"}, {pos: [56, 65], r: "DM"}, {pos: [35, 20], r: "RW"}, {pos: [32, 50], r: "AM"}, {pos: [35, 80], r: "LW"},
+      {pos: [16, 50], r: "ST"}
+    ],
+    "3-4-2-1": [
+      {pos: [90, 50], r: "GK"}, {pos: [75, 28], r: "CB"}, {pos: [78, 50], r: "CB"}, {pos: [75, 72], r: "CB"}, 
+      {pos: [52, 12], r: "RWB"}, {pos: [55, 38], r: "CM"}, {pos: [55, 62], r: "CM"}, {pos: [52, 88], r: "LWB"},
+      {pos: [32, 32], r: "AM"}, {pos: [32, 68], r: "AM"}, {pos: [15, 50], r: "ST"}
+    ],
+    "3-4-3": [
+      {pos: [90, 50], r: "GK"}, {pos: [75, 28], r: "CB"}, {pos: [78, 50], r: "CB"}, {pos: [75, 72], r: "CB"}, 
+      {pos: [52, 12], r: "RWB"}, {pos: [55, 38], r: "CM"}, {pos: [55, 62], r: "CM"}, {pos: [52, 88], r: "LWB"},
+      {pos: [25, 20], r: "RW"}, {pos: [15, 50], r: "ST"}, {pos: [25, 80], r: "LW"}
+    ],
+    "4-4-2": [
+      {pos: [90, 50], r: "GK"}, {pos: [70, 15], r: "RB"}, {pos: [75, 38], r: "CB"}, {pos: [75, 62], r: "CB"}, {pos: [70, 85], r: "LB"},
+      {pos: [48, 15], r: "RM"}, {pos: [52, 38], r: "CM"}, {pos: [52, 62], r: "CM"}, {pos: [48, 85], r: "LM"},
+      {pos: [18, 35], r: "ST"}, {pos: [18, 65], r: "ST"}
+    ],
+    "3-5-2": [
+      {pos: [90, 50], r: "GK"}, {pos: [75, 28], r: "CB"}, {pos: [78, 50], r: "CB"}, {pos: [75, 72], r: "CB"}, 
+      {pos: [50, 12], r: "RWB"}, {pos: [58, 35], r: "CM"}, {pos: [58, 50], r: "DM"}, {pos: [58, 65], r: "CM"}, 
+      {pos: [50, 88], r: "LWB"}, {pos: [18, 38], r: "ST"}, {pos: [18, 62], r: "ST"}
+    ],
+    "4-1-4-1": [
+      {pos: [90, 50], r: "GK"}, {pos: [70, 15], r: "RB"}, {pos: [75, 38], r: "CB"}, {pos: [75, 62], r: "CB"}, {pos: [70, 85], r: "LB"},
+      {pos: [58, 50], r: "DM"}, {pos: [38, 18], r: "RM"}, {pos: [38, 38], r: "CM"}, {pos: [38, 62], r: "CM"}, {pos: [38, 82], r: "LM"},
+      {pos: [15, 50], r: "ST"}
+    ]
+  };
+
+  var analyticsDatabase = {
+    "MEX": { name: "Mexico", flag: "🇲🇽", formation: "4-3-3", player: "S. Giménez", strengths: "High wide pressing traps, overlapping full-back overloads.", weaknesses: "Defensive set-piece frailty, physical mismatch vulnerability.", notes: "Utilizes sharp structural passing triangles on the flanks to isolate opposing fullbacks." },
+    "KOR": { name: "South Korea", flag: "🇰🇷", formation: "4-2-3-1", player: "Son Heung-min", strengths: "Incredible counter-attacking velocity, elite edge execution.", weaknesses: "Central spacing management transitions, rest-defense decay.", notes: "Structural system focuses on deep defensive recovery strings to unleash dynamic wing runs." },
+    "RSA": { name: "South Africa", flag: "🇿🇦", formation: "4-2-3-1", player: "P. Tau", strengths: "Intricate tight-space combinations, rapid lateral shifts.", weaknesses: "Physical aerial duels, low defensive block penetration.", notes: "Employs highly technical interior build-up sequences designed to manipulate press vectors." },
+    "CZE": { name: "Czechia", flag: "🇨🇿", formation: "3-5-2", player: "T. Souček", strengths: "Extreme physical resilience, dominant set-piece mechanics.", weaknesses: "Slow vertical recovery patterns when isolated wide.", notes: "Relies on direct verticality and immediate second-ball retrieval within the middle third." },
+    "CAN": { name: "Canada", flag: "🇨🇦", formation: "4-2-3-1", player: "A. Davies", strengths: "Devastating flank velocity, high aggressive pressing floor.", weaknesses: "Central defensive transition protection under pressure.", notes: "Implements heavy high-block pressing variants to trigger immediate final-third turnovers." },
+    "SUI": { name: "Switzerland", flag: "🇨🇭", formation: "3-4-2-1", player: "G. Xhaka", strengths: "Elite structural flexibility, impeccable retention metrics.", weaknesses: "Lack of explosive direct verticality through the channel.", notes: "Structures defensive lines cleanly into five-man nets during transition recovery phases." },
+    "QAT": { name: "Qatar", flag: "🇶🇦", formation: "3-5-2", player: "Akram Afif", strengths: "Devastating localized counter-attacks, fluid front rotations.", weaknesses: "Susceptible to sustained high-intensity exterior crosses.", notes: "Sits deep in compact lines, looking for high-accuracy transition releases to target runners." },
+    "BIH": { name: "Bosnia-Herz.", flag: "🇧🇦", formation: "4-2-3-1", player: "E. Džeko", strengths: "Target-man aerial dominance, physical box occupancy.", weaknesses: "Lateral tracking pace, vulnerability to dynamic wingers.", notes: "Funnels positional ball progressions through wide early crosses targeting internal threats." },
+    "BRA": { name: "Brazil", flag: "🇧🇷", formation: "4-2-3-1", player: "Vinicius Jr", strengths: "Unstoppable 1v1 wing isolations, creative final-third keys.", weaknesses: "Full-back exposure space, central transitional disconnect.", notes: "Drifts wide attackers inside to overload channels, freeing advanced lanes for technical options." },
+    "MAR": { name: "Morocco", flag: "🇲🇦", formation: "4-3-3", player: "Achraf Hakimi", strengths: "Flawless mid-block synchronization, rapid line integration.", weaknesses: "Slow conversion metrics inside low opposition shapes.", notes: "Maintains a compact defensive framework while launching devastating full-back line breaks." },
+    "SCO": { name: "Scotland", flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", formation: "3-4-2-1", player: "S. McTominay", strengths: "High central work-rate, aggressive late penalty box runs.", weaknesses: "Wide delivery suppression, isolated striker mechanics.", notes: "Overloads the central column to establish physical superiority before pushing lines high." },
+    "HAI": { name: "Haiti", flag: "🇭🇹", formation: "4-2-3-1", player: "Frantzdy Pierrot", strengths: "Raw athletic baseline, unpredictable linear transitional focus.", weaknesses: "Positional defensive discipline across extended phases.", notes: "Relies on explosive pace and direct long ball deliveries to stress target channels." },
+    "USA": { name: "USA", flag: "🇺🇸", formation: "4-3-3", player: "C. Pulisic", strengths: "Intense engine room capacity, explosive vertical triggers.", weaknesses: "Low-block breaking paths, interior box manipulation.", notes: "Employs an active counter-pressing structure designed to disrupt build-up plays inside the middle third." },
+    "AUS": { name: "Australia", flag: "🇦🇺", formation: "4-4-2", player: "Harry Souttar", strengths: "Elite physical set-piece execution, disciplined generic shape.", weaknesses: "Technically limited progression templates under press.", notes: "Maintains a safe structural layout, forcing the opposition out wide into defensive traps." },
+    "PAR": { name: "Paraguay", flag: "🇵🇾", formation: "4-1-4-1", player: "Miguel Almirón", strengths: "Fierce combative low-block, aggressive tactical fouling.", weaknesses: "Extremely low goal-generation metrics from open play.", notes: "Sinks deeply into an elastic low block to compress spaces, minimizing center threat profiles." },
+    "TUR": { name: "Türkiye", flag: "🇹🇷", formation: "4-2-3-1", player: "Hakan Çalhanoğlu", strengths: "High positional fluidity, lethal long-range execution metrics.", weaknesses: "Defensive transition concentration, high risk turnover lines.", notes: "Blurs standard striking lines to open dynamic half-spaces for arriving midfielders." },
+    "GER": { name: "Germany", flag: "🇩🇪", formation: "4-2-3-1", player: "Florian Wirtz", strengths: "Impeccable half-space overloads, rapid vertical combinations.", weaknesses: "Rest-defense exposure against explosive counter systems.", notes: "Uses narrow attacking playmakers to create passing networks through tight defensive gaps." },
+    "ECU": { name: "Ecuador", flag: "🇪🇨", formation: "3-4-3", player: "Moisés Caicedo", strengths: "Elite physical dual dominance, intense physical stamina profiles.", weaknesses: "Final third execution accuracy, low shot-to-goal conversion.", notes: "Utilizes aggressive wing-backs to stress flank channels while maintaining center blocks." },
+    "CIV": { name: "Ivory Coast", flag: "🇨🇮", formation: "4-3-3", player: "Simon Adingra", strengths: "Powerful athletic mid-press, technical recovery lines.", weaknesses: "Defensive concentration lapses in late game frames.", notes: "Controls midfield lines via aggressive tracking, initiating rapid changes of pace out wide." },
+    "CUW": { name: "Curaçao", flag: "🇨🇼", formation: "4-3-3", player: "J. Bacuna", strengths: "Expansive wing positional models, high technical rotation.", weaknesses: "Structural recovery pace when original high press is bypassed.", notes: "Maintains a highly modern Dutch possession framework aimed at stretching wide lanes." },
+    "NED": { name: "Netherlands", flag: "🇳🇱", formation: "3-4-2-1", player: "Virgil van Dijk", strengths: "Flawless ball-playing backline, aggressive line breaks.", weaknesses: "Immobile central attacking options against extreme low shapes.", notes: "Builds play smoothly through central defenders, creating overlapping channels for wingbacks." },
+    "JPN": { name: "Japan", flag: "🇯🇵", formation: "3-4-2-1", player: "Kaoru Mitoma", strengths: "Incredible technical press resistance, lethal wing automations.", weaknesses: "Physical aerial defense profiles inside the box.", notes: "Shifts seamlessly into compact back-five structures out of possession to limit spaces." },
+    "TUN": { name: "Tunisia", flag: "🇹🇳", formation: "4-3-3", player: "Elyes Skhiri", strengths: "Highly disciplined low-block consistency, tactical focus.", weaknesses: "Extremely limited creative output across open play.", notes: "Sinks into tightly squeezed horizontal lines to suffocate progression access channels." },
+    "SWE": { name: "Sweden", flag: "🇸🇪", formation: "4-3-3", player: "A. Isak", strengths: "Explosive dynamic front line, high volume shot output.", weaknesses: "Midfield positional coverage balance on central turnovers.", notes: "Employs an aggressive modern attacking shape designed to flood box vectors immediately." },
+    "BEL": { name: "Belgium", flag: "🇧🇪", formation: "4-2-3-1", player: "K. De Bruyne", strengths: "World-class central distribution keys, tactical vision.", weaknesses: "Slow backline recovery velocity against quick long counters.", notes: "Funnels attacking frameworks directly through the playmaker hub to exploit passing options." },
+    "IRN": { name: "IR Iran", flag: "🇮🇷", formation: "4-2-3-1", player: "Mehdi Taremi", strengths: "Extremely robust physical target link-up, clinical edge forms.", weaknesses: "Defensive tracking pace across sustained wide shifts.", notes: "Utilizes targeted long direct balls to unlock second-line progression setups cleanly." },
+    "EGY": { name: "Egypt", flag: "🇪🇬", formation: "4-3-3", player: "Mohamed Salah", strengths: "Lethal wide direct threat, disciplined mid-block shapes.", weaknesses: "Over-reliance on individual isolated winger output paths.", notes: "Compresses defensive zones tightly to limit lanes before launching diagonal outlets." },
+    "NZL": { name: "New Zealand", flag: "🇳🇿", formation: "4-3-3", player: "Chris Wood", strengths: "Physical target-man target structures, direct long balls.", weaknesses: "Pace deficit against agile interior combination setups.", notes: "Funnels play vectors into wide channels to trigger cross entries into target paths." },
+    "ESP": { name: "Spain", flag: "🇪🇸", formation: "4-3-3", player: "Lamine Yamal", strengths: "Perfect vertical tiki-taka control, lethal wing setups.", weaknesses: "Vulnerability to raw, physical, high-velocity target directness.", notes: "Locks down games via high rest-defense lines while unleashing creative wide options." },
+    "URU": { name: "Uruguay", flag: "🇺🇾", formation: "4-3-3", player: "Federico Valverde", strengths: "Terrifying physical hyper-press, vertical execution lines.", weaknesses: "High risk of physical exhaustion or card accumulation metrics.", notes: "Manages an aggressive tactical press meant to suffocate opposing deep play lines." },
+    "KSA": { name: "Saudi Arabia", flag: "🇸🇦", formation: "4-3-3", player: "Salem Al-Dawsari", strengths: "Cohesive local core understanding, technical press resistance.", weaknesses: "Defensive recovery discipline against high diagonal setups.", notes: "Maintains high defensive tracking lines to restrict operational space profiles." },
+    "CPV": { name: "Cape Verde", flag: "🇨🇻", formation: "4-3-3", player: "Ryan Mendes", strengths: "Highly unpredictable wide dynamic paths, technical skill.", weaknesses: "Defensive shape retention continuity over extended pressure.", notes: "Uses fluid wide rotations to target gaps in opposing defensive lines." },
+    "FRA": { name: "France", flag: "🇫🇷", formation: "4-2-3-1", player: "Kylian Mbappé", strengths: "Elite speed transitions, devastating wide overload systems.", weaknesses: "Midfield positional stagnation under aggressive presses.", notes: "Relies on deep double pivots to provide defensive cover for attacking structures." },
+    "SEN": { name: "Senegal", flag: "🇸🇳", formation: "4-3-3", player: "Sadio Mané", strengths: "Immense physical midfield power, secure tracking networks.", weaknesses: "Slower progression builds when deep blocks deny run lanes.", notes: "Dominates central channels to choke out transitions and feed wide threats." },
+    "NOR": { name: "Norway", flag: "🇳🇴", formation: "4-3-3", player: "E. Haaland", strengths: "Generational box conversion, direct vertical tracking links.", weaknesses: "Full-back line isolation when wingers fail to track back.", notes: "Funnels target transitions into advanced channels to release forward options." },
+    "IRQ": { name: "Iraq", flag: "🇮🇶", formation: "4-2-3-1", player: "Aymen Hussein", strengths: "High mental combative energy, dangerous box cross entries.", weaknesses: "Defensive structure coordination under rapid switches of play.", notes: "Directs wide runners to cross early into central positions to stress defenses." },
+    "ARG": { name: "Argentina", flag: "🇦🇷", formation: "4-3-3", player: "Lionel Messi", strengths: "Elite interior passing overloads, flawless possession nets.", weaknesses: "Vulnerable to athletic, high-velocity width transitions.", notes: "Uses narrow, technical interiors to secure possession corridors for creative options." },
+    "AUT": { name: "Austria", flag: "🇦🇹", formation: "4-2-3-1", player: "Marcel Sabitzer", strengths: "Lethal coordinated counter-pressing, intense structural work.", weaknesses: "Space behind high defensive tracking lines when press breaks.", notes: "Maintains intense pressure on ball handlers to force final-third errors." },
+    "ALG": { name: "Algeria", flag: "🇩🇿", formation: "4-3-3", player: "Riyad Mahrez", strengths: "Technical 1v1 creation skills, quick passing patterns.", weaknesses: "Defensive transitional recovery pace down the flanks.", notes: "Builds through short passing networks before utilizing individual technical skill out wide." },
+    "JOR": { name: "Jordan", flag: "🇯🇴", formation: "3-4-2-1", player: "Mousa Al-Tamari", strengths: "Highly explosive linear transitions, organized low block.", weaknesses: "Sustained positional possession retention under pressure.", notes: "Defends deep in strict lines before executing high-speed direct counter-attacks." },
+    "POR": { name: "Portugal", flag: "🇵🇹", formation: "4-3-3", player: "Bruno Fernandes", strengths: "Elite spatial conversion keys, massive tactical depth.", weaknesses: "Lateral tracking pace during rapid defensive transitions.", notes: "Controls game tempo through tech mid lines, using fullbacks to provide depth." },
+    "COL": { name: "Colombia", flag: "🇨🇴", formation: "4-2-3-1", player: "Luis Díaz", strengths: "Dynamic attacking variety, physical mid-block dominance.", weaknesses: "Defensive concentration lapses on weak side defensive lines.", notes: "Blends aggressive pressing styles with fluid attacking movements to challenge blocks." },
+    "UZB": { name: "Uzbekistan", flag: "🇺🇿", formation: "3-4-2-1", player: "E. Shomurodov", strengths: "Highly disciplined tracking networks, solid physical structure.", weaknesses: "Limited attacking variety when deep options are marked out.", notes: "Employs an organized back-three setup focused on securing center lanes." },
+    "COD": { name: "DR Congo", flag: "🇨🇩", formation: "4-2-3-1", player: "Chancel Mbemba", strengths: "Powerful central defensive block, robust athletic baseline.", weaknesses: "Possession progression mechanics under high central presses.", notes: "Maintains solid, compact lines, utilizing wide transitions to advance play." },
+    "ENG": { name: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", formation: "4-2-3-1", player: "Jude Bellingham", strengths: "World-class half-space execution, elite set-piece stats.", weaknesses: "Lateral coverage vulnerability if fullbacks overlap deep.", notes: "Maintains structured possession shapes to break down defensive blocks." },
+    "CRO": { name: "Croatia", flag: "🇭🇷", formation: "4-3-3", player: "Luka Modrić", strengths: "Impeccable structural tempo control, rich tournament experience.", weaknesses: "Pace deficit against high-intensity athletic setups.", notes: "Controls game speed through a highly technical midfield, picking out passing lines." },
+    "PAN": { name: "Panama", flag: "🇵🇦", formation: "3-4-3", player: "Adalberto Carrasquilla", strengths: "Excellent positional play build-up, cohesive patterns.", weaknesses: "Individual defensive errors when isolated in space.", notes: "Uses wide networks to build out cleanly from defensive areas under press." },
+    "GHA": { name: "Ghana", flag: "🇬🇭", formation: "4-2-3-1", player: "Mohammed Kudus", strengths: "Elite individual carry paths, rapid transition outlets.", weaknesses: "Tactical shape cohesion across long defensive phases.", notes: "Relies on individual ball-carrying paths to break initial press lines and launch counters." }
+  };
+
+  var selector = document.getElementById("spotlight-selector");
+  var container = document.getElementById("nodes-container");
+  if (!selector || !container) return;
+
+  var sortedCodes = Object.keys(analyticsDatabase).sort(function(a, b) {
+    return analyticsDatabase[a].name.localeCompare(analyticsDatabase[b].name);
+  });
+
+  sortedCodes.forEach(function(code) {
+    var opt = document.createElement("option");
+    opt.value = code;
+    opt.textContent = analyticsDatabase[code].flag + " " + analyticsDatabase[code].name;
+    selector.appendChild(opt);
+  });
+
+  function renderSpotlight(code) {
+    var data = analyticsDatabase[code];
+    document.getElementById("spotlight-flag").textContent = data.flag;
+    document.getElementById("spotlight-country").textContent = data.name;
+    document.getElementById("spotlight-formation-txt").textContent = data.formation;
+    document.getElementById("spotlight-strengths").textContent = data.strengths;
+    document.getElementById("spotlight-weaknesses").textContent = data.weaknesses;
+    document.getElementById("spotlight-keyplayer").textContent = "Key Target: " + data.player;
+    document.getElementById("spotlight-tactical-notes").textContent = '"' + data.notes + '"';
+
+    container.innerHTML = "";
+    var nodes = formationPresets[data.formation] || formationPresets["4-3-3"];
+    
+    nodes.forEach(function(node) {
+      var n = document.createElement("div");
+      n.style.cssText = "position: absolute; top: " + node.pos[0] + "%; left: " + node.pos[1] + "%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: radial-gradient(circle, #00f0ff 0%, #2dd4a0 100%); border: 2px solid #fff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff; display: flex; align-items: center; justify-content: center; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);";
+      
+      var lbl = document.createElement("span");
+      lbl.style.cssText = "position: absolute; top: 22px; font-family: var(--font-mono); font-size: 8px; font-weight: bold; color: var(--text2); background: rgba(13,15,18,0.85); padding: 1px 4px; border-radius: 3px; white-space: nowrap; border: 1px solid var(--border);";
+      lbl.textContent = node.r;
+      
+      n.appendChild(lbl);
+      container.appendChild(n);
+    });
+  }
+
+  selector.addEventListener("change", function(e) {
+    renderSpotlight(e.target.value);
+  });
+
+  renderSpotlight("FRA");
+})();
+</script>
+
+<!-- ══ MATCH PREVIEW MODAL — Canada vs Bosnia-Herzegovina (Jun 12) ══ -->
+<style>
+.mm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;backdrop-filter:blur(6px);}
+.mm-overlay.on{display:flex;}
+.mm-dialog{width:100%;max-width:980px;background:var(--bg);border:1px solid var(--border2);border-radius:12px;margin:30px 0;overflow:hidden;animation:mmIn .25s ease-out;}
+@keyframes mmIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.mm-head{padding:18px 22px 0;position:relative;border-bottom:1px solid var(--border);}
+.mm-close{position:absolute;top:14px;right:14px;background:transparent;border:none;color:var(--text2);font-size:24px;cursor:pointer;width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:.2s;}
+.mm-close:hover{background:var(--bg-pill);color:var(--text);}
+.mm-meta{font-size:11px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.mm-alt{color:var(--green);display:inline-flex;align-items:center;gap:4px;font-weight:600;}
+.mm-vs-row{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;padding-bottom:14px;}
+.mm-team{display:flex;flex-direction:column;}
+.mm-team.right{text-align:right;align-items:flex-end;}
+.mm-team .flag{font-size:36px;line-height:1;margin-bottom:6px;}
+.mm-team .nm{font-family:var(--font-cond);font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.02em;display:flex;align-items:center;gap:8px;}
+.mm-team.right .nm{flex-direction:row-reverse;}
+.mm-team .rk{font-family:var(--font-mono);font-size:11px;color:var(--text2);background:var(--bg-pill);padding:2px 7px;border-radius:4px;border:1px solid var(--border);}
+.mm-team .pwr{font-size:12px;color:var(--text2);margin-top:3px;}
+.mm-team .pwr .num{font-family:var(--font-mono);font-weight:600;color:var(--text);}
+.mm-team .pwr-tag{display:inline-block;font-family:var(--font-mono);font-size:9px;font-weight:600;color:var(--gold);background:rgba(244,185,66,.1);border:1px solid rgba(244,185,66,.25);padding:1px 6px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;margin-left:4px;vertical-align:1px;}
+.mm-middle{text-align:center;}
+.mm-middle .vs{font-family:var(--font-cond);font-size:13px;color:var(--text3);letter-spacing:.12em;}
+.mm-middle .pred{display:flex;gap:6px;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:600;margin-top:4px;}
+.mm-middle .pred .h{color:var(--blue);}.mm-middle .pred .d{color:var(--text3);}.mm-middle .pred .a{color:var(--red);}
+.mm-prob{display:flex;height:6px;border-radius:3px;overflow:hidden;background:var(--bg-pill);margin-top:8px;width:160px;margin-left:auto;margin-right:auto;}
+.mm-prob .h{background:var(--blue);}.mm-prob .d{background:var(--text3);}.mm-prob .a{background:var(--red);}
+.mm-tabs{display:flex;gap:2px;padding:0 22px;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.mm-tab{background:transparent;border:none;color:var(--text2);font-family:var(--font);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:14px 14px 11px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.2s;}
+.mm-tab:hover{color:var(--text);}.mm-tab.on{color:var(--gold);border-bottom-color:var(--gold);}
+.mm-body{padding:22px;max-height:65vh;overflow-y:auto;}
+.mm-pane{display:none;}.mm-pane.on{display:block;animation:mmFade .2s ease-out;}
+@keyframes mmFade{from{opacity:0}to{opacity:1}}
+.mm-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:12px;}
+.mm-card h4{font-family:var(--font-cond);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:10px;}
+.mm-card p{font-size:13.5px;line-height:1.6;color:var(--text);margin-bottom:10px;}
+.mm-card p:last-child{margin-bottom:0;}
+.mm-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:680px){.mm-grid2{grid-template-columns:1fr;}.mm-vs-row{grid-template-columns:1fr;}.mm-team.right{text-align:left;align-items:flex-start;}.mm-team.right .nm{flex-direction:row;}}
+.mm-bar{margin-top:6px;font-size:12px;color:var(--text2);display:flex;justify-content:space-between;}
+.mm-bar .v{font-family:var(--font-mono);font-weight:600;color:var(--text);}
+.mm-bar-vis{height:6px;background:var(--bg-pill);border-radius:3px;overflow:hidden;margin-top:4px;}
+.mm-bar-vis div{height:100%;border-radius:3px;}
+.mm-pitch-wrap{margin:6px -4px 0;}
+.mm-pitch{width:100%;height:auto;display:block;border-radius:6px;overflow:hidden;}
+.mm-pitch text{font-family:var(--font),system-ui,sans-serif;text-anchor:middle;dominant-baseline:middle;pointer-events:none;}
+.mm-pitch .num{font-size:4px;font-weight:700;fill:#0a1a10;}
+.mm-pitch .nm{font-size:3.4px;font-weight:600;fill:#f0f2f5;letter-spacing:0.02em;}
+.mm-pitch circle{filter:drop-shadow(0 1px 2px rgba(0,0,0,0.5));}
+.mm-team-home circle{fill:var(--red);}
+.mm-team-home .num{fill:#1a0505;}
+.mm-team-away circle{fill:var(--amber);}
+.mm-team-away .num{fill:#1a1205;}
+.mm-fact{display:flex;gap:14px;font-size:12px;color:var(--text2);margin-bottom:6px;flex-wrap:wrap;}
+.mm-fact .k{color:var(--text3);text-transform:uppercase;letter-spacing:.06em;font-size:10px;font-weight:600;}
+.mm-fact .v{color:var(--text);font-weight:600;}
+.mm-tac-row{padding:8px 0;border-bottom:1px solid var(--border);}
+.mm-tac-row:last-child{border-bottom:none;}
+.mm-tac-row .lbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;}
+.mm-tac-row .val{font-size:13.5px;color:var(--text);line-height:1.55;}
+.mm-guide h5{font-family:var(--font-cond);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);margin-top:14px;margin-bottom:6px;}
+.mm-guide h5:first-child{margin-top:0;}
+.mm-guide p{font-size:13.5px;line-height:1.6;color:var(--text);margin-bottom:10px;}
+.mm-guide blockquote{border-left:3px solid var(--gold);padding:6px 14px;color:var(--text2);font-style:italic;margin:10px 0;background:rgba(244,185,66,.06);}
+.mm-team-toggle{display:flex;gap:4px;background:var(--bg-pill);border:1px solid var(--border);padding:4px;border-radius:6px;margin-bottom:14px;}
+.mm-team-toggle button{flex:1;background:transparent;border:none;color:var(--text2);font-family:var(--font);font-size:12px;font-weight:600;padding:8px;border-radius:4px;cursor:pointer;text-transform:uppercase;letter-spacing:.05em;transition:.2s;}
+.mm-team-toggle button.on{background:var(--bg-card);color:var(--text);}
+.mm-prediction{background:linear-gradient(135deg,rgba(244,185,66,.14),var(--bg-pill));border:1px solid rgba(244,185,66,.3);border-radius:var(--r-sm);padding:14px 16px;margin-top:14px;text-align:center;}
+.mm-prediction .lbl{font-size:10px;color:var(--gold);letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:6px;}
+.mm-prediction .score{font-family:var(--font-cond);font-size:26px;font-weight:700;color:var(--text);letter-spacing:.04em;}
+.mm-subs{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);}
+.mm-subs-head{font-family:var(--font-cond);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.mm-subs-mgr{font-family:var(--font);font-size:10px;font-weight:500;color:var(--text2);text-transform:none;letter-spacing:0;}
+body.mm-open{overflow:hidden;}
+</style>
+
+<div class="mm-overlay" id="matchModal" role="dialog" aria-modal="true" aria-label="Canada vs Bosnia-Herzegovina preview">
+  <div class="mm-dialog">
+    <div class="mm-head">
+      <button class="mm-close" onclick="closeMatchModal()" aria-label="Close">×</button>
+      <div class="mm-meta">
+        <span>Group B</span><span>·</span><span>Toronto</span><span>·</span><span>2026-06-12</span>
+        <span class="mm-alt"><i class="ti ti-home" style="font-size:13px;"></i>Co-host</span>
+      </div>
+      <div class="mm-vs-row">
+        <div class="mm-team">
+          <span class="flag">🇨🇦</span>
+          <span class="nm">Canada <span class="rk">FIFA #31</span></span>
+          <span class="pwr">Power <span class="num" style="color:var(--red);">41</span> <span class="pwr-tag">Condition Adjusted</span></span>
+        </div>
+        <div class="mm-middle">
+          <div class="vs">VS</div>
+          <div class="pred"><span class="h">56%</span><span class="d">/ 10%</span><span class="a">/ 34%</span></div>
+          <div class="mm-prob"><div class="h" style="width:56%;"></div><div class="d" style="width:10%;"></div><div class="a" style="width:34%;"></div></div>
+        </div>
+        <div class="mm-team right">
+          <span class="flag">🇧🇦</span>
+          <span class="nm">Bosnia-Herz. <span class="rk">FIFA #56</span></span>
+          <span class="pwr">Power <span class="num" style="color:var(--amber);">24</span> <span class="pwr-tag">Condition Adjusted</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="mm-tabs" id="mmTabs">
+      <button class="mm-tab on" data-pane="preview">Preview</button>
+      <button class="mm-tab" data-pane="lineups">Lineups</button>
+      <button class="mm-tab" data-pane="tactics">Tactics</button>
+      <button class="mm-tab" data-pane="conditions">Conditions</button>
+      <button class="mm-tab" data-pane="analysis">Analysis</button>
+      <button class="mm-tab" data-pane="guide">Team Guide</button>
+    </div>
+    <div class="mm-body">
+
+      <!-- PREVIEW -->
+      <div class="mm-pane on" data-pane="preview">
+        <div class="mm-card">
+          <h4>Predicted outcome</h4>
+          <div class="mm-prob" style="width:100%;height:10px;"><div class="h" style="width:56%;"></div><div class="d" style="width:10%;"></div><div class="a" style="width:34%;"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:8px;"><span style="color:var(--blue);">Canada 56%</span><span style="color:var(--text3);">Draw 10%</span><span style="color:var(--red);">Bosnia-Herz. 34%</span></div>
+          <div style="margin-top:14px;font-size:13px;line-height:1.6;color:var(--text2);">
+            → Canada playing on home soil — crowd and travel advantage<br>
+            → Bosnia arrive after grueling transatlantic travel — jet lag a major factor<br>
+            → Jesse Marsch's high-press 4-4-2 vs Barbarez's compact 4-4-2 block<br>
+            → Alphonso Davies nursing hamstring — late fitness test<br>
+            → Džeko (40) chasing 21st consecutive year with an international goal
+          </div>
+        </div>
+        <div class="mm-grid2">
+          <div class="mm-card"><h4>Venue</h4>
+            <div class="mm-fact"><span class="k">Stadium</span><span class="v">BMO Field</span></div>
+            <div class="mm-fact"><span class="k">City</span><span class="v">Toronto, Canada</span></div>
+            <div class="mm-fact"><span class="k">Altitude</span><span class="v" style="color:var(--green);">76 m · Sea level</span></div>
+            <div class="mm-fact"><span class="k">Roof</span><span class="v">Open air</span></div>
+            <div class="mm-fact"><span class="k">Heat index</span><span class="v">50/100 — Mild</span></div>
+            <div class="mm-fact"><span class="k">Kickoff</span><span class="v">Jun 13 · 00:30 IST</span></div>
+            <div class="mm-fact"><span class="k">India broadcast</span><span class="v" style="color:var(--gold);">Zee5 · Unite8 Sports 1/2 HD</span></div>
+          </div>
+          <div class="mm-card"><h4>Power index</h4>
+            <div class="mm-bar"><span>Canada</span><span class="v">41</span></div>
+            <div class="mm-bar-vis"><div style="width:41%;background:var(--blue);"></div></div>
+            <div class="mm-bar" style="margin-top:10px;"><span>Bosnia-Herzegovina</span><span class="v">24</span></div>
+            <div class="mm-bar-vis"><div style="width:24%;background:var(--amber);"></div></div>
+            <div class="mm-bar" style="margin-top:14px;"><span>Conditioning · Canada</span><span class="v">38</span></div>
+            <div class="mm-bar-vis"><div style="width:38%;background:var(--blue);"></div></div>
+            <div class="mm-bar" style="margin-top:10px;"><span>Conditioning · Bosnia-Herz.</span><span class="v">30</span></div>
+            <div class="mm-bar-vis"><div style="width:30%;background:var(--amber);"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LINEUPS (projected until confirmed) -->
+      <div class="mm-pane" data-pane="lineups">
+        <div class="mm-grid2">
+          <div class="mm-card">
+            <h4>🇨🇦 Canada · Projected XI</h4>
+            <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Formation <span style="font-family:var(--font-mono);color:var(--gold);font-weight:600;">4-4-2</span> · high-energy press · Coach: Jesse Marsch</div>
+            <div class="mm-pitch-wrap">
+              <svg class="mm-pitch" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg" aria-label="Canada 4-4-2 projected">
+                <rect x="0" y="0" width="100" height="140" fill="url(#pitchCA)"/>
+                <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
+                <circle cx="50" cy="70" r="0.7" fill="rgba(255,255,255,0.5)"/>
+                <g class="mm-team-home">
+                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">16</text><text class="nm" x="50" y="138">Crépeau</text></g>
+                  <g><circle cx="10" cy="106" r="4.6"/><text class="num" x="10" y="107.7">19</text><text class="nm" x="10" y="115.5">Davies<tspan fill="#f4b942" font-weight="700"> ©</tspan></text></g>
+                  <g><circle cx="34" cy="110" r="4.6"/><text class="num" x="34" y="111.7">5</text><text class="nm" x="34" y="119">Miller</text></g>
+                  <g><circle cx="66" cy="110" r="4.6"/><text class="num" x="66" y="111.7">4</text><text class="nm" x="66" y="119">Cornelius</text></g>
+                  <g><circle cx="90" cy="106" r="4.6"/><text class="num" x="90" y="107.7">2</text><text class="nm" x="90" y="115.5">Johnston</text></g>
+                  <g><circle cx="14" cy="68" r="4.6"/><text class="num" x="14" y="69.7">11</text><text class="nm" x="14" y="77.5">Shaffelburg</text></g>
+                  <g><circle cx="38" cy="72" r="4.6"/><text class="num" x="38" y="73.7">8</text><text class="nm" x="38" y="81.5">Koné</text></g>
+                  <g><circle cx="62" cy="72" r="4.6"/><text class="num" x="62" y="73.7">7</text><text class="nm" x="62" y="81.5">Eustáquio</text></g>
+                  <g><circle cx="86" cy="68" r="4.6"/><text class="num" x="86" y="69.7">3</text><text class="nm" x="86" y="77.5">Buchanan</text></g>
+                  <g><circle cx="35" cy="28" r="4.6"/><text class="num" x="35" y="29.7">20</text><text class="nm" x="35" y="37">David</text></g>
+                  <g><circle cx="65" cy="28" r="4.6"/><text class="num" x="65" y="29.7">14</text><text class="nm" x="65" y="37">Larin</text></g>
+                </g>
+                <defs><linearGradient id="pitchCA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+          <div class="mm-card">
+            <h4>🇧🇦 Bosnia-Herz. · Projected XI</h4>
+            <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Formation <span style="font-family:var(--font-mono);color:var(--gold);font-weight:600;">4-4-2</span> · compact block · Coach: Sergej Barbarez</div>
+            <div class="mm-pitch-wrap">
+              <svg class="mm-pitch" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg" aria-label="Bosnia 4-4-2 projected">
+                <rect x="0" y="0" width="100" height="140" fill="url(#pitchBA)"/>
+                <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
+                <circle cx="50" cy="70" r="0.7" fill="rgba(255,255,255,0.5)"/>
+                <g class="mm-team-away">
+                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Vasilj</text></g>
+                  <g><circle cx="10" cy="106" r="4.6"/><text class="num" x="10" y="107.7">3</text><text class="nm" x="10" y="115.5">Kolašinac</text></g>
+                  <g><circle cx="34" cy="110" r="4.6"/><text class="num" x="34" y="111.7">4</text><text class="nm" x="34" y="119">Muharemović</text></g>
+                  <g><circle cx="66" cy="110" r="4.6"/><text class="num" x="66" y="111.7">6</text><text class="nm" x="66" y="119">Čelik</text></g>
+                  <g><circle cx="90" cy="106" r="4.6"/><text class="num" x="90" y="107.7">2</text><text class="nm" x="90" y="115.5">Dedić</text></g>
+                  <g><circle cx="14" cy="68" r="4.6"/><text class="num" x="14" y="69.7">17</text><text class="nm" x="14" y="77.5">Bajraktarević</text></g>
+                  <g><circle cx="38" cy="72" r="4.6"/><text class="num" x="38" y="73.7">8</text><text class="nm" x="38" y="81.5">Pjanić</text></g>
+                  <g><circle cx="62" cy="72" r="4.6"/><text class="num" x="62" y="73.7">10</text><text class="nm" x="62" y="81.5">Tahirović</text></g>
+                  <g><circle cx="86" cy="68" r="4.6"/><text class="num" x="86" y="69.7">7</text><text class="nm" x="86" y="77.5">Alajbegović</text></g>
+                  <g><circle cx="35" cy="28" r="4.6"/><text class="num" x="35" y="29.7">9</text><text class="nm" x="35" y="37">Džeko<tspan fill="#f4b942" font-weight="700"> ©</tspan></text></g>
+                  <g><circle cx="65" cy="28" r="4.6"/><text class="num" x="65" y="29.7">11</text><text class="nm" x="65" y="37">Mahmić</text></g>
+                </g>
+                <defs><linearGradient id="pitchBA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--text3);text-align:center;margin-top:10px;"><i class="ti ti-info-circle" style="font-size:12px;color:var(--gold);"></i> Projected lineups · confirmed XIs drop ~75 min before kickoff. <span style="color:var(--gold);">©</span> captain. Davies late fitness test — may start on bench.</div>
+      </div>
+
+      <!-- TACTICS -->
+      <div class="mm-pane" data-pane="tactics">
+        <div class="mm-grid2">
+          <div class="mm-card">
+            <h4>🇨🇦 Canada · Tactical brief</h4>
+            <div class="mm-tac-row"><div class="lbl">Shape</div><div class="val">4-4-2 high-energy block, prioritizing vertical counter-attacks and explosive width</div></div>
+            <div class="mm-tac-row"><div class="lbl">Style</div><div class="val">Pacy, uncompromising, full-throttle. Comfortable without the ball. Improved creativity vs low blocks under Marsch</div></div>
+            <div class="mm-tac-row"><div class="lbl">Pressing</div><div class="val">Aggressive front-footed press; turn defensive turnovers into decisive vertical counter-attacks</div></div>
+            <div class="mm-tac-row"><div class="lbl">Strengths</div><div class="val">Home soil advantage · elite transition speed · Davies/David quality · tournament continuity from 2022</div></div>
+            <div class="mm-tac-row"><div class="lbl">Weaknesses</div><div class="val">Davies hamstring fitness test · Flores ACL injury depletes depth · historically 0W in 6 WC games ever</div></div>
+            <div class="mm-tac-row"><div class="lbl">Key player</div><div class="val"><b>Jonathan David</b> (Juventus) — 39 goals in 77 caps, Canada's all-time leading scorer, elite spatial intelligence</div></div>
+          </div>
+          <div class="mm-card">
+            <h4>🇧🇦 Bosnia-Herz. · Tactical brief</h4>
+            <div class="mm-tac-row"><div class="lbl">Shape</div><div class="val">Compact, rigidly disciplined 4-4-2 designed to choke central spaces. Immense width in transition</div></div>
+            <div class="mm-tac-row"><div class="lbl">Style</div><div class="val">Defensive solidity, veteran craft, reliance on set pieces. Relies on Džeko to hold the ball up and bring others into play</div></div>
+            <div class="mm-tac-row"><div class="lbl">Pressing</div><div class="val">Low-to-mid block; frustrate opponents then spring on the counter via Bajraktarević and Alajbegović on the flanks</div></div>
+            <div class="mm-tac-row"><div class="lbl">Strengths</div><div class="val">Playoff pedigree (beat Italy!) · Džeko's big-game experience · exciting young wingers · Dedić elite at Benfica</div></div>
+            <div class="mm-tac-row"><div class="lbl">Weaknesses</div><div class="val">Catastrophic pre-tournament form · grueling transatlantic travel · only 2nd WC appearance ever · thin depth</div></div>
+            <div class="mm-tac-row"><div class="lbl">Key player</div><div class="val"><b>Edin Džeko</b> (40, Schalke) — 20 consecutive years with an international goal since 2007, undisputed talisman</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONDITIONS -->
+      <div class="mm-pane" data-pane="conditions">
+        <div style="font-size:12px;color:var(--text2);margin-bottom:14px;"><b>Venue:</b> BMO Field, Toronto · 76 m — sea level · Heat index: 50/100 (Mild) · Pitch: 68/100 (Good)</div>
+        <div class="mm-card"><h4>🌡 Heat &amp; humidity <span style="color:var(--amber);font-size:10px;margin-left:6px;">EDGE: BOSNIA-HERZ.</span></h4>
+          <div class="mm-bar"><span>Canada</span><span class="v" style="color:var(--red);">16</span></div><div class="mm-bar-vis"><div style="width:16%;background:var(--red);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Bosnia-Herzegovina</span><span class="v" style="color:var(--red);">41</span></div><div class="mm-bar-vis"><div style="width:41%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📅 Pitch quality</h4>
+          <div class="mm-bar"><span>Canada</span><span class="v" style="color:var(--amber);">53</span></div><div class="mm-bar-vis"><div style="width:53%;background:var(--amber);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Bosnia-Herzegovina</span><span class="v" style="color:var(--red);">48</span></div><div class="mm-bar-vis"><div style="width:48%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>🏔 Altitude (76 m — sea level, no impact)</h4>
+          <div class="mm-bar"><span>Canada</span><span class="v" style="color:var(--red);">10</span></div><div class="mm-bar-vis"><div style="width:10%;background:var(--red);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Bosnia-Herzegovina</span><span class="v" style="color:var(--red);">10</span></div><div class="mm-bar-vis"><div style="width:10%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>✈ Travel &amp; jet lag <span style="color:var(--blue);font-size:10px;margin-left:6px;">EDGE: CANADA</span></h4>
+          <div class="mm-bar"><span>Canada</span><span class="v" style="color:var(--green);">86</span></div><div class="mm-bar-vis"><div style="width:86%;background:var(--green);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Bosnia-Herzegovina</span><span class="v" style="color:var(--red);">36</span></div><div class="mm-bar-vis"><div style="width:36%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>👥 Crowd pressure (Toronto support)</h4>
+          <div class="mm-bar"><span>Canada</span><span class="v" style="color:var(--red);">48</span></div><div class="mm-bar-vis"><div style="width:48%;background:var(--red);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Bosnia-Herzegovina</span><span class="v" style="color:var(--red);">44</span></div><div class="mm-bar-vis"><div style="width:44%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📋 Fixture load</h4>
+          <div class="mm-bar"><span>Canada</span><span class="v" style="color:var(--blue);">67</span></div><div class="mm-bar-vis"><div style="width:67%;background:var(--blue);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Bosnia-Herzegovina</span><span class="v" style="color:var(--blue);">67</span></div><div class="mm-bar-vis"><div style="width:67%;background:var(--blue);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📈 Form <span style="color:var(--blue);font-size:10px;margin-left:6px;">EDGE: CANADA</span></h4>
+          <div class="mm-bar"><span>Canada</span><span class="v" style="color:var(--blue);">73</span></div><div class="mm-bar-vis"><div style="width:73%;background:var(--blue);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Bosnia-Herzegovina</span><span class="v" style="color:var(--red);">27</span></div><div class="mm-bar-vis"><div style="width:27%;background:var(--red);"></div></div>
+        </div>
+      </div>
+
+      <!-- ANALYSIS -->
+      <div class="mm-pane" data-pane="analysis">
+        <div class="mm-card mm-guide">
+          <h4 style="color:var(--gold);font-size:12px;">✦ Match Analysis</h4>
+          <p><b>TORONTO</b> — Major tournament openers are rarely decided by tactical blueprints alone; more often, they are dictated by the invisible taxes of geography and climate.</p>
+          <p>When Canada steps onto the pitch at BMO Field to face Bosnia-Herzegovina, Jesse Marsch's side will hold a structural advantage that goes far deeper than home-field familiarity. The most critical data point ahead of kickoff is a staggering travel differential. While the Canadians have spent the buildup to this match sleeping in their own beds, Bosnia arrives on the heels of a grueling transatlantic itinerary — a logistical nightmare that promises to manifest as heavy legs when the intensity peaks.</p>
+          <p>That physiological fatigue will only be magnified by Toronto's dense June humidity. While Bosnia's historical data suggests a reasonable baseline for managing high temperatures, the combination of stubborn jet lag and a suffocating climate creates a razor-thin margin for error. Edin Džeko and company will be forced to ration their energy expenditure carefully, a dangerous concession to make against a Canadian side designed to play at a breakneck tempo.</p>
+          <p>Though raw attendance metrics project a balanced distribution of support, the psychological reality of BMO Field tells a different story. The stadium is poised to become a volatile cauldron of red and white, designed to claustrophobically squeeze the visitors on every touch while providing an adrenaline-fueled lift to Canadian legs in the final third.</p>
+          <p>Compounding Bosnia's environmental hurdles is a catastrophic run of form leading into the tournament. Their preparation metrics suggest systemic issues within the camp, contrasting sharply with a settled, confident Canadian side that has found its identity under Marsch.</p>
+          <p>Expect Alphonso Davies and Jonathan David to manipulate this disparity. The tactical blueprint will likely center on verticality, using transition moments to ruthlessly exploit a tired Bosnian backline — particularly after the hour mark, when the physiological effects of West-to-East travel typically peak. Bosnia possesses enough veteran craft to pose a threat on the counter, but the elements are heavily stacked against them.</p>
+          <div class="mm-prediction"><div class="lbl">✦ Model prediction</div><div class="score">🇨🇦 Canada  2 – 1  Bosnia-Herz. 🇧🇦</div></div>
+        </div>
+      </div>
+
+      <!-- TEAM GUIDE -->
+      <div class="mm-pane" data-pane="guide">
+        <div class="mm-team-toggle" id="mmGuideToggle">
+          <button class="on" data-g="home">🇨🇦 Canada</button>
+          <button data-g="away">🇧🇦 Bosnia-Herz.</button>
+        </div>
+        <div class="mm-card mm-guide" id="mmGuideHome">
+          <h5>How did they qualify?</h5>
+          <p>Canada returns for their second consecutive World Cup finals. They became one of the breakout stories of the 2022 qualifying cycle, improbably topping the Concacaf table with a vibrant, youthful squad. This time, their place was secured automatically as tournament co-hosts.</p>
+          <h5>What is their World Cup pedigree?</h5>
+          <p>Canada's previous tournament appearances in 1986 and 2022 both ended in three consecutive group-stage defeats. In 2022, they outplayed a gilded Belgium side in their opener (missing a penalty, falling 1-0), before Alphonso Davies scored the country's historic first men's World Cup goal with a towering header against Croatia. While inexperience caught up in subsequent losses, it proved Canadian talent belonged at this level.</p>
+          <h5>Who is the coach?</h5>
+          <p>Jesse Marsch — a prominent disciple of the Red Bull pressing system (New York Red Bulls, Red Bull Salzburg, RB Leipzig, Leeds United). The American was brought in to maximize an incredibly athletic but still transitioning squad. Marsch has firmly instilled the belief that Canada should no longer be content with simply qualifying — they are here to win games.</p>
+          <h5>How do they play?</h5>
+          <p>Canada is at its devastating best playing pacy, uncompromising, full-throttle soccer. They are comfortable operating without the ball and have shown marked improvement in creativity against low blocks. Marsch's structured 4-4-2 uses remarkable speed and directness from his wide players, turning defensive turnovers into decisive, vertical counter-attacks.</p>
+          <h5>Who is their key player?</h5>
+          <p>Jonathan David recently concluded a prolific debut season at Juventus following a stellar five-year stint at Lille, where he averaged a goal every 162 minutes. As Canada's all-time leading male goalscorer (39 goals in 77 matches), David possesses elite spatial intelligence. Canada's knockout ambitions rest heavily on his shoulders.</p>
+          <h5>What else should we know?</h5>
+          <p>In January 2017, Canada languished at 120th in FIFA rankings. Soccer now has higher youth participation numbers in Canada than ice hockey. Sitting at a historic high of 30th in the world, a successful summer could permanently alter the Canadian sports landscape. Not since USA '94 has a North American nation stood to benefit so profoundly from the tournament's cultural legacy.</p>
+        </div>
+        <div class="mm-card mm-guide" id="mmGuideAway" style="display:none;">
+          <h5>How did they qualify?</h5>
+          <p>Via a historic, highly dramatic playoff campaign. A nerve-shredding penalty shootout victory over Wales in the semi-final set up a monumental showdown with Italy. A sensational performance against the four-time world champions booked their ticket to North America.</p>
+          <h5>What is their World Cup pedigree?</h5>
+          <p>Only Bosnia's second World Cup appearance since independence in 1992. Their solitary previous cameo came in 2014: narrow one-goal defeats to Argentina and Nigeria, despite a late victory over Iran. Crucially, the World Cup remains the only major international tournament Bosnia has ever qualified for — they've never made the European Championship.</p>
+          <blockquote>A historic playoff victory over four-time world champions Italy stunned the footballing world, proving this side has a distinct flair for the dramatic.</blockquote>
+          <h5>Who is the coach?</h5>
+          <p>Sergej Barbarez — the legendary Bundesliga forward in his first senior managerial role. Outspoken and fiercely independent, Barbarez spent six years playing high-stakes professional poker across Europe after retiring from playing. He sparked headlines before the Wales playoff by publicly criticizing Brøndby's Steve Cooper over the benching of Bosnian midfielder Benjamin Tahirović.</p>
+          <h5>How do they play?</h5>
+          <p>Under Barbarez, Bosnia organizes into a compact 4-4-2 designed to choke central spaces and frustrate opponents. The system allows immense natural width in transition. Esmir Bajraktarević (21, PSV) has had a breakout season, while 18-year-old Kerim Alajbegović scored 11 goals for Red Bull Salzburg ahead of a move to Bayer Leverkusen.</p>
+          <h5>Who is their key player?</h5>
+          <p><b>Edin Džeko</b> may be 40 years old, but he remains the undisputed talisman of Bosnian football. The iconic former Man City, Roma and Inter Milan striker has scored at least one international goal for 20 consecutive calendar years since his debut in 2007, including the vital equalizer against Wales. A January move to Schalke yielded six goals in eight appearances to sharpen his match fitness.</p>
+          <h5>Key squad facts</h5>
+          <p>Džeko and Kolašinac are the only survivors from the 2014 WC squad. Eligibility coup: Ermin Mahmić switched allegiance from Austria, immediately fast-tracked into the squad after scoring eight goals for Slovan Liberec. Crown jewel of the future: 19-year-old Lens center-back Nidal Čelik.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ MATCH PREVIEW MODAL — USA vs Paraguay (Jun 12) ══ -->
+<div class="mm-overlay" id="matchModal2" role="dialog" aria-modal="true" aria-label="USA vs Paraguay preview">
+  <div class="mm-dialog">
+    <div class="mm-head">
+      <button class="mm-close" onclick="closeMatchModal()" aria-label="Close">×</button>
+      <div class="mm-meta">
+        <span>Group D</span><span>·</span><span>Los Angeles</span><span>·</span><span>2026-06-12</span>
+        <span class="mm-alt"><i class="ti ti-home" style="font-size:13px;"></i>Co-host</span>
+      </div>
+      <div class="mm-vs-row">
+        <div class="mm-team">
+          <span class="flag">🇺🇸</span>
+          <span class="nm">United States <span class="rk">FIFA #11</span></span>
+          <span class="pwr">Power <span class="num" style="color:var(--blue);">58</span> <span class="pwr-tag">Condition Adjusted</span></span>
+        </div>
+        <div class="mm-middle">
+          <div class="vs">VS</div>
+          <div class="pred"><span class="h">52%</span><span class="d">/ 24%</span><span class="a">/ 24%</span></div>
+          <div class="mm-prob"><div class="h" style="width:52%;"></div><div class="d" style="width:24%;"></div><div class="a" style="width:24%;"></div></div>
+        </div>
+        <div class="mm-team right">
+          <span class="flag">🇵🇾</span>
+          <span class="nm">Paraguay <span class="rk">FIFA #44</span></span>
+          <span class="pwr">Power <span class="num" style="color:var(--red);">31</span> <span class="pwr-tag">Condition Adjusted</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="mm-tabs" id="mmTabs2">
+      <button class="mm-tab on" data-pane="preview2">Preview</button>
+      <button class="mm-tab" data-pane="lineups2">Lineups</button>
+      <button class="mm-tab" data-pane="tactics2">Tactics</button>
+      <button class="mm-tab" data-pane="conditions2">Conditions</button>
+      <button class="mm-tab" data-pane="analysis2">Analysis</button>
+      <button class="mm-tab" data-pane="guide2">Team Guide</button>
+    </div>
+    <div class="mm-body">
+      <!-- PREVIEW -->
+      <div class="mm-pane on" data-pane="preview2">
+        <div class="mm-card">
+          <h4>Predicted outcome</h4>
+          <div class="mm-prob" style="width:100%;height:10px;"><div class="h" style="width:52%;"></div><div class="d" style="width:24%;"></div><div class="a" style="width:24%;"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:8px;"><span style="color:var(--blue);">USA 52%</span><span style="color:var(--text3);">Draw 24%</span><span style="color:var(--red);">Paraguay 24%</span></div>
+          <div style="margin-top:14px;font-size:13px;line-height:1.6;color:var(--text2);">
+            → USA's first home World Cup game since 1994 — 70,000 fans at SoFi Stadium<br>
+            → Pochettino's high-press system built around Pulisic, Adams, McKennie spine<br>
+            → Paraguay back at WC for first time since 2010 quarter-final run<br>
+            → Alfaro's side conceded only 10 goals in 18 CONMEBOL qualifiers<br>
+            → Host nations have won 16 of 23 opening matches in WC history<br>
+            → First competitive meeting between the two in 10 years
+          </div>
+        </div>
+        <div class="mm-grid2">
+          <div class="mm-card"><h4>Venue</h4>
+            <div class="mm-fact"><span class="k">Stadium</span><span class="v">SoFi Stadium</span></div>
+            <div class="mm-fact"><span class="k">City</span><span class="v">Inglewood, Los Angeles</span></div>
+            <div class="mm-fact"><span class="k">Capacity</span><span class="v">70,000</span></div>
+            <div class="mm-fact"><span class="k">Roof</span><span class="v">Enclosed (translucent)</span></div>
+            <div class="mm-fact"><span class="k">Pitch</span><span class="v" style="color:var(--green);">82/100 — premium</span></div>
+            <div class="mm-fact"><span class="k">Kickoff</span><span class="v">Jun 13 · 06:30 IST</span></div>
+            <div class="mm-fact"><span class="k">India broadcast</span><span class="v" style="color:var(--gold);">Zee5 · Unite8 Sports 1/2 HD</span></div>
+          </div>
+          <div class="mm-card"><h4>Power index</h4>
+            <div class="mm-bar"><span>United States</span><span class="v">58</span></div>
+            <div class="mm-bar-vis"><div style="width:58%;background:var(--blue);"></div></div>
+            <div class="mm-bar" style="margin-top:10px;"><span>Paraguay</span><span class="v">31</span></div>
+            <div class="mm-bar-vis"><div style="width:31%;background:var(--red);"></div></div>
+            <div class="mm-bar" style="margin-top:14px;"><span>Conditioning · USA</span><span class="v">62</span></div>
+            <div class="mm-bar-vis"><div style="width:62%;background:var(--blue);"></div></div>
+            <div class="mm-bar" style="margin-top:10px;"><span>Conditioning · Paraguay</span><span class="v">40</span></div>
+            <div class="mm-bar-vis"><div style="width:40%;background:var(--red);"></div></div>
+          </div>
+        </div>
+      </div>
+      <!-- LINEUPS -->
+      <div class="mm-pane" data-pane="lineups2">
+        <div class="mm-grid2">
+          <div class="mm-card">
+            <h4>🇺🇸 United States · Projected XI</h4>
+            <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Formation <span style="font-family:var(--font-mono);color:var(--gold);font-weight:600;">3-4-3</span> · fluid back three · Coach: Mauricio Pochettino</div>
+            <div class="mm-pitch-wrap">
+              <svg class="mm-pitch" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="100" height="140" fill="url(#pitchUS)"/>
+                <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
+                <g class="mm-team-home">
+                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Freese</text></g>
+                  <g><circle cx="22" cy="110" r="4.6"/><text class="num" x="22" y="111.7">13</text><text class="nm" x="22" y="119">Freeman</text></g>
+                  <g><circle cx="50" cy="114" r="4.6"/><text class="num" x="50" y="115.7">4</text><text class="nm" x="50" y="123">Richards</text></g>
+                  <g><circle cx="78" cy="110" r="4.6"/><text class="num" x="78" y="111.7">5</text><text class="nm" x="78" y="119">Ream</text></g>
+                  <g><circle cx="8" cy="72" r="4.6"/><text class="num" x="8" y="73.7">3</text><text class="nm" x="8" y="81.5">Robinson</text></g>
+                  <g><circle cx="35" cy="78" r="4.6"/><text class="num" x="35" y="79.7">14</text><text class="nm" x="35" y="87.5">Tillman</text></g>
+                  <g><circle cx="65" cy="78" r="4.6"/><text class="num" x="65" y="79.7">4</text><text class="nm" x="65" y="87.5">Adams<tspan fill="#f4b942" font-weight="700"> ©</tspan></text></g>
+                  <g><circle cx="92" cy="72" r="4.6"/><text class="num" x="92" y="73.7">2</text><text class="nm" x="92" y="81.5">Dest</text></g>
+                  <g><circle cx="20" cy="38" r="4.6"/><text class="num" x="20" y="39.7">8</text><text class="nm" x="20" y="47.5">McKennie</text></g>
+                  <g><circle cx="50" cy="26" r="4.6"/><text class="num" x="50" y="27.7">9</text><text class="nm" x="50" y="35">Balogun</text></g>
+                  <g><circle cx="80" cy="38" r="4.6"/><text class="num" x="80" y="39.7">10</text><text class="nm" x="80" y="47.5">Pulisic</text></g>
+                </g>
+                <defs><linearGradient id="pitchUS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+          <div class="mm-card">
+            <h4>🇵🇾 Paraguay · Projected XI</h4>
+            <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Formation <span style="font-family:var(--font-mono);color:var(--gold);font-weight:600;">4-4-2</span> · compact block · Coach: Gustavo Alfaro</div>
+            <div class="mm-pitch-wrap">
+              <svg class="mm-pitch" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="100" height="140" fill="url(#pitchPY)"/>
+                <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
+                <g class="mm-team-away">
+                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Fernández</text></g>
+                  <g><circle cx="10" cy="106" r="4.6"/><text class="num" x="10" y="107.7">6</text><text class="nm" x="10" y="115.5">Cáceres</text></g>
+                  <g><circle cx="34" cy="110" r="4.6"/><text class="num" x="34" y="111.7">3</text><text class="nm" x="34" y="119">Alonso</text></g>
+                  <g><circle cx="66" cy="110" r="4.6"/><text class="num" x="66" y="111.7">4</text><text class="nm" x="66" y="119">Alderete</text></g>
+                  <g><circle cx="90" cy="106" r="4.6"/><text class="num" x="90" y="107.7">2</text><text class="nm" x="90" y="115.5">G. Gómez<tspan fill="#f4b942" font-weight="700"> ©</tspan></text></g>
+                  <g><circle cx="14" cy="68" r="4.6"/><text class="num" x="14" y="69.7">10</text><text class="nm" x="14" y="77.5">Almirón</text></g>
+                  <g><circle cx="38" cy="74" r="4.6"/><text class="num" x="38" y="75.7">5</text><text class="nm" x="38" y="83.5">Cubas</text></g>
+                  <g><circle cx="62" cy="74" r="4.6"/><text class="num" x="62" y="75.7">15</text><text class="nm" x="62" y="83.5">D. Gómez</text></g>
+                  <g><circle cx="86" cy="68" r="4.6"/><text class="num" x="86" y="69.7">8</text><text class="nm" x="86" y="77.5">Kaku</text></g>
+                  <g><circle cx="35" cy="28" r="4.6"/><text class="num" x="35" y="29.7">9</text><text class="nm" x="35" y="37">Sanabria</text></g>
+                  <g><circle cx="65" cy="28" r="4.6"/><text class="num" x="65" y="29.7">7</text><text class="nm" x="65" y="37">A. Romero</text></g>
+                </g>
+                <defs><linearGradient id="pitchPY" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--text3);text-align:center;margin-top:10px;"><i class="ti ti-info-circle" style="font-size:12px;color:var(--gold);"></i> Projected lineups based on CBS/SI/RotoWire predictions. Richards passed late fitness test. Confirmed XIs ~75 min before kickoff.</div>
+      </div>
+      <!-- TACTICS -->
+      <div class="mm-pane" data-pane="tactics2">
+        <div class="mm-grid2">
+          <div class="mm-card">
+            <h4>🇺🇸 United States · Tactical brief</h4>
+            <div class="mm-tac-row"><div class="lbl">Shape</div><div class="val">Fluid 3-4-3 with wing-backs providing width; Pochettino generating midfield superiority via the extra CB</div></div>
+            <div class="mm-tac-row"><div class="lbl">Style</div><div class="val">High-pressing, transition-heavy. Built around the European-based spine of Pulisic, Adams and McKennie</div></div>
+            <div class="mm-tac-row"><div class="lbl">Pressing</div><div class="val">Aggressive high press; force turnovers in opponent's half and convert rapidly via Pulisic's creativity</div></div>
+            <div class="mm-tac-row"><div class="lbl">Strengths</div><div class="val">70,000 home crowd · elite individual talent · deep squad · Pochettino's tactical pedigree · enclosed roof amplifies noise</div></div>
+            <div class="mm-tac-row"><div class="lbl">Weaknesses</div><div class="val">Weight of expectation · Richards injury concern · unsettled formation · 3L in last 4 friendlies</div></div>
+            <div class="mm-tac-row"><div class="lbl">Key player</div><div class="val"><b>Christian Pulisic</b> (AC Milan) — the heartbeat of the attack, capable of unlocking any defence from wide or centrally</div></div>
+          </div>
+          <div class="mm-card">
+            <h4>🇵🇾 Paraguay · Tactical brief</h4>
+            <div class="mm-tac-row"><div class="lbl">Shape</div><div class="val">Compact, organised 4-4-2 block designed to frustrate; Alfaro is pragmatic and disciplined</div></div>
+            <div class="mm-tac-row"><div class="lbl">Style</div><div class="val">Defensive discipline above all. Set-piece threat and lethal counter-attacks rather than open football</div></div>
+            <div class="mm-tac-row"><div class="lbl">Pressing</div><div class="val">Deep low block; absorb pressure for 60+ minutes, spring on the counter via Almirón's devastating pace</div></div>
+            <div class="mm-tac-row"><div class="lbl">Strengths</div><div class="val">Only 10 goals conceded in 18 qualifiers · elite defensive discipline · Almirón's pace · nothing to lose</div></div>
+            <div class="mm-tac-row"><div class="lbl">Weaknesses</div><div class="val">First WC since 2010 — tournament rust · limited creative depth · reliance on defensive results</div></div>
+            <div class="mm-tac-row"><div class="lbl">Key player</div><div class="val"><b>Miguel Almirón</b> (Atlanta United) — the catalyst for every counter-attack, devastating pace on the break</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- CONDITIONS -->
+      <div class="mm-pane" data-pane="conditions2">
+        <div style="font-size:12px;color:var(--text2);margin-bottom:14px;"><b>Venue:</b> SoFi Stadium, Los Angeles · 30 m — sea level · Enclosed translucent roof · Pitch: 82/100 (Premium)</div>
+        <div class="mm-card"><h4>🌡 Heat &amp; humidity <span style="font-size:10px;color:var(--text3);margin-left:6px;">(enclosed roof, index: 42)</span></h4>
+          <div class="mm-bar"><span>USA</span><span class="v">55</span></div><div class="mm-bar-vis"><div style="width:55%;background:var(--blue);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Paraguay</span><span class="v">60</span></div><div class="mm-bar-vis"><div style="width:60%;background:var(--amber);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📅 Pitch quality <span style="color:var(--blue);font-size:10px;margin-left:6px;">EDGE: USA</span></h4>
+          <div class="mm-bar"><span>USA</span><span class="v" style="color:var(--green);">78</span></div><div class="mm-bar-vis"><div style="width:78%;background:var(--green);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Paraguay</span><span class="v" style="color:var(--amber);">45</span></div><div class="mm-bar-vis"><div style="width:45%;background:var(--amber);"></div></div>
+        </div>
+        <div class="mm-card"><h4>🏔 Altitude (30 m — sea level, no impact)</h4>
+          <div class="mm-bar"><span>USA</span><span class="v" style="color:var(--red);">10</span></div><div class="mm-bar-vis"><div style="width:10%;background:var(--red);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Paraguay</span><span class="v" style="color:var(--red);">10</span></div><div class="mm-bar-vis"><div style="width:10%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>✈ Travel &amp; jet lag <span style="color:var(--blue);font-size:10px;margin-left:6px;">EDGE: USA</span></h4>
+          <div class="mm-bar"><span>USA</span><span class="v" style="color:var(--green);">92</span></div><div class="mm-bar-vis"><div style="width:92%;background:var(--green);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Paraguay</span><span class="v" style="color:var(--amber);">42</span></div><div class="mm-bar-vis"><div style="width:42%;background:var(--amber);"></div></div>
+        </div>
+        <div class="mm-card"><h4>👥 Crowd pressure <span style="color:var(--blue);font-size:10px;margin-left:6px;">EDGE: USA</span></h4>
+          <div class="mm-bar"><span>USA</span><span class="v" style="color:var(--green);">90</span></div><div class="mm-bar-vis"><div style="width:90%;background:var(--green);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Paraguay</span><span class="v" style="color:var(--red);">20</span></div><div class="mm-bar-vis"><div style="width:20%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📋 Fixture load</h4>
+          <div class="mm-bar"><span>USA</span><span class="v" style="color:var(--blue);">58</span></div><div class="mm-bar-vis"><div style="width:58%;background:var(--blue);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Paraguay</span><span class="v" style="color:var(--blue);">55</span></div><div class="mm-bar-vis"><div style="width:55%;background:var(--blue);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📈 Form <span style="color:var(--blue);font-size:10px;margin-left:6px;">EDGE: USA</span></h4>
+          <div class="mm-bar"><span>USA</span><span class="v" style="color:var(--blue);">65</span></div><div class="mm-bar-vis"><div style="width:65%;background:var(--blue);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Paraguay</span><span class="v" style="color:var(--amber);">48</span></div><div class="mm-bar-vis"><div style="width:48%;background:var(--amber);"></div></div>
+        </div>
+      </div>
+      <!-- ANALYSIS -->
+      <div class="mm-pane" data-pane="analysis2">
+        <div class="mm-card mm-guide">
+          <h4 style="color:var(--gold);font-size:12px;">✦ Match Analysis</h4>
+          <p><b>LOS ANGELES</b> — The weight of a nation settles onto the SoFi Stadium turf the moment the anthem fades and the first whistle cuts through 70,000 voices.</p>
+          <p>When the United States opens its home World Cup against Paraguay, the numbers tell a story of overwhelming structural advantage. This is a co-host playing inside a 70,000-seat fortress, on a pristine enclosed pitch, against a side that hasn't tasted World Cup football in sixteen years. Pochettino's squad has spent the entire buildup in familiar conditions — sleeping in American beds, training on American grass, absorbing the adulation of a country that has waited 32 years to host this tournament again.</p>
+          <p>Paraguay, by contrast, arrives carrying the invisible weight of South American qualifying's relentless grind. Gustavo Alfaro's side conceded just 10 goals across 18 CONMEBOL qualifiers — a defensive record that commands respect — but the transition from Asunción to Los Angeles creates a subtle dislocation that analytics struggle to fully capture.</p>
+          <p>The tactical matchup is a classic force-versus-fortress proposition. Pochettino's fluid back three generates numerical superiority in midfield, allowing Pulisic to drift between the lines while McKennie and Adams provide engine-room intensity. Paraguay's response will be predictable but effective: a compact, suffocating 4-4-2 block designed to choke central spaces and frustrate the crowd into anxiety.</p>
+          <p>The danger for the USA is psychological, not tactical. Host nations carry a brutal expectation premium — the crowd that lifts you at 0-0 can crush you at 0-1. Paraguay knows this. Alfaro will set his side up to survive the opening 30-minute storm, then unleash Almirón on tired legs via precisely the sort of counter-attack that suffocated better teams throughout qualifying.</p>
+          <p>But SoFi Stadium's enclosed roof amplifies crowd noise to a degree few visiting teams can psychologically withstand for 90 minutes. The second half, when Paraguay's concentration historically dips and the USA's superior depth begins to tell, is where the game will be decided.</p>
+          <p><i>The hosts break through. Probably not comfortably — but they break through.</i></p>
+          <div class="mm-prediction"><div class="lbl">✦ Model prediction</div><div class="score">🇺🇸 United States  2 – 0  Paraguay 🇵🇾</div></div>
+        </div>
+      </div>
+      <!-- TEAM GUIDE -->
+      <div class="mm-pane" data-pane="guide2">
+        <div class="mm-team-toggle" id="mmGuideToggle2">
+          <button class="on" data-g="home2">🇺🇸 United States</button>
+          <button data-g="away2">🇵🇾 Paraguay</button>
+        </div>
+        <div class="mm-card mm-guide" id="mmGuideHome2">
+          <h5>How did they qualify?</h5><p>Automatic qualification as tournament co-hosts alongside Canada and Mexico.</p>
+          <h5>What is their World Cup pedigree?</h5><p>11th World Cup appearance. Best result: third place in the inaugural 1930 tournament. Hosted in 1994 — the most commercially successful WC ever. Round-of-16 exits in 2010, 2014, and 2022 represent a two-decade ceiling they're desperate to smash.</p>
+          <h5>Who is the coach?</h5><p>Mauricio Pochettino — the Argentine who transformed Spurs into Champions League finalists. His appointment signaled the federation's ambition. Has spent two years building a high-pressing, transition-heavy side around the spine of Pulisic, Adams and McKennie.</p>
+          <h5>How do they play?</h5><p>Fluid back three generating midfield superiority. Wing-backs provide width while Pulisic drifts centrally. Aggressive high press designed to win the ball in the opponent's half and convert rapidly.</p>
+          <h5>Who is their key player?</h5><p><b>Christian Pulisic</b> (AC Milan) — the most globally recognized American footballer ever. Capable of unlocking any defence from wide or central positions. The heartbeat of every attacking move.</p>
+          <h5>What else should we know?</h5><p>Host nations have won 16 of their 23 opening WC matches. The last host to lose their opener was Qatar in 2022. The psychological boost of a home World Cup cannot be overstated — this is a once-in-a-generation moment for American soccer.</p>
+        </div>
+        <div class="mm-card mm-guide" id="mmGuideAway2" style="display:none;">
+          <h5>How did they qualify?</h5><p>Secured qualification through CONMEBOL's notoriously brutal 18-match round-robin. Finished in the automatic spots after conceding just 10 goals — the joint-best defensive record in the confederation.</p>
+          <h5>What is their World Cup pedigree?</h5><p>First World Cup since 2010, when they reached the quarter-finals (their best ever). Before a 16-year absence, Paraguay qualified for four consecutive editions (1998-2010). A proud footballing nation determined to prove the hiatus was an anomaly.</p>
+          <h5>Who is the coach?</h5><p>Gustavo Alfaro — the pragmatic Argentine defensive specialist who rebuilt Paraguay's identity around organisation and resilience. Previously managed Ecuador at the 2022 World Cup. Known for meticulous set-piece preparation.</p>
+          <h5>How do they play?</h5><p>Defensive discipline above all. Compact 4-4-2 block that concedes space but never structure. Set-piece threat is genuine — several qualifying goals came from dead-ball situations. Counter-attacks via Almirón's pace are the primary attacking outlet.</p>
+          <h5>Who is their key player?</h5><p><b>Miguel Almirón</b> (Atlanta United) — returned to MLS after stints at Newcastle. Still devastatingly quick at 32, his transition running is the primary outlet for every Paraguayan counter-attack.</p>
+          <h5>Fun fact</h5><p>The 1930 World Cup remains the only previous tournament meeting between USA and Paraguay — Bert Patenaude scored the first hat-trick in WC history that day. 96 years later, they meet again.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  // ── Match modal mapping ──
+  var MATCH_MODALS = {
+    'can-bih-20260612': 'matchModal',
+    'usa-par-20260612': 'matchModal2'
+  };
+  window.currentModalId = 'matchModal'; // default
+
+  // Wire all modal overlays (close on backdrop click / Escape)
+  ['matchModal','matchModal2'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('click', function(e){ if(e.target===el) closeMatchModal(); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') closeMatchModal();
+  });
+
+  window.openMatchModal = function(){
+    // Check which match is featured and open the right modal
+    var mId = window.currentFeaturedMatchId || '';
+    var modalId = MATCH_MODALS[mId] || 'matchModal';
+    var el = document.getElementById(modalId);
+    if(el){ el.classList.add('on'); document.body.classList.add('mm-open'); }
+  };
+  window.closeMatchModal = function(){
+    ['matchModal','matchModal2'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.classList.remove('on');
+    });
+    document.body.classList.remove('mm-open');
+  };
+
+  // Wire tabs for BOTH modals
+  ['mmTabs','mmTabs2'].forEach(function(tabsId){
+    var container = document.getElementById(tabsId);
+    if(!container) return;
+    var tabs = container.querySelectorAll('.mm-tab');
+    var modal = container.closest('.mm-dialog');
+    tabs.forEach(function(t){
+      t.addEventListener('click', function(){
+        tabs.forEach(function(x){x.classList.remove('on');});
+        modal.querySelectorAll('.mm-pane').forEach(function(p){p.classList.remove('on');});
+        t.classList.add('on');
+        modal.querySelector('.mm-pane[data-pane="'+t.dataset.pane+'"]').classList.add('on');
+      });
+    });
+  });
+
+  // Wire team guide toggles for BOTH modals
+  [
+    {toggle:'mmGuideToggle', home:'mmGuideHome', away:'mmGuideAway', homeKey:'home', awayKey:'away'},
+    {toggle:'mmGuideToggle2', home:'mmGuideHome2', away:'mmGuideAway2', homeKey:'home2', awayKey:'away2'}
+  ].forEach(function(cfg){
+    var el = document.getElementById(cfg.toggle);
+    if(!el) return;
+    el.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){
+        el.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on');
+        document.getElementById(cfg.home).style.display = (b.dataset.g===cfg.homeKey) ? 'block' : 'none';
+        document.getElementById(cfg.away).style.display = (b.dataset.g===cfg.awayKey) ? 'block' : 'none';
+      });
+    });
+  });
+})();
+</script>
+
+
+
+</body>
+</html>
