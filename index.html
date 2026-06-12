@@ -245,7 +245,7 @@ a{text-decoration:none;color:inherit;}
     <div class="hero-inner">
       <div>
         <h1>World Cup<br><span>Command Center</span></h1>
-        <p>Pre-tournament intelligence dashboard · Live data · Updated automatically</p>
+        <p>Live World Cup 2026 intelligence · 104 matches · Updated automatically</p>
         <div class="host-flags">
           <span class="host-flag">🇺🇸 United States</span>
           <span class="host-flag">🇲🇽 Mexico</span>
@@ -254,9 +254,9 @@ a{text-decoration:none;color:inherit;}
         </div>
       </div>
       <div class="cd-box">
-        <div class="cd-label"><i class="ti ti-clock" aria-hidden="true" style="font-size:12px;margin-right:3px;"></i>Opening match countdown</div>
-        <div class="cd-timer" id="countdown">Loading…</div>
-        <div class="cd-sub">Jun 11, 2026 · Azteca Stadium, Mexico City</div>
+        <div class="cd-label"><i class="ti ti-clock" aria-hidden="true" style="font-size:12px;margin-right:3px;"></i><span id="cd-label-text">Next match</span></div>
+        <div class="cd-timer" id="countdown">—</div>
+        <div class="cd-sub" id="cd-sub-text">Calculating…</div>
       </div>
     </div>
   </section>
@@ -279,7 +279,7 @@ a{text-decoration:none;color:inherit;}
       <div class="s-sub">Across 3 nations</div>
     </div>
     <div class="stat-card accent">
-      <div class="s-label"><i class="ti ti-clock" aria-hidden="true"></i>Days to kickoff</div>
+      <div class="s-label"><i class="ti ti-clock" aria-hidden="true"></i>Days to Final</div>
       <div class="s-value" id="days-big">—</div>
       <div class="s-sub">Final: Jul 19 · MetLife, NJ</div>
     </div>
@@ -441,23 +441,16 @@ a{text-decoration:none;color:inherit;}
         </a>
       </div>
 
-      <!-- ━ SportBusy WC2026 fixture widget ━ -->
-      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;">
-        <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--bg-pill);font-size:11px;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;font-weight:600;">
-          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);"></span>
-          Fixtures · live status from SportBusy
-          <a href="https://www.sportbusy.com/world-cup-2026/" target="_blank" rel="noopener" style="margin-left:auto;color:var(--gold);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:none;">Open full schedule →</a>
+      <!-- ━ Full fixtures link ━ -->
+      <a href="fixtures.html" style="display:flex;align-items:center;gap:14px;background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px 18px;transition:all .2s;text-decoration:none;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
+        <i class="ti ti-calendar-time" style="font-size:28px;color:var(--gold);flex-shrink:0;"></i>
+        <div style="flex:1;">
+          <div style="font-family:var(--font-cond);font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.03em;color:var(--text);">Full Fixture · All 104 matches</div>
+          <div style="font-size:12px;color:var(--text2);margin-top:3px;">Local timing · score entry · venue info · Zee5 &amp; Unite8 Sports 1 &amp; 2 HD</div>
         </div>
-        <iframe src="https://www.sportbusy.com/embed/world-cup?theme=dark"
-                style="width:100%;height:560px;border:none;background:var(--bg-card2);display:block;"
-                loading="lazy"
-                title="SportBusy World Cup 2026 fixture widget"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div style="margin-top:8px;font-size:11px;color:var(--text3);text-align:center;line-height:1.5;">
-        Widget shows the 2026 schedule with scheduled / live / final status. For in-match goal-by-goal action, tap a live-score provider above.
-      </div>
-    </div>
+        <span style="font-size:12px;font-weight:600;color:var(--gold);white-space:nowrap;">View schedule →</span>
+      </a>
+    </div>>
   </div>
 
   <!-- ══ LATEST NEWS ══ -->
@@ -773,179 +766,126 @@ a{text-decoration:none;color:inherit;}
 </style>
 
 <script>
-// ══════════════════════════════════════════════════════════════
-// FEATURED-MATCH SCHEDULER  ·  reads matches.json, picks the
-// current/next match by UTC time, renders the Tournament Kickoff
-// card + countdown, re-evaluates every 30 seconds.
-// ══════════════════════════════════════════════════════════════
-(function featuredMatch(){
-  var MATCH_DURATION_MS = 110 * 60 * 1000;   // 90 + 15 ht + 5 it
-  var DATA_URL = 'matches.json';
-  var matchesData = null;
-  var currentMatchId = null;
+// ══ FEATURED MATCH SCHEDULER ══════════════════════════════════
+(function(){
+  // Self-contained match list — no external data needed to render the card
+  var M = [
+    {id:'mex-rsa', ko:'2026-06-11T19:00:00Z', end:'2026-06-11T20:50:00Z',
+     g:'A', hf:'🇲🇽', hn:'Mexico',        hs:'Host · Group A',
+     af:'🇿🇦', an:'South Africa',          as_:'Group A',
+     ve:'Estadio Azteca', ci:'Mexico City, Mexico', ist:'Jun 12 · 00:30 IST', prev:false, mid:null},
+    {id:'kor-cze', ko:'2026-06-12T02:00:00Z', end:'2026-06-12T03:50:00Z',
+     g:'A', hf:'🇰🇷', hn:'South Korea',   hs:'Group A',
+     af:'🇨🇿', an:'Czechia',              as_:'Group A',
+     ve:'Estadio Akron', ci:'Guadalajara, Mexico', ist:'Jun 12 · 07:30 IST', prev:false, mid:null},
+    {id:'can-bih', ko:'2026-06-12T19:00:00Z', end:'2026-06-12T20:50:00Z',
+     g:'B', hf:'🇨🇦', hn:'Canada',        hs:'Host · Group B',
+     af:'🇧🇦', an:'Bosnia-Herzegovina',   as_:'Group B',
+     ve:'BMO Field', ci:'Toronto, Canada', ist:'Jun 13 · 00:30 IST', prev:true, mid:'matchModal'},
+    {id:'usa-par', ko:'2026-06-13T01:00:00Z', end:'2026-06-13T02:50:00Z',
+     g:'D', hf:'🇺🇸', hn:'United States', hs:'Host · Group D',
+     af:'🇵🇾', an:'Paraguay',             as_:'Group D',
+     ve:'SoFi Stadium', ci:'Los Angeles, USA', ist:'Jun 13 · 06:30 IST', prev:true, mid:'matchModal2'},
+    {id:'qat-sui', ko:'2026-06-13T19:00:00Z', end:'2026-06-13T20:50:00Z',
+     g:'B', hf:'🇶🇦', hn:'Qatar',         hs:'Group B',
+     af:'🇨🇭', an:'Switzerland',          as_:'Group B',
+     ve:"Levi's Stadium", ci:'Santa Clara, USA', ist:'Jun 14 · 00:30 IST', prev:false, mid:null},
+    {id:'bra-mar', ko:'2026-06-13T22:00:00Z', end:'2026-06-13T23:50:00Z',
+     g:'C', hf:'🇧🇷', hn:'Brazil',        hs:'Group C',
+     af:'🇲🇦', an:'Morocco',              as_:'Group C',
+     ve:'MetLife Stadium', ci:'East Rutherford, USA', ist:'Jun 14 · 03:30 IST', prev:false, mid:null},
+    {id:'hai-sco', ko:'2026-06-14T01:00:00Z', end:'2026-06-14T02:50:00Z',
+     g:'C', hf:'🇭🇹', hn:'Haiti',         hs:'Group C',
+     af:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', an:'Scotland',         as_:'Group C',
+     ve:'Gillette Stadium', ci:'Boston, USA', ist:'Jun 14 · 06:30 IST', prev:false, mid:null},
+    {id:'ger-cur', ko:'2026-06-14T17:00:00Z', end:'2026-06-14T18:50:00Z',
+     g:'E', hf:'🇩🇪', hn:'Germany',       hs:'Group E',
+     af:'🇨🇼', an:'Curaçao',             as_:'Group E',
+     ve:'NRG Stadium', ci:'Houston, USA', ist:'Jun 14 · 22:30 IST', prev:false, mid:null},
+    {id:'ned-jpn', ko:'2026-06-14T20:00:00Z', end:'2026-06-14T21:50:00Z',
+     g:'E', hf:'🇳🇱', hn:'Netherlands',  hs:'Group E',
+     af:'🇯🇵', an:'Japan',               as_:'Group E',
+     ve:"AT&T Stadium", ci:'Dallas, USA', ist:'Jun 15 · 01:30 IST', prev:false, mid:null},
+    {id:'aus-tur', ko:'2026-06-14T04:00:00Z', end:'2026-06-14T05:50:00Z',
+     g:'D', hf:'🇦🇺', hn:'Australia',    hs:'Group D',
+     af:'🇹🇷', an:'Türkiye',             as_:'Group D',
+     ve:'BC Place', ci:'Vancouver, Canada', ist:'Jun 14 · 09:30 IST', prev:false, mid:null}
+  ];
 
-  function pickFeatured(data){
-    if(!data || !data.matches || !data.matches.length) return null;
-    var now = Date.now();
-    var sorted = data.matches.slice().sort(function(a,b){
-      return new Date(a.kickoffUTC) - new Date(b.kickoffUTC);
-    });
-    for(var i=0;i<sorted.length;i++){
-      var m = sorted[i];
-      var ko = new Date(m.kickoffUTC).getTime();
-      var end = m.estimatedEndUTC ? new Date(m.estimatedEndUTC).getTime() : (ko + MATCH_DURATION_MS);
-      if(now < end){
-        return { match: m, status: now < ko ? 'upcoming' : 'live' };
-      }
-    }
-    return { match: sorted[sorted.length-1], status: 'final' };
-  }
-
-  function fmtIST(utc){
-    var d = new Date(utc);
-    // IST = UTC+5:30
-    var istMs = d.getTime() + (5.5 * 3600000);
-    var ist = new Date(istMs);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    return months[ist.getUTCMonth()] + ' ' + ist.getUTCDate() + ' · ' +
-           String(ist.getUTCHours()).padStart(2,'0') + ':' +
-           String(ist.getUTCMinutes()).padStart(2,'0') + ' IST';
-  }
-
-  function fmtCountdown(targetUtc, status){
-    if(status === 'live') return 'LIVE NOW';
-    if(status === 'final') return 'Full time';
-    var diff = new Date(targetUtc) - new Date();
-    if(diff <= 0) return 'LIVE NOW';
-    var d = Math.floor(diff/86400000);
-    var h = Math.floor((diff%86400000)/3600000);
-    var m = Math.floor((diff%3600000)/60000);
-    if(d > 0) return 'In '+d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m';
-    return 'In '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m';
-  }
-
-  function panelTitle(match, status){
-    var d = new Date(match.kickoffUTC);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var dateStr = months[d.getUTCMonth()] + ' ' + d.getUTCDate();
-    if(status === 'upcoming' && match.tags && match.tags.indexOf('opening-match') !== -1) {
-      return dateStr + ' — Tournament kickoff';
-    }
-    if(status === 'live') return 'Live now — ' + match.home.name + ' vs ' + match.away.name;
-    if(status === 'final') return 'Latest result';
-    return dateStr + ' — Next up';
-  }
-
-  function badgeText(status){
-    if(status === 'live') return 'LIVE · in progress';
-    if(status === 'final') return 'Full time';
-    return 'Countdown active';
-  }
-
-  function hostLabel(team, groupCode){
-    var bits = [];
-    if(team.isHost) bits.push('Host');
-    bits.push('Group ' + groupCode);
-    return bits.join(' · ');
-  }
-
-  function renderCard(match, status){
-    var card = document.getElementById('featured-match-card');
-    var title = document.getElementById('featured-panel-title');
-    var badge = document.getElementById('match-day-badge');
-    if(!card || !title) return;
-
-    title.textContent = panelTitle(match, status);
-    if(badge) badge.textContent = badgeText(status);
-
-    var hasFullPreview = match.previewStatus !== 'pending';
-    var clickable = hasFullPreview; // any match with previewStatus !== 'pending' opens the modal
-    var midLabel = (match.tags && match.tags.indexOf('opening-match') !== -1) ? 'Opening Match' : 'Group ' + match.group;
-    var statusColor = status === 'live' ? 'var(--red)' : 'var(--green)';
-
-    var previewCue = clickable
-      ? '<span style="position:absolute;top:8px;right:10px;font-size:10px;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:3px;"><i class="ti ti-click" style="font-size:12px;"></i>Match preview</span>'
-      : (hasFullPreview ? '' : '<span style="position:absolute;top:8px;right:10px;font-size:10px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Preview in prep</span>');
-
-    var venueBox = '<div style="background:var(--bg-pill);border-radius:var(--r-sm);padding:12px 16px;min-width:180px;">' +
-      '<div style="font-size:11px;color:var(--text3);margin-bottom:6px;display:flex;align-items:center;gap:5px;"><i class="ti ti-map-pin" style="font-size:12px;"></i>' + (match.venue.name || '—') + '</div>' +
-      '<div style="font-size:11px;color:var(--text3);margin-bottom:6px;display:flex;align-items:center;gap:5px;"><i class="ti ti-map" style="font-size:12px;"></i>' + (match.venue.city || '') + (match.venue.country ? ', ' + match.venue.country : '') + '</div>' +
-      '<div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:5px;"><i class="ti ti-clock" style="font-size:12px;"></i>' + fmtIST(match.kickoffUTC) + '</div>' +
-    '</div>';
-
-    card.innerHTML =
-      previewCue +
-      '<div style="display:flex;align-items:center;gap:16px;flex:1;min-width:200px;">' +
-        '<div style="text-align:center;">' +
-          '<div style="font-size:42px;line-height:1;">' + match.home.flag + '</div>' +
-          '<div style="font-size:13px;font-weight:600;color:var(--text);margin-top:4px;">' + match.home.name + '</div>' +
-          '<div style="font-size:11px;color:var(--text3);">' + hostLabel(match.home, match.group) + '</div>' +
-        '</div>' +
-        '<div style="text-align:center;flex:1;">' +
-          '<div style="font-family:var(--font-cond);font-size:28px;font-weight:700;color:var(--gold);letter-spacing:.1em;">VS</div>' +
-          '<div style="font-size:10px;color:var(--text3);margin-top:4px;">' + midLabel + '</div>' +
-          '<div id="featured-cd" style="font-size:11px;color:' + statusColor + ';font-weight:600;margin-top:2px;">' + fmtCountdown(match.kickoffUTC, status) + '</div>' +
-        '</div>' +
-        '<div style="text-align:center;">' +
-          '<div style="font-size:42px;line-height:1;">' + match.away.flag + '</div>' +
-          '<div style="font-size:13px;font-weight:600;color:var(--text);margin-top:4px;">' + match.away.name + '</div>' +
-          '<div style="font-size:11px;color:var(--text3);">' + hostLabel(match.away, match.group) + '</div>' +
-        '</div>' +
-      '</div>' +
-      venueBox;
-
-    // wire click handler — only enable modal for matches that have full preview content
-    card.style.cursor = clickable ? 'pointer' : 'default';
-    card.onclick = clickable ? function(){ if(window.openMatchModal) window.openMatchModal(); } : null;
-  }
-
-  function tick(){
-    if(!matchesData) return;
-    var picked = pickFeatured(matchesData);
-    if(!picked) return;
-
-    // re-render the whole card if the featured match has changed
-    if(picked.match.id !== currentMatchId){
-      currentMatchId = picked.match.id;
-      window.currentFeaturedMatchId = picked.match.id;
-      renderCard(picked.match, picked.status);
-    } else {
-      // just update the countdown line
-      var cd = document.getElementById('featured-cd');
-      if(cd){
-        cd.textContent = fmtCountdown(picked.match.kickoffUTC, picked.status);
-        cd.style.color = picked.status === 'live' ? 'var(--red)' : 'var(--green)';
-      }
-      var badge = document.getElementById('match-day-badge');
-      if(badge) badge.textContent = badgeText(picked.status);
-    }
-  }
-
-  // Load matches.json then start the ticker
-  // (fetch works on Netlify; for local file:// testing, falls back to inline data)
-  var INLINE_FALLBACK = {"matches":[
-    {"id":"can-bih-20260612","group":"B","kickoffUTC":"2026-06-12T19:00:00Z","estimatedEndUTC":"2026-06-12T20:50:00Z","venue":{"name":"BMO Field","city":"Toronto","country":"Canada"},"broadcast":{"india":"Zee5 · Unite8 Sports 1/2 HD"},"tags":["co-host"],"home":{"code":"CA","name":"Canada","flag":"🇨🇦","fifaRank":31,"isHost":true},"away":{"code":"BA","name":"Bosnia and Herzegovina","flag":"🇧🇦","fifaRank":56,"isHost":false},"previewStatus":"complete"},
-    {"id":"usa-par-20260612","group":"D","kickoffUTC":"2026-06-13T01:00:00Z","estimatedEndUTC":"2026-06-13T02:50:00Z","venue":{"name":"SoFi Stadium","city":"Inglewood, Los Angeles","country":"United States"},"broadcast":{"india":"Zee5 · Unite8 Sports 1/2 HD"},"tags":["co-host"],"home":{"code":"US","name":"United States","flag":"🇺🇸","fifaRank":11,"isHost":true},"away":{"code":"PY","name":"Paraguay","flag":"🇵🇾","fifaRank":44,"isHost":false},"previewStatus":"complete"},
-    {"id":"qat-sui-20260613","group":"B","kickoffUTC":"2026-06-13T19:00:00Z","estimatedEndUTC":"2026-06-13T20:50:00Z","venue":{"name":"Levi's Stadium","city":"Santa Clara"},"broadcast":{"india":"Zee5 · Unite8 Sports 1/2 HD"},"home":{"code":"QA","name":"Qatar","flag":"🇶🇦","fifaRank":53},"away":{"code":"CH","name":"Switzerland","flag":"🇨🇭","fifaRank":19},"previewStatus":"pending"},
-    {"id":"bra-mar-20260613","group":"C","kickoffUTC":"2026-06-13T22:00:00Z","estimatedEndUTC":"2026-06-13T23:50:00Z","venue":{"name":"MetLife Stadium","city":"East Rutherford"},"broadcast":{"india":"Zee5 · Unite8 Sports 1/2 HD"},"home":{"code":"BR","name":"Brazil","flag":"🇧🇷","fifaRank":5},"away":{"code":"MA","name":"Morocco","flag":"🇲🇦","fifaRank":12},"previewStatus":"pending"}
+  // Expose results for group standings
+  window.MATCHES_DATA = {results:[
+    {group:'Group A', team1:'Mexico',      team2:'South Africa',          score:{ft:[2,0]}},
+    {group:'Group A', team1:'South Korea', team2:'Czechia',               score:{ft:[2,1]}},
+    {group:'Group B', team1:'Canada',      team2:'Bosnia and Herzegovina', score:{ft:[1,1]}}
   ]};
 
-  function init(data){
-    matchesData = data;
-    window.MATCHES_DATA = data;
-    tick();
-    setInterval(tick, 30000);
+  function pick(){
+    var now = Date.now();
+    var sorted = M.slice().sort(function(a,b){return new Date(a.ko)-new Date(b.ko);});
+    for(var i=0;i<sorted.length;i++){
+      if(now < new Date(sorted[i].end).getTime()) return sorted[i];
+    }
+    return sorted[sorted.length-1];
   }
 
-  fetch(DATA_URL + '?t=' + Date.now())
-    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(data){ init(data); })
-    .catch(function(err){
-      console.info('matches.json fetch failed (normal for local file:// testing) — using inline fallback');
-      init(INLINE_FALLBACK);
-    });
-})();
+  function render(){
+    var m = pick();
+    var now = Date.now();
+    var ko = new Date(m.ko).getTime();
+    var end = new Date(m.end).getTime();
+    var status = now>end ? 'final' : now>=ko ? 'live' : 'upcoming';
 
+    var title = document.getElementById('featured-panel-title');
+    var badge = document.getElementById('match-day-badge');
+    var card  = document.getElementById('featured-match-card');
+    if(!card) return;
+
+    if(title) title.textContent = (status==='live'?'Live now — ':'')+m.hn+' vs '+m.an;
+    if(badge) badge.textContent = status==='live'?'LIVE · in progress':status==='final'?'Full time':'Countdown active';
+
+    var cdTxt = status==='live'?'LIVE NOW':status==='final'?'Full time':'';
+    if(!cdTxt){
+      var diff=ko-now;
+      var h=Math.floor(diff/3600000),mn=Math.floor((diff%3600000)/60000);
+      cdTxt=String(h).padStart(2,'0')+'h '+String(mn).padStart(2,'0')+'m';
+    }
+    var cdColor = status==='live'?'var(--red)':'var(--green)';
+    var previewCue = m.prev
+      ? '<span style="position:absolute;top:8px;right:10px;font-size:10px;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;"><i class="ti ti-click" style="font-size:12px;"></i> Match preview</span>'
+      : '<span style="position:absolute;top:8px;right:10px;font-size:10px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;">Preview in prep</span>';
+
+    window.currentFeaturedMatchId = m.id==='can-bih'?'can-bih-20260612':m.id==='usa-par'?'usa-par-20260612':m.id;
+    card.onclick = (m.prev&&m.mid)?function(){if(window.openMatchModal)window.openMatchModal();}:null;
+    card.style.cursor=(m.prev&&m.mid)?'pointer':'default';
+
+    card.innerHTML = previewCue+
+      '<div style="display:flex;align-items:center;gap:16px;flex:1;min-width:200px;">'+
+        '<div style="text-align:center;">'+
+          '<div style="font-size:42px;line-height:1;">'+m.hf+'</div>'+
+          '<div style="font-size:13px;font-weight:600;color:var(--text);margin-top:4px;">'+m.hn+'</div>'+
+          '<div style="font-size:11px;color:var(--text3);">'+m.hs+'</div>'+
+        '</div>'+
+        '<div style="text-align:center;flex:1;">'+
+          '<div style="font-family:var(--font-cond);font-size:28px;font-weight:700;color:var(--gold);letter-spacing:.1em;">VS</div>'+
+          '<div style="font-size:10px;color:var(--text3);margin-top:4px;">Group '+m.g+'</div>'+
+          '<div id="featured-cd" style="font-size:11px;font-weight:600;margin-top:2px;color:'+cdColor+';">'+cdTxt+'</div>'+
+        '</div>'+
+        '<div style="text-align:center;">'+
+          '<div style="font-size:42px;line-height:1;">'+m.af+'</div>'+
+          '<div style="font-size:13px;font-weight:600;color:var(--text);margin-top:4px;">'+m.an+'</div>'+
+          '<div style="font-size:11px;color:var(--text3);">'+m.as_+'</div>'+
+        '</div>'+
+      '</div>'+
+      '<div style="background:var(--bg-pill);border-radius:var(--r-sm);padding:12px 16px;min-width:180px;">'+
+        '<div style="font-size:11px;color:var(--text3);margin-bottom:6px;"><i class="ti ti-map-pin" style="font-size:12px;"></i> '+m.ve+'</div>'+
+        '<div style="font-size:11px;color:var(--text3);margin-bottom:6px;"><i class="ti ti-map" style="font-size:12px;"></i> '+m.ci+'</div>'+
+        '<div style="font-size:11px;color:var(--text3);"><i class="ti ti-clock" style="font-size:12px;"></i> '+m.ist+'</div>'+
+      '</div>';
+  }
+
+  render();
+  setInterval(render, 30000);
+})();
 // ── Live data — openfootball GitHub (free, no auth needed) ────
 (function buildGroups(){
   var DATA_URL = 'https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json';
@@ -1216,18 +1156,64 @@ a{text-decoration:none;color:inherit;}
 
 
 (function tickClock(){
-  var target=new Date('2026-06-11T19:00:00Z');
+  var KO=[
+    {t:'2026-06-11T19:00:00Z',l:'MEX vs RSA',s:'Jun 11 · Estadio Azteca, Mexico City'},
+    {t:'2026-06-12T02:00:00Z',l:'KOR vs CZE',s:'Jun 12 · Estadio Akron, Guadalajara'},
+    {t:'2026-06-12T19:00:00Z',l:'CAN vs BIH',s:'Jun 13 · BMO Field, Toronto'},
+    {t:'2026-06-13T01:00:00Z',l:'USA vs PAR',s:'Jun 13 · SoFi Stadium, Los Angeles'},
+    {t:'2026-06-14T04:00:00Z',l:'AUS vs TUR',s:'Jun 14 · BC Place, Vancouver'},
+    {t:'2026-06-13T19:00:00Z',l:'QAT vs SUI',s:'Jun 14 · Levis Stadium, Santa Clara'},
+    {t:'2026-06-13T22:00:00Z',l:'BRA vs MAR',s:'Jun 14 · MetLife Stadium, East Rutherford'},
+    {t:'2026-06-14T01:00:00Z',l:'HAI vs SCO',s:'Jun 14 · Gillette Stadium, Boston'},
+    {t:'2026-06-14T17:00:00Z',l:'GER vs CUR',s:'Jun 14 · NRG Stadium, Houston'},
+    {t:'2026-06-14T20:00:00Z',l:'NED vs JPN',s:'Jun 14 · AT&T Stadium, Dallas'},
+    {t:'2026-06-14T23:00:00Z',l:'CIV vs ECU',s:'Jun 15 · Lincoln Financial, Philadelphia'},
+    {t:'2026-06-15T02:00:00Z',l:'SWE vs TUN',s:'Jun 15 · Estadio BBVA, Monterrey'},
+    {t:'2026-06-15T16:00:00Z',l:'ESP vs CPV',s:'Jun 15 · Mercedes-Benz, Atlanta'},
+    {t:'2026-06-15T19:00:00Z',l:'BEL vs EGY',s:'Jun 15 · Lumen Field, Seattle'},
+    {t:'2026-06-15T22:00:00Z',l:'KSA vs URU',s:'Jun 16 · Hard Rock, Miami'},
+    {t:'2026-06-16T01:00:00Z',l:'IRN vs NZL',s:'Jun 16 · SoFi Stadium, Inglewood'},
+    {t:'2026-06-16T04:00:00Z',l:'AUT vs JOR',s:'Jun 16 · Levis Stadium, Santa Clara'},
+    {t:'2026-06-16T19:00:00Z',l:'FRA vs SEN',s:'Jun 16 · MetLife, East Rutherford'},
+    {t:'2026-06-16T22:00:00Z',l:'IRQ vs NOR',s:'Jun 17 · Gillette Stadium, Boston'},
+    {t:'2026-06-17T01:00:00Z',l:'ARG vs ALG',s:'Jun 17 · Arrowhead, Kansas City'}
+  ];
+  var DUR=110*60*1000;
+  var FINAL=new Date('2026-07-19T19:00:00Z');
+  function findNext(){
+    var now=Date.now();
+    for(var i=0;i<KO.length;i++){
+      if(now<new Date(KO[i].t).getTime()+DUR) return {item:KO[i],ko:new Date(KO[i].t).getTime()};
+    }
+    return null;
+  }
   function tick(){
-    var diff=target-new Date();
+    var found=findNext();
     var cd=document.getElementById('countdown');
+    var lbl=document.getElementById('cd-label-text');
+    var sub=document.getElementById('cd-sub-text');
     var db=document.getElementById('days-big');
-    if(diff<=0){if(cd)cd.textContent='Tournament is LIVE!';if(db)db.textContent='0';return;}
-    var d=Math.floor(diff/86400000);
-    var h=Math.floor((diff%86400000)/3600000);
-    var m=Math.floor((diff%3600000)/60000);
-    var s=Math.floor((diff%60000)/1000);
-    if(cd)cd.textContent=d+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(s).padStart(2,'0')+'s';
-    if(db)db.textContent=d;
+    var daysLeft=Math.ceil((FINAL-Date.now())/86400000);
+    if(db) db.textContent=daysLeft>0?daysLeft:'🏆';
+    if(!found){
+      if(cd)cd.textContent='Tournament Complete';
+      if(lbl)lbl.textContent='World Cup 2026';
+      if(sub)sub.textContent='Jul 19, 2026 · MetLife, NJ';
+      return;
+    }
+    var diff=found.ko-Date.now();
+    if(diff<=0){
+      if(cd){cd.textContent='LIVE NOW';cd.style.color='var(--red)';}
+      if(lbl)lbl.textContent=found.item.l+' · LIVE';
+      if(sub)sub.textContent=found.item.s;
+    } else {
+      var h=Math.floor(diff/3600000);
+      var m=Math.floor((diff%3600000)/60000);
+      var sec=Math.floor((diff%60000)/1000);
+      if(cd){cd.style.color='';cd.textContent=String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(sec).padStart(2,'0')+'s';}
+      if(lbl)lbl.textContent='Next · '+found.item.l;
+      if(sub)sub.textContent=found.item.s;
+    }
   }
   tick();setInterval(tick,1000);
 })();

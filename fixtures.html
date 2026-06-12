@@ -242,7 +242,7 @@ const RAW = [
   {g:'C',t:'2026-06-24T22:00:00Z',a:'Scotland',b:'Brazil',v:'Hard Rock Stadium',c:'Miami'},
   {g:'C',t:'2026-06-24T22:00:00Z',a:'Morocco',b:'Haiti',v:'Mercedes-Benz Stadium',c:'Atlanta'},
   {g:'D',t:'2026-06-13T01:00:00Z',a:'United States',b:'Paraguay',v:'SoFi Stadium',c:'Inglewood'},
-  {g:'D',t:'2026-06-13T04:00:00Z',a:'Australia',b:'Türkiye',v:'BC Place',c:'Vancouver'},
+  {g:'D',t:'2026-06-14T04:00:00Z',a:'Australia',b:'Türkiye',v:'BC Place',c:'Vancouver'},
   {g:'D',t:'2026-06-19T19:00:00Z',a:'United States',b:'Australia',v:'Lumen Field',c:'Seattle'},
   {g:'D',t:'2026-06-20T03:00:00Z',a:'Türkiye',b:'Paraguay',v:"Levi's Stadium",c:'Santa Clara'},
   {g:'D',t:'2026-06-26T02:00:00Z',a:'Türkiye',b:'United States',v:'SoFi Stadium',c:'Inglewood'},
@@ -333,18 +333,19 @@ const STAGE_LABEL = {group:'Group',r32:'Round of 32',r16:'Round of 16',qf:'Quart
 const BROADCAST = 'Zee5 · Unite8 Sports 1 & 2 HD';
 
 const MATCHES = RAW.map((m,i)=>({
-  id:'m'+i, stage:m.s||'group', group:m.g||null,
+  stage:m.s||'group', group:m.g||null,
   utc:new Date(m.t), a:m.a||null, b:m.b||null, venue:m.v, city:m.c
-})).sort((x,y)=>x.utc-y.utc);
+})).sort((x,y)=>x.utc-y.utc).map((m,i)=>({...m, id:'m'+i}));
 
 /* ---------------- score store ---------------- */
 const KEY='wc26_scores_v1';
 // Pre-populate completed results (overridden by localStorage if user entered their own)
-const COMPLETED = {'m0':{a:2,b:0},'m1':{a:2,b:1}};
+const COMPLETED = {'m0':{a:2,b:0},'m1':{a:2,b:1},'m2':{a:1,b:1}};
 let scores={};
 try{
   const stored=JSON.parse(localStorage.getItem(KEY)||'{}');
-  scores = Object.assign({}, COMPLETED, stored);
+  // COMPLETED always wins — real results override any user entry for finished matches
+  scores = Object.assign({}, stored, COMPLETED);
 }catch(e){scores=Object.assign({},COMPLETED)}
 function saveScores(){try{localStorage.setItem(KEY,JSON.stringify(scores))}catch(e){}}
 
