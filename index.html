@@ -360,8 +360,35 @@ a{text-decoration:none;color:inherit;}
     <div id="featured-match-card" style="background:var(--bg-card2);border:1px solid var(--border2);border-radius:var(--r-sm);padding:20px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;cursor:pointer;transition:all .2s;position:relative;min-height:120px;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border2)'">
       <span style="color:var(--text3);font-size:12px;width:100%;text-align:center;">Loading featured match…</span>
     </div>
-    <div id="next-matches-strip" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;" class="player-grid">
-      <!-- populated by renderNextMatches() --></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;" class="player-grid">
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center;">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;">Group B · Jun 13</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+          <div><div style="font-size:22px;">🇶🇦</div><div style="font-size:11px;font-weight:600;color:var(--text);">Qatar</div></div>
+          <div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>
+          <div><div style="font-size:22px;">🇨🇭</div><div style="font-size:11px;font-weight:600;color:var(--text);">Switzerland</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--text3);margin-top:6px;">Levis Stadium · Santa Clara</div>
+      </div>
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center;">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;">Group C · Jun 13</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+          <div><div style="font-size:22px;">🇧🇷</div><div style="font-size:11px;font-weight:600;color:var(--text);">Brazil</div></div>
+          <div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>
+          <div><div style="font-size:22px;">🇲🇦</div><div style="font-size:11px;font-weight:600;color:var(--text);">Morocco</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--text3);margin-top:6px;">MetLife Stadium · East Rutherford</div>
+      </div>
+      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center;">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;">Group C · Jun 14</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+          <div><div style="font-size:22px;">🇭🇹</div><div style="font-size:11px;font-weight:600;color:var(--text);">Haiti</div></div>
+          <div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>
+          <div><div style="font-size:22px;">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div><div style="font-size:11px;font-weight:600;color:var(--text);">Scotland</div></div>
+        </div>
+        <div style="font-size:10px;color:var(--text3);margin-top:6px;">Gillette Stadium · Boston</div>
+      </div>
+    </div>
     Fixture times shown in IST · Live scores will appear here from Jun 11 via <a href="https://www.sofascore.com/football/tournament/world/world-championship/16" target="_blank" rel="noopener" style="color:var(--blue);">SofaScore</a> or <a href="https://www.bbc.co.uk/sport/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">BBC Sport</a></div>
   </div>
 
@@ -841,66 +868,8 @@ a{text-decoration:none;color:inherit;}
       '</div>';
   }
 
-  function renderNextMatches(){
-    var strip = document.getElementById('next-matches-strip');
-    if(!strip) return;
-    var now = Date.now();
-    var sorted = M.slice().sort(function(a,b){return new Date(a.ko)-new Date(b.ko);});
-    var featuredId = null;
-    for(var i=0;i<sorted.length;i++){
-      if(now < new Date(sorted[i].end).getTime()){
-        featuredId = sorted[i].id;
-        break;
-      }
-    }
-    var next = [];
-    var found = false;
-    for(var i=0;i<sorted.length && next.length<3;i++){
-      var m = sorted[i];
-      if(!found){ if(m.id===featuredId) found=true; continue; }
-      next.push(m);
-    }
-    strip.innerHTML = next.map(function(m){
-      var ko = new Date(m.ko);
-      var istMs = ko.getTime()+(5.5*3600000);
-      var ist = new Date(istMs);
-      var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      var dateStr = months[ist.getUTCMonth()]+' '+ist.getUTCDate();
-      var timeStr = String(ist.getUTCHours()).padStart(2,'0')+':'+String(ist.getUTCMinutes()).padStart(2,'0')+' IST';
-      var hasPreview = m.prev && m.mid;
-      var borderCol = hasPreview ? 'rgba(244,185,66,0.4)' : 'var(--border)';
-      var hoverAttr = hasPreview
-        ? ' onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(244,185,66,0.4)'"'
-        : '';
-      var dataAttr = hasPreview ? ' data-mid="'+m.mid+'" data-matchid="'+m.id+'"' : '';
-      var previewBadge = hasPreview
-        ? '<div style="font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-top:6px;">✦ Preview available</div>'
-        : '<div style="font-size:9px;color:var(--text3);margin-top:6px;text-transform:uppercase;letter-spacing:.05em;">Preview in prep</div>';
-      return '<div class="next-match-card"'+dataAttr+hoverAttr
-        +' style="background:var(--bg-card2);border:1px solid '+borderCol+';border-radius:var(--r-sm);padding:12px;text-align:center;'+(hasPreview?'cursor:pointer;':'')+' transition:border-color .2s;">'
-        +'<div style="font-size:10px;color:var(--text3);margin-bottom:6px;">Group '+m.g+' · '+dateStr+' · '+timeStr+'</div>'
-        +'<div style="display:flex;align-items:center;justify-content:center;gap:10px;">'
-          +'<div><div style="font-size:24px;line-height:1;">'+m.hf+'</div>'
-          +'<div style="font-size:11px;font-weight:600;color:var(--text);margin-top:2px;">'+m.hn+'</div></div>'
-          +'<div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>'
-          +'<div><div style="font-size:24px;line-height:1;">'+m.af+'</div>'
-          +'<div style="font-size:11px;font-weight:600;color:var(--text);margin-top:2px;">'+m.an+'</div></div>'
-        +'</div>'
-        +'<div style="font-size:10px;color:var(--text3);margin-top:5px;">'+m.ve+'</div>'
-        +previewBadge
-      +'</div>';
-    }).join('');
-    strip.onclick = function(e){
-      var card = e.target.closest ? e.target.closest('.next-match-card[data-mid]') : null;
-      if(!card) return;
-      window.currentFeaturedMatchId = card.getAttribute('data-matchid');
-      if(window.openMatchModal) window.openMatchModal();
-    };
-  }
-
   render();
-  renderNextMatches();
-  setInterval(function(){ render(); renderNextMatches(); }, 30000);
+  setInterval(render, 30000);
 })();
 // ── Live data — openfootball GitHub (free, no auth needed) ────
 (function buildGroups(){
