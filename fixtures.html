@@ -340,7 +340,7 @@ const MATCHES = RAW.map((m,i)=>({
 /* ---------------- score store ---------------- */
 const KEY='wc26_scores_v1';
 // Pre-populate completed results (overridden by localStorage if user entered their own)
-const COMPLETED = {'m0':{a:2,b:0},'m1':{a:2,b:1},'m2':{a:1,b:1}};
+const COMPLETED = {'m0':{a:2,b:0},'m1':{a:2,b:1},'m2':{a:1,b:1},'m3':{a:4,b:1}};
 let scores={};
 try{
   const stored=JSON.parse(localStorage.getItem(KEY)||'{}');

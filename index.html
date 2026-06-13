@@ -360,36 +360,9 @@ a{text-decoration:none;color:inherit;}
     <div id="featured-match-card" style="background:var(--bg-card2);border:1px solid var(--border2);border-radius:var(--r-sm);padding:20px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;cursor:pointer;transition:all .2s;position:relative;min-height:120px;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border2)'">
       <span style="color:var(--text3);font-size:12px;width:100%;text-align:center;">Loading featured match…</span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;" class="player-grid">
-      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center;">
-        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;">Group D · Jun 12</div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
-          <div><div style="font-size:22px;">🇺🇸</div><div style="font-size:11px;font-weight:600;color:var(--text);">USA</div></div>
-          <div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>
-          <div><div style="font-size:22px;">🇵🇾</div><div style="font-size:11px;font-weight:600;color:var(--text);">Paraguay</div></div>
-        </div>
-        <div style="font-size:10px;color:var(--text3);margin-top:6px;">SoFi Stadium · Los Angeles</div>
-      </div>
-      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center;">
-        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;">Group J · Jun 13</div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
-          <div><div style="font-size:22px;">🇦🇷</div><div style="font-size:11px;font-weight:600;color:var(--text);">Argentina</div></div>
-          <div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>
-          <div><div style="font-size:22px;">🇩🇿</div><div style="font-size:11px;font-weight:600;color:var(--text);">Algeria</div></div>
-        </div>
-        <div style="font-size:10px;color:var(--text3);margin-top:6px;">MetLife Stadium · New Jersey</div>
-      </div>
-      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;text-align:center;">
-        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;">Group I · Jun 13</div>
-        <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
-          <div><div style="font-size:22px;">🇫🇷</div><div style="font-size:11px;font-weight:600;color:var(--text);">France</div></div>
-          <div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>
-          <div><div style="font-size:22px;">🇸🇳</div><div style="font-size:11px;font-weight:600;color:var(--text);">Senegal</div></div>
-        </div>
-        <div style="font-size:10px;color:var(--text3);margin-top:6px;">AT&amp;T Stadium · Dallas</div>
-      </div>
-    </div>
-    <div style="margin-top:10px;font-size:11px;color:var(--text3);"><i class="ti ti-info-circle" aria-hidden="true" style="font-size:12px;margin-right:4px;vertical-align:-1px;"></i>Fixture times shown in IST · Live scores will appear here from Jun 11 via <a href="https://www.sofascore.com/football/tournament/world/world-championship/16" target="_blank" rel="noopener" style="color:var(--blue);">SofaScore</a> or <a href="https://www.bbc.co.uk/sport/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">BBC Sport</a></div>
+    <div id="next-matches-strip" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;" class="player-grid">
+      <!-- populated by renderNextMatches() --></div>
+    Fixture times shown in IST · Live scores will appear here from Jun 11 via <a href="https://www.sofascore.com/football/tournament/world/world-championship/16" target="_blank" rel="noopener" style="color:var(--blue);">SofaScore</a> or <a href="https://www.bbc.co.uk/sport/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">BBC Sport</a></div>
   </div>
 
   <!-- ══ GROUP STAGE DRAW ══ -->
@@ -413,14 +386,7 @@ a{text-decoration:none;color:inherit;}
       <span class="panel-title">Live & upcoming</span>
       <span class="panel-badge">Auto-updates every 3 min from Jun 11</span>
     </div>
-    <a href="fixtures.html" style="display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(244,185,66,.12),var(--bg-pill));border:1px solid rgba(244,185,66,.3);border-radius:var(--r-sm);padding:14px 16px;margin-bottom:14px;transition:all .2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(244,185,66,.3)'">
-      <i class="ti ti-calendar-time" style="font-size:24px;color:var(--gold);flex-shrink:0;" aria-hidden="true"></i>
-      <div style="flex:1;min-width:0;">
-        <div style="font-family:var(--font-cond);font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.03em;">Full Fixture — Local Timing &amp; Channels</div>
-        <div style="font-size:12px;color:var(--text2);">All 104 matches in IST · venues · Zee5 &amp; Unite8 Sports 1 &amp; 2 HD</div>
-      </div>
-      <span style="font-size:12px;font-weight:600;color:var(--gold);white-space:nowrap;">View all →</span>
-    </a>
+    
     <div id="todays-matches">
       <!-- ━ Quick links to live score providers ━ -->
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;" class="grp-row-4">
@@ -441,16 +407,7 @@ a{text-decoration:none;color:inherit;}
         </a>
       </div>
 
-      <!-- ━ Full fixtures link ━ -->
-      <a href="fixtures.html" style="display:flex;align-items:center;gap:14px;background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px 18px;transition:all .2s;text-decoration:none;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--border)'">
-        <i class="ti ti-calendar-time" style="font-size:28px;color:var(--gold);flex-shrink:0;"></i>
-        <div style="flex:1;">
-          <div style="font-family:var(--font-cond);font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.03em;color:var(--text);">Full Fixture · All 104 matches</div>
-          <div style="font-size:12px;color:var(--text2);margin-top:3px;">Local timing · score entry · venue info · Zee5 &amp; Unite8 Sports 1 &amp; 2 HD</div>
-        </div>
-        <span style="font-size:12px;font-weight:600;color:var(--gold);white-space:nowrap;">View schedule →</span>
-      </a>
-    </div>>
+      
   </div>
 
   <!-- ══ LATEST NEWS ══ -->
@@ -789,11 +746,11 @@ a{text-decoration:none;color:inherit;}
     {id:'qat-sui', ko:'2026-06-13T19:00:00Z', end:'2026-06-13T20:50:00Z',
      g:'B', hf:'🇶🇦', hn:'Qatar',         hs:'Group B',
      af:'🇨🇭', an:'Switzerland',          as_:'Group B',
-     ve:"Levi's Stadium", ci:'Santa Clara, USA', ist:'Jun 14 · 00:30 IST', prev:false, mid:null},
+     ve:"Levis Stadium", ci:'Santa Clara, USA', ist:'Jun 14 · 00:30 IST', prev:true, mid:'matchModal3'},
     {id:'bra-mar', ko:'2026-06-13T22:00:00Z', end:'2026-06-13T23:50:00Z',
      g:'C', hf:'🇧🇷', hn:'Brazil',        hs:'Group C',
      af:'🇲🇦', an:'Morocco',              as_:'Group C',
-     ve:'MetLife Stadium', ci:'East Rutherford, USA', ist:'Jun 14 · 03:30 IST', prev:false, mid:null},
+     ve:'MetLife Stadium', ci:'East Rutherford, USA', ist:'Jun 14 · 03:30 IST', prev:true, mid:'matchModal4'},
     {id:'hai-sco', ko:'2026-06-14T01:00:00Z', end:'2026-06-14T02:50:00Z',
      g:'C', hf:'🇭🇹', hn:'Haiti',         hs:'Group C',
      af:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', an:'Scotland',         as_:'Group C',
@@ -814,9 +771,10 @@ a{text-decoration:none;color:inherit;}
 
   // Expose results for group standings
   window.MATCHES_DATA = {results:[
-    {group:'Group A', team1:'Mexico',      team2:'South Africa',          score:{ft:[2,0]}},
-    {group:'Group A', team1:'South Korea', team2:'Czechia',               score:{ft:[2,1]}},
-    {group:'Group B', team1:'Canada',      team2:'Bosnia and Herzegovina', score:{ft:[1,1]}}
+    {group:'Group A', team1:'Mexico',        team2:'South Africa',          score:{ft:[2,0]}},
+    {group:'Group A', team1:'South Korea',   team2:'Czechia',               score:{ft:[2,1]}},
+    {group:'Group B', team1:'Canada',        team2:'Bosnia-Herz.',            score:{ft:[1,1]}},
+    {group:'Group D', team1:'USA',           team2:'Paraguay',              score:{ft:[4,1]}}
   ]};
 
   function pick(){
@@ -883,8 +841,66 @@ a{text-decoration:none;color:inherit;}
       '</div>';
   }
 
+  function renderNextMatches(){
+    var strip = document.getElementById('next-matches-strip');
+    if(!strip) return;
+    var now = Date.now();
+    var sorted = M.slice().sort(function(a,b){return new Date(a.ko)-new Date(b.ko);});
+    var featuredId = null;
+    for(var i=0;i<sorted.length;i++){
+      if(now < new Date(sorted[i].end).getTime()){
+        featuredId = sorted[i].id;
+        break;
+      }
+    }
+    var next = [];
+    var found = false;
+    for(var i=0;i<sorted.length && next.length<3;i++){
+      var m = sorted[i];
+      if(!found){ if(m.id===featuredId) found=true; continue; }
+      next.push(m);
+    }
+    strip.innerHTML = next.map(function(m){
+      var ko = new Date(m.ko);
+      var istMs = ko.getTime()+(5.5*3600000);
+      var ist = new Date(istMs);
+      var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var dateStr = months[ist.getUTCMonth()]+' '+ist.getUTCDate();
+      var timeStr = String(ist.getUTCHours()).padStart(2,'0')+':'+String(ist.getUTCMinutes()).padStart(2,'0')+' IST';
+      var hasPreview = m.prev && m.mid;
+      var borderCol = hasPreview ? 'rgba(244,185,66,0.4)' : 'var(--border)';
+      var hoverAttr = hasPreview
+        ? ' onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='rgba(244,185,66,0.4)'"'
+        : '';
+      var dataAttr = hasPreview ? ' data-mid="'+m.mid+'" data-matchid="'+m.id+'"' : '';
+      var previewBadge = hasPreview
+        ? '<div style="font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-top:6px;">✦ Preview available</div>'
+        : '<div style="font-size:9px;color:var(--text3);margin-top:6px;text-transform:uppercase;letter-spacing:.05em;">Preview in prep</div>';
+      return '<div class="next-match-card"'+dataAttr+hoverAttr
+        +' style="background:var(--bg-card2);border:1px solid '+borderCol+';border-radius:var(--r-sm);padding:12px;text-align:center;'+(hasPreview?'cursor:pointer;':'')+' transition:border-color .2s;">'
+        +'<div style="font-size:10px;color:var(--text3);margin-bottom:6px;">Group '+m.g+' · '+dateStr+' · '+timeStr+'</div>'
+        +'<div style="display:flex;align-items:center;justify-content:center;gap:10px;">'
+          +'<div><div style="font-size:24px;line-height:1;">'+m.hf+'</div>'
+          +'<div style="font-size:11px;font-weight:600;color:var(--text);margin-top:2px;">'+m.hn+'</div></div>'
+          +'<div style="font-size:13px;font-weight:700;color:var(--text3);">vs</div>'
+          +'<div><div style="font-size:24px;line-height:1;">'+m.af+'</div>'
+          +'<div style="font-size:11px;font-weight:600;color:var(--text);margin-top:2px;">'+m.an+'</div></div>'
+        +'</div>'
+        +'<div style="font-size:10px;color:var(--text3);margin-top:5px;">'+m.ve+'</div>'
+        +previewBadge
+      +'</div>';
+    }).join('');
+    strip.onclick = function(e){
+      var card = e.target.closest ? e.target.closest('.next-match-card[data-mid]') : null;
+      if(!card) return;
+      window.currentFeaturedMatchId = card.getAttribute('data-matchid');
+      if(window.openMatchModal) window.openMatchModal();
+    };
+  }
+
   render();
-  setInterval(render, 30000);
+  renderNextMatches();
+  setInterval(function(){ render(); renderNextMatches(); }, 30000);
 })();
 // ── Live data — openfootball GitHub (free, no auth needed) ────
 (function buildGroups(){
@@ -1161,10 +1177,10 @@ a{text-decoration:none;color:inherit;}
     {t:'2026-06-12T02:00:00Z',l:'KOR vs CZE',s:'Jun 12 · Estadio Akron, Guadalajara'},
     {t:'2026-06-12T19:00:00Z',l:'CAN vs BIH',s:'Jun 13 · BMO Field, Toronto'},
     {t:'2026-06-13T01:00:00Z',l:'USA vs PAR',s:'Jun 13 · SoFi Stadium, Los Angeles'},
-    {t:'2026-06-14T04:00:00Z',l:'AUS vs TUR',s:'Jun 14 · BC Place, Vancouver'},
     {t:'2026-06-13T19:00:00Z',l:'QAT vs SUI',s:'Jun 14 · Levis Stadium, Santa Clara'},
     {t:'2026-06-13T22:00:00Z',l:'BRA vs MAR',s:'Jun 14 · MetLife Stadium, East Rutherford'},
     {t:'2026-06-14T01:00:00Z',l:'HAI vs SCO',s:'Jun 14 · Gillette Stadium, Boston'},
+    {t:'2026-06-14T04:00:00Z',l:'AUS vs TUR',s:'Jun 14 · BC Place, Vancouver'},
     {t:'2026-06-14T17:00:00Z',l:'GER vs CUR',s:'Jun 14 · NRG Stadium, Houston'},
     {t:'2026-06-14T20:00:00Z',l:'NED vs JPN',s:'Jun 14 · AT&T Stadium, Dallas'},
     {t:'2026-06-14T23:00:00Z',l:'CIV vs ECU',s:'Jun 15 · Lincoln Financial, Philadelphia'},
@@ -1177,8 +1193,7 @@ a{text-decoration:none;color:inherit;}
     {t:'2026-06-16T19:00:00Z',l:'FRA vs SEN',s:'Jun 16 · MetLife, East Rutherford'},
     {t:'2026-06-16T22:00:00Z',l:'IRQ vs NOR',s:'Jun 17 · Gillette Stadium, Boston'},
     {t:'2026-06-17T01:00:00Z',l:'ARG vs ALG',s:'Jun 17 · Arrowhead, Kansas City'}
-  ];
-  var DUR=110*60*1000;
+  ];  var DUR=110*60*1000;
   var FINAL=new Date('2026-07-19T19:00:00Z');
   function findNext(){
     var now=Date.now();
@@ -2089,7 +2104,9 @@ body.mm-open{overflow:hidden;}
   // ── Match modal mapping ──
   var MATCH_MODALS = {
     'can-bih-20260612': 'matchModal',
-    'usa-par-20260612': 'matchModal2'
+    'usa-par-20260612': 'matchModal2',
+    'qat-sui':          'matchModal3',
+    'bra-mar':          'matchModal4'
   };
   window.currentModalId = 'matchModal'; // default
 
@@ -2111,7 +2128,7 @@ body.mm-open{overflow:hidden;}
     if(el){ el.classList.add('on'); document.body.classList.add('mm-open'); }
   };
   window.closeMatchModal = function(){
-    ['matchModal','matchModal2'].forEach(function(id){
+    ['matchModal','matchModal2','matchModal3','matchModal4'].forEach(function(id){
       var el = document.getElementById(id);
       if(el) el.classList.remove('on');
     });
@@ -2119,7 +2136,7 @@ body.mm-open{overflow:hidden;}
   };
 
   // Wire tabs for BOTH modals
-  ['mmTabs','mmTabs2'].forEach(function(tabsId){
+  ['mmTabs','mmTabs2','mmTabs3','mmTabs4'].forEach(function(tabsId){
     var container = document.getElementById(tabsId);
     if(!container) return;
     var tabs = container.querySelectorAll('.mm-tab');
@@ -2137,7 +2154,9 @@ body.mm-open{overflow:hidden;}
   // Wire team guide toggles for BOTH modals
   [
     {toggle:'mmGuideToggle', home:'mmGuideHome', away:'mmGuideAway', homeKey:'home', awayKey:'away'},
-    {toggle:'mmGuideToggle2', home:'mmGuideHome2', away:'mmGuideAway2', homeKey:'home2', awayKey:'away2'}
+    {toggle:'mmGuideToggle2', home:'mmGuideHome2', away:'mmGuideAway2', homeKey:'home2', awayKey:'away2'},
+    {toggle:'mmGuideToggle3', home:'mmGuideHome3', away:'mmGuideAway3', homeKey:'home3', awayKey:'away3'},
+    {toggle:'mmGuideToggle4', home:'mmGuideHome4', away:'mmGuideAway4', homeKey:'home4', awayKey:'away4'}
   ].forEach(function(cfg){
     var el = document.getElementById(cfg.toggle);
     if(!el) return;
@@ -2155,5 +2174,451 @@ body.mm-open{overflow:hidden;}
 
 
 
+
+<!-- ══ MATCH PREVIEW MODAL — Qatar vs Switzerland (Jun 13) ══ -->
+<div class="mm-overlay" id="matchModal3" role="dialog" aria-modal="true" aria-label="Qatar vs Switzerland preview">
+  <div class="mm-dialog">
+    <div class="mm-head">
+      <button class="mm-close" onclick="closeMatchModal()" aria-label="Close">×</button>
+      <div class="mm-meta">
+        <span>Group B</span><span>·</span><span>Santa Clara</span><span>·</span><span>2026-06-13</span>
+      </div>
+      <div class="mm-vs-row">
+        <div class="mm-team">
+          <span class="flag">🇶🇦</span>
+          <span class="nm">Qatar <span class="rk">FIFA #53</span></span>
+          <span class="pwr">Power <span class="num" style="color:var(--amber);">28</span> <span class="pwr-tag">Condition Adjusted</span></span>
+        </div>
+        <div class="mm-middle">
+          <div class="vs">VS</div>
+          <div class="pred"><span class="h" style="color:var(--amber);">9%</span><span class="d">/ 15%</span><span class="a" style="color:var(--blue);">76%</span></div>
+          <div class="mm-prob"><div class="h" style="width:9%;background:var(--amber);"></div><div class="d" style="width:15%;"></div><div class="a" style="width:76%;background:var(--blue);"></div></div>
+        </div>
+        <div class="mm-team right">
+          <span class="flag">🇨🇭</span>
+          <span class="nm">Switzerland <span class="rk">FIFA #19</span></span>
+          <span class="pwr">Power <span class="num" style="color:var(--blue);">67</span> <span class="pwr-tag">Condition Adjusted</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="mm-tabs" id="mmTabs3">
+      <button class="mm-tab on" data-pane="preview3">Preview</button>
+      <button class="mm-tab" data-pane="lineups3">Lineups</button>
+      <button class="mm-tab" data-pane="tactics3">Tactics</button>
+      <button class="mm-tab" data-pane="conditions3">Conditions</button>
+      <button class="mm-tab" data-pane="analysis3">Analysis</button>
+      <button class="mm-tab" data-pane="guide3">Team Guide</button>
+    </div>
+    <div class="mm-body">
+
+      <!-- PREVIEW -->
+      <div class="mm-pane on" data-pane="preview3">
+        <div class="mm-card">
+          <h4>Predicted outcome</h4>
+          <div class="mm-prob" style="width:100%;height:10px;"><div class="h" style="width:9%;background:var(--amber);"></div><div class="d" style="width:15%;"></div><div class="a" style="width:76%;background:var(--blue);"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:8px;"><span style="color:var(--amber);">Qatar 9%</span><span style="color:var(--text3);">Draw 15%</span><span style="color:var(--blue);">Switzerland 76%</span></div>
+          <div style="margin-top:14px;font-size:13px;line-height:1.6;color:var(--text2);">
+            → Switzerland one of only 2 European teams in knockout stages at last 6 major tournaments<br>
+            → Qatar conceded 7 goals in 3 matches at their own 2022 World Cup<br>
+            → Akram Afif — Qatar's only world-class threat; 39 international goals<br>
+            → Granit Xhaka (Sunderland) sets Switzerland's tempo from deep pivot<br>
+            → Qatar winless in last 6 matches heading into the tournament<br>
+            → First competitive meeting between the two nations
+          </div>
+        </div>
+        <div class="mm-grid2">
+          <div class="mm-card"><h4>Venue</h4>
+            <div class="mm-fact"><span class="k">Stadium</span><span class="v">Levis Stadium</span></div>
+            <div class="mm-fact"><span class="k">City</span><span class="v">Santa Clara, California</span></div>
+            <div class="mm-fact"><span class="k">Altitude</span><span class="v">15 m — sea level</span></div>
+            <div class="mm-fact"><span class="k">Roof</span><span class="v">Open air</span></div>
+            <div class="mm-fact"><span class="k">Kickoff</span><span class="v">Jun 14 · 00:30 IST</span></div>
+            <div class="mm-fact"><span class="k">India broadcast</span><span class="v" style="color:var(--gold);">Zee5 · Unite8 Sports 1/2 HD</span></div>
+          </div>
+          <div class="mm-card"><h4>Power index</h4>
+            <div class="mm-bar"><span>Qatar</span><span class="v">28</span></div>
+            <div class="mm-bar-vis"><div style="width:28%;background:var(--amber);"></div></div>
+            <div class="mm-bar" style="margin-top:10px;"><span>Switzerland</span><span class="v">67</span></div>
+            <div class="mm-bar-vis"><div style="width:67%;background:var(--blue);"></div></div>
+            <div class="mm-bar" style="margin-top:14px;"><span>Conditioning · Qatar</span><span class="v">32</span></div>
+            <div class="mm-bar-vis"><div style="width:32%;background:var(--amber);"></div></div>
+            <div class="mm-bar" style="margin-top:10px;"><span>Conditioning · Switzerland</span><span class="v">70</span></div>
+            <div class="mm-bar-vis"><div style="width:70%;background:var(--blue);"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LINEUPS -->
+      <div class="mm-pane" data-pane="lineups3">
+        <div class="mm-grid2">
+          <div class="mm-card">
+            <h4>🇶🇦 Qatar · Projected XI</h4>
+            <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Formation <span style="font-family:var(--font-mono);color:var(--gold);font-weight:600;">4-3-3</span> · compact block · Coach: Julen Lopetegui</div>
+            <div class="mm-pitch-wrap">
+              <svg class="mm-pitch" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="100" height="140" fill="url(#pitchQA)"/>
+                <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
+                <g class="mm-team-away">
+                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Abunada</text></g>
+                  <g><circle cx="10" cy="108" r="4.6"/><text class="num" x="10" y="109.7">20</text><text class="nm" x="10" y="117">Al-Amin</text></g>
+                  <g><circle cx="34" cy="112" r="4.6"/><text class="num" x="34" y="113.7">5</text><text class="nm" x="34" y="121">Khoukhi</text></g>
+                  <g><circle cx="66" cy="112" r="4.6"/><text class="num" x="66" y="113.7">13</text><text class="nm" x="66" y="121">P. Miguel</text></g>
+                  <g><circle cx="90" cy="108" r="4.6"/><text class="num" x="90" y="109.7">2</text><text class="nm" x="90" y="117">Al Oui</text></g>
+                  <g><circle cx="20" cy="76" r="4.6"/><text class="num" x="20" y="77.7">6</text><text class="nm" x="20" y="85">Gaber</text></g>
+                  <g><circle cx="50" cy="82" r="4.6"/><text class="num" x="50" y="83.7">8</text><text class="nm" x="50" y="91">Fathi</text></g>
+                  <g><circle cx="80" cy="76" r="4.6"/><text class="num" x="80" y="77.7">21</text><text class="nm" x="80" y="85">Boudiaf</text></g>
+                  <g><circle cx="18" cy="30" r="4.6"/><text class="num" x="18" y="31.7">11</text><text class="nm" x="18" y="39">Edmilson</text></g>
+                  <g><circle cx="50" cy="24" r="4.6"/><text class="num" x="50" y="25.7">19</text><text class="nm" x="50" y="33">A. Ali</text></g>
+                  <g><circle cx="82" cy="30" r="4.6"/><text class="num" x="82" y="31.7">11</text><text class="nm" x="82" y="39">Afif</text></g>
+                </g>
+                <defs><linearGradient id="pitchQA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+          <div class="mm-card">
+            <h4>🇨🇭 Switzerland · Projected XI</h4>
+            <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Formation <span style="font-family:var(--font-mono);color:var(--gold);font-weight:600;">4-2-3-1</span> · controlled possession · Coach: Murat Yakin</div>
+            <div class="mm-pitch-wrap">
+              <svg class="mm-pitch" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="100" height="140" fill="url(#pitchSUI)"/>
+                <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
+                <g class="mm-team-home">
+                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Kobel</text></g>
+                  <g><circle cx="10" cy="108" r="4.6"/><text class="num" x="10" y="109.7">13</text><text class="nm" x="10" y="117">Rodríguez</text></g>
+                  <g><circle cx="34" cy="112" r="4.6"/><text class="num" x="34" y="113.7">5</text><text class="nm" x="34" y="121">Akanji</text></g>
+                  <g><circle cx="66" cy="112" r="4.6"/><text class="num" x="66" y="113.7">4</text><text class="nm" x="66" y="121">Elvedi</text></div></g>
+                  <g><circle cx="90" cy="108" r="4.6"/><text class="num" x="90" y="109.7">2</text><text class="nm" x="90" y="117">Widmer</text></g>
+                  <g><circle cx="32" cy="80" r="4.6"/><text class="num" x="32" y="81.7">10</text><text class="nm" x="32" y="89">Xhaka<tspan fill="#f4b942" font-weight="700"> ©</tspan></text></g>
+                  <g><circle cx="68" cy="80" r="4.6"/><text class="num" x="68" y="81.7">11</text><text class="nm" x="68" y="89">Freuler</text></g>
+                  <g><circle cx="14" cy="52" r="4.6"/><text class="num" x="14" y="53.7">17</text><text class="nm" x="14" y="61">Ndoye</text></g>
+                  <g><circle cx="50" cy="58" r="4.6"/><text class="num" x="50" y="59.7">14</text><text class="nm" x="50" y="67">Aebischer</text></g>
+                  <g><circle cx="86" cy="52" r="4.6"/><text class="num" x="86" y="53.7">7</text><text class="nm" x="86" y="61">Manzambi</text></g>
+                  <g><circle cx="50" cy="24" r="4.6"/><text class="num" x="50" y="25.7">23</text><text class="nm" x="50" y="33">Embolo</text></g>
+                </g>
+                <defs><linearGradient id="pitchSUI" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--text3);text-align:center;margin-top:10px;"><i class="ti ti-info-circle" style="font-size:12px;color:var(--gold);"></i> Projected lineups based on confirmed squad selections. Confirmed XIs ~75 min before kickoff.</div>
+      </div>
+
+      <!-- TACTICS -->
+      <div class="mm-pane" data-pane="tactics3">
+        <div class="mm-grid2">
+          <div class="mm-card">
+            <h4>🇶🇦 Qatar · Tactical brief</h4>
+            <div class="mm-tac-row"><div class="lbl">Shape</div><div class="val">4-3-3 — compact block, quick transitions through Afif, Edmilson and Almoez Ali up front</div></div>
+            <div class="mm-tac-row"><div class="lbl">Style</div><div class="val">Defend deep, frustrate, then spring on the counter. Asia Cup-winning spine built for discipline</div></div>
+            <div class="mm-tac-row"><div class="lbl">Pressing</div><div class="val">Low block, selective press. Preserve energy, avoid the open game Switzerland want</div></div>
+            <div class="mm-tac-row"><div class="lbl">Strengths</div><div class="val">Tournament experience (2022 hosts) · Asia Cup 2023 and 2024 winners · Afif world-class in transitions</div></div>
+            <div class="mm-tac-row"><div class="lbl">Weaknesses</div><div class="val">Winless in last 6 · conceded 7 in 3 at own WC · 29 goals conceded in qualifying · serious form crisis</div></div>
+            <div class="mm-tac-row"><div class="lbl">Key player</div><div class="val"><b>Akram Afif</b> — 39 international goals, Qatar's primary creator and finisher. 14 goals in 21 QSL matches this season</div></div>
+          </div>
+          <div class="mm-card">
+            <h4>🇨🇭 Switzerland · Tactical brief</h4>
+            <div class="mm-tac-row"><div class="lbl">Shape</div><div class="val">4-2-3-1 — double pivot of Xhaka and Freuler controls tempo; Embolo leads the line</div></div>
+            <div class="mm-tac-row"><div class="lbl">Style</div><div class="val">Controlled possession through midfield, pace from wide areas via Ndoye. Settled and clinical</div></div>
+            <div class="mm-tac-row"><div class="lbl">Pressing</div><div class="val">High intensity press to win ball in Qatar's half; use technical superiority to dominate transitions</div></div>
+            <div class="mm-tac-row"><div class="lbl">Strengths</div><div class="val">KO stage at last 6 major tournaments · Euro 2024 QF · Kobel elite in goal · Bundesliga/PL spine</div></div>
+            <div class="mm-tac-row"><div class="lbl">Weaknesses</div><div class="val">Only one competitive meeting (lost 1-0 to Qatar friendly 2018) · opener nerves · Jashari vs Afif matchup key</div></div>
+            <div class="mm-tac-row"><div class="lbl">Key player</div><div class="val"><b>Granit Xhaka</b> (Sunderland) — the heartbeat; 6 PL assists this season, sets tempo from deep</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONDITIONS -->
+      <div class="mm-pane" data-pane="conditions3">
+        <div style="font-size:12px;color:var(--text2);margin-bottom:14px;"><b>Venue:</b> Levis Stadium, Santa Clara · 15 m — sea level · Open air · June evening heat</div>
+        <div class="mm-card"><h4>🌡 Heat &amp; humidity <span style="color:var(--amber);font-size:10px;margin-left:6px;">EDGE: QATAR</span></h4>
+          <div class="mm-bar"><span>Qatar</span><span class="v" style="color:var(--green);">82</span></div><div class="mm-bar-vis"><div style="width:82%;background:var(--green);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Switzerland</span><span class="v" style="color:var(--amber);">44</span></div><div class="mm-bar-vis"><div style="width:44%;background:var(--amber);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📅 Pitch quality <span style="color:var(--blue);font-size:10px;margin-left:6px;">NEUTRAL</span></h4>
+          <div class="mm-bar"><span>Qatar</span><span class="v">58</span></div><div class="mm-bar-vis"><div style="width:58%;background:var(--text2);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Switzerland</span><span class="v">62</span></div><div class="mm-bar-vis"><div style="width:62%;background:var(--text2);"></div></div>
+        </div>
+        <div class="mm-card"><h4>🏔 Altitude (15 m — sea level, no impact)</h4>
+          <div class="mm-bar"><span>Qatar</span><span class="v" style="color:var(--red);">10</span></div><div class="mm-bar-vis"><div style="width:10%;background:var(--red);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Switzerland</span><span class="v" style="color:var(--red);">10</span></div><div class="mm-bar-vis"><div style="width:10%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>✈ Travel &amp; jet lag <span style="color:var(--amber);font-size:10px;margin-left:6px;">EDGE: QATAR</span></h4>
+          <div class="mm-bar"><span>Qatar</span><span class="v" style="color:var(--green);">55</span></div><div class="mm-bar-vis"><div style="width:55%;background:var(--green);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Switzerland</span><span class="v" style="color:var(--red);">38</span></div><div class="mm-bar-vis"><div style="width:38%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>👥 Crowd pressure <span style="color:var(--blue);font-size:10px;margin-left:6px;">NEUTRAL</span></h4>
+          <div class="mm-bar"><span>Qatar</span><span class="v">30</span></div><div class="mm-bar-vis"><div style="width:30%;background:var(--text2);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Switzerland</span><span class="v">38</span></div><div class="mm-bar-vis"><div style="width:38%;background:var(--text2);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📈 Form <span style="color:var(--blue);font-size:10px;margin-left:6px;">EDGE: SWITZERLAND</span></h4>
+          <div class="mm-bar"><span>Qatar</span><span class="v" style="color:var(--red);">22</span></div><div class="mm-bar-vis"><div style="width:22%;background:var(--red);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Switzerland</span><span class="v" style="color:var(--green);">76</span></div><div class="mm-bar-vis"><div style="width:76%;background:var(--green);"></div></div>
+        </div>
+      </div>
+
+      <!-- ANALYSIS -->
+      <div class="mm-pane" data-pane="analysis3">
+        <div class="mm-card mm-guide">
+          <h4 style="color:var(--gold);font-size:12px;">✦ Match Analysis</h4>
+          <p><b>SANTA CLARA</b> — On paper, this is the most lopsided fixture of the group stage. In practice, it may be the most tactically interesting.</p>
+          <p>Qatar arrive in California carrying the weight of 2022 — three group-stage defeats on home soil, seven goals conceded, a nation that witnessed its greatest footballing moment become its most humbling. The context is different now. They are guests rather than hosts, free from the crushing expectation that paralysed them four years ago. But their preparation form — winless in six, including a 1-0 defeat to Ireland and a 1-1 draw with El Salvador — suggests systemic issues that go beyond venue pressure.</p>
+          <p>Switzerland are the model of European tournament consistency. They have reached the knockout stages at each of the last six major international tournaments, a statistic only England also holds. Granit Xhaka's Sunderland campaign gave him six Premier League assists and sharper match conditioning than most of his Swiss peers. Breel Embolo's eight Ligue 1 goals at Rennes represent the most productive domestic season of his career. The Nati arrive settled, well-drilled, and fully aware that three early points against Qatar could effectively hand them group control before they face Canada and Bosnia.</p>
+          <p>Qatar's one lifeline is the heat. Levis Stadium's open-air evening sessions under California's June sun can be brutal for unacclimatised European legs. Akram Afif — 39 international goals and arguably Asia's best active footballer — is calibrated for exactly these conditions. If Qatar can weather the first 30 minutes and keep it tight, Afif's ability to punish a single lapse in concentration gives them a legitimate route to a point.</p>
+          <p>But Switzerland's defensive structure under Yakin is built precisely to deny that route. Akanji and Elvedi are among the most reliable central defensive partnerships in Europe. The double pivot of Xhaka and Freuler exists specifically to nullify Afif's counter-attacking lanes.</p>
+          <p><i>Switzerland control this match from the outset. Qatar cause problems in the final 20 minutes, but the Nati hold firm.</i></p>
+          <div class="mm-prediction"><div class="lbl">✦ Model prediction</div><div class="score">🇨🇭 Switzerland  2 – 0  Qatar 🇶🇦</div></div>
+        </div>
+      </div>
+
+      <!-- TEAM GUIDE -->
+      <div class="mm-pane" data-pane="guide3">
+        <div class="mm-team-toggle" id="mmGuideToggle3">
+          <button class="on" data-g="home3">🇶🇦 Qatar</button>
+          <button data-g="away3">🇨🇭 Switzerland</button>
+        </div>
+        <div class="mm-card mm-guide" id="mmGuideHome3">
+          <h5>How did they qualify?</h5><p>Qatar earned their place through the AFC qualification process, securing a 2-1 win over UAE in October 2025 to confirm their spot. The only team in history to qualify for a World Cup without ever winning a competitive qualifying match — they hosted in 2022 as automatic qualifiers.</p>
+          <h5>What is their pedigree?</h5><p>This is only Qatar's second World Cup appearance. As 2022 hosts they were eliminated in the group stage with three defeats — the worst ever performance by a host nation. They have won back-to-back AFC Asian Cups (2023, 2024), which represents the height of their footballing achievement.</p>
+          <h5>Who is the coach?</h5><p>Julen Lopetegui — the experienced Spaniard who managed Sevilla, Wolves, Real Madrid and Spain. He replaced Felix Sanchez in 2025 and has spent a year trying to instill European pressing principles into an Asian squad. The results have been mixed.</p>
+          <h5>Key player</h5><p><b>Akram Afif</b> (Al Sadd) — 39 international goals, AFC Player of the Year, and genuinely world-class in transition. The winger scored 14 league goals this season and is the player every opponent game-plans around. Qatar's entire tournament hinges on his form.</p>
+          <h5>What else should we know?</h5><p>Qatar have never beaten a European side in a competitive match. Their 1-0 friendly win over Switzerland in 2018 remains the only time they've ever beaten a UEFA nation in any context. They conceded 29 goals across 18 qualifying games.</p>
+        </div>
+        <div class="mm-card mm-guide" id="mmGuideAway3" style="display:none;">
+          <h5>How did they qualify?</h5><p>Switzerland qualified through UEFA's competitive European qualifying. They finished their group without much drama, consistent as ever. They have now qualified for seven consecutive World Cups.</p>
+          <h5>What is their pedigree?</h5><p>One of European football's quiet overachievers. Round of 16 at the last three World Cups. Quarter-finals at Euro 2024. They have lost only one of their last 14 matches — a 4-3 friendly defeat to Germany in March 2026. The Nati never wow anyone but they never collapse either.</p>
+          <h5>Who is the coach?</h5><p>Murat Yakin — the Swiss-Turkish manager who has quietly built one of Europe's most consistent tournament sides. He used March 2026 friendlies to rotate depth, meaning his first-choice selections arrive fully rested. Known for tactical pragmatism and meticulous preparation.</p>
+          <h5>Key players</h5><p><b>Granit Xhaka</b> (Sunderland) — the captain and engine. Six PL assists this season. Sets tempo from deep. <b>Breel Embolo</b> (Rennes) — eight Ligue 1 goals, first-choice striker. <b>Gregor Kobel</b> (Dortmund) — elite shot-stopper, one of Europe's top three keepers.</p>
+          <h5>What else should we know?</h5><p>Switzerland are one of only two European nations to have reached the knockout stages at each of the last six major international tournaments (alongside England). They have a winning formula: don't concede, be hard to beat, take your chances when they come.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ MATCH PREVIEW MODAL — Brazil vs Morocco (Jun 13) ══ -->
+<div class="mm-overlay" id="matchModal4" role="dialog" aria-modal="true" aria-label="Brazil vs Morocco preview">
+  <div class="mm-dialog">
+    <div class="mm-head">
+      <button class="mm-close" onclick="closeMatchModal()" aria-label="Close">×</button>
+      <div class="mm-meta">
+        <span>Group C</span><span>·</span><span>East Rutherford</span><span>·</span><span>2026-06-13</span>
+      </div>
+      <div class="mm-vs-row">
+        <div class="mm-team">
+          <span class="flag">🇧🇷</span>
+          <span class="nm">Brazil <span class="rk">FIFA #5</span></span>
+          <span class="pwr">Power <span class="num" style="color:var(--green);">88</span> <span class="pwr-tag">Condition Adjusted</span></span>
+        </div>
+        <div class="mm-middle">
+          <div class="vs">VS</div>
+          <div class="pred"><span class="h" style="color:var(--green);">55%</span><span class="d">/ 22%</span><span class="a" style="color:var(--red);">23%</span></div>
+          <div class="mm-prob"><div class="h" style="width:55%;background:var(--green);"></div><div class="d" style="width:22%;"></div><div class="a" style="width:23%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-team right">
+          <span class="flag">🇲🇦</span>
+          <span class="nm">Morocco <span class="rk">FIFA #12</span></span>
+          <span class="pwr">Power <span class="num" style="color:var(--red);">71</span> <span class="pwr-tag">Condition Adjusted</span></span>
+        </div>
+      </div>
+    </div>
+    <div class="mm-tabs" id="mmTabs4">
+      <button class="mm-tab on" data-pane="preview4">Preview</button>
+      <button class="mm-tab" data-pane="lineups4">Lineups</button>
+      <button class="mm-tab" data-pane="tactics4">Tactics</button>
+      <button class="mm-tab" data-pane="conditions4">Conditions</button>
+      <button class="mm-tab" data-pane="analysis4">Analysis</button>
+      <button class="mm-tab" data-pane="guide4">Team Guide</button>
+    </div>
+    <div class="mm-body">
+
+      <!-- PREVIEW -->
+      <div class="mm-pane on" data-pane="preview4">
+        <div class="mm-card">
+          <h4>Predicted outcome</h4>
+          <div class="mm-prob" style="width:100%;height:10px;"><div class="h" style="width:55%;background:var(--green);"></div><div class="d" style="width:22%;"></div><div class="a" style="width:23%;background:var(--red);"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:8px;"><span style="color:var(--green);">Brazil 55%</span><span style="color:var(--text3);">Draw 22%</span><span style="color:var(--red);">Morocco 23%</span></div>
+          <div style="margin-top:14px;font-size:13px;line-height:1.6;color:var(--text2);">
+            → Brazilian diaspora in New York metro — effectively a home fixture for the Seleção<br>
+            → Ancelotti's first World Cup match — 4 competitive games together before tournament<br>
+            → Morocco new coach Ouahbi — only a handful of senior games before this fixture<br>
+            → Vinicius Jr. free from touchline — redeployed centrally by Ancelotti<br>
+            → Neymar (34) back after 3-year absence — elite luxury option off bench<br>
+            → En-Nesyri controversially omitted — leadership vacuum for Morocco
+          </div>
+        </div>
+        <div class="mm-grid2">
+          <div class="mm-card"><h4>Venue</h4>
+            <div class="mm-fact"><span class="k">Stadium</span><span class="v">MetLife Stadium</span></div>
+            <div class="mm-fact"><span class="k">City</span><span class="v">East Rutherford, New Jersey</span></div>
+            <div class="mm-fact"><span class="k">Altitude</span><span class="v">10 m — sea level</span></div>
+            <div class="mm-fact"><span class="k">Roof</span><span class="v">Open air</span></div>
+            <div class="mm-fact"><span class="k">Kickoff</span><span class="v">Jun 14 · 03:30 IST</span></div>
+            <div class="mm-fact"><span class="k">India broadcast</span><span class="v" style="color:var(--gold);">Zee5 · Unite8 Sports 1/2 HD</span></div>
+          </div>
+          <div class="mm-card"><h4>Power index</h4>
+            <div class="mm-bar"><span>Brazil</span><span class="v">88</span></div>
+            <div class="mm-bar-vis"><div style="width:88%;background:var(--green);"></div></div>
+            <div class="mm-bar" style="margin-top:10px;"><span>Morocco</span><span class="v">71</span></div>
+            <div class="mm-bar-vis"><div style="width:71%;background:var(--red);"></div></div>
+            <div class="mm-bar" style="margin-top:14px;"><span>Conditioning · Brazil</span><span class="v">82</span></div>
+            <div class="mm-bar-vis"><div style="width:82%;background:var(--green);"></div></div>
+            <div class="mm-bar" style="margin-top:10px;"><span>Conditioning · Morocco</span><span class="v">68</span></div>
+            <div class="mm-bar-vis"><div style="width:68%;background:var(--red);"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LINEUPS -->
+      <div class="mm-pane" data-pane="lineups4">
+        <div class="mm-grid2">
+          <div class="mm-card">
+            <h4>🇧🇷 Brazil · Projected XI</h4>
+            <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Formation <span style="font-family:var(--font-mono);color:var(--gold);font-weight:600;">4-2-3-1</span> · fluid attacking · Coach: Carlo Ancelotti</div>
+            <div class="mm-pitch-wrap">
+              <svg class="mm-pitch" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="100" height="140" fill="url(#pitchBR)"/>
+                <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
+                <g class="mm-team-home">
+                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Alisson</text></g>
+                  <g><circle cx="10" cy="108" r="4.6"/><text class="num" x="10" y="109.7">6</text><text class="nm" x="10" y="117">Arana</text></g>
+                  <g><circle cx="34" cy="112" r="4.6"/><text class="num" x="34" y="113.7">4</text><text class="nm" x="34" y="121">Gabriel</text></g>
+                  <g><circle cx="66" cy="112" r="4.6"/><text class="num" x="66" y="113.7">13</text><text class="nm" x="66" y="121">Marquinhos<tspan fill="#f4b942" font-weight="700"> ©</tspan></text></g>
+                  <g><circle cx="90" cy="108" r="4.6"/><text class="num" x="90" y="109.7">2</text><text class="nm" x="90" y="117">Danilo</text></g>
+                  <g><circle cx="32" cy="80" r="4.6"/><text class="num" x="32" y="81.7">5</text><text class="nm" x="32" y="89">Casemiro</text></g>
+                  <g><circle cx="68" cy="80" r="4.6"/><text class="num" x="68" y="81.7">8</text><text class="nm" x="68" y="89">Bruno G.</text></g>
+                  <g><circle cx="14" cy="48" r="4.6"/><text class="num" x="14" y="49.7">11</text><text class="nm" x="14" y="57">Martinelli</text></g>
+                  <g><circle cx="50" cy="54" r="4.6"/><text class="num" x="50" y="55.7">10</text><text class="nm" x="50" y="63">Neymar</text></g>
+                  <g><circle cx="86" cy="48" r="4.6"/><text class="num" x="86" y="49.7">21</text><text class="nm" x="86" y="57">Rodrygo</text></g>
+                  <g><circle cx="50" cy="22" r="4.6"/><text class="num" x="50" y="23.7">7</text><text class="nm" x="50" y="31">Vinicius Jr.</text></g>
+                </g>
+                <defs><linearGradient id="pitchBR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+          <div class="mm-card">
+            <h4>🇲🇦 Morocco · Projected XI</h4>
+            <div style="font-size:11px;color:var(--text2);margin-bottom:10px;">Formation <span style="font-family:var(--font-mono);color:var(--gold);font-weight:600;">3-2-4-1</span> · progressive · Coach: Mohamed Ouahbi</div>
+            <div class="mm-pitch-wrap">
+              <svg class="mm-pitch" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="100" height="140" fill="url(#pitchMA)"/>
+                <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
+                <g class="mm-team-away">
+                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Bounou</text></g>
+                  <g><circle cx="20" cy="112" r="4.6"/><text class="num" x="20" y="113.7">6</text><text class="nm" x="20" y="121">Saiss<tspan fill="#f4b942" font-weight="700"> ©</tspan></text></g>
+                  <g><circle cx="50" cy="116" r="4.6"/><text class="num" x="50" y="117.7">4</text><text class="nm" x="50" y="125">Diop</text></g>
+                  <g><circle cx="80" cy="112" r="4.6"/><text class="num" x="80" y="113.7">3</text><text class="nm" x="80" y="121">Mazraoui</text></g>
+                  <g><circle cx="32" cy="82" r="4.6"/><text class="num" x="32" y="83.7">5</text><text class="nm" x="32" y="91">Amrabat</text></g>
+                  <g><circle cx="68" cy="82" r="4.6"/><text class="num" x="68" y="83.7">14</text><text class="nm" x="68" y="91">El Khannouss</text></g>
+                  <g><circle cx="10" cy="50" r="4.6"/><text class="num" x="10" y="51.7">7</text><text class="nm" x="10" y="59">Ezzalzouli</text></g>
+                  <g><circle cx="36" cy="44" r="4.6"/><text class="num" x="36" y="45.7">10</text><text class="nm" x="36" y="53">B. Diaz</text></g>
+                  <g><circle cx="64" cy="44" r="4.6"/><text class="num" x="64" y="45.7">8</text><text class="nm" x="64" y="53">Saibari</text></g>
+                  <g><circle cx="90" cy="50" r="4.6"/><text class="num" x="90" y="51.7">2</text><text class="nm" x="90" y="59">Hakimi</text></g>
+                  <g><circle cx="50" cy="22" r="4.6"/><text class="num" x="50" y="23.7">9</text><text class="nm" x="50" y="31">El Kaabi</text></g>
+                </g>
+                <defs><linearGradient id="pitchMA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:var(--text3);text-align:center;margin-top:10px;"><i class="ti ti-info-circle" style="font-size:12px;color:var(--gold);"></i> Projected lineups. Confirmed XIs ~75 min before kickoff. Rodrygo, Militão and Estêvão ruled out for Brazil.</div>
+      </div>
+
+      <!-- TACTICS -->
+      <div class="mm-pane" data-pane="tactics4">
+        <div class="mm-grid2">
+          <div class="mm-card">
+            <h4>🇧🇷 Brazil · Tactical brief</h4>
+            <div class="mm-tac-row"><div class="lbl">Shape</div><div class="val">Fluid 4-2-3-1 — Casemiro anchors, Bruno G. drives; Vinicius Jr. deployed centrally rather than stranded wide</div></div>
+            <div class="mm-tac-row"><div class="lbl">Style</div><div class="val">High pressing intensity, technical fluidity in tight spaces. Ancelotti leveraging staggering attacking wealth</div></div>
+            <div class="mm-tac-row"><div class="lbl">Pressing</div><div class="val">High block to suffocate Morocco's build-up; Vinicius, Martinelli and Rodrygo designed to punish defensive lapses</div></div>
+            <div class="mm-tac-row"><div class="lbl">Strengths</div><div class="val">5× World Champions · Ancelotti's man-management · Vinicius centrally unleashed · Casemiro restoration to midfield</div></div>
+            <div class="mm-tac-row"><div class="lbl">Weaknesses</div><div class="val">Only 4 competitive games under Ancelotti · Rodrygo, Militão, Estêvão all out · CONMEBOL qualifying chaos (5th place)</div></div>
+            <div class="mm-tac-row"><div class="lbl">Key player</div><div class="val"><b>Vinícius Júnior</b> — Ancelotti is uniquely positioned to solve the paradox of his sporadic Brazil form vs Real Madrid brilliance</div></div>
+          </div>
+          <div class="mm-card">
+            <h4>🇲🇦 Morocco · Tactical brief</h4>
+            <div class="mm-tac-row"><div class="lbl">Shape</div><div class="val">Progressive 3-2-4-1 in possession — philosophical pivot from Regragui's low block; Hakimi operates as advanced playmaker</div></div>
+            <div class="mm-tac-row"><div class="lbl">Style</div><div class="val">Sharp technical wide combinations, youth-driven creativity via Brahim Diaz, Saibari, Ezzalzouli and Hakimi</div></div>
+            <div class="mm-tac-row"><div class="lbl">Pressing</div><div class="val">Mid-block with selective high press triggers; Amrabat screens the back three and launches transitions</div></div>
+            <div class="mm-tac-row"><div class="lbl">Strengths</div><div class="val">2022 WC semi-finalists · Hakimi/Brahim Diaz world class · CAF qualifying perfect record · U20 WC winners core</div></div>
+            <div class="mm-tac-row"><div class="lbl">Weaknesses</div><div class="val">New coach (Ouahbi) — minimal senior experience · En-Nesyri omitted · Saiss retirement leadership vacuum · AFCON failure on home soil</div></div>
+            <div class="mm-tac-row"><div class="lbl">Key player</div><div class="val"><b>Brahim Diaz</b> (Real Madrid) — AFCON Player of Tournament; ambidextrous dribbling and spatial awareness elevates Morocco's ceiling</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONDITIONS -->
+      <div class="mm-pane" data-pane="conditions4">
+        <div style="font-size:12px;color:var(--text2);margin-bottom:14px;"><b>Venue:</b> MetLife Stadium, East Rutherford NJ · 10 m — sea level · Open air · New Jersey June humidity</div>
+        <div class="mm-card"><h4>🌡 Heat &amp; humidity <span style="color:var(--green);font-size:10px;margin-left:6px;">EDGE: BRAZIL</span></h4>
+          <div class="mm-bar"><span>Brazil</span><span class="v" style="color:var(--green);">78</span></div><div class="mm-bar-vis"><div style="width:78%;background:var(--green);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Morocco</span><span class="v" style="color:var(--amber);">52</span></div><div class="mm-bar-vis"><div style="width:52%;background:var(--amber);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📅 Pitch quality <span style="color:var(--text3);font-size:10px;margin-left:6px;">NEUTRAL</span></h4>
+          <div class="mm-bar"><span>Brazil</span><span class="v">72</span></div><div class="mm-bar-vis"><div style="width:72%;background:var(--text2);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Morocco</span><span class="v">68</span></div><div class="mm-bar-vis"><div style="width:68%;background:var(--text2);"></div></div>
+        </div>
+        <div class="mm-card"><h4>🏔 Altitude (10 m — sea level, no impact)</h4>
+          <div class="mm-bar"><span>Brazil</span><span class="v" style="color:var(--text3);">10</span></div><div class="mm-bar-vis"><div style="width:10%;background:var(--text3);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Morocco</span><span class="v" style="color:var(--text3);">10</span></div><div class="mm-bar-vis"><div style="width:10%;background:var(--text3);"></div></div>
+        </div>
+        <div class="mm-card"><h4>✈ Travel &amp; jet lag <span style="color:var(--text3);font-size:10px;margin-left:6px;">NEUTRAL</span></h4>
+          <div class="mm-bar"><span>Brazil</span><span class="v">48</span></div><div class="mm-bar-vis"><div style="width:48%;background:var(--text2);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Morocco</span><span class="v">44</span></div><div class="mm-bar-vis"><div style="width:44%;background:var(--text2);"></div></div>
+        </div>
+        <div class="mm-card"><h4>👥 Crowd pressure <span style="color:var(--green);font-size:10px;margin-left:6px;">EDGE: BRAZIL</span></h4>
+          <div class="mm-bar"><span>Brazil</span><span class="v" style="color:var(--green);">82</span></div><div class="mm-bar-vis"><div style="width:82%;background:var(--green);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Morocco</span><span class="v" style="color:var(--red);">28</span></div><div class="mm-bar-vis"><div style="width:28%;background:var(--red);"></div></div>
+        </div>
+        <div class="mm-card"><h4>📈 Form <span style="color:var(--green);font-size:10px;margin-left:6px;">EDGE: BRAZIL</span></h4>
+          <div class="mm-bar"><span>Brazil</span><span class="v" style="color:var(--green);">74</span></div><div class="mm-bar-vis"><div style="width:74%;background:var(--green);"></div></div>
+          <div class="mm-bar" style="margin-top:10px;"><span>Morocco</span><span class="v" style="color:var(--amber);">58</span></div><div class="mm-bar-vis"><div style="width:58%;background:var(--amber);"></div></div>
+        </div>
+      </div>
+
+      <!-- ANALYSIS -->
+      <div class="mm-pane" data-pane="analysis4">
+        <div class="mm-card mm-guide">
+          <h4 style="color:var(--gold);font-size:12px;">✦ Match Analysis</h4>
+          <p><b>EAST RUTHERFORD</b> — When elite international sides collide in a tournament environment, the margin between victory and heartbreak is rarely decided by tactical blueprints alone. More often, it is dictated by environmental endurance and the visceral weight of crowd psychology.</p>
+          <p>As Brazil prepares to face Morocco at MetLife Stadium, the Seleção hold structural advantages that run far deeper than their traditional historical pedigree. The most decisive factor could well be the atmospheric reality of a New Jersey June. Internal metrics indicate a substantial gulf in climate and humidity adaptation between the two sides; if the East Coast weather turns heavy and oppressive, Brazil's superior conditioning is uniquely built to sustain their high-pressing intensity deep into the second half, precisely when Morocco's defensive block risks wilting.</p>
+          <p>That physiological tax will only be magnified by a starkly uneven psychological landscape. While officially a neutral venue, the immense Brazilian diaspora across the New York metropolitan area is poised to transform the stadium into a roaring sea of yellow and green. This will effectively grant Brazil a home fixture, creating a claustrophobic cauldron that will test the composure of Achraf Hakimi and the Moroccan backline during critical transition phases.</p>
+          <p>By contrast, logistical factors are largely a wash. The marginal differences in transatlantic travel recovery to the East Coast will barely register, leaving both squads physically fresh at kickoff.</p>
+          <p>Instead, the match will likely be decided by the surface itself. Brazil's technical fluidity suggests that virtuosos like Vinícius Júnior are perfectly equipped to exploit the pitch dynamics, manipulating tight spaces far more effectively than Morocco's robust, more physically reliant defensive setup. Backed by an elite run of form and an undeniable baseline power disparity, Brazil looks primed to control the tempo.</p>
+          <p>Morocco possesses more than enough elite counter-attacking quality — Hakimi, Brahim Diaz and the electric Ezzalzouli — to breach the scoreboard. But the elements stacked in East Rutherford heavily favor Brazilian control.</p>
+          <div class="mm-prediction"><div class="lbl">✦ Model prediction</div><div class="score">🇧🇷 Brazil  2 – 1  Morocco 🇲🇦</div></div>
+        </div>
+      </div>
+
+      <!-- TEAM GUIDE -->
+      <div class="mm-pane" data-pane="guide4">
+        <div class="mm-team-toggle" id="mmGuideToggle4">
+          <button class="on" data-g="home4">🇧🇷 Brazil</button>
+          <button data-g="away4">🇲🇦 Morocco</button>
+        </div>
+        <div class="mm-card mm-guide" id="mmGuideHome4">
+          <h5>How did they qualify?</h5><p>Brazil labored to a fifth-place finish in the 10-team CONMEBOL group — a position that would have condemned them to a playoff under the previous system. The expansion to 48 teams, which raised South America's automatic quota to six, spared the Seleção historic ignominy. Just eight wins from 18 matches; their journey was less a march and more a stuttering crawl.</p>
+          <h5>What is their World Cup pedigree?</h5><p>Brazil defined the World Cup through the mid-20th century — 1958, 1962, 1970 (the team that seduced the world into submission), 1994 and 2002. Five titles. The undisputed aristocracy of the tournament. Yet the font has run dry for two decades. The 7-1 humiliation on home soil against Germany in 2014 remains the modern nadir; quarter-final exits in 2006, 2010, 2018, and 2022 have deepened a profound institutional crisis.</p>
+          <h5>Who is the coach?</h5><p>Carlo Ancelotti — finally in place after nearly three years of protracted negotiations. He assumed the role last May, overseeing only four competitive fixtures ahead of the tournament. Brazil rotated through three managers with conflicting philosophies in the interim. Ancelotti's legendary calm authority and tactical intelligence are exactly what this squad needs.</p>
+          <h5>Key player</h5><p><b>Vinícius Júnior</b> — the defining paradox of Brazilian football. Arguably the most unplayable winger in European club football, yet his Brazil performances have been frustratingly sporadic. Ancelotti, who engineered his rise to superstardom at Real Madrid, is uniquely qualified to solve this riddle. Deployed centrally rather than stranded wide, Vinicius in 2026 could be something special.</p>
+          <h5>Squad news</h5><p>Neymar (34) returns after a near three-year absence — elite luxury off the bench, not an undisputed starter. Rodrygo, Éder Militão and teenage prodigy Estêvão all ruled out injured. João Pedro controversially omitted from the final 26.</p>
+          <h5>What else should we know?</h5><p>The return to the United States — the setting of their 1994 triumph — stirs profound historical echoes. Two months before that 1994 opener, Ayrton Senna dined with the squad after a PSG friendly, delivering a powerful speech on representing the nation. Eleven days later, he was gone. When Brazil won the final, they unfurled a banner: <i>"Senna... We Accelerate Together, The Fourth Title Is Ours."</i> Now they chase a sixth.</p>
+        </div>
+        <div class="mm-card mm-guide" id="mmGuideAway4" style="display:none;">
+          <h5>How did they qualify?</h5><p>Morocco cruised through CAF qualifying with absolute impunity — maximum points from eight fixtures, including a 6-0 dismantling of Congo and 5-0 of Niger, with a +20 goal differential. A turbulent AFCON on home soil ended in dramatic exit, but the qualification dominance reinforced internal belief this squad can challenge for the prize.</p>
+          <h5>What is their World Cup pedigree?</h5><p>In 1986, Morocco became the first African nation to reach the knockout rounds. At Qatar 2022, they shattered the glass ceiling entirely — topping a group containing Croatia, Belgium and Canada, then stunning Spain and Portugal to become the first African nation in World Cup semi-final history. Though the fairytale ended against France, they altered the geopolitical landscape of modern football forever.</p>
+          <blockquote>The tactical blueprint of 2022 has evolved. Morocco is no longer content with being an elite defensive counter-puncher; they are building to control matches.</blockquote>
+          <h5>Who is the coach?</h5><p>Mohamed Ouahbi — appointed in March after Walid Regragui paid the price for the AFCON home exit. Ouahbi guided Morocco's under-20 side to an improbable World Cup title and represents a major philosophical pivot toward the next generation. He has only a handful of senior fixtures before facing Brazil. The unconventional background: six years as a professional poker player across Europe after retiring from football.</p>
+          <h5>Key player</h5><p><b>Brahim Diaz</b> (Real Madrid) — securing his international allegiance from Spain was a monumental coup. AFCON Player of Tournament. Whether out wide or roaming as a number ten, his ambidextrous dribbling and clinical distribution elevate Morocco's attacking ceiling. He arrives at the absolute peak of his creative powers.</p>
+          <h5>Squad facts</h5><p>Adam Masina ruthlessly omitted in favor of Fulham's Issa Diop (late switch from France). Youssef En-Nesyri — 92 caps, icon of 2022 — controversially left out. 18-year-old Lille prodigy Ayyoub Bouaddi fast-tracked in. Saiss retiring after this tournament — a massive leadership vacuum alongside the En-Nesyri absence.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 </body>
-</html>

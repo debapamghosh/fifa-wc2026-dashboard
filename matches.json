@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "lastUpdated": "2026-06-12T12:00:00Z",
+  "lastUpdated": "2026-06-13T09:00:00Z",
   "matches": [
     {
       "id": "mex-rsa-20260611",
@@ -1110,6 +1110,78 @@
         "Czechia": "M. Kovář; S. Chaloupek, R. Hranáč, L. Krejčí, V. Coufal, J. Zelený; T. Souček, A. Sojka; P. Šulc, P. Schick, L. Provod"
       },
       "notable": "South Korea came from 1-0 down. Oh Hyeon-gyu scored the winner 11 minutes after coming on as a sub for Son Heung-min."
+    },
+    {
+      "matchId": "can-bih-20260612",
+      "group": "Group B",
+      "matchday": 1,
+      "team1": "Canada",
+      "team2": "Bosnia and Herzegovina",
+      "score": {
+        "ft": [
+          1,
+          1
+        ],
+        "ht": [
+          0,
+          0
+        ]
+      },
+      "date": "2026-06-12",
+      "kickoffUTC": "2026-06-12T19:00:00Z",
+      "venue": "BMO Field, Toronto",
+      "status": "final"
+    },
+    {
+      "matchId": "usa-par-20260612",
+      "group": "Group D",
+      "matchday": 1,
+      "team1": "United States",
+      "team2": "Paraguay",
+      "score": {
+        "ft": [
+          4,
+          1
+        ],
+        "ht": [
+          2,
+          0
+        ]
+      },
+      "date": "2026-06-13",
+      "kickoffUTC": "2026-06-13T01:00:00Z",
+      "venue": "SoFi Stadium, Los Angeles",
+      "status": "final",
+      "goals": [
+        {
+          "team": "United States",
+          "player": "D. Bobadilla",
+          "min": 7,
+          "type": "OG",
+          "note": "Own goal"
+        },
+        {
+          "team": "United States",
+          "player": "F. Balogun",
+          "min": 31
+        },
+        {
+          "team": "United States",
+          "player": "F. Balogun",
+          "min": 50
+        },
+        {
+          "team": "United States",
+          "player": "G. Reyna",
+          "min": 98
+        },
+        {
+          "team": "Paraguay",
+          "player": "Maurício",
+          "min": 73
+        }
+      ],
+      "notable": "Balogun brace + Reyna injury-time goal. USA first home WC win since 1994."
     }
   ]
 }
