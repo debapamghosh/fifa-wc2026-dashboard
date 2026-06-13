@@ -362,7 +362,7 @@ a{text-decoration:none;color:inherit;}
     </div>
     <div id="next-matches-strip" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;" class="player-grid"></div>
     Fixture times shown in IST · Live scores will appear here from Jun 11 via <a href="https://www.sofascore.com/football/tournament/world/world-championship/16" target="_blank" rel="noopener" style="color:var(--blue);">SofaScore</a> or <a href="https://www.bbc.co.uk/sport/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">BBC Sport</a></div>
-  </div>
+  
 
   <!-- ══ GROUP STAGE DRAW ══ -->
   <div id="group-draw" class="section-label"><i class="ti ti-layout-grid" aria-hidden="true" style="font-size:13px;"></i>Group stage draw</div>
@@ -1545,6 +1545,8 @@ a{text-decoration:none;color:inherit;}
 })();
 </script>
 
+</div><!-- /wrap -->
+
 <!-- ══ MATCH PREVIEW MODAL — Canada vs Bosnia-Herzegovina (Jun 12) ══ -->
 <style>
 .mm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;backdrop-filter:blur(6px);}
@@ -2088,82 +2090,6 @@ body.mm-open{overflow:hidden;}
 </div>
 
 
-<script>
-(function(){
-  // ── Match modal mapping ──
-  var MATCH_MODALS = {
-    'can-bih-20260612': 'matchModal',
-    'usa-par-20260612': 'matchModal2',
-    'qat-sui':          'matchModal3',
-    'bra-mar':          'matchModal4'
-  };
-  window.currentModalId = 'matchModal'; // default
-
-  // Wire all modal overlays (close on backdrop click / Escape)
-  ['matchModal','matchModal2'].forEach(function(id){
-    var el = document.getElementById(id);
-    if(!el) return;
-    el.addEventListener('click', function(e){ if(e.target===el) closeMatchModal(); });
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key==='Escape') closeMatchModal();
-  });
-
-  window.openMatchModal = function(){
-    // Check which match is featured and open the right modal
-    var mId = window.currentFeaturedMatchId || '';
-    var modalId = MATCH_MODALS[mId] || 'matchModal';
-    var el = document.getElementById(modalId);
-    if(el){ el.classList.add('on'); document.body.classList.add('mm-open'); }
-  };
-  window.closeMatchModal = function(){
-    ['matchModal','matchModal2','matchModal3','matchModal4'].forEach(function(id){
-      var el = document.getElementById(id);
-      if(el) el.classList.remove('on');
-    });
-    document.body.classList.remove('mm-open');
-  };
-
-  // Wire tabs for BOTH modals
-  ['mmTabs','mmTabs2','mmTabs3','mmTabs4'].forEach(function(tabsId){
-    var container = document.getElementById(tabsId);
-    if(!container) return;
-    var tabs = container.querySelectorAll('.mm-tab');
-    var modal = container.closest('.mm-dialog');
-    tabs.forEach(function(t){
-      t.addEventListener('click', function(){
-        tabs.forEach(function(x){x.classList.remove('on');});
-        modal.querySelectorAll('.mm-pane').forEach(function(p){p.classList.remove('on');});
-        t.classList.add('on');
-        modal.querySelector('.mm-pane[data-pane="'+t.dataset.pane+'"]').classList.add('on');
-      });
-    });
-  });
-
-  // Wire team guide toggles for BOTH modals
-  [
-    {toggle:'mmGuideToggle', home:'mmGuideHome', away:'mmGuideAway', homeKey:'home', awayKey:'away'},
-    {toggle:'mmGuideToggle2', home:'mmGuideHome2', away:'mmGuideAway2', homeKey:'home2', awayKey:'away2'},
-    {toggle:'mmGuideToggle3', home:'mmGuideHome3', away:'mmGuideAway3', homeKey:'home3', awayKey:'away3'},
-    {toggle:'mmGuideToggle4', home:'mmGuideHome4', away:'mmGuideAway4', homeKey:'home4', awayKey:'away4'}
-  ].forEach(function(cfg){
-    var el = document.getElementById(cfg.toggle);
-    if(!el) return;
-    el.querySelectorAll('button').forEach(function(b){
-      b.addEventListener('click', function(){
-        el.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
-        b.classList.add('on');
-        document.getElementById(cfg.home).style.display = (b.dataset.g===cfg.homeKey) ? 'block' : 'none';
-        document.getElementById(cfg.away).style.display = (b.dataset.g===cfg.awayKey) ? 'block' : 'none';
-      });
-    });
-  });
-})();
-</script>
-
-
-
-
 <!-- ══ MATCH PREVIEW MODAL — Qatar vs Switzerland (Jun 13) ══ -->
 <div class="mm-overlay" id="matchModal3" role="dialog" aria-modal="true" aria-label="Qatar vs Switzerland preview">
   <div class="mm-dialog">
@@ -2471,17 +2397,17 @@ body.mm-open{overflow:hidden;}
                 <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
                 <g class="mm-team-home">
                   <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Alisson</text></g>
-                  <g><circle cx="10" cy="108" r="4.6"/><text class="num" x="10" y="109.7">6</text><text class="nm" x="10" y="117">Arana</text></g>
-                  <g><circle cx="34" cy="112" r="4.6"/><text class="num" x="34" y="113.7">4</text><text class="nm" x="34" y="121">Gabriel</text></g>
-                  <g><circle cx="66" cy="112" r="4.6"/><text class="num" x="66" y="113.7">13</text><text class="nm" x="66" y="121">Marquinhos<tspan fill="#f4b942" font-weight="700"> ©</tspan></text></g>
-                  <g><circle cx="90" cy="108" r="4.6"/><text class="num" x="90" y="109.7">2</text><text class="nm" x="90" y="117">Danilo</text></g>
+                  <g><circle cx="10" cy="108" r="4.6"/><text class="num" x="10" y="109.7">6</text><text class="nm" x="10" y="117">A. Sandro</text></g>
+                  <g><circle cx="34" cy="112" r="4.6"/><text class="num" x="34" y="113.7">3</text><text class="nm" x="34" y="121">G. Magalhães</text></g>
+                  <g><circle cx="66" cy="112" r="4.6"/><text class="num" x="66" y="113.7">4</text><text class="nm" x="66" y="121">Marquinhos</text></g>
+                  <g><circle cx="90" cy="108" r="4.6"/><text class="num" x="90" y="109.7">13</text><text class="nm" x="90" y="117">Danilo</text></g>
                   <g><circle cx="32" cy="80" r="4.6"/><text class="num" x="32" y="81.7">5</text><text class="nm" x="32" y="89">Casemiro</text></g>
-                  <g><circle cx="68" cy="80" r="4.6"/><text class="num" x="68" y="81.7">8</text><text class="nm" x="68" y="89">Bruno G.</text></g>
-                  <g><circle cx="14" cy="48" r="4.6"/><text class="num" x="14" y="49.7">11</text><text class="nm" x="14" y="57">Martinelli</text></g>
-                  <g><circle cx="50" cy="54" r="4.6"/><text class="num" x="50" y="55.7">10</text><text class="nm" x="50" y="63">Neymar</text></g>
-                  <g><circle cx="86" cy="48" r="4.6"/><text class="num" x="86" y="49.7">21</text><text class="nm" x="86" y="57">Rodrygo</text></g>
-                  <g><circle cx="50" cy="22" r="4.6"/><text class="num" x="50" y="23.7">7</text><text class="nm" x="50" y="31">Vinicius Jr.</text></g>
-                </g>
+                  <g><circle cx="68" cy="80" r="4.6"/><text class="num" x="68" y="81.7">8</text><text class="nm" x="68" y="89">B. Guimarães</text></g>
+                  <g><circle cx="14" cy="48" r="4.6"/><text class="num" x="14" y="49.7">7</text><text class="nm" x="14" y="57">Vinícius Jr.</text></g>
+                  <g><circle cx="50" cy="54" r="4.6"/><text class="num" x="50" y="55.7">20</text><text class="nm" x="50" y="63">L. Paquetá</text></g>
+                  <g><circle cx="86" cy="48" r="4.6"/><text class="num" x="86" y="49.7">11</text><text class="nm" x="86" y="57">Raphinha</text></g>
+                  <g><circle cx="50" cy="22" r="4.6"/><text class="num" x="50" y="23.7">9</text><text class="nm" x="50" y="31">M. Cunha</text></g>
+                 </g>
                 <defs><linearGradient id="pitchBR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
               </svg>
             </div>
@@ -2494,17 +2420,17 @@ body.mm-open{overflow:hidden;}
                 <rect x="0" y="0" width="100" height="140" fill="url(#pitchMA)"/>
                 <g fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="0.4"><rect x="2" y="2" width="96" height="136"/><line x1="2" y1="70" x2="98" y2="70"/><circle cx="50" cy="70" r="9"/><rect x="22" y="2" width="56" height="14"/><rect x="36" y="2" width="28" height="5"/><rect x="22" y="124" width="56" height="14"/><rect x="36" y="133" width="28" height="5"/></g>
                 <g class="mm-team-away">
-                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Bounou</text></g>
-                  <g><circle cx="20" cy="112" r="4.6"/><text class="num" x="20" y="113.7">6</text><text class="nm" x="20" y="121">Saiss<tspan fill="#f4b942" font-weight="700"> ©</tspan></text></g>
-                  <g><circle cx="50" cy="116" r="4.6"/><text class="num" x="50" y="117.7">4</text><text class="nm" x="50" y="125">Diop</text></g>
-                  <g><circle cx="80" cy="112" r="4.6"/><text class="num" x="80" y="113.7">3</text><text class="nm" x="80" y="121">Mazraoui</text></g>
-                  <g><circle cx="32" cy="82" r="4.6"/><text class="num" x="32" y="83.7">5</text><text class="nm" x="32" y="91">Amrabat</text></g>
-                  <g><circle cx="68" cy="82" r="4.6"/><text class="num" x="68" y="83.7">14</text><text class="nm" x="68" y="91">El Khannouss</text></g>
-                  <g><circle cx="10" cy="50" r="4.6"/><text class="num" x="10" y="51.7">7</text><text class="nm" x="10" y="59">Ezzalzouli</text></g>
-                  <g><circle cx="36" cy="44" r="4.6"/><text class="num" x="36" y="45.7">10</text><text class="nm" x="36" y="53">B. Diaz</text></g>
-                  <g><circle cx="64" cy="44" r="4.6"/><text class="num" x="64" y="45.7">8</text><text class="nm" x="64" y="53">Saibari</text></g>
-                  <g><circle cx="90" cy="50" r="4.6"/><text class="num" x="90" y="51.7">2</text><text class="nm" x="90" y="59">Hakimi</text></g>
-                  <g><circle cx="50" cy="22" r="4.6"/><text class="num" x="50" y="23.7">9</text><text class="nm" x="50" y="31">El Kaabi</text></g>
+                  <g><circle cx="50" cy="128" r="4.6"/><text class="num" x="50" y="129.7">1</text><text class="nm" x="50" y="138">Bono</text></g>
+                  <g><circle cx="10" cy="108" r="4.6"/><text class="num" x="10" y="109.7">3</text><text class="nm" x="10" y="117">N. Mazraoui</text></g>
+                  <g><circle cx="34" cy="112" r="4.6"/><text class="num" x="34" y="113.7">14</text><text class="nm" x="34" y="121">I. Diop</text></g>
+                  <g><circle cx="66" cy="112" r="4.6"/><text class="num" x="66" y="113.7">18</text><text class="nm" x="66" y="121">C. Riad</text></g>
+                  <g><circle cx="90" cy="108" r="4.6"/><text class="num" x="90" y="109.7">2</text><text class="nm" x="90" y="117">A. Hakimi</text></g>
+                  <g><circle cx="32" cy="80" r="4.6"/><text class="num" x="32" y="81.7">4</text><text class="nm" x="32" y="89">S. Amrabat</text></g>
+                  <g><circle cx="68" cy="80" r="4.6"/><text class="num" x="68" y="81.7">24</text><text class="nm" x="68" y="89">N. El Aynaoui</text></g>
+                  <g><circle cx="14" cy="48" r="4.6"/><text class="num" x="14" y="49.7">9</text><text class="nm" x="14" y="57">S. Rahimi</text></g>
+                  <g><circle cx="50" cy="54" r="4.6"/><text class="num" x="50" y="55.7">8</text><text class="nm" x="50" y="63">A. Ounahi</text></g>
+                  <g><circle cx="86" cy="48" r="4.6"/><text class="num" x="86" y="49.7">10</text><text class="nm" x="86" y="57">B. Díaz</text></g>
+                  <g><circle cx="50" cy="22" r="4.6"/><text class="num" x="50" y="23.7">11</text><text class="nm" x="50" y="31">I. Saibari</text></g>
                 </g>
                 <defs><linearGradient id="pitchMA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c3320"/><stop offset="0.5" stop-color="#0a2818"/><stop offset="1" stop-color="#0c3320"/></linearGradient></defs>
               </svg>
@@ -2608,6 +2534,83 @@ body.mm-open{overflow:hidden;}
     </div>
   </div>
 </div>
+
+
+
+<script>
+(function(){
+  // ── Match modal mapping ──
+  var MATCH_MODALS = {
+    'can-bih-20260612': 'matchModal',
+    'usa-par-20260612': 'matchModal2',
+    'qat-sui':          'matchModal3',
+    'bra-mar':          'matchModal4'
+  };
+  window.currentModalId = 'matchModal'; // default
+
+  // Wire all modal overlays (close on backdrop click / Escape)
+  ['matchModal','matchModal2'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    el.addEventListener('click', function(e){ if(e.target===el) closeMatchModal(); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') closeMatchModal();
+  });
+
+  window.openMatchModal = function(){
+    // Check which match is featured and open the right modal
+    var mId = window.currentFeaturedMatchId || '';
+    var modalId = MATCH_MODALS[mId] || 'matchModal';
+    var el = document.getElementById(modalId);
+    if(el){ el.classList.add('on'); document.body.classList.add('mm-open'); }
+  };
+  window.closeMatchModal = function(){
+    ['matchModal','matchModal2','matchModal3','matchModal4'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.classList.remove('on');
+    });
+    document.body.classList.remove('mm-open');
+  };
+
+  // Wire tabs for BOTH modals
+  ['mmTabs','mmTabs2','mmTabs3','mmTabs4'].forEach(function(tabsId){
+    var container = document.getElementById(tabsId);
+    if(!container) return;
+    var tabs = container.querySelectorAll('.mm-tab');
+    var modal = container.closest('.mm-dialog');
+    tabs.forEach(function(t){
+      t.addEventListener('click', function(){
+        tabs.forEach(function(x){x.classList.remove('on');});
+        modal.querySelectorAll('.mm-pane').forEach(function(p){p.classList.remove('on');});
+        t.classList.add('on');
+        modal.querySelector('.mm-pane[data-pane="'+t.dataset.pane+'"]').classList.add('on');
+      });
+    });
+  });
+
+  // Wire team guide toggles for BOTH modals
+  [
+    {toggle:'mmGuideToggle', home:'mmGuideHome', away:'mmGuideAway', homeKey:'home', awayKey:'away'},
+    {toggle:'mmGuideToggle2', home:'mmGuideHome2', away:'mmGuideAway2', homeKey:'home2', awayKey:'away2'},
+    {toggle:'mmGuideToggle3', home:'mmGuideHome3', away:'mmGuideAway3', homeKey:'home3', awayKey:'away3'},
+    {toggle:'mmGuideToggle4', home:'mmGuideHome4', away:'mmGuideAway4', homeKey:'home4', awayKey:'away4'}
+  ].forEach(function(cfg){
+    var el = document.getElementById(cfg.toggle);
+    if(!el) return;
+    el.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click', function(){
+        el.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on');
+        document.getElementById(cfg.home).style.display = (b.dataset.g===cfg.homeKey) ? 'block' : 'none';
+        document.getElementById(cfg.away).style.display = (b.dataset.g===cfg.awayKey) ? 'block' : 'none';
+      });
+    });
+  });
+})();
+</script>
+
+
 
 
 </body>
