@@ -338,9 +338,19 @@ const MATCHES = RAW.map((m,i)=>({
 })).sort((x,y)=>x.utc-y.utc).map((m,i)=>({...m, id:'m'+i}));
 
 /* ---------------- score store ---------------- */
+/* ---------------- score store ---------------- */
 const KEY='wc26_scores_v1';
 // Pre-populate completed results (overridden by localStorage if user entered their own)
-const COMPLETED = {'m0':{a:2,b:0},'m1':{a:2,b:1},'m2':{a:1,b:1},'m3':{a:4,b:1}};
+const COMPLETED = {
+  'm0':{a:2,b:0}, // Mexico 2-0 South Africa
+  'm1':{a:2,b:1}, // South Korea 2-1 Czechia
+  'm2':{a:1,b:1}, // Canada 1-1 Bosnia
+  'm3':{a:4,b:1}, // USA 4-1 Paraguay
+  'm4':{a:1,b:1}, // Qatar 1-1 Switzerland
+  'm5':{a:1,b:1}, // Brazil 1-1 Morocco
+  'm6':{a:0,b:1}, // Haiti 0-1 Scotland
+  'm7':{a:2,b:0}  // Australia 2-0 Türkiye
+};
 let scores={};
 try{
   const stored=JSON.parse(localStorage.getItem(KEY)||'{}');
@@ -349,6 +359,7 @@ try{
 }catch(e){scores=Object.assign({},COMPLETED)}
 function saveScores(){try{localStorage.setItem(KEY,JSON.stringify(scores))}catch(e){}}
 
+/* ---------------- timezone ---------------- */
 /* ---------------- timezone ---------------- */
 const localTZ=Intl.DateTimeFormat().resolvedOptions().timeZone||'UTC';
 const TZ_OPTS=[
