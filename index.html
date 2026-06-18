@@ -75,17 +75,27 @@ a{text-decoration:none;color:inherit;}
 .tag-purple{background:rgba(169,141,244,.12);color:var(--purple);border:1px solid rgba(169,141,244,.2);}
 .tag-gray{background:rgba(255,255,255,.05);color:var(--text2);border:1px solid var(--border2);}
 
-/* ── News feed ── */
-.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.news-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;transition:border-color .2s;}
-.news-card:hover{border-color:var(--border2);}
-.news-card a{display:flex;flex-direction:column;height:100%;}
-.news-thumb{height:110px;background:var(--bg-pill);background-size:cover;background-position:center;flex-shrink:0;}
-.news-body{padding:12px;flex:1;display:flex;flex-direction:column;}
-.news-source{font-size:10px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;display:flex;align-items:center;gap:5px;}
-.news-title{font-size:12px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:6px;flex:1;}
-.news-date{font-size:10px;color:var(--text3);margin-top:auto;}
-.news-loading{color:var(--text3);font-size:13px;padding:20px 0;text-align:center;}
+/* ── Articles section ── */
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.article-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;transition:border-color .2s, transform .2s;}
+.article-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.article-card a{display:flex;flex-direction:column;height:100%;color:inherit;}
+.article-thumb{height:140px;background:var(--bg-pill);background-size:cover;background-position:center;flex-shrink:0;position:relative;}
+.article-body{padding:14px;flex:1;display:flex;flex-direction:column;}
+.article-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.4;margin-bottom:4px;}
+.article-subtitle{font-size:11px;color:var(--text2);line-height:1.4;margin-bottom:8px;flex:1;}
+.article-meta{font-size:10px;color:var(--text3);display:flex;align-items:center;gap:8px;margin-top:auto;}
+.article-cat-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase;}
+.article-card.featured{grid-column:1/-1;}
+.article-card.featured a{flex-direction:row;}
+.article-card.featured .article-thumb{width:45%;height:auto;min-height:200px;}
+.article-card.featured .article-body{padding:20px;}
+.article-card.featured .article-title{font-size:18px;font-family:var(--font-cond);letter-spacing:.02em;}
+.article-card.featured .article-subtitle{font-size:12px;}
+.article-filter-tabs{display:flex;gap:6px;flex-wrap:wrap;}
+.article-filter-tab{font-size:11px;font-weight:600;padding:4px 12px;border-radius:4px;border:1px solid var(--border);background:transparent;color:var(--text3);cursor:pointer;transition:all .2s;font-family:var(--font);}
+.article-filter-tab:hover{border-color:var(--border2);color:var(--text2);}
+.article-filter-tab.active{background:rgba(244,185,66,.1);border-color:var(--gold);color:var(--gold);}
 
 /* ── Rankings ── */
 .rank-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
@@ -168,7 +178,9 @@ a{text-decoration:none;color:inherit;}
   .stats-strip{grid-template-columns:repeat(2,1fr);}
   .player-grid{grid-template-columns:repeat(2,1fr)!important;}
   .phase-grid{grid-template-columns:repeat(2,1fr);}
-  .news-grid{grid-template-columns:1fr 1fr;}
+  .article-grid{grid-template-columns:1fr 1fr;}
+  .article-card.featured a{flex-direction:column;}
+  .article-card.featured .article-thumb{width:100%;min-height:160px;}
   .grp-row-4{grid-template-columns:repeat(2,1fr)!important;}
   /* Nav hub 6-col → 3-col */
   .wrap > div[style*="repeat(6"]{grid-template-columns:repeat(3,1fr)!important;}
@@ -185,7 +197,7 @@ a{text-decoration:none;color:inherit;}
 @media(max-width:540px){
   /* Single column everything */
   .stats-strip{grid-template-columns:1fr 1fr;}
-  .news-grid{grid-template-columns:1fr!important;}
+  .article-grid{grid-template-columns:1fr!important;}
   .player-grid{grid-template-columns:1fr 1fr!important;}
   .phase-grid{grid-template-columns:1fr 1fr;}
   .grp-row-4{grid-template-columns:repeat(2,1fr)!important;}
@@ -308,9 +320,9 @@ a{text-decoration:none;color:inherit;}
       <i class="ti ti-player-play" style="font-size: 20px; color: var(--purple); margin-bottom: 6px;"></i>
       <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Simulator</span>
     </a>
-    <a href="#news-feed-section" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--red)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
-      <i class="ti ti-news" style="font-size: 20px; color: var(--red); margin-bottom: 6px;"></i>
-      <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Intelligence Feed</span>
+    <a href="#articles-section" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
+      <i class="ti ti-pencil" style="font-size: 20px; color: var(--gold); margin-bottom: 6px;"></i>
+      <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">The Dugout</span>
     </a>
     <a href="#host-spotlight" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-pill) 100%); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 12px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.borderColor='var(--text2)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)'; this.style.transform='translateY(0)'">
       <i class="ti ti-map-pin-filled" style="font-size: 20px; color: var(--text2); margin-bottom: 6px;"></i>
@@ -409,26 +421,38 @@ a{text-decoration:none;color:inherit;}
       
   </div>
 
-  <!-- ══ LATEST NEWS ══ -->
-  <div id="news-feed-section" class="section-label"><i class="ti ti-news" aria-hidden="true" style="font-size:13px;"></i>Latest football news</div>
+  <!-- ══ THE DUGOUT — ARTICLES & EDITORIALS ══ -->
+  <div id="articles-section" class="section-label">
+    <i class="ti ti-pencil" aria-hidden="true" style="font-size:13px;"></i>
+    The Dugout — Articles &amp; Analysis
+  </div>
   <div class="panel" style="margin-bottom:28px;">
     <div class="panel-head">
-      <i class="ti ti-rss" aria-hidden="true" style="font-size:15px;color:var(--red);"></i>
-      <span class="panel-title">World Cup 2026 news feed</span>
-      <span class="panel-badge">Auto-refreshes on every load</span>
+      <i class="ti ti-notebook" aria-hidden="true" style="font-size:15px;color:var(--gold);"></i>
+      <span class="panel-title">The Dugout</span>
+      <span class="panel-badge" id="article-count-badge">— articles</span>
     </div>
-    <div class="news-grid" id="news-grid">
-      <div class="news-loading" style="grid-column:1/-1;">
+    <div class="article-filter-tabs" id="article-filters" style="margin-bottom:14px;">
+      <button class="article-filter-tab active" data-filter="all">All</button>
+      <button class="article-filter-tab" data-filter="analysis">
+        <i class="ti ti-chart-dots-3" style="font-size:11px;margin-right:3px;vertical-align:-1px;"></i>Analysis
+      </button>
+      <button class="article-filter-tab" data-filter="fun-facts">
+        <i class="ti ti-sparkles" style="font-size:11px;margin-right:3px;vertical-align:-1px;"></i>Fun Facts
+      </button>
+      <button class="article-filter-tab" data-filter="editorial">
+        <i class="ti ti-message-2" style="font-size:11px;margin-right:3px;vertical-align:-1px;"></i>Editorial
+      </button>
+    </div>
+    <div class="article-grid" id="article-grid">
+      <div style="grid-column:1/-1;padding:20px 0;text-align:center;color:var(--text3);font-size:13px;">
         <i class="ti ti-loader-2" aria-hidden="true" style="font-size:18px;margin-bottom:8px;display:block;animation:spin 1s linear infinite;"></i>
-        Loading latest news from BBC Sport…
+        Loading articles…
       </div>
     </div>
-    <div style="margin-top:12px;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-      <i class="ti ti-filter" aria-hidden="true" style="font-size:12px;"></i>
-      Filtered to World Cup 2026 stories only ·
-      Sources: <a href="https://www.theguardian.com/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">The Guardian</a>
-      · Content © Guardian News &amp; Media ·
-      <a href="https://open-platform.theguardian.com/access/" target="_blank" rel="noopener" style="color:var(--text3);">Get free API key for higher limits</a>
+    <div style="margin-top:14px;font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px;">
+      <i class="ti ti-pencil" aria-hidden="true" style="font-size:12px;"></i>
+      Original analysis &amp; editorial by Debapam Ghosh
     </div>
   </div>
 
@@ -676,7 +700,7 @@ a{text-decoration:none;color:inherit;}
       <div class="phase-card active-phase">
         <div class="phase-num"><i class="ti ti-check" aria-hidden="true" style="font-size:11px;color:var(--green);margin-right:3px;"></i>Phase 1 · Live</div>
         <div class="phase-name">Home Dashboard</div>
-        <div class="phase-desc">Live scores · standings · schedule · BBC news · rankings</div>
+        <div class="phase-desc">Live scores · standings · schedule · articles · rankings</div>
       </div>
       <div class="phase-card active-phase">
         <div class="phase-num"><i class="ti ti-check" aria-hidden="true" style="font-size:11px;color:var(--blue);margin-right:3px;"></i>Phase 2 · Live</div>
@@ -706,7 +730,7 @@ a{text-decoration:none;color:inherit;}
 <footer>
   <div class="wrap">
     <div class="site-footer">
-      <p>World Cup 2026 Command Center · News via <a href="https://www.theguardian.com/football" target="_blank" rel="noopener">The Guardian</a> · Official info at <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener">FIFA.com</a></p>
+      <p>World Cup 2026 Command Center · Original articles by Debapam Ghosh · Official info at <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener">FIFA.com</a></p>
       <p style="margin-top:6px;">For official tournament info visit <a href="https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026" target="_blank" rel="noopener">FIFA.com</a></p>
       <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px;">
         <span style="font-size:13px;color:var(--text3);">Designed &amp; built by</span>
@@ -726,6 +750,7 @@ a{text-decoration:none;color:inherit;}
 (function(){
   // Self-contained match list — no external data needed to render the card
   var M = [
+    // ── Jun 11 ──
     {id:'mex-rsa', ko:'2026-06-11T19:00:00Z', end:'2026-06-11T20:50:00Z',
      g:'A', hf:'🇲🇽', hn:'Mexico',        hs:'Host · Group A',
      af:'🇿🇦', an:'South Africa',          as_:'Group A',
@@ -734,63 +759,169 @@ a{text-decoration:none;color:inherit;}
      g:'A', hf:'🇰🇷', hn:'South Korea',   hs:'Group A',
      af:'🇨🇿', an:'Czechia',              as_:'Group A',
      ve:'Estadio Akron', ci:'Guadalajara, Mexico', ist:'Jun 12 · 07:30 IST', prev:false, mid:null},
+    // ── Jun 12 ──
     {id:'can-bih', ko:'2026-06-12T19:00:00Z', end:'2026-06-12T20:50:00Z',
      g:'B', hf:'🇨🇦', hn:'Canada',        hs:'Host · Group B',
      af:'🇧🇦', an:'Bosnia-Herzegovina',   as_:'Group B',
-     ve:'BMO Field', ci:'Toronto, Canada', ist:'Jun 13 · 00:30 IST', prev:true, mid:'matchModal'},
+     ve:'BMO Field', ci:'Toronto, Canada', ist:'Jun 13 · 00:30 IST', prev:false, mid:null},
     {id:'usa-par', ko:'2026-06-13T01:00:00Z', end:'2026-06-13T02:50:00Z',
      g:'D', hf:'🇺🇸', hn:'United States', hs:'Host · Group D',
      af:'🇵🇾', an:'Paraguay',             as_:'Group D',
-     ve:'SoFi Stadium', ci:'Los Angeles, USA', ist:'Jun 13 · 06:30 IST', prev:true, mid:'matchModal2'},
+     ve:'SoFi Stadium', ci:'Los Angeles, USA', ist:'Jun 13 · 06:30 IST', prev:false, mid:null},
+    // ── Jun 13 ──
     {id:'qat-sui', ko:'2026-06-13T19:00:00Z', end:'2026-06-13T20:50:00Z',
      g:'B', hf:'🇶🇦', hn:'Qatar',         hs:'Group B',
      af:'🇨🇭', an:'Switzerland',          as_:'Group B',
-     ve:"Levis Stadium", ci:'Santa Clara, USA', ist:'Jun 14 · 00:30 IST', prev:true, mid:'matchModal3'},
+     ve:'Levi\'s Stadium', ci:'Santa Clara, USA', ist:'Jun 14 · 00:30 IST', prev:false, mid:null},
     {id:'bra-mar', ko:'2026-06-13T22:00:00Z', end:'2026-06-13T23:50:00Z',
      g:'C', hf:'🇧🇷', hn:'Brazil',        hs:'Group C',
      af:'🇲🇦', an:'Morocco',              as_:'Group C',
-     ve:'MetLife Stadium', ci:'East Rutherford, USA', ist:'Jun 14 · 03:30 IST', prev:true, mid:'matchModal4'},
+     ve:'MetLife Stadium', ci:'East Rutherford, USA', ist:'Jun 14 · 03:30 IST', prev:false, mid:null},
     {id:'hai-sco', ko:'2026-06-14T01:00:00Z', end:'2026-06-14T02:50:00Z',
      g:'C', hf:'🇭🇹', hn:'Haiti',         hs:'Group C',
      af:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', an:'Scotland',         as_:'Group C',
      ve:'Gillette Stadium', ci:'Boston, USA', ist:'Jun 14 · 06:30 IST', prev:false, mid:null},
+    // ── Jun 14 ──
+    {id:'aus-tur', ko:'2026-06-14T04:00:00Z', end:'2026-06-14T05:50:00Z',
+     g:'D', hf:'🇦🇺', hn:'Australia',    hs:'Group D',
+     af:'🇹🇷', an:'Türkiye',             as_:'Group D',
+     ve:'BC Place', ci:'Vancouver, Canada', ist:'Jun 14 · 09:30 IST', prev:false, mid:null},
     {id:'ger-cur', ko:'2026-06-14T17:00:00Z', end:'2026-06-14T18:50:00Z',
      g:'E', hf:'🇩🇪', hn:'Germany',       hs:'Group E',
      af:'🇨🇼', an:'Curaçao',             as_:'Group E',
      ve:'NRG Stadium', ci:'Houston, USA', ist:'Jun 14 · 22:30 IST', prev:false, mid:null},
     {id:'ned-jpn', ko:'2026-06-14T20:00:00Z', end:'2026-06-14T21:50:00Z',
-     g:'E', hf:'🇳🇱', hn:'Netherlands',  hs:'Group E',
-     af:'🇯🇵', an:'Japan',               as_:'Group E',
-     ve:"AT&T Stadium", ci:'Dallas, USA', ist:'Jun 15 · 01:30 IST', prev:false, mid:null},
-    {id:'aus-tur', ko:'2026-06-14T04:00:00Z', end:'2026-06-14T05:50:00Z',
-     g:'D', hf:'🇦🇺', hn:'Australia',    hs:'Group D',
-     af:'🇹🇷', an:'Türkiye',             as_:'Group D',
-     ve:'BC Place', ci:'Vancouver, Canada', ist:'Jun 14 · 09:30 IST', prev:false, mid:null}
+     g:'F', hf:'🇳🇱', hn:'Netherlands',  hs:'Group F',
+     af:'🇯🇵', an:'Japan',               as_:'Group F',
+     ve:'AT&T Stadium', ci:'Dallas, USA', ist:'Jun 15 · 01:30 IST', prev:false, mid:null},
+    // ── Jun 15 ──
+    {id:'ivo-ecu', ko:'2026-06-15T01:00:00Z', end:'2026-06-15T02:50:00Z',
+     g:'E', hf:'🇨🇮', hn:'Ivory Coast',  hs:'Group E',
+     af:'🇪🇨', an:'Ecuador',             as_:'Group E',
+     ve:'Arrowhead Stadium', ci:'Kansas City, USA', ist:'Jun 15 · 06:30 IST', prev:false, mid:null},
+    {id:'swe-tun', ko:'2026-06-15T04:00:00Z', end:'2026-06-15T05:50:00Z',
+     g:'F', hf:'🇸🇪', hn:'Sweden',       hs:'Group F',
+     af:'🇹🇳', an:'Tunisia',             as_:'Group F',
+     ve:'Estadio BBVA', ci:'Monterrey, Mexico', ist:'Jun 15 · 09:30 IST', prev:false, mid:null},
+    {id:'esp-cpv', ko:'2026-06-15T16:00:00Z', end:'2026-06-15T17:50:00Z',
+     g:'H', hf:'🇪🇸', hn:'Spain',        hs:'Group H',
+     af:'🇨🇻', an:'Cape Verde',          as_:'Group H',
+     ve:'Mercedes-Benz Stadium', ci:'Atlanta, USA', ist:'Jun 15 · 21:30 IST', prev:false, mid:null},
+    {id:'bel-egy', ko:'2026-06-15T19:00:00Z', end:'2026-06-15T20:50:00Z',
+     g:'G', hf:'🇧🇪', hn:'Belgium',      hs:'Group G',
+     af:'🇪🇬', an:'Egypt',               as_:'Group G',
+     ve:'SoFi Stadium', ci:'Los Angeles, USA', ist:'Jun 16 · 00:30 IST', prev:false, mid:null},
+    {id:'sau-uru', ko:'2026-06-15T22:00:00Z', end:'2026-06-15T23:50:00Z',
+     g:'H', hf:'🇸🇦', hn:'Saudi Arabia', hs:'Group H',
+     af:'🇺🇾', an:'Uruguay',             as_:'Group H',
+     ve:'Hard Rock Stadium', ci:'Miami, USA', ist:'Jun 16 · 03:30 IST', prev:false, mid:null},
+    {id:'irn-nzl', ko:'2026-06-16T01:00:00Z', end:'2026-06-16T02:50:00Z',
+     g:'G', hf:'🇮🇷', hn:'Iran',         hs:'Group G',
+     af:'🇳🇿', an:'New Zealand',         as_:'Group G',
+     ve:'BC Place', ci:'Vancouver, Canada', ist:'Jun 16 · 06:30 IST', prev:false, mid:null},
+    // ── Jun 16 ──
+    {id:'fra-sen', ko:'2026-06-16T19:00:00Z', end:'2026-06-16T20:50:00Z',
+     g:'I', hf:'🇫🇷', hn:'France',       hs:'Group I',
+     af:'🇸🇳', an:'Senegal',             as_:'Group I',
+     ve:'MetLife Stadium', ci:'East Rutherford, USA', ist:'Jun 17 · 00:30 IST', prev:false, mid:null},
+    {id:'irq-nor', ko:'2026-06-16T22:00:00Z', end:'2026-06-16T23:50:00Z',
+     g:'I', hf:'🇮🇶', hn:'Iraq',         hs:'Group I',
+     af:'🇳🇴', an:'Norway',              as_:'Group I',
+     ve:'Lumen Field', ci:'Seattle, USA', ist:'Jun 17 · 03:30 IST', prev:false, mid:null},
+    // ── Jun 17 ──
+    {id:'arg-alg', ko:'2026-06-16T20:00:00Z', end:'2026-06-16T21:50:00Z',
+     g:'J', hf:'🇦🇷', hn:'Argentina',    hs:'Champions · Group J',
+     af:'🇩🇿', an:'Algeria',             as_:'Group J',
+     ve:'Arrowhead Stadium', ci:'Kansas City, USA', ist:'Jun 17 · 01:30 IST', prev:false, mid:null},
+    {id:'aut-jor', ko:'2026-06-17T02:00:00Z', end:'2026-06-17T03:50:00Z',
+     g:'J', hf:'🇦🇹', hn:'Austria',      hs:'Group J',
+     af:'🇯🇴', an:'Jordan',              as_:'Group J',
+     ve:'AT&T Stadium', ci:'Dallas, USA', ist:'Jun 17 · 07:30 IST', prev:false, mid:null},
+    {id:'por-cod', ko:'2026-06-17T17:00:00Z', end:'2026-06-17T18:50:00Z',
+     g:'K', hf:'🇵🇹', hn:'Portugal',     hs:'Group K',
+     af:'🇨🇩', an:'DR Congo',            as_:'Group K',
+     ve:'NRG Stadium', ci:'Houston, USA', ist:'Jun 17 · 22:30 IST', prev:false, mid:null},
+    {id:'col-uzb', ko:'2026-06-17T20:00:00Z', end:'2026-06-17T21:50:00Z',
+     g:'K', hf:'🇨🇴', hn:'Colombia',     hs:'Group K',
+     af:'🇺🇿', an:'Uzbekistan',          as_:'Group K',
+     ve:'Estadio Azteca', ci:'Mexico City, Mexico', ist:'Jun 18 · 01:30 IST', prev:false, mid:null},
+    {id:'eng-cro', ko:'2026-06-17T23:00:00Z', end:'2026-06-18T00:50:00Z',
+     g:'L', hf:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', hn:'England',      hs:'Group L',
+     af:'🇭🇷', an:'Croatia',             as_:'Group L',
+     ve:'AT&T Stadium', ci:'Dallas, USA', ist:'Jun 18 · 04:30 IST', prev:false, mid:null},
+    {id:'gha-pan', ko:'2026-06-18T02:00:00Z', end:'2026-06-18T03:50:00Z',
+     g:'L', hf:'🇬🇭', hn:'Ghana',        hs:'Group L',
+     af:'🇵🇦', an:'Panama',              as_:'Group L',
+     ve:'BMO Field', ci:'Toronto, Canada', ist:'Jun 18 · 07:30 IST', prev:false, mid:null},
+    // ── Jun 18 (today) ──
+    {id:'cze-rsa', ko:'2026-06-18T16:00:00Z', end:'2026-06-18T17:50:00Z',
+     g:'A', hf:'🇨🇿', hn:'Czechia',      hs:'Group A',
+     af:'🇿🇦', an:'South Africa',        as_:'Group A',
+     ve:'Mercedes-Benz Stadium', ci:'Atlanta, USA', ist:'Jun 18 · 21:30 IST', prev:false, mid:null},
+    {id:'sui-bih', ko:'2026-06-18T19:00:00Z', end:'2026-06-18T20:50:00Z',
+     g:'B', hf:'🇨🇭', hn:'Switzerland',  hs:'Group B',
+     af:'🇧🇦', an:'Bosnia-Herzegovina',  as_:'Group B',
+     ve:'SoFi Stadium', ci:'Los Angeles, USA', ist:'Jun 19 · 00:30 IST', prev:false, mid:null},
+    {id:'can-qat', ko:'2026-06-18T22:00:00Z', end:'2026-06-18T23:50:00Z',
+     g:'B', hf:'🇨🇦', hn:'Canada',       hs:'Host · Group B',
+     af:'🇶🇦', an:'Qatar',               as_:'Group B',
+     ve:'BC Place', ci:'Vancouver, Canada', ist:'Jun 19 · 03:30 IST', prev:false, mid:null},
+    {id:'mex-kor', ko:'2026-06-19T01:00:00Z', end:'2026-06-19T02:50:00Z',
+     g:'A', hf:'🇲🇽', hn:'Mexico',       hs:'Host · Group A',
+     af:'🇰🇷', an:'South Korea',         as_:'Group A',
+     ve:'Estadio Akron', ci:'Guadalajara, Mexico', ist:'Jun 19 · 06:30 IST', prev:false, mid:null},
+    // ── Jun 19 ──
+    {id:'usa-aus', ko:'2026-06-19T19:00:00Z', end:'2026-06-19T20:50:00Z',
+     g:'D', hf:'🇺🇸', hn:'United States', hs:'Host · Group D',
+     af:'🇦🇺', an:'Australia',           as_:'Group D',
+     ve:'Lumen Field', ci:'Seattle, USA', ist:'Jun 20 · 00:30 IST', prev:false, mid:null},
+    {id:'sco-mar', ko:'2026-06-19T22:00:00Z', end:'2026-06-19T23:50:00Z',
+     g:'C', hf:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', hn:'Scotland',     hs:'Group C',
+     af:'🇲🇦', an:'Morocco',             as_:'Group C',
+     ve:'Gillette Stadium', ci:'Boston, USA', ist:'Jun 20 · 03:30 IST', prev:false, mid:null},
+    {id:'bra-hai', ko:'2026-06-20T01:00:00Z', end:'2026-06-20T02:50:00Z',
+     g:'C', hf:'🇧🇷', hn:'Brazil',       hs:'Group C',
+     af:'🇭🇹', an:'Haiti',               as_:'Group C',
+     ve:'Lincoln Financial Field', ci:'Philadelphia, USA', ist:'Jun 20 · 06:30 IST', prev:false, mid:null},
+    {id:'tur-par', ko:'2026-06-20T04:00:00Z', end:'2026-06-20T05:50:00Z',
+     g:'D', hf:'🇹🇷', hn:'Türkiye',      hs:'Group D',
+     af:'🇵🇾', an:'Paraguay',            as_:'Group D',
+     ve:'Levi\'s Stadium', ci:'Santa Clara, USA', ist:'Jun 20 · 09:30 IST', prev:false, mid:null}
   ];
 
   // Expose results for group standings
   window.MATCHES_DATA = {results:[
-    {group:'Group A', team1:'Mexico',        team2:'South Africa',          score:{ft:[2,0]}},
-    {group:'Group A', team1:'South Korea',   team2:'Czechia',               score:{ft:[2,1]}},
-    {group:'Group B', team1:'Canada',        team2:'Bosnia-Herz.',            score:{ft:[1,1]}},
-    {group:'Group D', team1:'USA',           team2:'Paraguay',              score:{ft:[4,1]}},
-	{group:'Group D', team1:'Australia',     team2:'Türkiye',               score:{ft:[2,0]}},
-    {group:'Group C', team1:'Haiti',         team2:'Scotland',              score:{ft:[0,1]}},
-    {group:'Group C', team1:'Brazil',        team2:'Morocco',               score:{ft:[1,1]}},
-    {group:'Group B', team1:'Qatar',         team2:'Switzerland',           score:{ft:[1,1]}},
-	{group:'Group E', team1:'Germany',       team2:'Curaçao',               score:{ft:[7,1]}},
-    {group:'Group F', team1:'Netherlands',   team2:'Japan',                 score:{ft:[2,2]}},
-    {group:'Group E', team1:'Ivory Coast',   team2:'Ecuador',               score:{ft:[1,0]}},
-    {group:'Group F', team1:'Sweden',        team2:'Tunisia',               score:{ft:[5,1]}},
-    {group:'Group H', team1:'Spain',         team2:'Cape Verde',            score:{ft:[0,0]}},
-    {group:'Group G', team1:'Belgium',       team2:'Egypt',                 score:{ft:[1,1]}},
-    {group:'Group H', team1:'Saudi Arabia',  team2:'Uruguay',               score:{ft:[1,1]}},
-    {group:'Group G', team1:'Iran',          team2:'New Zealand',           score:{ft:[2,2]}},
-    {group:'Group J', team1:'Austria',       team2:'Jordan',                score:{ft:[3,1]}},
-    {group:'Group I', team1:'France',        team2:'Senegal',               score:{ft:[3,1]}},
-    {group:'Group I', team1:'Iraq',          team2:'Norway',                score:{ft:[1,4]}},
-    {group:'Group J', team1:'Argentina',     team2:'Algeria',               score:{ft:[3,0]}},
-    {group:'Group K', team1:'Portugal',      team2:'DR Congo',              score:{ft:[1,1]}}
+    // ── Jun 11 ──
+    {group:'Group A', team1:'Mexico',          team2:'South Africa',        score:{ft:[2,0]}},
+    {group:'Group A', team1:'South Korea',     team2:'Czechia',             score:{ft:[2,1]}},
+    // ── Jun 12 ──
+    {group:'Group B', team1:'Canada',          team2:'Bosnia-Herz.',        score:{ft:[1,1]}},
+    {group:'Group D', team1:'USA',             team2:'Paraguay',            score:{ft:[4,1]}},
+    // ── Jun 13 ──
+    {group:'Group B', team1:'Qatar',           team2:'Switzerland',         score:{ft:[1,1]}},
+    {group:'Group C', team1:'Brazil',          team2:'Morocco',             score:{ft:[1,1]}},
+    {group:'Group C', team1:'Haiti',           team2:'Scotland',            score:{ft:[0,1]}},
+    // ── Jun 14 ──
+    {group:'Group D', team1:'Australia',       team2:'Türkiye',             score:{ft:[2,0]}},
+    {group:'Group E', team1:'Germany',         team2:'Curaçao',             score:{ft:[7,1]}},
+    {group:'Group F', team1:'Netherlands',     team2:'Japan',               score:{ft:[2,2]}},
+    {group:'Group E', team1:'Ivory Coast',     team2:'Ecuador',             score:{ft:[1,0]}},
+    {group:'Group F', team1:'Sweden',          team2:'Tunisia',             score:{ft:[5,1]}},
+    // ── Jun 15 ──
+    {group:'Group H', team1:'Spain',           team2:'Cape Verde',          score:{ft:[0,0]}},
+    {group:'Group G', team1:'Belgium',         team2:'Egypt',               score:{ft:[1,1]}},
+    {group:'Group H', team1:'Saudi Arabia',    team2:'Uruguay',             score:{ft:[1,1]}},
+    {group:'Group G', team1:'Iran',            team2:'New Zealand',         score:{ft:[2,2]}},
+    // ── Jun 16 ──
+    {group:'Group I', team1:'France',          team2:'Senegal',             score:{ft:[3,1]}},
+    {group:'Group I', team1:'Iraq',            team2:'Norway',              score:{ft:[1,4]}},
+    // ── Jun 17 ──
+    {group:'Group J', team1:'Argentina',       team2:'Algeria',             score:{ft:[3,0]}},
+    {group:'Group J', team1:'Austria',         team2:'Jordan',              score:{ft:[3,1]}},
+    {group:'Group K', team1:'Portugal',        team2:'DR Congo',            score:{ft:[1,1]}},
+    {group:'Group K', team1:'Colombia',        team2:'Uzbekistan',          score:{ft:[3,1]}},
+    {group:'Group L', team1:'England',         team2:'Croatia',             score:{ft:[4,2]}},
+    {group:'Group L', team1:'Ghana',           team2:'Panama',              score:{ft:[1,0]}}
   ]};
 
   function pick(){
@@ -1425,85 +1556,107 @@ a{text-decoration:none;color:inherit;}
   });
 })();
 
-// ── News feed — Guardian API · World Cup 2026 filtered ────────
-(function loadNews(){
-  var container = document.getElementById('news-grid');
+// ── Articles loader — fetches articles.json, renders cards with category filter ──
+(function loadArticles(){
+  var grid = document.getElementById('article-grid');
+  var badge = document.getElementById('article-count-badge');
+  var filtersContainer = document.getElementById('article-filters');
+  var allArticles = [];
+  var activeFilter = 'all';
 
-  function renderItems(articles) {
-    var seen = {};
-    var unique = articles.filter(function(a){
-      if(seen[a.webUrl]) return false;
-      seen[a.webUrl] = true;
-      return true;
-    });
-    container.innerHTML = '';
-    unique.slice(0,6).forEach(function(a) {
-      var thumb = (a.fields && a.fields.thumbnail) ? a.fields.thumbnail : '';
-      var trail = (a.fields && a.fields.trailText) ? a.fields.trailText : '';
-      var tmp = document.createElement('div');
-      tmp.innerHTML = trail;
-      var desc = (tmp.textContent||'').substring(0,100).trim();
-      if(desc.length===100) desc += '…';
-      var dateStr = '';
-      try{ dateStr = new Date(a.webPublicationDate).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }catch(e){}
-      
-      var title = (a.webTitle||'').toLowerCase();
-      var tagLabel='WC 2026', tagColor='var(--gold)', tagBg='rgba(244,185,66,.12)';
-      if(/squad|roster|player|injury|lineup/.test(title)){tagLabel='Squad news';tagColor='var(--green)';tagBg='rgba(45,212,160,.1)';}
-      else if(/group|draw|fixture|schedule/.test(title)){tagLabel='Groups';tagColor='var(--blue)';tagBg='rgba(77,156,247,.1)';}
-      else if(/messi|ronaldo|mbapp|bellingham|neymar|kane|vini/.test(title)){tagLabel='Star watch';tagColor='var(--purple)';tagBg='rgba(169,141,244,.1)';}
-      else if(/preview|predict|odds|favour|favorite/.test(title)){tagLabel='Analysis';tagColor='var(--amber)';tagBg='rgba(244,160,48,.1)';}
-      
-      var thumbHtml = thumb
-        ? '<div class="news-thumb" style="background-image:url(\''+thumb+'\');" aria-hidden="true"></div>'
-        : '<div class="news-thumb" style="background:var(--bg-pill);display:flex;align-items:center;justify-content:center;"><i class="ti ti-ball-football" style="font-size:28px;color:var(--text3);"></i></div>';
-      var card = document.createElement('div');
-      card.className = 'news-card';
-      card.innerHTML =
-        '<a href="'+a.webUrl+'" target="_blank" rel="noopener">'+
-          thumbHtml+
-          '<div class="news-body">'+
-            '<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">'+
-              '<span style="display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;background:'+tagBg+';color:'+tagColor+';letter-spacing:.04em;border:1px solid '+tagColor+'33;">'+tagLabel+'</span>'+
-              '<span style="font-size:10px;color:var(--text3);">The Guardian</span>'+
-            '</div>'+
-            '<div class="news-title">'+a.webTitle+'</div>'+
-            (desc?'<div style="font-size:11px;color:var(--text3);line-height:1.4;margin-bottom:6px;">'+desc+'</div>':'')+
-            '<div class="news-date">'+dateStr+'</div>'+
+  var CAT_CONFIG = {
+    'analysis':  { label:'Analysis',  color:'var(--blue)',   bg:'rgba(77,156,247,.1)',  icon:'ti-chart-dots-3' },
+    'fun-facts': { label:'Fun Facts', color:'var(--green)',  bg:'rgba(45,212,160,.1)',  icon:'ti-sparkles'     },
+    'editorial': { label:'Editorial', color:'var(--purple)', bg:'rgba(169,141,244,.1)', icon:'ti-message-2'    }
+  };
+
+  function buildCard(a) {
+    var cat = CAT_CONFIG[a.category] || CAT_CONFIG['editorial'];
+    var isFeatured = a.featured ? ' featured' : '';
+    var dateStr = '';
+    try { dateStr = new Date(a.date+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); } catch(e){}
+
+    var thumbStyle = a.thumb
+      ? 'background-image:url(\''+a.thumb+'\');'
+      : 'display:flex;align-items:center;justify-content:center;';
+    var thumbFallback = a.thumb
+      ? ''
+      : '<i class="ti ti-pencil" style="font-size:28px;color:var(--text3);"></i>';
+
+    var matchBadge = a.match
+      ? '<div style="font-size:10px;color:var(--text3);font-family:var(--font-mono);letter-spacing:.03em;margin-bottom:4px;">'+
+          '<i class="ti ti-ball-football" style="font-size:10px;margin-right:3px;vertical-align:-1px;"></i>'+a.match+'</div>'
+      : '';
+
+    var tagsPills = '';
+    if(a.tags && a.tags.length){
+      tagsPills = '<div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:6px;">'+
+        a.tags.slice(0,4).map(function(t){
+          return '<span style="font-size:9px;padding:1px 6px;border-radius:3px;background:var(--bg-pill);color:var(--text3);border:1px solid var(--border);">#'+t+'</span>';
+        }).join('')+'</div>';
+    }
+
+    var card = document.createElement('div');
+    card.className = 'article-card'+isFeatured;
+    card.dataset.category = a.category;
+    card.innerHTML =
+      '<a href="articles/'+a.slug+'.html">'+
+        '<div class="article-thumb" style="'+thumbStyle+'">'+thumbFallback+
+          '<span class="article-cat-badge" style="position:absolute;top:10px;left:10px;background:'+cat.bg+';color:'+cat.color+';border:1px solid '+cat.color+'33;">'+
+            '<i class="ti '+cat.icon+'" style="font-size:9px;margin-right:3px;vertical-align:-1px;"></i>'+cat.label+
+          '</span>'+
+        '</div>'+
+        '<div class="article-body">'+
+          matchBadge+
+          '<div class="article-title">'+a.title+'</div>'+
+          (a.subtitle ? '<div class="article-subtitle">'+a.subtitle+'</div>' : '')+
+          tagsPills+
+          '<div class="article-meta">'+
+            '<span><i class="ti ti-user" style="font-size:11px;margin-right:2px;vertical-align:-1px;"></i>'+a.author+'</span>'+
+            '<span><i class="ti ti-clock" style="font-size:11px;margin-right:2px;vertical-align:-1px;"></i>'+a.readTime+' min</span>'+
+            '<span>'+dateStr+'</span>'+
           '</div>'+
-        '</a>';
-      container.appendChild(card);
-    });
+        '</div>'+
+      '</a>';
+    return card;
   }
 
-  function showError(){
-    container.innerHTML =
-      '<div style="grid-column:1/-1;padding:20px 0;text-align:center;color:var(--text3);font-size:13px;">'+
-        'News feed temporarily unavailable. &nbsp;'+
-        '<a href="https://www.theguardian.com/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">The Guardian WC 2026 →</a>'+
-      '</div>';
+  function renderGrid() {
+    var filtered = activeFilter === 'all'
+      ? allArticles
+      : allArticles.filter(function(a){ return a.category === activeFilter; });
+    grid.innerHTML = '';
+    if(!filtered.length){
+      grid.innerHTML = '<div style="grid-column:1/-1;padding:30px 0;text-align:center;color:var(--text3);font-size:13px;">'+
+        '<i class="ti ti-pencil-off" style="font-size:22px;display:block;margin-bottom:6px;"></i>'+
+        'No articles in this category yet — stay tuned!</div>';
+      return;
+    }
+    filtered.forEach(function(a){ grid.appendChild(buildCard(a)); });
   }
 
-  var base = 'https://content.guardianapis.com/search?section=football&show-fields=thumbnail,trailText&page-size=6&order-by=newest&api-key=test';
-  var queries = [
-    base + '&q=%22world+cup+2026%22',
-    base + '&q=%22World+Cup%22+squad+2026',
-    base + '&q=%22World+Cup+2026%22+preview'
-  ];
+  filtersContainer.addEventListener('click', function(e){
+    var btn = e.target.closest('.article-filter-tab');
+    if(!btn) return;
+    filtersContainer.querySelectorAll('.article-filter-tab').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    activeFilter = btn.dataset.filter;
+    renderGrid();
+  });
 
-  Promise.allSettled(queries.map(function(url){
-    return fetch(url).then(function(r){ return r.json(); });
-  })).then(function(results){
-    var all = [];
-    results.forEach(function(r){
-      if(r.status==='fulfilled' && r.value && r.value.response && r.value.response.results){
-        all = all.concat(r.value.response.results);
-      }
+  fetch('articles/articles.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      allArticles = (data.articles || []).sort(function(a,b){
+        return new Date(b.date) - new Date(a.date);
+      });
+      badge.textContent = allArticles.length + ' article'+(allArticles.length!==1?'s':'');
+      renderGrid();
+    })
+    .catch(function(){
+      grid.innerHTML = '<div style="grid-column:1/-1;padding:20px 0;text-align:center;color:var(--text3);font-size:13px;">'+
+        'Could not load articles.</div>';
     });
-    if(!all.length){ showError(); return; }
-    all.sort(function(a,b){ return new Date(b.webPublicationDate)-new Date(a.webPublicationDate); });
-    renderItems(all);
-  }).catch(showError);
 })();
 
 // ── Interactive Tactical Spotlight Engine ──────────────────────

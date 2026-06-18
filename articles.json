@@ -1,0 +1,17 @@
+{
+  "articles": [
+    {
+      "slug": "beyond-the-scoreline",
+      "title": "Beyond The Scoreline: The Possession Trap",
+      "subtitle": "Messi scored the goals. But Argentina won this match with the ball at their feet for barely forty minutes — and a plan for the other fifty.",
+      "category": "analysis",
+      "match": "Argentina 3–0 Algeria",
+      "author": "Debapam Ghosh",
+      "date": "2026-06-18",
+      "readTime": 10,
+      "thumb": "articles/thumbs/beyond-the-scoreline.jpg",
+      "tags": ["argentina", "algeria", "group-j", "tactics", "possession"],
+      "featured": true
+    }
+  ]
+}
