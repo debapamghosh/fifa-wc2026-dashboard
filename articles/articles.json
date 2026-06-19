@@ -11,7 +11,7 @@
       "readTime": 10,
       "thumb": "articles/thumbs/beyond-the-scoreline.jpg",
       "tags": ["argentina", "algeria", "group-j", "tactics", "possession"],
-      "featured": true
+      "featured": false
     },
     {
       "slug": "brazil-morocco",
@@ -24,6 +24,19 @@
       "readTime": 9,
       "thumb": "articles/thumbs/brazil-morocco.jpg",
       "tags": ["brazil", "morocco", "group-c", "tactics", "draw"],
+      "featured": false
+    },
+    {
+      "slug": "ghost-in-the-stands",
+      "title": "The Ghost in the Stands",
+      "subtitle": "Congo's Reckoning with History",
+      "category": "beyond-the-game",
+      "match": "🇨🇩 DR Congo",
+      "author": "Beyond The Scoreline Editorial",
+      "date": "2026-06-19",
+      "readTime": 8,
+      "thumb": "articles/thumbs/ghost-in-the-stands.jpg",
+      "tags": ["History", "Identity", "Supporters", "1974 World Cup", "Lumumba"],
       "featured": false
     }
   ]
