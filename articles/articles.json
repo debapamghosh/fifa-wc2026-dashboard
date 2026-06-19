@@ -12,6 +12,19 @@
       "thumb": "articles/thumbs/beyond-the-scoreline.jpg",
       "tags": ["argentina", "algeria", "group-j", "tactics", "possession"],
       "featured": true
+    },
+    {
+      "slug": "brazil-morocco",
+      "title": "Beyond The Scoreline: Balance in Chaos",
+      "subtitle": "Brazil and Morocco showed us that draws can be as tactical as they are tense. When neither team blinks, the scoreline tells half the story.",
+      "category": "analysis",
+      "match": "Brazil 1–1 Morocco",
+      "author": "Debapam Ghosh",
+      "date": "2026-06-14",
+      "readTime": 9,
+      "thumb": "articles/thumbs/brazil-morocco.jpg",
+      "tags": ["brazil", "morocco", "group-c", "tactics", "draw"],
+      "featured": false
     }
   ]
 }
