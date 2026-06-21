@@ -1,6 +1,19 @@
 {
   "articles": [
     {
+      "slug": "the-ronaldo-problem",
+      "title": "Beyond The Scoreline: The Ronaldo Problem",
+      "subtitle": "Is Cristiano Ronaldo the problem for Portugal, or is Roberto Martinez building the wrong system?",
+      "category": "analysis",
+      "match": "Portugal 1–1 DR Congo",
+      "author": "Debapam Ghosh",
+      "date": "2026-06-17",
+      "readTime": 7,
+      "thumb": "articles/thumbs/the-ronaldo-problem.jpg",
+      "tags": ["portugal", "dr-congo", "ronaldo", "tactics", "martinez"],
+      "featured": false
+    },
+    {
       "slug": "beyond-the-scoreline",
       "title": "Beyond The Scoreline: The Possession Trap",
       "subtitle": "Messi scored the goals. But Argentina won this match with the ball at their feet for barely forty minutes — and a plan for the other fifty.",
