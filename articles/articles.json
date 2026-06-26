@@ -51,6 +51,19 @@
       "thumb": "articles/thumbs/ghost-in-the-stands.jpg",
       "tags": ["History", "Identity", "Supporters", "1974 World Cup", "Lumumba"],
       "featured": false
+    },
+    {
+      "slug": "scotland-brazil",
+      "title": "Beyond The Scoreline: The Illusion of Control",
+      "subtitle": "How Brazil's biggest weakness was hidden inside a 3-0 victory",
+      "category": "analysis",
+      "match": "Scotland 0–3 Brazil",
+      "author": "Debapam Ghosh",
+      "date": "2026-06-27",
+      "readTime": 9,
+      "thumb": "articles/thumbs/brazilvsScot.jpg",
+      "tags": ["brazil", "Scotland", "group-c", "tactics", "draw"],
+      "featured": false
     }
   ]
 }
