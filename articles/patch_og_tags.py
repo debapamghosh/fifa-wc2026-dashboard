@@ -4,12 +4,15 @@ patch_og_tags.py
 Injects proper Open Graph + Twitter Card meta tags into Claude Design
 bundled HTML articles for the Dugout / Beyond The Scoreline dashboard.
 
-Usage:
+Usage (Linux/Mac):
   python3 patch_og_tags.py <input.html> <output.html> \
       --title "Beyond The Scoreline: The Ronaldo Problem" \
       --description "Is Cristiano Ronaldo the problem for Portugal, or is Roberto Martinez building the wrong system?" \
       --url "https://debapamghosh.github.io/fifa-wc2026-dashboard/articles/the-ronaldo-problem.html" \
       --slug "the-ronaldo-problem"
+
+Usage (Windows — one line):
+  python patch_og_tags.py input.html output.html --title "Your Title" --description "Your Description" --slug "your-slug"
 
 The script also auto-extracts title/series text from the bundler SVG thumbnail
 if --title / --description are omitted.
@@ -26,31 +29,36 @@ SITE_NAME    = "The Dugout — FIFA WC 2026"
 TWITTER_SITE = "@debapamghosh"    # update if you have a Twitter handle
 
 def extract_from_svg(html: str):
-    """Pull title lines and series label out of the bundler SVG thumbnail."""
+    """Pull title lines and series label out of the bundler SVG thumbnail.
+    
+    SVG structure is always:
+      text[0] = kicker  e.g. "BEYOND THE SCORELINE"
+      text[1..n-3] = title lines  e.g. "The Illusion", "of Control"
+      text[-3] = home team+score  e.g. "🇸🇨 0"
+      text[-2] = separator  e.g. "—"
+      text[-1] = away team+score  e.g. "3 🇧🇷"
+    So we take text[0] as kicker and text[1..-3] as title lines.
+    """
     texts = re.findall(r'<text[^>]*>([^<]+)</text>', html)
-    # First text is usually the kicker (BEYOND THE SCORELINE), rest are title lines
-    kicker = ""
-    title_lines = []
-    for t in texts:
-        t = t.strip()
-        if not t or t in ("—",) or re.match(r'[🇦-🇿\d\s—–\-]+$', t):
-            continue
-        if t.upper() == t and len(t) < 40:
-            kicker = t.title()
-        else:
-            title_lines.append(t)
-    title = " ".join(title_lines) if title_lines else "Beyond The Scoreline"
-    if kicker and title:
-        full = f"{kicker}: {title}"
-    else:
-        full = title
-    return full
+    texts = [t.strip() for t in texts if t.strip()]
+    if len(texts) < 2:
+        return "Beyond The Scoreline"
+
+    kicker = texts[0].title()          # "BEYOND THE SCORELINE" -> "Beyond The Scoreline"
+    # Drop last 3 nodes (home score, separator, away score)
+    title_nodes = texts[1:-3] if len(texts) > 4 else texts[1:]
+    title = " ".join(title_nodes)
+
+    return f"{kicker}: {title}" if title else kicker
 
 def extract_score_line(html: str):
-    """Extract score context for description fallback."""
+    """Extract score line from the last 3 SVG text nodes (home, sep, away)."""
     texts = re.findall(r'<text[^>]*>([^<]+)</text>', html)
-    parts = [t.strip() for t in texts if re.search(r'[\d—–]', t)]
-    return " ".join(parts).strip()
+    texts = [t.strip() for t in texts if t.strip()]
+    if len(texts) >= 3:
+        # Last 3 are: home+score, separator, away+score  e.g. "🇸🇨 0", "—", "3 🇧🇷"
+        return " ".join(texts[-3:]).replace("—", "–")
+    return ""
 
 def build_og_block(title, description, url, image_url, site_name, twitter_site):
     return f"""

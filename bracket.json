@@ -1,0 +1,340 @@
+{
+  "meta": {
+    "updated": "2026-07-06T00:00:00Z",
+    "format": "48-team"
+  },
+  "rounds": {
+    "r32": [
+      {
+        "id": "r32-1",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-2",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-3",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-4",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-5",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-6",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-7",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-8",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-9",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-10",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-11",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-12",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-13",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-14",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-15",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r32-16",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      }
+    ],
+    "r16": [
+      {
+        "id": "r16-1",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r16-2",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r16-3",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r16-4",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r16-5",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r16-6",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r16-7",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "r16-8",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      }
+    ],
+    "qf": [
+      {
+        "id": "qf-1",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "qf-2",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "qf-3",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "qf-4",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      }
+    ],
+    "sf": [
+      {
+        "id": "sf-1",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      },
+      {
+        "id": "sf-2",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      }
+    ],
+    "final": [
+      {
+        "id": "final-1",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      }
+    ],
+    "bronze": [
+      {
+        "id": "bronze-1",
+        "team1": null,
+        "team2": null,
+        "score": null,
+        "winner": null,
+        "status": "scheduled",
+        "koUTC": null,
+        "venue": null
+      }
+    ]
+  }
+}

@@ -120,6 +120,32 @@ a{text-decoration:none;color:inherit;}
 .group-seed{font-size:10px;font-weight:600;color:var(--gold2);}
 
 /* ── Players ── */
+.gb-tab{background:var(--bg-pill);border:1px solid var(--border);color:var(--text2);font-family:var(--font);font-size:12px;font-weight:600;padding:6px 14px;border-radius:var(--r-sm);cursor:pointer;}
+.gb-tab-on{background:rgba(244,185,66,.12);border-color:rgba(244,185,66,.4);color:var(--gold);}
+
+.br-board{display:flex;align-items:center;justify-content:center;gap:10px;overflow-x:auto;padding:4px 0;}
+.br-col{display:flex;flex-direction:column;justify-content:space-around;gap:10px;min-width:132px;align-self:stretch;}
+.br-center{display:flex;flex-direction:column;justify-content:center;gap:14px;min-width:150px;}
+.br-card{background:var(--bg-card2);border:1px solid var(--border2);border-radius:var(--r-sm);padding:7px 9px;display:flex;flex-direction:column;gap:5px;}
+.br-card.live{border-color:var(--red);}
+.br-card.final{border-color:var(--gold);}
+.br-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.br-team{display:flex;align-items:center;gap:6px;min-width:0;}
+.br-flag{font-size:15px;flex-shrink:0;}
+.br-name{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.br-win .br-name{color:var(--text);font-weight:600;}
+.br-win{position:relative;}
+.br-score{font-family:var(--font-mono);font-size:12px;color:var(--text3);min-width:14px;text-align:right;}
+.br-win .br-score{color:var(--gold);font-weight:600;}
+.br-tbd{opacity:.5;}
+.br-q{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;background:var(--bg-pill);border-radius:4px;color:var(--text3);font-weight:700;}
+.br-pen{font-size:9px;color:var(--text3);}
+.br-rounds{display:none;}
+.br-tab{background:var(--bg-pill);border:1px solid var(--border);color:var(--text2);font-family:var(--font);font-size:11px;font-weight:600;padding:5px 11px;border-radius:var(--r-sm);cursor:pointer;}
+.br-tab-on{background:rgba(244,185,66,.12);border-color:rgba(244,185,66,.4);color:var(--gold);}
+.br-round-title{font-family:var(--font-cond);font-size:14px;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px;}
+.br-mobile .br-card{margin-bottom:8px;}
+@media(max-width:900px){ .br-rounds{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;} }
 .player-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .player-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;display:flex;gap:10px;align-items:flex-start;transition:border-color .2s;}
 .player-card:hover{border-color:var(--border2);}
@@ -376,6 +402,18 @@ a{text-decoration:none;color:inherit;}
     Fixture times shown in IST · Live scores will appear here from Jun 11 via <a href="https://www.sofascore.com/football/tournament/world/world-championship/16" target="_blank" rel="noopener" style="color:var(--blue);">SofaScore</a> or <a href="https://www.bbc.co.uk/sport/football/world-cup" target="_blank" rel="noopener" style="color:var(--blue);">BBC Sport</a></div>
   
 
+  <!-- ══ KNOCKOUT BRACKET ══ -->
+  <div id="knockout" class="section-label"><i class="ti ti-tournament" aria-hidden="true" style="font-size:13px;"></i>Knockout bracket</div>
+  <div class="panel" style="margin-bottom:28px;">
+    <div class="panel-head">
+      <i class="ti ti-tournament" aria-hidden="true" style="font-size:15px;color:var(--gold);"></i>
+      <span class="panel-title">Road to the final</span>
+      <span class="panel-badge" id="bracket-badge">Loading…</span>
+    </div>
+    <div class="br-rounds" id="br-mobile-tabs"></div>
+    <div id="bracket-board"></div>
+  </div>
+
   <!-- ══ GROUP STAGE DRAW ══ -->
   <div id="group-draw" class="section-label"><i class="ti ti-layout-grid" aria-hidden="true" style="font-size:13px;"></i>Group stage draw</div>
   <div class="panel" style="margin-bottom:28px;">
@@ -581,40 +619,14 @@ a{text-decoration:none;color:inherit;}
   <div class="panel" style="margin-bottom:28px;">
     <div class="panel-head">
       <i class="ti ti-medal" aria-hidden="true" style="font-size:15px;color:var(--gold);"></i>
-      <span class="panel-title">Pre-tournament Golden Boot favourites</span>
-      <span class="panel-badge">Analyst predictions</span>
+      <span class="panel-title">Golden Boot &amp; assists — live</span>
+      <span class="panel-badge" id="gb-badge">Loading…</span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;" class="player-grid">
-      <div style="background:var(--bg-card2);border:1px solid var(--border2);border-radius:var(--r-sm);padding:14px;text-align:center;">
-        <div style="font-size:28px;margin-bottom:6px;">🥇</div>
-        <div style="font-size:22px;margin-bottom:4px;">🇫🇷</div>
-        <div style="font-size:13px;font-weight:600;color:var(--text);">K. Mbappé</div>
-        <div style="font-size:11px;color:var(--text3);margin:3px 0;">France · Forward</div>
-        <div style="font-size:10px;font-weight:600;color:var(--gold);">Top pick</div>
-      </div>
-      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-align:center;">
-        <div style="font-size:28px;margin-bottom:6px;">🥈</div>
-        <div style="font-size:22px;margin-bottom:4px;">🇧🇷</div>
-        <div style="font-size:13px;font-weight:600;color:var(--text);">Vinicius Jr</div>
-        <div style="font-size:11px;color:var(--text3);margin:3px 0;">Brazil · Forward</div>
-        <div style="font-size:10px;font-weight:600;color:var(--text2);">Strong contender</div>
-      </div>
-      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-align:center;">
-        <div style="font-size:28px;margin-bottom:6px;">🥉</div>
-        <div style="font-size:22px;margin-bottom:4px;">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
-        <div style="font-size:13px;font-weight:600;color:var(--text);">H. Kane</div>
-        <div style="font-size:11px;color:var(--text3);margin:3px 0;">England · Forward</div>
-        <div style="font-size:10px;font-weight:600;color:var(--text2);">Goals machine</div>
-      </div>
-      <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;text-align:center;">
-        <div style="font-size:24px;margin-bottom:6px;margin-top:4px;">⚡</div>
-        <div style="font-size:22px;margin-bottom:4px;">🇪🇸</div>
-        <div style="font-size:13px;font-weight:600;color:var(--text);">L. Yamal</div>
-        <div style="font-size:11px;color:var(--text3);margin:3px 0;">Spain · Forward</div>
-        <div style="font-size:10px;font-weight:600;color:var(--red);">Dark horse</div>
-      </div>
+    <div class="gb-tabs" id="gb-tabs" style="display:flex;gap:6px;margin-bottom:14px;">
+      <button class="gb-tab gb-tab-on" data-gb="goals">Goals</button>
+      <button class="gb-tab" data-gb="assists">Assists</button>
     </div>
-    <div style="margin-top:12px;font-size:11px;color:var(--text3);"><i class="ti ti-info-circle" aria-hidden="true" style="font-size:12px;margin-right:4px;vertical-align:-1px;"></i>Live Golden Boot standings will be tracked here from Jun 11 · Predictions based on pre-tournament analyst consensus</div>
+    <div id="gb-list"></div>
   </div>
 
   <!-- ══ PLAYERS TO WATCH ══ -->
@@ -751,183 +763,33 @@ a{text-decoration:none;color:inherit;}
 <script>
 // ══ FEATURED MATCH SCHEDULER ══════════════════════════════════
 (function(){
-  // Self-contained match list — no external data needed to render the card
-  var M = [
-    // ── Jun 11 ──
-    {id:'mex-rsa', ko:'2026-06-11T19:00:00Z', end:'2026-06-11T20:50:00Z',
-     g:'A', hf:'🇲🇽', hn:'Mexico',        hs:'Host · Group A',
-     af:'🇿🇦', an:'South Africa',          as_:'Group A',
-     ve:'Estadio Azteca', ci:'Mexico City, Mexico', ist:'Jun 12 · 00:30 IST', prev:false, mid:null},
-    {id:'kor-cze', ko:'2026-06-12T02:00:00Z', end:'2026-06-12T03:50:00Z',
-     g:'A', hf:'🇰🇷', hn:'South Korea',   hs:'Group A',
-     af:'🇨🇿', an:'Czechia',              as_:'Group A',
-     ve:'Estadio Akron', ci:'Guadalajara, Mexico', ist:'Jun 12 · 07:30 IST', prev:false, mid:null},
-    // ── Jun 12 ──
-    {id:'can-bih', ko:'2026-06-12T19:00:00Z', end:'2026-06-12T20:50:00Z',
-     g:'B', hf:'🇨🇦', hn:'Canada',        hs:'Host · Group B',
-     af:'🇧🇦', an:'Bosnia-Herzegovina',   as_:'Group B',
-     ve:'BMO Field', ci:'Toronto, Canada', ist:'Jun 13 · 00:30 IST', prev:false, mid:null},
-    {id:'usa-par', ko:'2026-06-13T01:00:00Z', end:'2026-06-13T02:50:00Z',
-     g:'D', hf:'🇺🇸', hn:'United States', hs:'Host · Group D',
-     af:'🇵🇾', an:'Paraguay',             as_:'Group D',
-     ve:'SoFi Stadium', ci:'Los Angeles, USA', ist:'Jun 13 · 06:30 IST', prev:false, mid:null},
-    // ── Jun 13 ──
-    {id:'qat-sui', ko:'2026-06-13T19:00:00Z', end:'2026-06-13T20:50:00Z',
-     g:'B', hf:'🇶🇦', hn:'Qatar',         hs:'Group B',
-     af:'🇨🇭', an:'Switzerland',          as_:'Group B',
-     ve:'Levi\'s Stadium', ci:'Santa Clara, USA', ist:'Jun 14 · 00:30 IST', prev:false, mid:null},
-    {id:'bra-mar', ko:'2026-06-13T22:00:00Z', end:'2026-06-13T23:50:00Z',
-     g:'C', hf:'🇧🇷', hn:'Brazil',        hs:'Group C',
-     af:'🇲🇦', an:'Morocco',              as_:'Group C',
-     ve:'MetLife Stadium', ci:'East Rutherford, USA', ist:'Jun 14 · 03:30 IST', prev:false, mid:null},
-    {id:'hai-sco', ko:'2026-06-14T01:00:00Z', end:'2026-06-14T02:50:00Z',
-     g:'C', hf:'🇭🇹', hn:'Haiti',         hs:'Group C',
-     af:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', an:'Scotland',         as_:'Group C',
-     ve:'Gillette Stadium', ci:'Boston, USA', ist:'Jun 14 · 06:30 IST', prev:false, mid:null},
-    // ── Jun 14 ──
-    {id:'aus-tur', ko:'2026-06-14T04:00:00Z', end:'2026-06-14T05:50:00Z',
-     g:'D', hf:'🇦🇺', hn:'Australia',    hs:'Group D',
-     af:'🇹🇷', an:'Türkiye',             as_:'Group D',
-     ve:'BC Place', ci:'Vancouver, Canada', ist:'Jun 14 · 09:30 IST', prev:false, mid:null},
-    {id:'ger-cur', ko:'2026-06-14T17:00:00Z', end:'2026-06-14T18:50:00Z',
-     g:'E', hf:'🇩🇪', hn:'Germany',       hs:'Group E',
-     af:'🇨🇼', an:'Curaçao',             as_:'Group E',
-     ve:'NRG Stadium', ci:'Houston, USA', ist:'Jun 14 · 22:30 IST', prev:false, mid:null},
-    {id:'ned-jpn', ko:'2026-06-14T20:00:00Z', end:'2026-06-14T21:50:00Z',
-     g:'F', hf:'🇳🇱', hn:'Netherlands',  hs:'Group F',
-     af:'🇯🇵', an:'Japan',               as_:'Group F',
-     ve:'AT&T Stadium', ci:'Dallas, USA', ist:'Jun 15 · 01:30 IST', prev:false, mid:null},
-    // ── Jun 15 ──
-    {id:'ivo-ecu', ko:'2026-06-15T01:00:00Z', end:'2026-06-15T02:50:00Z',
-     g:'E', hf:'🇨🇮', hn:'Ivory Coast',  hs:'Group E',
-     af:'🇪🇨', an:'Ecuador',             as_:'Group E',
-     ve:'Arrowhead Stadium', ci:'Kansas City, USA', ist:'Jun 15 · 06:30 IST', prev:false, mid:null},
-    {id:'swe-tun', ko:'2026-06-15T04:00:00Z', end:'2026-06-15T05:50:00Z',
-     g:'F', hf:'🇸🇪', hn:'Sweden',       hs:'Group F',
-     af:'🇹🇳', an:'Tunisia',             as_:'Group F',
-     ve:'Estadio BBVA', ci:'Monterrey, Mexico', ist:'Jun 15 · 09:30 IST', prev:false, mid:null},
-    {id:'esp-cpv', ko:'2026-06-15T16:00:00Z', end:'2026-06-15T17:50:00Z',
-     g:'H', hf:'🇪🇸', hn:'Spain',        hs:'Group H',
-     af:'🇨🇻', an:'Cape Verde',          as_:'Group H',
-     ve:'Mercedes-Benz Stadium', ci:'Atlanta, USA', ist:'Jun 15 · 21:30 IST', prev:false, mid:null},
-    {id:'bel-egy', ko:'2026-06-15T19:00:00Z', end:'2026-06-15T20:50:00Z',
-     g:'G', hf:'🇧🇪', hn:'Belgium',      hs:'Group G',
-     af:'🇪🇬', an:'Egypt',               as_:'Group G',
-     ve:'SoFi Stadium', ci:'Los Angeles, USA', ist:'Jun 16 · 00:30 IST', prev:false, mid:null},
-    {id:'sau-uru', ko:'2026-06-15T22:00:00Z', end:'2026-06-15T23:50:00Z',
-     g:'H', hf:'🇸🇦', hn:'Saudi Arabia', hs:'Group H',
-     af:'🇺🇾', an:'Uruguay',             as_:'Group H',
-     ve:'Hard Rock Stadium', ci:'Miami, USA', ist:'Jun 16 · 03:30 IST', prev:false, mid:null},
-    {id:'irn-nzl', ko:'2026-06-16T01:00:00Z', end:'2026-06-16T02:50:00Z',
-     g:'G', hf:'🇮🇷', hn:'Iran',         hs:'Group G',
-     af:'🇳🇿', an:'New Zealand',         as_:'Group G',
-     ve:'BC Place', ci:'Vancouver, Canada', ist:'Jun 16 · 06:30 IST', prev:false, mid:null},
-    // ── Jun 16 ──
-    {id:'fra-sen', ko:'2026-06-16T19:00:00Z', end:'2026-06-16T20:50:00Z',
-     g:'I', hf:'🇫🇷', hn:'France',       hs:'Group I',
-     af:'🇸🇳', an:'Senegal',             as_:'Group I',
-     ve:'MetLife Stadium', ci:'East Rutherford, USA', ist:'Jun 17 · 00:30 IST', prev:false, mid:null},
-    {id:'irq-nor', ko:'2026-06-16T22:00:00Z', end:'2026-06-16T23:50:00Z',
-     g:'I', hf:'🇮🇶', hn:'Iraq',         hs:'Group I',
-     af:'🇳🇴', an:'Norway',              as_:'Group I',
-     ve:'Lumen Field', ci:'Seattle, USA', ist:'Jun 17 · 03:30 IST', prev:false, mid:null},
-    // ── Jun 17 ──
-    {id:'arg-alg', ko:'2026-06-16T20:00:00Z', end:'2026-06-16T21:50:00Z',
-     g:'J', hf:'🇦🇷', hn:'Argentina',    hs:'Champions · Group J',
-     af:'🇩🇿', an:'Algeria',             as_:'Group J',
-     ve:'Arrowhead Stadium', ci:'Kansas City, USA', ist:'Jun 17 · 01:30 IST', prev:false, mid:null},
-    {id:'aut-jor', ko:'2026-06-17T02:00:00Z', end:'2026-06-17T03:50:00Z',
-     g:'J', hf:'🇦🇹', hn:'Austria',      hs:'Group J',
-     af:'🇯🇴', an:'Jordan',              as_:'Group J',
-     ve:'AT&T Stadium', ci:'Dallas, USA', ist:'Jun 17 · 07:30 IST', prev:false, mid:null},
-    {id:'por-cod', ko:'2026-06-17T17:00:00Z', end:'2026-06-17T18:50:00Z',
-     g:'K', hf:'🇵🇹', hn:'Portugal',     hs:'Group K',
-     af:'🇨🇩', an:'DR Congo',            as_:'Group K',
-     ve:'NRG Stadium', ci:'Houston, USA', ist:'Jun 17 · 22:30 IST', prev:false, mid:null},
-    {id:'col-uzb', ko:'2026-06-17T20:00:00Z', end:'2026-06-17T21:50:00Z',
-     g:'K', hf:'🇨🇴', hn:'Colombia',     hs:'Group K',
-     af:'🇺🇿', an:'Uzbekistan',          as_:'Group K',
-     ve:'Estadio Azteca', ci:'Mexico City, Mexico', ist:'Jun 18 · 01:30 IST', prev:false, mid:null},
-    {id:'eng-cro', ko:'2026-06-17T23:00:00Z', end:'2026-06-18T00:50:00Z',
-     g:'L', hf:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', hn:'England',      hs:'Group L',
-     af:'🇭🇷', an:'Croatia',             as_:'Group L',
-     ve:'AT&T Stadium', ci:'Dallas, USA', ist:'Jun 18 · 04:30 IST', prev:false, mid:null},
-    {id:'gha-pan', ko:'2026-06-18T02:00:00Z', end:'2026-06-18T03:50:00Z',
-     g:'L', hf:'🇬🇭', hn:'Ghana',        hs:'Group L',
-     af:'🇵🇦', an:'Panama',              as_:'Group L',
-     ve:'BMO Field', ci:'Toronto, Canada', ist:'Jun 18 · 07:30 IST', prev:false, mid:null},
-    // ── Jun 18 (today) ──
-    {id:'cze-rsa', ko:'2026-06-18T16:00:00Z', end:'2026-06-18T17:50:00Z',
-     g:'A', hf:'🇨🇿', hn:'Czechia',      hs:'Group A',
-     af:'🇿🇦', an:'South Africa',        as_:'Group A',
-     ve:'Mercedes-Benz Stadium', ci:'Atlanta, USA', ist:'Jun 18 · 21:30 IST', prev:false, mid:null},
-    {id:'sui-bih', ko:'2026-06-18T19:00:00Z', end:'2026-06-18T20:50:00Z',
-     g:'B', hf:'🇨🇭', hn:'Switzerland',  hs:'Group B',
-     af:'🇧🇦', an:'Bosnia-Herzegovina',  as_:'Group B',
-     ve:'SoFi Stadium', ci:'Los Angeles, USA', ist:'Jun 19 · 00:30 IST', prev:false, mid:null},
-    {id:'can-qat', ko:'2026-06-18T22:00:00Z', end:'2026-06-18T23:50:00Z',
-     g:'B', hf:'🇨🇦', hn:'Canada',       hs:'Host · Group B',
-     af:'🇶🇦', an:'Qatar',               as_:'Group B',
-     ve:'BC Place', ci:'Vancouver, Canada', ist:'Jun 19 · 03:30 IST', prev:false, mid:null},
-    {id:'mex-kor', ko:'2026-06-19T01:00:00Z', end:'2026-06-19T02:50:00Z',
-     g:'A', hf:'🇲🇽', hn:'Mexico',       hs:'Host · Group A',
-     af:'🇰🇷', an:'South Korea',         as_:'Group A',
-     ve:'Estadio Akron', ci:'Guadalajara, Mexico', ist:'Jun 19 · 06:30 IST', prev:false, mid:null},
-    // ── Jun 19 ──
-    {id:'usa-aus', ko:'2026-06-19T19:00:00Z', end:'2026-06-19T20:50:00Z',
-     g:'D', hf:'🇺🇸', hn:'United States', hs:'Host · Group D',
-     af:'🇦🇺', an:'Australia',           as_:'Group D',
-     ve:'Lumen Field', ci:'Seattle, USA', ist:'Jun 20 · 00:30 IST', prev:false, mid:null},
-    {id:'sco-mar', ko:'2026-06-19T22:00:00Z', end:'2026-06-19T23:50:00Z',
-     g:'C', hf:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', hn:'Scotland',     hs:'Group C',
-     af:'🇲🇦', an:'Morocco',             as_:'Group C',
-     ve:'Gillette Stadium', ci:'Boston, USA', ist:'Jun 20 · 03:30 IST', prev:false, mid:null},
-    {id:'bra-hai', ko:'2026-06-20T01:00:00Z', end:'2026-06-20T02:50:00Z',
-     g:'C', hf:'🇧🇷', hn:'Brazil',       hs:'Group C',
-     af:'🇭🇹', an:'Haiti',               as_:'Group C',
-     ve:'Lincoln Financial Field', ci:'Philadelphia, USA', ist:'Jun 20 · 06:30 IST', prev:false, mid:null},
-    {id:'tur-par', ko:'2026-06-20T04:00:00Z', end:'2026-06-20T05:50:00Z',
-     g:'D', hf:'🇹🇷', hn:'Türkiye',      hs:'Group D',
-     af:'🇵🇾', an:'Paraguay',            as_:'Group D',
-     ve:'Levi\'s Stadium', ci:'Santa Clara, USA', ist:'Jun 20 · 09:30 IST', prev:false, mid:null}
-  ];
+  // Match list is loaded from matches.json (see fetchData() in the standings module below,
+  // which caches the parsed file on window.MATCHES_DATA). This module maps that shape into
+  // the {id,ko,end,g,hf,hn,hs,af,an,as_,ve,ci,ist,prev,mid} shape the render functions use.
+  var M = [];
+  var mapped = false;
 
-  // Expose results for group standings
-  window.MATCHES_DATA = {results:[
-    // ── Jun 11 ──
-    {group:'Group A', team1:'Mexico',          team2:'South Africa',        score:{ft:[2,0]}},
-    {group:'Group A', team1:'South Korea',     team2:'Czechia',             score:{ft:[2,1]}},
-    // ── Jun 12 ──
-    {group:'Group B', team1:'Canada',          team2:'Bosnia-Herz.',        score:{ft:[1,1]}},
-    {group:'Group D', team1:'USA',             team2:'Paraguay',            score:{ft:[4,1]}},
-    // ── Jun 13 ──
-    {group:'Group B', team1:'Qatar',           team2:'Switzerland',         score:{ft:[1,1]}},
-    {group:'Group C', team1:'Brazil',          team2:'Morocco',             score:{ft:[1,1]}},
-    {group:'Group C', team1:'Haiti',           team2:'Scotland',            score:{ft:[0,1]}},
-    // ── Jun 14 ──
-    {group:'Group D', team1:'Australia',       team2:'Türkiye',             score:{ft:[2,0]}},
-    {group:'Group E', team1:'Germany',         team2:'Curaçao',             score:{ft:[7,1]}},
-    {group:'Group F', team1:'Netherlands',     team2:'Japan',               score:{ft:[2,2]}},
-    {group:'Group E', team1:'Ivory Coast',     team2:'Ecuador',             score:{ft:[1,0]}},
-    {group:'Group F', team1:'Sweden',          team2:'Tunisia',             score:{ft:[5,1]}},
-    // ── Jun 15 ──
-    {group:'Group H', team1:'Spain',           team2:'Cape Verde',          score:{ft:[0,0]}},
-    {group:'Group G', team1:'Belgium',         team2:'Egypt',               score:{ft:[1,1]}},
-    {group:'Group H', team1:'Saudi Arabia',    team2:'Uruguay',             score:{ft:[1,1]}},
-    {group:'Group G', team1:'Iran',            team2:'New Zealand',         score:{ft:[2,2]}},
-    // ── Jun 16 ──
-    {group:'Group I', team1:'France',          team2:'Senegal',             score:{ft:[3,1]}},
-    {group:'Group I', team1:'Iraq',            team2:'Norway',              score:{ft:[1,4]}},
-    // ── Jun 17 ──
-    {group:'Group J', team1:'Argentina',       team2:'Algeria',             score:{ft:[3,0]}},
-    {group:'Group J', team1:'Austria',         team2:'Jordan',              score:{ft:[3,1]}},
-    {group:'Group K', team1:'Portugal',        team2:'DR Congo',            score:{ft:[1,1]}},
-    {group:'Group K', team1:'Colombia',        team2:'Uzbekistan',          score:{ft:[3,1]}},
-    {group:'Group L', team1:'England',         team2:'Croatia',             score:{ft:[4,2]}},
-    {group:'Group L', team1:'Ghana',           team2:'Panama',              score:{ft:[1,0]}}
-  ]};
+  function mapFromMatchesData(){
+    var data = window.MATCHES_DATA;
+    if(!data || !data.matches) return false;
+    M = data.matches.map(function(m){
+      return {
+        id: m.id,
+        ko: m.koUTC,
+        end: m.endUTC,
+        g: m.group,
+        hf: m.team1.flag, hn: m.team1.name, hs: (m.group ? 'Group ' + m.group : m.stage.toUpperCase()),
+        af: m.team2.flag, an: m.team2.name, as_: (m.group ? 'Group ' + m.group : m.stage.toUpperCase()),
+        ve: m.venue, ci: m.city, ist: m.istLabel,
+        prev: !!m.previewId, mid: m.previewId
+      };
+    });
+    mapped = true;
+    return true;
+  }
 
   function pick(){
+    if(!M.length) return null;
     var now = Date.now();
     var sorted = M.slice().sort(function(a,b){return new Date(a.ko)-new Date(b.ko);});
     for(var i=0;i<sorted.length;i++){
@@ -938,6 +800,7 @@ a{text-decoration:none;color:inherit;}
 
   function render(){
     var m = pick();
+    if(!m) return; // matches.json not loaded yet — retry loop below will call render() again
     var now = Date.now();
     var ko = new Date(m.ko).getTime();
     var end = new Date(m.end).getTime();
@@ -1038,13 +901,19 @@ a{text-decoration:none;color:inherit;}
       }
     };
   }
-  render();
-  renderNextMatches();
+  function boot(){
+    if(!mapped && !mapFromMatchesData()){
+      setTimeout(boot, 300); // matches.json fetch (triggered by the standings module) not resolved yet
+      return;
+    }
+    render();
+    renderNextMatches();
+  }
+  boot();
   setInterval(render, 30000);
 })();
-// ── Live data — openfootball GitHub (free, no auth needed) ────
+// ── Live data — matches.json (fetched by fetchData() below) ────
 (function buildGroups(){
-  var DATA_URL = 'https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json';
   var TOURNAMENT_START = new Date('2026-06-11T00:00:00Z');
   var REFRESH_MS = 5 * 60 * 1000; // 5 min refresh
 
@@ -1059,7 +928,7 @@ a{text-decoration:none;color:inherit;}
   // ── Flag map ────────────────────────────────────────────────
   var FLAGS = {
     'Mexico':'🇲🇽','South Africa':'🇿🇦','South Korea':'🇰🇷','Czech Republic':'🇨🇿','Czechia':'🇨🇿',
-    'Canada':'🇨🇦','Switzerland':'🇨🇭','Qatar':'🇶🇦','Bosnia-Herzegovina':'🇧🇦','Bosnia & Herz.':'🇧🇦',
+    'Canada':'🇨🇦','Switzerland':'🇨🇭','Qatar':'🇶🇦','Bosnia-Herzegovina':'🇧🇦','Bosnia & Herz.':'🇧🇦','Bosnia-Herz.':'🇧🇦',
     'Brazil':'🇧🇷','Morocco':'🇲🇦','Scotland':'🏴󠁧󠁢󠁳󠁣󠁴󠁿','Haiti':'🇭🇹',
     'United States':'🇺🇸','USA':'🇺🇸','Australia':'🇦🇺','Paraguay':'🇵🇾','Turkey':'🇹🇷','Türkiye':'🇹🇷',
     'Germany':'🇩🇪','Ecuador':'🇪🇨','Ivory Coast':'🇨🇮',"Côte d'Ivoire":'🇨🇮','Curacao':'🇨🇼','Curaçao':'🇨🇼',
@@ -1262,35 +1131,50 @@ a{text-decoration:none;color:inherit;}
   // ── Main fetch — reads results from matches.json ─────────────
   function fetchData() {
     var isLive = new Date() >= TOURNAMENT_START;
-    if(!isLive) {
-      buildTabs(staticGroups);
-      renderStaticGroup(active);
-      setStatus('Pre-tournament · Live from Jun 11', 'var(--text3)');
-      return;
-    }
 
-    // window.MATCHES_DATA is set by the featuredMatch IIFE after it loads matches.json.
-    // If it's not ready yet, retry shortly. (This handles the page-load race.)
-    if(!window.MATCHES_DATA){
-      setStatus('Loading standings…', 'var(--amber)');
-      setTimeout(fetchData, 400);
-      return;
-    }
+    fetch('matches.json?t=' + Date.now())
+      .then(function(r){ if(!r.ok) throw new Error('no matches.json'); return r.json(); })
+      .then(function(data){
+        window.MATCHES_DATA = data; // cache — the featured-match module reuses this too
 
-    var results = (window.MATCHES_DATA.results) || [];
-    allMatches = results;
-    liveGroups = buildStandings(results);
-    buildTabs(liveGroups);
-    renderLiveGroup(active);
+        if(!isLive){
+          buildTabs(staticGroups);
+          renderStaticGroup(active);
+          setStatus('Pre-tournament · Live from Jun 11', 'var(--text3)');
+          return;
+        }
 
-    var now = new Date();
-    if(results.length === 0){
-      setStatus('Standings populate from Jun 11', 'var(--text3)');
-    } else {
-      setStatus('Live · ' + results.length + ' results · Updated '+
-        String(now.getHours()).padStart(2,'0')+':'+
-        String(now.getMinutes()).padStart(2,'0'), 'var(--green)');
-    }
+        var results = (data.matches || [])
+          .filter(function(m){ return m.score; })
+          .map(function(m){
+            return {
+              group: m.group ? 'Group ' + m.group : null,
+              team1: m.team1.name,
+              team2: m.team2.name,
+              score: m.score
+            };
+          });
+        allMatches = results;
+        liveGroups = buildStandings(results);
+        buildTabs(liveGroups);
+        renderLiveGroup(active);
+
+        var now = new Date();
+        if(results.length === 0){
+          setStatus('Standings populate from Jun 11', 'var(--text3)');
+        } else {
+          setStatus('Live · ' + results.length + ' results · Updated '+
+            String(now.getHours()).padStart(2,'0')+':'+
+            String(now.getMinutes()).padStart(2,'0'), 'var(--green)');
+        }
+      })
+      .catch(function(){
+        window.MATCHES_DATA = window.MATCHES_DATA || {matches:[]};
+        buildTabs(staticGroups);
+        renderStaticGroup(active);
+        setStatus(isLive ? 'Standings unavailable — showing draw' : 'Pre-tournament · Live from Jun 11',
+          isLive ? 'var(--amber)' : 'var(--text3)');
+      });
   }
 
   // ── Init ─────────────────────────────────────────────────────
@@ -1309,7 +1193,114 @@ a{text-decoration:none;color:inherit;}
   }
 })();
 
+// ── Golden Boot & assists — live from scorers.json ─────────────
+(function goldenBoot(){
+  var listEl = document.getElementById('gb-list');
+  var badge  = document.getElementById('gb-badge');
+  var tabsEl = document.getElementById('gb-tabs');
+  if(!listEl || !tabsEl) return;
+  var DATA = { goals: [], assists: [] };
 
+  function row(p, i, key){
+    var val = key==='goals' ? p.goals : p.assists;
+    var pen = (key==='goals' && p.penalties) ? ' <span style="color:var(--text3);font-size:10px;">('+p.penalties+' pen)</span>' : '';
+    var medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':'<span style="color:var(--text3);">'+(i+1)+'</span>';
+    return '<div style="display:grid;grid-template-columns:28px 1fr 48px;align-items:center;gap:8px;padding:9px 4px;border-bottom:1px solid var(--border);">'
+      +'<span style="text-align:center;font-size:13px;">'+medal+'</span>'
+      +'<span style="display:flex;align-items:center;gap:8px;"><span style="font-size:17px;">'+(p.flag||'🏳️')+'</span>'
+      +'<span><span style="font-weight:600;color:var(--text);font-size:13px;">'+p.player+'</span>'
+      +'<span style="display:block;font-size:10px;color:var(--text3);">'+p.team+'</span></span></span>'
+      +'<span style="text-align:right;font-family:var(--font-mono);font-weight:600;color:var(--gold);">'+val+pen+'</span></div>';
+  }
+  function render(key){
+    var arr = DATA[key] || [];
+    listEl.innerHTML = arr.length
+      ? arr.slice(0,15).map(function(p,i){ return row(p,i,key); }).join('')
+      : '<div style="padding:24px;text-align:center;color:var(--text3);font-size:12px;">No '+key+' recorded yet · updates from the match feed</div>';
+  }
+  tabsEl.addEventListener('click', function(e){
+    var b = e.target.closest('[data-gb]'); if(!b) return;
+    [].forEach.call(tabsEl.children, function(c){ c.classList.toggle('gb-tab-on', c===b); });
+    render(b.getAttribute('data-gb'));
+  });
+  fetch('scorers.json?t=' + Date.now())
+    .then(function(r){ if(!r.ok) throw new Error('no scorers.json'); return r.json(); })
+    .then(function(d){
+      DATA.goals = d.scorers || [];
+      DATA.assists = d.assists || [];
+      if(badge) badge.textContent = 'Updated ' + new Date(d.meta.updated).toLocaleDateString();
+      render('goals');
+    })
+    .catch(function(){
+      if(badge) badge.textContent = 'Unavailable';
+      render('goals');
+    });
+})();
+
+// ── Knockout bracket — live from bracket.json ───────────────────
+(function bracketBoard(){
+  var board = document.getElementById('bracket-board');
+  var mtabs = document.getElementById('br-mobile-tabs');
+  var badge = document.getElementById('bracket-badge');
+  if(!board) return;
+  var ROUND_LABELS = { r32:'Round of 32', r16:'Round of 16', qf:'Quarter-finals', sf:'Semi-finals', final:'Final', bronze:'3rd place' };
+
+  function team(t, isWinner){
+    if(!t) return '<span class="br-team br-tbd"><span class="br-q">?</span></span>';
+    return '<span class="br-team'+(isWinner?' br-win':'')+'">'
+      +'<span class="br-flag">'+(t.flag||'🏳️')+'</span>'
+      +'<span class="br-name">'+t.name+'</span></span>';
+  }
+  function matchCard(m){
+    var s1 = m.score ? m.score.ft[0] : '', s2 = m.score ? m.score.ft[1] : '';
+    var pens = m.score && m.score.pens ? ' <span class="br-pen">('+m.score.pens[0]+'-'+m.score.pens[1]+' pen)</span>' : '';
+    return '<div class="br-card '+(m.status||'scheduled')+'">'
+      +'<div class="br-row">'+team(m.team1, m.winner==='team1')+'<span class="br-score">'+s1+'</span></div>'
+      +'<div class="br-row">'+team(m.team2, m.winner==='team2')+'<span class="br-score">'+s2+pens+'</span></div>'
+      +'</div>';
+  }
+  function column(matches, cls){
+    return '<div class="br-col '+cls+'">'+matches.map(matchCard).join('')+'</div>';
+  }
+  function renderDesktop(R){
+    var L = function(arr,n){ return arr.slice(0,n); };
+    var Rt = function(arr,n){ return arr.slice(n); };
+    board.innerHTML =
+      '<div class="br-board">'
+      + column(L(R.r32,8),'r32') + column(L(R.r16,4),'r16') + column(L(R.qf,2),'qf') + column(L(R.sf,1),'sf')
+      + '<div class="br-center">' + column(R.final,'final') + column(R.bronze,'bronze') + '</div>'
+      + column(Rt(R.sf,1),'sf') + column(Rt(R.qf,2),'qf') + column(Rt(R.r16,4),'r16') + column(Rt(R.r32,8),'r32')
+      + '</div>';
+  }
+  function renderMobile(R){
+    var keys = ['r32','r16','qf','sf','final'];
+    mtabs.innerHTML = keys.map(function(k,i){ return '<button class="br-tab'+(i===0?' br-tab-on':'')+'" data-r="'+k+'">'+k.toUpperCase()+'</button>'; }).join('');
+    function show(k){
+      var list = k==='final' ? R.final.concat(R.bronze) : R[k];
+      board.innerHTML = '<div class="br-mobile"><div class="br-round-title">'+ROUND_LABELS[k]+'</div>'+list.map(matchCard).join('')+'</div>';
+    }
+    mtabs.onclick = function(e){ var b=e.target.closest('[data-r]'); if(!b) return;
+      [].forEach.call(mtabs.children,function(c){c.classList.toggle('br-tab-on',c===b);}); show(b.getAttribute('data-r')); };
+    show('r32');
+  }
+  function apply(R){
+    var isMobile = window.matchMedia('(max-width:900px)').matches;
+    if(isMobile){ renderMobile(R); board.classList.add('is-mobile'); }
+    else { mtabs.innerHTML=''; renderDesktop(R); board.classList.remove('is-mobile'); }
+  }
+  fetch('bracket.json?t=' + Date.now())
+    .then(function(r){ if(!r.ok) throw new Error('no bracket.json'); return r.json(); })
+    .then(function(d){
+      var R = d.rounds;
+      if(badge) badge.textContent = 'Updated ' + new Date(d.meta.updated).toLocaleDateString();
+      apply(R);
+      var t; window.addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(function(){apply(R);},200); });
+    })
+    .catch(function(){
+      if(badge) badge.textContent = 'Bracket unavailable';
+      board.innerHTML = '<div style="padding:24px;text-align:center;color:var(--text3);font-size:12px;">Bracket populates when knockout fixtures are set.</div>';
+    });
+})();
 
 (function tickClock(){
   var KO=[

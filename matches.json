@@ -1,1187 +1,792 @@
 {
-  "schemaVersion": "1.0",
-  "lastUpdated": "2026-06-13T09:00:00Z",
+  "meta": {
+    "updated": "2026-06-18T04:30:00Z",
+    "source": "manual"
+  },
   "matches": [
     {
-      "id": "mex-rsa-20260611",
-      "group": "A",
+      "id": "mex-rsa",
       "stage": "group",
-      "kickoffUTC": "2026-06-11T19:00:00Z",
-      "estimatedEndUTC": "2026-06-11T20:50:00Z",
-      "venue": {
-        "name": "Estadio Azteca",
-        "city": "Mexico City",
-        "country": "Mexico",
-        "altitude": 2240,
-        "altitudeImpact": "high",
-        "roof": "Open air"
-      },
-      "broadcast": {
-        "india": "Zee5 · Unite8 Sports 1/2 HD"
-      },
-      "tags": [
-        "opening-match",
-        "high-altitude"
-      ],
-      "home": {
-        "code": "MX",
+      "group": "A",
+      "koUTC": "2026-06-11T19:00:00Z",
+      "endUTC": "2026-06-11T20:50:00Z",
+      "team1": {
         "name": "Mexico",
-        "flag": "🇲🇽",
-        "fifaRank": 14,
-        "power": 95,
-        "conditioning": 88,
-        "isHost": true,
-        "bsdTeamId": 451,
-        "manager": "Javier Aguirre",
-        "color": "var(--green)"
+        "flag": "🇲🇽"
       },
-      "away": {
-        "code": "ZA",
+      "team2": {
         "name": "South Africa",
-        "flag": "🇿🇦",
-        "fifaRank": 60,
-        "power": 43,
-        "conditioning": 52,
-        "isHost": false,
-        "bsdTeamId": 452,
-        "manager": "Hugo Broos",
-        "color": "var(--red)"
+        "flag": "🇿🇦"
       },
-      "prediction": {
-        "homeWin": 59,
-        "draw": 10,
-        "awayWin": 31,
-        "scoreline": {
-          "home": 3,
-          "away": 0
-        }
-      },
-      "previewBullets": [
-        "Mexico has the altitude edge at Mexico City (2,240 m)",
-        "Mexico playing on home soil — crowd and travel advantage",
-        "First-ever third opening match for Estadio Azteca (1970, 1986, 2026)",
-        "Mexico unbeaten in last 8 — longest pre-WC streak this cycle"
-      ],
-      "conditions": [
-        {
-          "key": "heat",
-          "label": "🌡 Heat & humidity",
-          "edge": null,
-          "home": 89,
-          "away": 84
-        },
-        {
-          "key": "pitch",
-          "label": "📅 Pitch quality",
-          "edge": "home",
-          "home": 61,
-          "away": 22
-        },
-        {
-          "key": "altitude",
-          "label": "🏔 Altitude",
-          "subLabel": "2,240 m — high impact",
-          "edge": "home",
-          "home": 100,
-          "away": 71
-        },
-        {
-          "key": "travel",
-          "label": "✈ Travel & jet lag",
-          "edge": "home",
-          "home": 80,
-          "away": 50
-        },
-        {
-          "key": "crowd",
-          "label": "👥 Crowd pressure",
-          "edge": "home",
-          "home": 78,
-          "away": 38
-        },
-        {
-          "key": "fixture",
-          "label": "📋 Fixture load",
-          "edge": "home",
-          "home": 49,
-          "away": 29
-        },
-        {
-          "key": "form",
-          "label": "📈 Form",
-          "edge": "home",
-          "home": 84,
-          "away": 36
-        }
-      ],
-      "tactics": {
-        "home": {
-          "shape": "4-1-4-1 (confirmed) — Lira anchors a single pivot",
-          "style": "High-intensity, vertical transitions. Aguirre prefers rapid midfield combinations over sterile possession",
-          "pressing": "High block; weaponize altitude conditioning to suffocate build-up",
-          "strengths": "Home altitude advantage · veteran spine · clinical wide finishers · disciplined back four",
-          "weaknesses": "Occasional lapses into ponderous, risk-averse phases · pressure from a critical home crowd",
-          "keyPlayer": {
-            "name": "Raúl Jiménez",
-            "detail": "(34, Fulham) — fourth WC, the spearhead of knockout ambitions"
-          }
-        },
-        "away": {
-          "shape": "5-3-2 (confirmed) — ultra-defensive back five at altitude",
-          "style": "Possession-led build-up from the back, technical midfield combinations",
-          "pressing": "Mid-block, with selective triggers — vulnerable to fatigue at altitude",
-          "strengths": "PSL-hardened spine · 16 of 26 players from Sundowns & Pirates · elite GK distribution",
-          "weaknesses": "Limited altitude exposure · long trans-Atlantic travel · thin attacking depth",
-          "keyPlayer": {
-            "name": "Ronwen Williams",
-            "detail": "(C) — 2024 Yashin Award nominee, foundational distributor"
-          }
-        }
-      },
-      "analysis": {
-        "title": "Match Analysis",
-        "paragraphs": [
-          "<b>MEXICO CITY</b> — There is a distinct cruelty to the Estadio Azteca that analytics can quantify, but only the pitch can truly inflict.",
-          "When Mexico opens its Group A campaign against South Africa, the narrative will inevitably center on the rarefied air of Mexico City. Sitting at 2,240 meters above sea level, the Azteca represents the ultimate venue advantage — a mathematical ceiling where El Tri operates at peak efficiency, while South Africa's historical data at altitude suggests a steep drop-off in sustaining intensity over 90 minutes.",
-          "For Hugo Broos' side, the challenge is layered. Bafana Bafana boasts a core of PSL-hardened talent; players like Percy Tau and Themba Zwane possess a legitimate, proven tolerance for punishing heat. But heat is linear; altitude is suffocating.",
-          "Mexico's front line is tailor-made to exploit this physiological tax. Expect Santiago Giménez and Hirving Lozano to weaponize their superior conditioning, deploying a suffocating high press designed to suffocate South Africa's build-up.",
-          "Add in a grueling trans-Atlantic travel itinerary that leaves South Africa heavily disadvantaged in recovery metrics, and the second half projects as a slow-motion siege. South Africa will compete early, but the combination of jet lag, altitude, and a partisan crowd will inevitably take its toll after the interval.",
-          "<i>As the visitors tire, Mexico will pull away.</i>"
-        ]
-      },
-      "teamGuide": {
-        "home": {
-          "_ref": "see full content in index.html modal — to be migrated"
-        },
-        "away": {
-          "_ref": "see full content in index.html modal — to be migrated"
-        }
-      },
-      "lineups": {
-        "source": "manual",
-        "confirmedAt": "2026-06-11T23:15:00Z",
-        "home": {
-          "formation": "4-1-4-1",
-          "note": "Aguirre rests senior spine",
-          "starters": [
-            {
-              "pos": "GK",
-              "num": 1,
-              "name": "Rangel",
-              "x": 50,
-              "y": 128
-            },
-            {
-              "pos": "LB",
-              "num": 23,
-              "name": "Gallardo",
-              "x": 12,
-              "y": 106
-            },
-            {
-              "pos": "LCB",
-              "num": 5,
-              "name": "Vásquez",
-              "x": 36,
-              "y": 108
-            },
-            {
-              "pos": "RCB",
-              "num": 3,
-              "name": "Montes",
-              "x": 64,
-              "y": 108,
-              "isCaptain": true
-            },
-            {
-              "pos": "RB",
-              "num": 16,
-              "name": "Quiñones",
-              "x": 88,
-              "y": 106
-            },
-            {
-              "pos": "DM",
-              "num": 6,
-              "name": "Lira",
-              "x": 50,
-              "y": 86
-            },
-            {
-              "pos": "LM",
-              "num": 15,
-              "name": "Reyes",
-              "x": 14,
-              "y": 58
-            },
-            {
-              "pos": "LCM",
-              "num": 26,
-              "name": "Gutiérrez",
-              "x": 38,
-              "y": 55
-            },
-            {
-              "pos": "RCM",
-              "num": 8,
-              "name": "Fidalgo",
-              "x": 62,
-              "y": 55
-            },
-            {
-              "pos": "RM",
-              "num": 25,
-              "name": "Alvarado",
-              "x": 86,
-              "y": 58
-            },
-            {
-              "pos": "ST",
-              "num": 9,
-              "name": "Jiménez",
-              "x": 50,
-              "y": 26
-            }
-          ],
-          "subs": [
-            {
-              "num": 12,
-              "name": "C. Acevedo",
-              "role": "GK"
-            },
-            {
-              "num": 13,
-              "name": "G. Ochoa",
-              "role": "GK"
-            },
-            {
-              "num": 2,
-              "name": "J. Sánchez"
-            },
-            {
-              "num": 7,
-              "name": "L. Romo"
-            },
-            {
-              "num": 20,
-              "name": "M. Chávez"
-            },
-            {
-              "num": 10,
-              "name": "A. Vega"
-            },
-            {
-              "num": 21,
-              "name": "C. Huerta"
-            },
-            {
-              "num": 4,
-              "name": "E. Álvarez"
-            },
-            {
-              "num": 19,
-              "name": "G. Mora",
-              "isRisingStar": true
-            },
-            {
-              "num": 24,
-              "name": "L. Chávez"
-            },
-            {
-              "num": 18,
-              "name": "O. Vargas"
-            },
-            {
-              "num": 17,
-              "name": "O. Pineda"
-            },
-            {
-              "num": 14,
-              "name": "A. González"
-            },
-            {
-              "num": 22,
-              "name": "G. Martínez"
-            },
-            {
-              "num": 11,
-              "name": "S. Giménez"
-            }
-          ]
-        },
-        "away": {
-          "formation": "5-3-2",
-          "note": "ultra-defensive at altitude",
-          "starters": [
-            {
-              "pos": "GK",
-              "num": 1,
-              "name": "Williams",
-              "x": 50,
-              "y": 128,
-              "isCaptain": true
-            },
-            {
-              "pos": "LWB",
-              "num": 6,
-              "name": "Modiba",
-              "x": 8,
-              "y": 102
-            },
-            {
-              "pos": "LCB",
-              "num": 14,
-              "name": "Mbokazi",
-              "x": 28,
-              "y": 110
-            },
-            {
-              "pos": "CB",
-              "num": 19,
-              "name": "Sibisi",
-              "x": 50,
-              "y": 112
-            },
-            {
-              "pos": "RCB",
-              "num": 23,
-              "name": "Adams",
-              "x": 72,
-              "y": 110
-            },
-            {
-              "pos": "RWB",
-              "num": 20,
-              "name": "Mudau",
-              "x": 92,
-              "y": 102
-            },
-            {
-              "pos": "LCM",
-              "num": 13,
-              "name": "Sithole",
-              "x": 25,
-              "y": 72
-            },
-            {
-              "pos": "CM",
-              "num": 4,
-              "name": "T. Mokoena",
-              "x": 50,
-              "y": 78
-            },
-            {
-              "pos": "RCM",
-              "num": 21,
-              "name": "Okon",
-              "x": 75,
-              "y": 72
-            },
-            {
-              "pos": "LF",
-              "num": 9,
-              "name": "Foster",
-              "x": 35,
-              "y": 30
-            },
-            {
-              "pos": "RF",
-              "num": 15,
-              "name": "Rayners",
-              "x": 65,
-              "y": 30
-            }
-          ],
-          "subs": [
-            {
-              "num": 22,
-              "name": "R. Goss",
-              "role": "GK"
-            },
-            {
-              "num": 16,
-              "name": "S. Chaine",
-              "role": "GK"
-            },
-            {
-              "num": 26,
-              "name": "B. Cross"
-            },
-            {
-              "num": 3,
-              "name": "K. Ndamane"
-            },
-            {
-              "num": 24,
-              "name": "O. Makhanya"
-            },
-            {
-              "num": 18,
-              "name": "S. Kabini"
-            },
-            {
-              "num": 2,
-              "name": "T. Matuludi"
-            },
-            {
-              "num": 7,
-              "name": "O. Appollis"
-            },
-            {
-              "num": 8,
-              "name": "T. Moremi"
-            },
-            {
-              "num": 10,
-              "name": "R. Mofokeng"
-            },
-            {
-              "num": 25,
-              "name": "K. Sebelebele"
-            },
-            {
-              "num": 5,
-              "name": "T. Mbatha"
-            },
-            {
-              "num": 11,
-              "name": "T. Zwane"
-            },
-            {
-              "num": 12,
-              "name": "T. Maseko"
-            },
-            {
-              "num": 17,
-              "name": "E. Makgopa"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "id": "kor-cze-20260612",
-      "group": "A",
-      "stage": "group",
-      "kickoffUTC": "2026-06-12T02:00:00Z",
-      "estimatedEndUTC": "2026-06-12T03:50:00Z",
-      "venue": {
-        "name": "Estadio Akron",
-        "city": "Guadalajara",
-        "country": "Mexico",
-        "altitude": 1566,
-        "altitudeImpact": "moderate",
-        "roof": "Open air"
-      },
-      "broadcast": {
-        "india": "Zee5 · Unite8 Sports 1/2 HD"
-      },
-      "tags": [],
-      "home": {
-        "code": "KR",
-        "name": "South Korea",
-        "flag": "🇰🇷",
-        "fifaRank": 22,
-        "power": null,
-        "conditioning": null,
-        "isHost": false,
-        "bsdTeamId": 453,
-        "manager": null
-      },
-      "away": {
-        "code": "CZ",
-        "name": "Czechia",
-        "flag": "🇨🇿",
-        "fifaRank": 36,
-        "power": null,
-        "conditioning": null,
-        "isHost": false,
-        "bsdTeamId": 930,
-        "manager": null
-      },
-      "previewStatus": "pending",
-      "_note": "Preview content to be filled in by Deb"
-    },
-    {
-      "id": "can-bih-20260612",
-      "group": "B",
-      "stage": "group",
-      "kickoffUTC": "2026-06-12T19:00:00Z",
-      "estimatedEndUTC": "2026-06-12T20:50:00Z",
-      "venue": {
-        "name": "BMO Field",
-        "city": "Toronto",
-        "country": "Canada",
-        "altitude": 76,
-        "altitudeImpact": "none",
-        "roof": "Open air",
-        "heatIndex": 50,
-        "heatLabel": "Mild",
-        "pitchQuality": 68
-      },
-      "broadcast": {
-        "india": "Zee5 · Unite8 Sports 1/2 HD"
-      },
-      "tags": [
-        "co-host"
-      ],
-      "home": {
-        "code": "CA",
-        "name": "Canada",
-        "flag": "🇨🇦",
-        "fifaRank": 31,
-        "power": 41,
-        "conditioning": 38,
-        "isHost": true,
-        "manager": "Jesse Marsch",
-        "color": "var(--red)"
-      },
-      "away": {
-        "code": "BA",
-        "name": "Bosnia and Herzegovina",
-        "flag": "🇧🇦",
-        "fifaRank": 56,
-        "power": 24,
-        "conditioning": 30,
-        "isHost": false,
-        "manager": "Sergej Barbarez",
-        "color": "var(--amber)"
-      },
-      "prediction": {
-        "homeWin": 56,
-        "draw": 10,
-        "awayWin": 34,
-        "scoreline": {
-          "home": 2,
-          "away": 1
-        }
-      },
-      "previewBullets": [
-        "Canada playing on home soil — crowd and travel advantage",
-        "Bosnia arrive after grueling transatlantic travel — jet lag a major factor",
-        "Jesse Marsch's high-press 4-4-2 vs Barbarez's compact 4-4-2 block",
-        "Alphonso Davies nursing hamstring — late fitness test",
-        "Džeko (40) chasing 21st consecutive year with an international goal"
-      ],
-      "conditions": [
-        {
-          "key": "heat",
-          "label": "🌡 Heat & humidity",
-          "subLabel": "index: 50",
-          "edge": "away",
-          "home": 16,
-          "away": 41
-        },
-        {
-          "key": "pitch",
-          "label": "📅 Pitch quality",
-          "edge": null,
-          "home": 53,
-          "away": 48
-        },
-        {
-          "key": "altitude",
-          "label": "🏔 Altitude",
-          "subLabel": "76 m — sea level",
-          "edge": null,
-          "home": 10,
-          "away": 10
-        },
-        {
-          "key": "travel",
-          "label": "✈ Travel & jet lag",
-          "edge": "home",
-          "home": 86,
-          "away": 36
-        },
-        {
-          "key": "crowd",
-          "label": "👥 Crowd pressure",
-          "subLabel": "Toronto support",
-          "edge": null,
-          "home": 48,
-          "away": 44
-        },
-        {
-          "key": "fixture",
-          "label": "📋 Fixture load",
-          "edge": null,
-          "home": 67,
-          "away": 67
-        },
-        {
-          "key": "form",
-          "label": "📈 Form",
-          "edge": "home",
-          "home": 73,
-          "away": 27
-        }
-      ],
-      "tactics": {
-        "home": {
-          "formation": "4-4-2",
-          "shape": "High-energy 4-4-2 block, prioritizing vertical counter-attacks and explosive width",
-          "style": "Pacy, uncompromising, full-throttle. Comfortable without the ball, improved creativity vs low blocks",
-          "pressing": "Aggressive front-footed press; turn defensive turnovers into vertical counter-attacks",
-          "strengths": "Home soil advantage · elite transition speed · Davies/David quality · tournament continuity from 2022",
-          "weaknesses": "Davies hamstring fitness test · Flores ACL injury depletes creative depth · historically poor WC record (0W in 6 games)",
-          "keyPlayer": {
-            "name": "Jonathan David",
-            "detail": "(Juventus) — 39 goals in 77 caps, all-time leading scorer, elite spatial intelligence"
-          }
-        },
-        "away": {
-          "formation": "4-4-2",
-          "shape": "Compact, rigidly disciplined 4-4-2 designed to choke central spaces",
-          "style": "Defensive solidity with immense natural width in transition. Relies on veteran craft",
-          "pressing": "Low-to-mid block; frustrate opponents then spring on the counter via wide channels",
-          "strengths": "Playoff pedigree (beat Italy) · Džeko's big-game experience · exciting young wingers (Bajraktarević, Alajbegović)",
-          "weaknesses": "Catastrophic pre-tournament form · grueling transatlantic travel · only 2nd ever WC appearance · thin squad depth",
-          "keyPlayer": {
-            "name": "Edin Džeko",
-            "detail": "(40, Schalke) — 20 consecutive years with an international goal since 2007, undisputed talisman"
-          }
-        }
-      },
-      "analysis": {
-        "title": "Match Analysis",
-        "paragraphs": [
-          "<b>TORONTO</b> — Major tournament openers are rarely decided by tactical blueprints alone; more often, they are dictated by the invisible taxes of geography and climate.",
-          "When Canada steps onto the pitch at BMO Field to face Bosnia-Herzegovina, Jesse Marsch's side will hold a structural advantage that goes far deeper than home-field familiarity. The most critical data point ahead of kickoff is a staggering travel differential. While the Canadians have spent the buildup to this match sleeping in their own beds, Bosnia arrives on the heels of a grueling transatlantic itinerary — a logistical nightmare that promises to manifest as heavy legs when the intensity peaks.",
-          "That physiological fatigue will only be magnified by Toronto's dense June humidity. While Bosnia's historical data suggests a reasonable baseline for managing high temperatures, the combination of stubborn jet lag and a suffocating climate creates a razor-thin margin for error. Edin Džeko and company will be forced to ration their energy expenditure carefully, a dangerous concession to make against a Canadian side designed to play at a breakneck tempo.",
-          "Though raw attendance metrics project a balanced distribution of support, the psychological reality of BMO Field tells a different story. The stadium is poised to become a volatile cauldron of red and white, designed to claustrophobically squeeze the visitors on every touch while providing an adrenaline-fueled lift to Canadian legs in the final third.",
-          "Compounding Bosnia's environmental hurdles is a catastrophic run of form leading into the tournament. Their preparation metrics suggest systemic issues within the camp, contrasting sharply with a settled, confident Canadian side that has found its identity under Marsch.",
-          "Expect Alphonso Davies and Jonathan David to manipulate this disparity. The tactical blueprint will likely center on verticality, using transition moments to ruthlessly exploit a tired Bosnian backline — particularly after the hour mark, when the physiological effects of West-to-East travel typically peak. Bosnia possesses enough veteran craft to pose a threat on the counter, but the elements are heavily stacked against them.",
-          "<i>Prediction: Canada 2-1 Bosnia-Herzegovina</i>"
-        ]
-      },
-      "teamGuide": {
-        "home": {
-          "qualify": "Automatic qualification as tournament co-hosts.",
-          "pedigree": "Second consecutive WC. 1986 and 2022 both ended in three group-stage defeats, but 2022 showed real promise — outplayed Belgium in opener, Davies scored historic first WC goal vs Croatia.",
-          "coach": "Jesse Marsch — Red Bull pressing disciple (NY Red Bulls, Salzburg, Leipzig, Leeds). First international role. Built on Herdman's cultural foundation, instilling belief Canada should win games, not just qualify.",
-          "style": "High-energy 4-4-2 with explosive width. Comfortable without the ball. Devastating on the counter through Davies and Buchanan on the flanks.",
-          "keyPlayer": "Jonathan David (Juventus) — 39 goals in 77 caps, Canada's all-time leading scorer. Elite spatial intelligence to dismantle rigid defensive lines.",
-          "squad": "Half the 26-man roster carried over from Qatar 2022. Davies nursing hamstring, Bombito late fitness test. Marcelo Flores lost to ACL tear.",
-          "extra": "In January 2017, Canada was 120th in FIFA rankings. Soccer now has higher youth participation than ice hockey. A successful summer could permanently alter the Canadian sports landscape."
-        },
-        "away": {
-          "qualify": "Historic playoff campaign — penalty shootout win vs Wales, then stunned Italy to book the ticket.",
-          "pedigree": "Only second WC appearance ever (2014: failed to progress past groups despite narrow one-goal defeats to Argentina and Nigeria). Only nation to qualify for a WC without ever qualifying for the Euros.",
-          "coach": "Sergej Barbarez — legendary Bundesliga forward in first senior managerial role. Outspoken, fiercely independent. Spent six years playing professional poker after retiring from football.",
-          "style": "Compact, rigidly disciplined 4-4-2 designed to choke central spaces. Immense natural width in transition via Bajraktarević (PSV) and Alajbegović (RB Salzburg, 11 goals, joining Leverkusen).",
-          "keyPlayer": "Edin Džeko (40, Schalke) — scored in 20 consecutive calendar years since 2007. Vital equalizer vs Wales in playoffs. Six goals in eight apps at Schalke to sharpen match fitness.",
-          "squad": "Džeko and Kolašinac only survivors from 2014 squad. Eligibility coup: Ermin Mahmić switched from Austria. Crown jewel: 19-year-old CB Nidal Čelik (Lens).",
-          "extra": "Only nation to qualify for a World Cup finals without ever qualifying for the European Championship. Head coach Barbarez spent six years as a professional poker player after his playing career."
-        }
-      },
-      "previewStatus": "complete"
-    },
-    {
-      "id": "qat-sui-20260613",
-      "group": "B",
-      "stage": "group",
-      "kickoffUTC": "2026-06-13T19:00:00Z",
-      "estimatedEndUTC": "2026-06-13T20:50:00Z",
-      "venue": {
-        "name": "Levi's Stadium",
-        "city": "Santa Clara",
-        "country": "United States"
-      },
-      "broadcast": {
-        "india": "Zee5 · Unite8 Sports 1/2 HD"
-      },
-      "home": {
-        "code": "QA",
-        "name": "Qatar",
-        "flag": "🇶🇦",
-        "fifaRank": 53,
-        "bsdTeamId": 461
-      },
-      "away": {
-        "code": "CH",
-        "name": "Switzerland",
-        "flag": "🇨🇭",
-        "fifaRank": 19,
-        "bsdTeamId": 462
-      },
-      "previewStatus": "pending"
-    },
-    {
-      "id": "bra-mar-20260613",
-      "group": "C",
-      "stage": "group",
-      "kickoffUTC": "2026-06-13T22:00:00Z",
-      "estimatedEndUTC": "2026-06-13T23:50:00Z",
-      "venue": {
-        "name": "MetLife Stadium",
-        "city": "East Rutherford",
-        "country": "United States"
-      },
-      "broadcast": {
-        "india": "Zee5 · Unite8 Sports 1/2 HD"
-      },
-      "home": {
-        "code": "BR",
-        "name": "Brazil",
-        "flag": "🇧🇷",
-        "fifaRank": 5,
-        "bsdTeamId": 463
-      },
-      "away": {
-        "code": "MA",
-        "name": "Morocco",
-        "flag": "🇲🇦",
-        "fifaRank": 12,
-        "bsdTeamId": 464
-      },
-      "previewStatus": "pending"
-    },
-    {
-      "id": "usa-par-20260612",
-      "group": "D",
-      "stage": "group",
-      "kickoffUTC": "2026-06-13T01:00:00Z",
-      "estimatedEndUTC": "2026-06-13T02:50:00Z",
-      "venue": {
-        "name": "SoFi Stadium",
-        "city": "Inglewood, Los Angeles",
-        "country": "United States",
-        "altitude": 30,
-        "altitudeImpact": "none",
-        "roof": "Fixed translucent roof (enclosed)",
-        "heatIndex": 42,
-        "heatLabel": "Mild",
-        "pitchQuality": 82
-      },
-      "broadcast": {
-        "india": "Zee5 · Unite8 Sports 1/2 HD"
-      },
-      "tags": [
-        "co-host"
-      ],
-      "home": {
-        "code": "US",
-        "name": "United States",
-        "flag": "🇺🇸",
-        "fifaRank": 11,
-        "power": 58,
-        "conditioning": 62,
-        "isHost": true,
-        "manager": "Mauricio Pochettino",
-        "color": "var(--blue)"
-      },
-      "away": {
-        "code": "PY",
-        "name": "Paraguay",
-        "flag": "🇵🇾",
-        "fifaRank": 44,
-        "power": 31,
-        "conditioning": 40,
-        "isHost": false,
-        "manager": "Gustavo Alfaro",
-        "color": "var(--red)"
-      },
-      "prediction": {
-        "homeWin": 52,
-        "draw": 24,
-        "awayWin": 24,
-        "scoreline": {
-          "home": 2,
-          "away": 0
-        }
-      },
-      "previewBullets": [
-        "USA's first home World Cup game since 1994 — 70,000 fans at SoFi Stadium",
-        "Pochettino's high-press system built around Pulisic, Adams, McKennie spine",
-        "Paraguay back at WC for first time since 2010 quarter-final run",
-        "Alfaro's side conceded only 10 goals in 18 CONMEBOL qualifiers — defensive wall",
-        "First competitive meeting between the two in 10 years",
-        "Host nations have won 16 of 23 opening matches in WC history"
-      ],
-      "conditions": [
-        {
-          "key": "heat",
-          "label": "🌡 Heat & humidity",
-          "subLabel": "index: 42, enclosed roof",
-          "edge": null,
-          "home": 55,
-          "away": 60
-        },
-        {
-          "key": "pitch",
-          "label": "📅 Pitch quality",
-          "subLabel": "82/100 — premium venue",
-          "edge": "home",
-          "home": 78,
-          "away": 45
-        },
-        {
-          "key": "altitude",
-          "label": "🏔 Altitude",
-          "subLabel": "30 m — sea level",
-          "edge": null,
-          "home": 10,
-          "away": 10
-        },
-        {
-          "key": "travel",
-          "label": "✈ Travel & jet lag",
-          "edge": "home",
-          "home": 92,
-          "away": 42
-        },
-        {
-          "key": "crowd",
-          "label": "👥 Crowd pressure",
-          "subLabel": "70,000 — electric home crowd",
-          "edge": "home",
-          "home": 90,
-          "away": 20
-        },
-        {
-          "key": "fixture",
-          "label": "📋 Fixture load",
-          "edge": null,
-          "home": 58,
-          "away": 55
-        },
-        {
-          "key": "form",
-          "label": "📈 Form",
-          "edge": "home",
-          "home": 65,
-          "away": 48
-        }
-      ],
-      "tactics": {
-        "home": {
-          "formation": "3-4-3 / 3-5-2",
-          "shape": "Fluid back three with wing-backs providing width; Pochettino hasn't settled on a single formation",
-          "style": "High-pressing, transition-heavy side built around the European-based spine of Pulisic, Adams and McKennie",
-          "pressing": "Aggressive high press; force turnovers in the opponent's half and convert rapidly",
-          "strengths": "Home crowd at SoFi (70,000) · elite individual talent (Pulisic, Balogun, McKennie) · deep squad · Pochettino's tactical pedigree",
-          "weaknesses": "Weight of expectation · Richards injury concern · Pochettino hasn't settled his formation · weak recent friendly form (3L in last 4)",
-          "keyPlayer": {
-            "name": "Christian Pulisic",
-            "detail": "(AC Milan) — the heartbeat of the attack, capable of unlocking any defence from wide or centrally"
-          }
-        },
-        "away": {
-          "formation": "4-4-2 / 4-3-3",
-          "shape": "Compact, organised 4-4-2 block designed to frustrate; Alfaro pragmatic and disciplined",
-          "style": "Defensive discipline, set-piece threat, lethal counter-attacks. Not here to make up the numbers",
-          "pressing": "Deep low block; absorb pressure, spring on the counter via Almirón's pace",
-          "strengths": "Only 10 goals conceded in 18 CONMEBOL qualifiers · elite defensive discipline · Almirón's counter-attack threat · nothing to lose",
-          "weaknesses": "First WC since 2010 — tournament rust · limited creative depth · reliance on defensive results · no recent big-tournament pedigree",
-          "keyPlayer": {
-            "name": "Miguel Almirón",
-            "detail": "(Atlanta United) — the catalyst for every Paraguayan counter-attack, devastating pace on the break"
-          }
-        }
-      },
-      "analysis": {
-        "title": "Match Analysis",
-        "paragraphs": [
-          "<b>LOS ANGELES</b> — The weight of a nation settles onto the SoFi Stadium turf the moment the anthem fades and the first whistle cuts through 70,000 voices.",
-          "When the United States opens its home World Cup against Paraguay, the numbers tell a story of overwhelming structural advantage. This is a co-host playing inside a 70,000-seat fortress, on a pristine enclosed pitch, against a side that hasn't tasted World Cup football in sixteen years. Pochettino's squad has spent the entire buildup in familiar conditions — sleeping in American beds, training on American grass, absorbing the adulation of a country that has waited 32 years to host this tournament again.",
-          "Paraguay, by contrast, arrives carrying the invisible weight of South American qualifying's relentless grind. Gustavo Alfaro's side conceded just 10 goals across 18 CONMEBOL qualifiers — a defensive record that commands respect — but the transition from the altitude of Asunción to the artificial atmosphere of Los Angeles creates a subtle dislocation that analytics struggle to fully capture.",
-          "The tactical matchup is a classic force-versus-fortress proposition. Pochettino's fluid back three generates numerical superiority in midfield, allowing Pulisic to drift between the lines while McKennie and Adams provide the engine-room intensity. Paraguay's response will be predictable but effective: a compact, suffocating 4-4-2 block designed to choke central spaces and frustrate the crowd into anxiety.",
-          "The danger for the USA is psychological, not tactical. Host nations carry a brutal expectation premium — the crowd that lifts you at 0-0 can crush you at 0-1. Paraguay knows this. Alfaro will set his side up to survive the opening 30-minute storm, absorb the atmosphere's energy until it turns nervous, then unleash Almirón on tired legs via precisely the sort of counter-attack that suffocated better teams throughout qualifying.",
-          "But SoFi Stadium's enclosed roof amplifies crowd noise to a degree that few visiting teams can psychologically withstand for 90 minutes. The second half, when Paraguay's defensive concentration historically dips and the USA's superior depth off the bench begins to tell, is where the game will be decided.",
-          "<i>The hosts break through. Probably not comfortably — but they break through.</i>"
-        ]
-      },
-      "teamGuide": {
-        "home": {
-          "qualify": "Automatic qualification as tournament co-hosts alongside Canada and Mexico.",
-          "pedigree": "11th World Cup appearance. Best result: third place in inaugural 1930 tournament. Hosted in 1994 — the most commercially successful WC ever. Round-of-16 exits in 2010, 2014, 2022 represent a two-decade ceiling they're desperate to smash.",
-          "coach": "Mauricio Pochettino — the Argentine who transformed Spurs into Champions League finalists. His appointment signaled the federation's ambition: this is not a caretaker, this is a statement hire. Has spent two years building a high-pressing, transition-heavy side.",
-          "style": "Fluid back three generating midfield superiority. Wing-backs provide width while Pulisic drifts centrally. High press designed to win the ball in the opponent's half.",
-          "keyPlayer": "Christian Pulisic (AC Milan) — the most globally recognized American footballer ever. Capable of unlocking any defence from wide or central positions. The heartbeat of every attacking move.",
-          "squad": "Richards recovering from ankle injury — late fitness test. 38-year-old Tim Ream provides veteran calm in the back three. Balogun (Monaco) leads the line after a prolific club season. Dest and Robinson as wing-backs give elite width.",
-          "extra": "Host nations have won 16 of their 23 opening WC matches. The last host to lose their opener was Qatar in 2022. The psychological boost of a home World Cup cannot be overstated — this is a once-in-a-generation moment for American soccer."
-        },
-        "away": {
-          "qualify": "Secured qualification through CONMEBOL's notoriously brutal 18-match round-robin. Finished in the automatic qualification spots after conceding just 10 goals — the joint-best defensive record in the confederation.",
-          "pedigree": "First World Cup since 2010, when they reached the quarter-finals (their best ever). Before being frozen out, Paraguay qualified for four consecutive editions (1998-2010). A proud footballing nation determined to prove the 16-year absence was an anomaly.",
-          "coach": "Gustavo Alfaro — the pragmatic Argentine defensive specialist who rebuilt Paraguay's identity around organisation and resilience. Previously managed Ecuador at the 2022 World Cup (group-stage exit). Known for meticulous set-piece preparation.",
-          "style": "Defensive discipline above all. Compact 4-4-2/4-3-3 block that concedes space but never structure. Set-piece threat is genuine — several qualifying goals came from dead-ball situations. Counter-attacks via Almirón's pace.",
-          "keyPlayer": "Miguel Almirón (Atlanta United) — returned to MLS after stints at Newcastle and a brief move to Saudi Arabia. Still devastatingly quick at 32, his transition running is the primary outlet for every Paraguayan counter-attack.",
-          "squad": "Junior Alonso, Omar Alderete and Gustavo Gómez form a granite-like defensive core. Diego Gómez (Inter Miami) adds creative youth in midfield. Antonio Sanabria (Torino) leads the line with experience from Serie A.",
-          "extra": "The 1930 World Cup remains the only previous tournament meeting between USA and Paraguay — Bert Patenaude scored the first hat-trick in WC history that day. 96 years later, the two meet again on the same stage."
-        }
-      },
-      "previewStatus": "complete"
-    }
-  ],
-  "results": [
-    {
-      "matchId": "mex-rsa-20260611",
-      "group": "Group A",
-      "matchday": 1,
-      "team1": "Mexico",
-      "team2": "South Africa",
+      "venue": "Estadio Azteca",
+      "city": "Mexico City, Mexico",
+      "istLabel": "Jun 12 · 00:30 IST",
+      "previewId": null,
       "score": {
         "ft": [
           2,
           0
-        ],
-        "ht": [
-          1,
-          0
         ]
       },
-      "date": "2026-06-11",
-      "kickoffUTC": "2026-06-11T19:00:00Z",
-      "venue": "Estadio Azteca, Mexico City",
-      "attendance": 83000,
-      "status": "final",
-      "goals": [
-        {
-          "team": "Mexico",
-          "player": "J. Quiñones",
-          "min": 9,
-          "assist": "E. Lira",
-          "note": "Earliest WC opener goal since Lahm 2006"
-        },
-        {
-          "team": "Mexico",
-          "player": "R. Jiménez",
-          "min": 67,
-          "note": "Header from close range. 46th international goal, tied Borgetti for 2nd all-time"
-        }
-      ],
-      "cards": [
-        {
-          "team": "South Africa",
-          "player": "T. Mokoena",
-          "type": "yellow",
-          "min": 17,
-          "reason": "serious foul play"
-        },
-        {
-          "team": "South Africa",
-          "player": "S. Sithole",
-          "type": "red",
-          "min": 50,
-          "reason": "denial of goalscoring opportunity — took down Gutiérrez on edge of box"
-        },
-        {
-          "team": "South Africa",
-          "player": "T. Zwane",
-          "type": "red",
-          "min": 84,
-          "reason": "unsporting behavior"
-        },
-        {
-          "team": "Mexico",
-          "player": "C. Montes",
-          "type": "red",
-          "min": 92,
-          "reason": "serious foul play"
-        }
-      ],
-      "substitutions": {
-        "Mexico": [
-          {
-            "in": "A. Vega",
-            "out": "J. Quiñones",
-            "min": 79
-          }
-        ],
-        "South Africa": [
-          {
-            "in": "O. Appollis",
-            "out": "A. Modiba",
-            "min": 77
-          },
-          {
-            "in": "E. Makgopa",
-            "out": "I. Rayners",
-            "min": 76
-          }
-        ]
-      },
-      "suspensions": [
-        "S. Sithole (RSA) — misses next match",
-        "T. Zwane (RSA) — misses next match",
-        "C. Montes (MEX) — misses next match"
-      ],
-      "notable": "Three red cards — most in a single World Cup match in history. South Africa finished with 9 men."
-    },
-    {
-      "matchId": "kor-cze-20260612",
-      "group": "Group A",
-      "matchday": 1,
-      "team1": "South Korea",
-      "team2": "Czechia",
-      "score": {
-        "ft": [
-          2,
-          1
-        ],
-        "ht": [
-          0,
-          0
-        ]
-      },
-      "date": "2026-06-12",
-      "kickoffUTC": "2026-06-12T02:00:00Z",
-      "venue": "Estadio Akron, Guadalajara",
-      "status": "final",
-      "goals": [
-        {
-          "team": "Czechia",
-          "player": "L. Krejčí",
-          "min": 59
-        },
-        {
-          "team": "South Korea",
-          "player": "Hwang In-beom",
-          "min": 67
-        },
-        {
-          "team": "South Korea",
-          "player": "Oh Hyeon-gyu",
-          "min": 80
-        }
-      ],
-      "cards": [
-        {
-          "team": "South Korea",
-          "player": "Lee Gi-hyuk",
-          "type": "yellow"
-        }
-      ],
-      "substitutions": {
-        "South Korea": [
-          {
-            "in": "Hwang Hee-chan",
-            "out": "Lee Jae-sung",
-            "min": 62
-          },
-          {
-            "in": "Oh Hyeon-gyu",
-            "out": "Son Heung-min",
-            "min": 69
-          },
-          {
-            "in": "Ji-sung Eom",
-            "out": "Lee Tae-seok",
-            "min": 69
-          },
-          {
-            "in": "Kim Jin-gyu",
-            "out": "Hwang In-beom",
-            "min": 84
-          },
-          {
-            "in": "Park Jin-seob",
-            "out": "Paik Seung-ho",
-            "min": 84
-          }
-        ],
-        "Czechia": [
-          {
-            "in": "A. Hložek",
-            "out": "P. Šulc",
-            "min": 64
-          },
-          {
-            "in": "T. Chorý",
-            "out": "P. Schick",
-            "min": 64
-          },
-          {
-            "in": "M. Sadílek",
-            "out": "L. Provod",
-            "min": 64
-          },
-          {
-            "in": "M. Chytil",
-            "out": "A. Sojka",
-            "min": 85
-          }
-        ]
-      },
-      "lineups": {
-        "South Korea": "Kim Seung-gyu; Lee Han-beom, Kim Min-jae, Lee Tae-seok, Seol Young-woo; Lee Gi-hyuk, Hwang In-beom, Paik Seung-ho; Lee Jae-sung, Kang-in Lee, Son Heung-min",
-        "Czechia": "M. Kovář; S. Chaloupek, R. Hranáč, L. Krejčí, V. Coufal, J. Zelený; T. Souček, A. Sojka; P. Šulc, P. Schick, L. Provod"
-      },
-      "notable": "South Korea came from 1-0 down. Oh Hyeon-gyu scored the winner 11 minutes after coming on as a sub for Son Heung-min."
-    },
-    {
-      "matchId": "can-bih-20260612",
-      "group": "Group B",
-      "matchday": 1,
-      "team1": "Canada",
-      "team2": "Bosnia and Herzegovina",
-      "score": {
-        "ft": [
-          1,
-          1
-        ],
-        "ht": [
-          0,
-          0
-        ]
-      },
-      "date": "2026-06-12",
-      "kickoffUTC": "2026-06-12T19:00:00Z",
-      "venue": "BMO Field, Toronto",
       "status": "final"
     },
     {
-      "matchId": "usa-par-20260612",
-      "group": "Group D",
-      "matchday": 1,
-      "team1": "United States",
-      "team2": "Paraguay",
+      "id": "kor-cze",
+      "stage": "group",
+      "group": "A",
+      "koUTC": "2026-06-12T02:00:00Z",
+      "endUTC": "2026-06-12T03:50:00Z",
+      "team1": {
+        "name": "South Korea",
+        "flag": "🇰🇷"
+      },
+      "team2": {
+        "name": "Czechia",
+        "flag": "🇨🇿"
+      },
+      "venue": "Estadio Akron",
+      "city": "Guadalajara, Mexico",
+      "istLabel": "Jun 12 · 07:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          2,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "can-bih",
+      "stage": "group",
+      "group": "B",
+      "koUTC": "2026-06-12T19:00:00Z",
+      "endUTC": "2026-06-12T20:50:00Z",
+      "team1": {
+        "name": "Canada",
+        "flag": "🇨🇦"
+      },
+      "team2": {
+        "name": "Bosnia-Herz.",
+        "flag": "🇧🇦"
+      },
+      "venue": "BMO Field",
+      "city": "Toronto, Canada",
+      "istLabel": "Jun 13 · 00:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          1,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "usa-par",
+      "stage": "group",
+      "group": "D",
+      "koUTC": "2026-06-13T01:00:00Z",
+      "endUTC": "2026-06-13T02:50:00Z",
+      "team1": {
+        "name": "USA",
+        "flag": "🇺🇸"
+      },
+      "team2": {
+        "name": "Paraguay",
+        "flag": "🇵🇾"
+      },
+      "venue": "SoFi Stadium",
+      "city": "Los Angeles, USA",
+      "istLabel": "Jun 13 · 06:30 IST",
+      "previewId": null,
       "score": {
         "ft": [
           4,
           1
-        ],
-        "ht": [
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "qat-sui",
+      "stage": "group",
+      "group": "B",
+      "koUTC": "2026-06-13T19:00:00Z",
+      "endUTC": "2026-06-13T20:50:00Z",
+      "team1": {
+        "name": "Qatar",
+        "flag": "🇶🇦"
+      },
+      "team2": {
+        "name": "Switzerland",
+        "flag": "🇨🇭"
+      },
+      "venue": "Levi's Stadium",
+      "city": "Santa Clara, USA",
+      "istLabel": "Jun 14 · 00:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          1,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "bra-mar",
+      "stage": "group",
+      "group": "C",
+      "koUTC": "2026-06-13T22:00:00Z",
+      "endUTC": "2026-06-13T23:50:00Z",
+      "team1": {
+        "name": "Brazil",
+        "flag": "🇧🇷"
+      },
+      "team2": {
+        "name": "Morocco",
+        "flag": "🇲🇦"
+      },
+      "venue": "MetLife Stadium",
+      "city": "East Rutherford, USA",
+      "istLabel": "Jun 14 · 03:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          1,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "hai-sco",
+      "stage": "group",
+      "group": "C",
+      "koUTC": "2026-06-14T01:00:00Z",
+      "endUTC": "2026-06-14T02:50:00Z",
+      "team1": {
+        "name": "Haiti",
+        "flag": "🇭🇹"
+      },
+      "team2": {
+        "name": "Scotland",
+        "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
+      },
+      "venue": "Gillette Stadium",
+      "city": "Boston, USA",
+      "istLabel": "Jun 14 · 06:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          0,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "aus-tur",
+      "stage": "group",
+      "group": "D",
+      "koUTC": "2026-06-14T04:00:00Z",
+      "endUTC": "2026-06-14T05:50:00Z",
+      "team1": {
+        "name": "Australia",
+        "flag": "🇦🇺"
+      },
+      "team2": {
+        "name": "Türkiye",
+        "flag": "🇹🇷"
+      },
+      "venue": "BC Place",
+      "city": "Vancouver, Canada",
+      "istLabel": "Jun 14 · 09:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
           2,
           0
         ]
       },
-      "date": "2026-06-13",
-      "kickoffUTC": "2026-06-13T01:00:00Z",
-      "venue": "SoFi Stadium, Los Angeles",
-      "status": "final",
-      "goals": [
-        {
-          "team": "United States",
-          "player": "D. Bobadilla",
-          "min": 7,
-          "type": "OG",
-          "note": "Own goal"
-        },
-        {
-          "team": "United States",
-          "player": "F. Balogun",
-          "min": 31
-        },
-        {
-          "team": "United States",
-          "player": "F. Balogun",
-          "min": 50
-        },
-        {
-          "team": "United States",
-          "player": "G. Reyna",
-          "min": 98
-        },
-        {
-          "team": "Paraguay",
-          "player": "Maurício",
-          "min": 73
-        }
-      ],
-      "notable": "Balogun brace + Reyna injury-time goal. USA first home WC win since 1994."
+      "status": "final"
+    },
+    {
+      "id": "ger-cur",
+      "stage": "group",
+      "group": "E",
+      "koUTC": "2026-06-14T17:00:00Z",
+      "endUTC": "2026-06-14T18:50:00Z",
+      "team1": {
+        "name": "Germany",
+        "flag": "🇩🇪"
+      },
+      "team2": {
+        "name": "Curaçao",
+        "flag": "🇨🇼"
+      },
+      "venue": "NRG Stadium",
+      "city": "Houston, USA",
+      "istLabel": "Jun 14 · 22:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          7,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "ned-jpn",
+      "stage": "group",
+      "group": "F",
+      "koUTC": "2026-06-14T20:00:00Z",
+      "endUTC": "2026-06-14T21:50:00Z",
+      "team1": {
+        "name": "Netherlands",
+        "flag": "🇳🇱"
+      },
+      "team2": {
+        "name": "Japan",
+        "flag": "🇯🇵"
+      },
+      "venue": "AT&T Stadium",
+      "city": "Dallas, USA",
+      "istLabel": "Jun 15 · 01:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          2,
+          2
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "ivo-ecu",
+      "stage": "group",
+      "group": "E",
+      "koUTC": "2026-06-15T01:00:00Z",
+      "endUTC": "2026-06-15T02:50:00Z",
+      "team1": {
+        "name": "Ivory Coast",
+        "flag": "🇨🇮"
+      },
+      "team2": {
+        "name": "Ecuador",
+        "flag": "🇪🇨"
+      },
+      "venue": "Arrowhead Stadium",
+      "city": "Kansas City, USA",
+      "istLabel": "Jun 15 · 06:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          1,
+          0
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "swe-tun",
+      "stage": "group",
+      "group": "F",
+      "koUTC": "2026-06-15T04:00:00Z",
+      "endUTC": "2026-06-15T05:50:00Z",
+      "team1": {
+        "name": "Sweden",
+        "flag": "🇸🇪"
+      },
+      "team2": {
+        "name": "Tunisia",
+        "flag": "🇹🇳"
+      },
+      "venue": "Estadio BBVA",
+      "city": "Monterrey, Mexico",
+      "istLabel": "Jun 15 · 09:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          5,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "esp-cpv",
+      "stage": "group",
+      "group": "H",
+      "koUTC": "2026-06-15T16:00:00Z",
+      "endUTC": "2026-06-15T17:50:00Z",
+      "team1": {
+        "name": "Spain",
+        "flag": "🇪🇸"
+      },
+      "team2": {
+        "name": "Cape Verde",
+        "flag": "🇨🇻"
+      },
+      "venue": "Mercedes-Benz Stadium",
+      "city": "Atlanta, USA",
+      "istLabel": "Jun 15 · 21:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          0,
+          0
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "bel-egy",
+      "stage": "group",
+      "group": "G",
+      "koUTC": "2026-06-15T19:00:00Z",
+      "endUTC": "2026-06-15T20:50:00Z",
+      "team1": {
+        "name": "Belgium",
+        "flag": "🇧🇪"
+      },
+      "team2": {
+        "name": "Egypt",
+        "flag": "🇪🇬"
+      },
+      "venue": "SoFi Stadium",
+      "city": "Los Angeles, USA",
+      "istLabel": "Jun 16 · 00:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          1,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "sau-uru",
+      "stage": "group",
+      "group": "H",
+      "koUTC": "2026-06-15T22:00:00Z",
+      "endUTC": "2026-06-15T23:50:00Z",
+      "team1": {
+        "name": "Saudi Arabia",
+        "flag": "🇸🇦"
+      },
+      "team2": {
+        "name": "Uruguay",
+        "flag": "🇺🇾"
+      },
+      "venue": "Hard Rock Stadium",
+      "city": "Miami, USA",
+      "istLabel": "Jun 16 · 03:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          1,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "irn-nzl",
+      "stage": "group",
+      "group": "G",
+      "koUTC": "2026-06-16T01:00:00Z",
+      "endUTC": "2026-06-16T02:50:00Z",
+      "team1": {
+        "name": "Iran",
+        "flag": "🇮🇷"
+      },
+      "team2": {
+        "name": "New Zealand",
+        "flag": "🇳🇿"
+      },
+      "venue": "BC Place",
+      "city": "Vancouver, Canada",
+      "istLabel": "Jun 16 · 06:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          2,
+          2
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "fra-sen",
+      "stage": "group",
+      "group": "I",
+      "koUTC": "2026-06-16T19:00:00Z",
+      "endUTC": "2026-06-16T20:50:00Z",
+      "team1": {
+        "name": "France",
+        "flag": "🇫🇷"
+      },
+      "team2": {
+        "name": "Senegal",
+        "flag": "🇸🇳"
+      },
+      "venue": "MetLife Stadium",
+      "city": "East Rutherford, USA",
+      "istLabel": "Jun 17 · 00:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          3,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "irq-nor",
+      "stage": "group",
+      "group": "I",
+      "koUTC": "2026-06-16T22:00:00Z",
+      "endUTC": "2026-06-16T23:50:00Z",
+      "team1": {
+        "name": "Iraq",
+        "flag": "🇮🇶"
+      },
+      "team2": {
+        "name": "Norway",
+        "flag": "🇳🇴"
+      },
+      "venue": "Lumen Field",
+      "city": "Seattle, USA",
+      "istLabel": "Jun 17 · 03:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          1,
+          4
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "arg-alg",
+      "stage": "group",
+      "group": "J",
+      "koUTC": "2026-06-16T20:00:00Z",
+      "endUTC": "2026-06-16T21:50:00Z",
+      "team1": {
+        "name": "Argentina",
+        "flag": "🇦🇷"
+      },
+      "team2": {
+        "name": "Algeria",
+        "flag": "🇩🇿"
+      },
+      "venue": "Arrowhead Stadium",
+      "city": "Kansas City, USA",
+      "istLabel": "Jun 17 · 01:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          3,
+          0
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "aut-jor",
+      "stage": "group",
+      "group": "J",
+      "koUTC": "2026-06-17T02:00:00Z",
+      "endUTC": "2026-06-17T03:50:00Z",
+      "team1": {
+        "name": "Austria",
+        "flag": "🇦🇹"
+      },
+      "team2": {
+        "name": "Jordan",
+        "flag": "🇯🇴"
+      },
+      "venue": "AT&T Stadium",
+      "city": "Dallas, USA",
+      "istLabel": "Jun 17 · 07:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          3,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "por-cod",
+      "stage": "group",
+      "group": "K",
+      "koUTC": "2026-06-17T17:00:00Z",
+      "endUTC": "2026-06-17T18:50:00Z",
+      "team1": {
+        "name": "Portugal",
+        "flag": "🇵🇹"
+      },
+      "team2": {
+        "name": "DR Congo",
+        "flag": "🇨🇩"
+      },
+      "venue": "NRG Stadium",
+      "city": "Houston, USA",
+      "istLabel": "Jun 17 · 22:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          1,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "col-uzb",
+      "stage": "group",
+      "group": "K",
+      "koUTC": "2026-06-17T20:00:00Z",
+      "endUTC": "2026-06-17T21:50:00Z",
+      "team1": {
+        "name": "Colombia",
+        "flag": "🇨🇴"
+      },
+      "team2": {
+        "name": "Uzbekistan",
+        "flag": "🇺🇿"
+      },
+      "venue": "Estadio Azteca",
+      "city": "Mexico City, Mexico",
+      "istLabel": "Jun 18 · 01:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          3,
+          1
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "eng-cro",
+      "stage": "group",
+      "group": "L",
+      "koUTC": "2026-06-17T23:00:00Z",
+      "endUTC": "2026-06-18T00:50:00Z",
+      "team1": {
+        "name": "England",
+        "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
+      },
+      "team2": {
+        "name": "Croatia",
+        "flag": "🇭🇷"
+      },
+      "venue": "AT&T Stadium",
+      "city": "Dallas, USA",
+      "istLabel": "Jun 18 · 04:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          4,
+          2
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "gha-pan",
+      "stage": "group",
+      "group": "L",
+      "koUTC": "2026-06-18T02:00:00Z",
+      "endUTC": "2026-06-18T03:50:00Z",
+      "team1": {
+        "name": "Ghana",
+        "flag": "🇬🇭"
+      },
+      "team2": {
+        "name": "Panama",
+        "flag": "🇵🇦"
+      },
+      "venue": "BMO Field",
+      "city": "Toronto, Canada",
+      "istLabel": "Jun 18 · 07:30 IST",
+      "previewId": null,
+      "score": {
+        "ft": [
+          1,
+          0
+        ]
+      },
+      "status": "final"
+    },
+    {
+      "id": "cze-rsa",
+      "stage": "group",
+      "group": "A",
+      "koUTC": "2026-06-18T16:00:00Z",
+      "endUTC": "2026-06-18T17:50:00Z",
+      "team1": {
+        "name": "Czechia",
+        "flag": "🇨🇿"
+      },
+      "team2": {
+        "name": "South Africa",
+        "flag": "🇿🇦"
+      },
+      "venue": "Mercedes-Benz Stadium",
+      "city": "Atlanta, USA",
+      "istLabel": "Jun 18 · 21:30 IST",
+      "previewId": null,
+      "status": "scheduled"
+    },
+    {
+      "id": "sui-bih",
+      "stage": "group",
+      "group": "B",
+      "koUTC": "2026-06-18T19:00:00Z",
+      "endUTC": "2026-06-18T20:50:00Z",
+      "team1": {
+        "name": "Switzerland",
+        "flag": "🇨🇭"
+      },
+      "team2": {
+        "name": "Bosnia-Herz.",
+        "flag": "🇧🇦"
+      },
+      "venue": "SoFi Stadium",
+      "city": "Los Angeles, USA",
+      "istLabel": "Jun 19 · 00:30 IST",
+      "previewId": null,
+      "status": "scheduled"
+    },
+    {
+      "id": "can-qat",
+      "stage": "group",
+      "group": "B",
+      "koUTC": "2026-06-18T22:00:00Z",
+      "endUTC": "2026-06-18T23:50:00Z",
+      "team1": {
+        "name": "Canada",
+        "flag": "🇨🇦"
+      },
+      "team2": {
+        "name": "Qatar",
+        "flag": "🇶🇦"
+      },
+      "venue": "BC Place",
+      "city": "Vancouver, Canada",
+      "istLabel": "Jun 19 · 03:30 IST",
+      "previewId": null,
+      "status": "scheduled"
+    },
+    {
+      "id": "mex-kor",
+      "stage": "group",
+      "group": "A",
+      "koUTC": "2026-06-19T01:00:00Z",
+      "endUTC": "2026-06-19T02:50:00Z",
+      "team1": {
+        "name": "Mexico",
+        "flag": "🇲🇽"
+      },
+      "team2": {
+        "name": "South Korea",
+        "flag": "🇰🇷"
+      },
+      "venue": "Estadio Akron",
+      "city": "Guadalajara, Mexico",
+      "istLabel": "Jun 19 · 06:30 IST",
+      "previewId": null,
+      "status": "scheduled"
+    },
+    {
+      "id": "usa-aus",
+      "stage": "group",
+      "group": "D",
+      "koUTC": "2026-06-19T19:00:00Z",
+      "endUTC": "2026-06-19T20:50:00Z",
+      "team1": {
+        "name": "USA",
+        "flag": "🇺🇸"
+      },
+      "team2": {
+        "name": "Australia",
+        "flag": "🇦🇺"
+      },
+      "venue": "Lumen Field",
+      "city": "Seattle, USA",
+      "istLabel": "Jun 20 · 00:30 IST",
+      "previewId": null,
+      "status": "scheduled"
+    },
+    {
+      "id": "sco-mar",
+      "stage": "group",
+      "group": "C",
+      "koUTC": "2026-06-19T22:00:00Z",
+      "endUTC": "2026-06-19T23:50:00Z",
+      "team1": {
+        "name": "Scotland",
+        "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿"
+      },
+      "team2": {
+        "name": "Morocco",
+        "flag": "🇲🇦"
+      },
+      "venue": "Gillette Stadium",
+      "city": "Boston, USA",
+      "istLabel": "Jun 20 · 03:30 IST",
+      "previewId": null,
+      "status": "scheduled"
+    },
+    {
+      "id": "bra-hai",
+      "stage": "group",
+      "group": "C",
+      "koUTC": "2026-06-20T01:00:00Z",
+      "endUTC": "2026-06-20T02:50:00Z",
+      "team1": {
+        "name": "Brazil",
+        "flag": "🇧🇷"
+      },
+      "team2": {
+        "name": "Haiti",
+        "flag": "🇭🇹"
+      },
+      "venue": "Lincoln Financial Field",
+      "city": "Philadelphia, USA",
+      "istLabel": "Jun 20 · 06:30 IST",
+      "previewId": null,
+      "status": "scheduled"
+    },
+    {
+      "id": "tur-par",
+      "stage": "group",
+      "group": "D",
+      "koUTC": "2026-06-20T04:00:00Z",
+      "endUTC": "2026-06-20T05:50:00Z",
+      "team1": {
+        "name": "Türkiye",
+        "flag": "🇹🇷"
+      },
+      "team2": {
+        "name": "Paraguay",
+        "flag": "🇵🇾"
+      },
+      "venue": "Levi's Stadium",
+      "city": "Santa Clara, USA",
+      "istLabel": "Jun 20 · 09:30 IST",
+      "previewId": null,
+      "status": "scheduled"
     }
   ]
 }
