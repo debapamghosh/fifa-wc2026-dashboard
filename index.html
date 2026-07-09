@@ -123,28 +123,38 @@ a{text-decoration:none;color:inherit;}
 .gb-tab{background:var(--bg-pill);border:1px solid var(--border);color:var(--text2);font-family:var(--font);font-size:12px;font-weight:600;padding:6px 14px;border-radius:var(--r-sm);cursor:pointer;}
 .gb-tab-on{background:rgba(244,185,66,.12);border-color:rgba(244,185,66,.4);color:var(--gold);}
 
-.br-board{display:flex;align-items:center;justify-content:center;gap:10px;overflow-x:auto;padding:4px 0;}
-.br-col{display:flex;flex-direction:column;justify-content:space-around;gap:10px;min-width:132px;align-self:stretch;}
-.br-center{display:flex;flex-direction:column;justify-content:center;gap:14px;min-width:150px;}
-.br-card{background:var(--bg-card2);border:1px solid var(--border2);border-radius:var(--r-sm);padding:7px 9px;display:flex;flex-direction:column;gap:5px;}
-.br-card.live{border-color:var(--red);}
-.br-card.final{border-color:var(--gold);}
-.br-row{display:flex;align-items:center;justify-content:space-between;gap:8px;}
-.br-team{display:flex;align-items:center;gap:6px;min-width:0;}
-.br-flag{font-size:15px;flex-shrink:0;}
-.br-name{font-size:12px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.br-board{display:flex;align-items:stretch;justify-content:center;gap:6px;padding:6px 2px;overflow-x:auto;}
+.br-col{display:flex;flex-direction:column;justify-content:space-around;gap:6px;flex:1 1 0;min-width:0;max-width:140px;align-self:stretch;}
+.br-col.qf,.br-col.sf{justify-content:space-around;}
+.br-center{display:flex;flex-direction:column;justify-content:center;gap:12px;flex:0 0 auto;min-width:110px;max-width:140px;align-self:center;}
+.br-col-label{font-family:var(--font-cond);font-size:10px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:4px;opacity:.75;font-weight:600;}
+.br-card{background:var(--bg-card2);border:1px solid var(--border2);border-left:3px solid var(--conf-color,var(--border2));border-radius:6px;padding:5px 6px 5px 8px;display:flex;flex-direction:column;gap:3px;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;position:relative;}
+.br-card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.35);border-color:var(--border);}
+.br-card.live{border-color:var(--red);animation:brPulse 2s ease-in-out infinite;}
+@keyframes brPulse{50%{box-shadow:0 0 0 3px rgba(232,90,79,.15);}}
+.br-card.stage-final{background:linear-gradient(135deg,rgba(244,185,66,.08),var(--bg-card2));border-color:var(--gold);border-left-color:var(--gold);box-shadow:0 0 20px rgba(244,185,66,.1);}
+.br-card.stage-final .br-flag{font-size:14px;}
+.br-row{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:2px 4px;border-radius:3px;transition:background .2s ease;}
+.br-row.br-row-win{background:linear-gradient(90deg,rgba(244,185,66,.04) 0%,rgba(244,185,66,.14) 100%);}
+.br-team{display:flex;align-items:center;gap:5px;min-width:0;flex:1;}
+.br-flag{font-size:13px;flex-shrink:0;line-height:1;}
+.br-name{font-size:11px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.01em;}
 .br-win .br-name{color:var(--text);font-weight:600;}
-.br-win{position:relative;}
-.br-score{font-family:var(--font-mono);font-size:12px;color:var(--text3);min-width:14px;text-align:right;}
-.br-win .br-score{color:var(--gold);font-weight:600;}
-.br-tbd{opacity:.5;}
-.br-q{display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;background:var(--bg-pill);border-radius:4px;color:var(--text3);font-weight:700;}
-.br-pen{font-size:9px;color:var(--text3);}
+.br-score{font-family:var(--font-mono);font-size:12px;color:var(--text3);min-width:12px;text-align:right;flex-shrink:0;}
+.br-win .br-score{color:var(--gold);font-weight:700;font-size:13px;}
+.br-tbd{opacity:.4;}
+.br-q{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;background:var(--bg-pill);border-radius:3px;color:var(--text3);font-weight:700;font-size:10px;}
+.br-pen{font-size:8.5px;color:var(--gold);opacity:.85;font-family:var(--font-mono);letter-spacing:-.02em;}
 .br-rounds{display:none;}
 .br-tab{background:var(--bg-pill);border:1px solid var(--border);color:var(--text2);font-family:var(--font);font-size:11px;font-weight:600;padding:5px 11px;border-radius:var(--r-sm);cursor:pointer;}
 .br-tab-on{background:rgba(244,185,66,.12);border-color:rgba(244,185,66,.4);color:var(--gold);}
 .br-round-title{font-family:var(--font-cond);font-size:14px;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px;}
 .br-mobile .br-card{margin-bottom:8px;}
+@media(max-width:1100px){
+  .br-col{max-width:120px;}
+  .br-name{font-size:10.5px;}
+  .br-flag{font-size:12px;}
+}
 @media(max-width:900px){ .br-rounds{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;} }
 .player-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
 .player-card{background:var(--bg-card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px;display:flex;gap:10px;align-items:flex-start;transition:border-color .2s;}
@@ -1245,39 +1255,89 @@ a{text-decoration:none;color:inherit;}
   if(!board) return;
   var ROUND_LABELS = { r32:'Round of 32', r16:'Round of 16', qf:'Quarter-finals', sf:'Semi-finals', final:'Final', bronze:'3rd place' };
 
+  // Confederation → CSS var color (matches the palette used across the site)
+  var CONF_COLOR = {
+    uefa:'var(--blue)', conmebol:'var(--gold)', concacaf:'var(--red)',
+    caf:'var(--green)', afc:'var(--amber)', ofc:'var(--purple)'
+  };
+  // Team → confederation lookup (static: doesn't change during a tournament)
+  var TEAM_CONF = {
+    'Mexico':'concacaf','South Africa':'caf','South Korea':'afc','Czechia':'uefa',
+    'Canada':'concacaf','Bosnia and Herzegovina':'uefa','Qatar':'afc','Switzerland':'uefa',
+    'Brazil':'conmebol','Morocco':'caf','Haiti':'concacaf','Scotland':'uefa',
+    'United States':'concacaf','Paraguay':'conmebol','Australia':'afc','Türkiye':'uefa',
+    'Germany':'uefa','Curaçao':'concacaf','Ivory Coast':'caf','Ecuador':'conmebol',
+    'Netherlands':'uefa','Japan':'afc','Sweden':'uefa','Tunisia':'caf',
+    'Belgium':'uefa','Egypt':'caf','Iran':'afc','New Zealand':'ofc',
+    'Spain':'uefa','Cape Verde':'caf','Saudi Arabia':'afc','Uruguay':'conmebol',
+    'France':'uefa','Senegal':'caf','Iraq':'afc','Norway':'uefa',
+    'Argentina':'conmebol','Algeria':'caf','Austria':'uefa','Jordan':'afc',
+    'Portugal':'uefa','DR Congo':'caf','Colombia':'conmebol','Uzbekistan':'afc',
+    'England':'uefa','Croatia':'uefa','Ghana':'caf','Panama':'concacaf'
+  };
+  // Long → compact display names for tight columns
+  var SHORT_NAME = {
+    'United States':'USA',
+    'Bosnia and Herzegovina':'Bosnia'
+  };
+  function display(name){ return SHORT_NAME[name] || name; }
+  function confColor(name){ return CONF_COLOR[TEAM_CONF[name]] || 'var(--border2)'; }
+
   function team(t, isWinner){
     if(!t) return '<span class="br-team br-tbd"><span class="br-q">?</span></span>';
     return '<span class="br-team'+(isWinner?' br-win':'')+'">'
       +'<span class="br-flag">'+(t.flag||'🏳️')+'</span>'
-      +'<span class="br-name">'+t.name+'</span></span>';
+      +'<span class="br-name">'+display(t.name)+'</span></span>';
   }
-  function matchCard(m){
+  function matchCard(m, stage){
     var s1 = m.score ? m.score.ft[0] : '', s2 = m.score ? m.score.ft[1] : '';
     var pens = m.score && m.score.pens ? ' <span class="br-pen">('+m.score.pens[0]+'-'+m.score.pens[1]+' pen)</span>' : '';
-    return '<div class="br-card '+(m.status||'scheduled')+'">'
-      +'<div class="br-row">'+team(m.team1, m.winner==='team1')+'<span class="br-score">'+s1+'</span></div>'
-      +'<div class="br-row">'+team(m.team2, m.winner==='team2')+'<span class="br-score">'+s2+pens+'</span></div>'
+    // Winner's confederation drives the left-border accent. For undecided matches,
+    // fall back to team1's confederation if known, so the card still gets a hint of color.
+    var accentTeam = m.winner ? m[m.winner] : (m.team1 || m.team2);
+    var accent = accentTeam ? confColor(accentTeam.name) : 'var(--border2)';
+    var stageCls = stage ? ' stage-'+stage : '';
+    var win1 = m.winner==='team1', win2 = m.winner==='team2';
+    return '<div class="br-card '+(m.status||'scheduled')+stageCls+'" style="--conf-color:'+accent+'">'
+      +'<div class="br-row'+(win1?' br-row-win':'')+'">'+team(m.team1, win1)+'<span class="br-score">'+s1+'</span></div>'
+      +'<div class="br-row'+(win2?' br-row-win':'')+'">'+team(m.team2, win2)+'<span class="br-score">'+s2+pens+'</span></div>'
       +'</div>';
   }
-  function column(matches, cls){
-    return '<div class="br-col '+cls+'">'+matches.map(matchCard).join('')+'</div>';
+  function column(matches, cls, stage, label){
+    var lbl = label ? '<div class="br-col-label">'+label+'</div>' : '';
+    return '<div class="br-col '+cls+'">'+lbl+matches.map(function(m){ return matchCard(m, stage); }).join('')+'</div>';
   }
   function renderDesktop(R){
     var L = function(arr,n){ return arr.slice(0,n); };
     var Rt = function(arr,n){ return arr.slice(n); };
     board.innerHTML =
       '<div class="br-board">'
-      + column(L(R.r32,8),'r32') + column(L(R.r16,4),'r16') + column(L(R.qf,2),'qf') + column(L(R.sf,1),'sf')
-      + '<div class="br-center">' + column(R.final,'final') + column(R.bronze,'bronze') + '</div>'
-      + column(Rt(R.sf,1),'sf') + column(Rt(R.qf,2),'qf') + column(Rt(R.r16,4),'r16') + column(Rt(R.r32,8),'r32')
+      + column(L(R.r32,8),'r32','r32','Round of 32')
+      + column(L(R.r16,4),'r16','r16','Round of 16')
+      + column(L(R.qf,2),'qf','qf','Quarter-finals')
+      + column(L(R.sf,1),'sf','sf','Semi-finals')
+      + '<div class="br-center">'
+        + column(R.final,'final','final','Final')
+        + column(R.bronze,'bronze','bronze','3rd place')
+      + '</div>'
+      + column(Rt(R.sf,1),'sf','sf','Semi-finals')
+      + column(Rt(R.qf,2),'qf','qf','Quarter-finals')
+      + column(Rt(R.r16,4),'r16','r16','Round of 16')
+      + column(Rt(R.r32,8),'r32','r32','Round of 32')
       + '</div>';
   }
   function renderMobile(R){
     var keys = ['r32','r16','qf','sf','final'];
     mtabs.innerHTML = keys.map(function(k,i){ return '<button class="br-tab'+(i===0?' br-tab-on':'')+'" data-r="'+k+'">'+k.toUpperCase()+'</button>'; }).join('');
     function show(k){
-      var list = k==='final' ? R.final.concat(R.bronze) : R[k];
-      board.innerHTML = '<div class="br-mobile"><div class="br-round-title">'+ROUND_LABELS[k]+'</div>'+list.map(matchCard).join('')+'</div>';
+      var html = '<div class="br-mobile"><div class="br-round-title">'+ROUND_LABELS[k]+'</div>';
+      if(k === 'final'){
+        html += R.final.map(function(m){ return matchCard(m, 'final'); }).join('');
+        html += R.bronze.map(function(m){ return matchCard(m, 'bronze'); }).join('');
+      } else {
+        html += R[k].map(function(m){ return matchCard(m, k); }).join('');
+      }
+      board.innerHTML = html + '</div>';
     }
     mtabs.onclick = function(e){ var b=e.target.closest('[data-r]'); if(!b) return;
       [].forEach.call(mtabs.children,function(c){c.classList.toggle('br-tab-on',c===b);}); show(b.getAttribute('data-r')); };
