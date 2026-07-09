@@ -1237,7 +1237,7 @@ a{text-decoration:none;color:inherit;}
     });
 })();
 
-// ── Knockout bracket — live from bracket.json ───────────────────
+// ── Knockout bracket — derived from matches.json (Option B: single source of truth) ──
 (function bracketBoard(){
   var board = document.getElementById('bracket-board');
   var mtabs = document.getElementById('br-mobile-tabs');
@@ -1288,18 +1288,157 @@ a{text-decoration:none;color:inherit;}
     if(isMobile){ renderMobile(R); board.classList.add('is-mobile'); }
     else { mtabs.innerHTML=''; renderDesktop(R); board.classList.remove('is-mobile'); }
   }
-  fetch('bracket.json?t=' + Date.now())
-    .then(function(r){ if(!r.ok) throw new Error('no bracket.json'); return r.json(); })
-    .then(function(d){
-      var R = d.rounds;
-      if(badge) badge.textContent = 'Updated ' + new Date(d.meta.updated).toLocaleDateString();
-      apply(R);
-      var t; window.addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(function(){apply(R);},200); });
-    })
-    .catch(function(){
-      if(badge) badge.textContent = 'Bracket unavailable';
-      board.innerHTML = '<div style="padding:24px;text-align:center;color:var(--text3);font-size:12px;">Bracket populates when knockout fixtures are set.</div>';
+
+  // ── Derivation: turn matches.json into a rounds object the renderer expects ──
+  //
+  // Slot positioning follows FIFA's standard bracket convention for a 48-team
+  // knockout tree: QF1 & QF2 winners meet in SF1 (left half of the board),
+  // QF3 & QF4 winners meet in SF2 (right half). Within each pair, the top slot
+  // is decided by matching the R16 winner's identity back to its R32 feeder,
+  // so the two sides visually "flow" into their downstream match.
+  function winnerOf(m){
+    if(!m || !m.score) return null;
+    var a = m.score.ft[0], b = m.score.ft[1];
+    if(a > b) return 'team1';
+    if(b > a) return 'team2';
+    if(m.score.pens){
+      var pa = m.score.pens[0], pb = m.score.pens[1];
+      if(pa > pb) return 'team1';
+      if(pb > pa) return 'team2';
+    }
+    return null;
+  }
+  function normalizeTeam(t){
+    if(!t || !t.name || t.name === 'TBD') return null;
+    return { name: t.name, flag: t.flag || '' };
+  }
+  function normalizeMatch(m){
+    return {
+      id: m.id,
+      team1: normalizeTeam(m.team1),
+      team2: normalizeTeam(m.team2),
+      score: m.score || null,
+      winner: winnerOf(m),
+      status: m.status || 'scheduled',
+      koUTC: m.koUTC || null,
+      venue: m.venue || null
+    };
+  }
+  function chronoSort(arr){
+    return arr.slice().sort(function(a,b){
+      return (a.koUTC || '').localeCompare(b.koUTC || '');
     });
+  }
+  function findIndexByWinnerName(pool, teamName){
+    if(!teamName) return -1;
+    for(var i=0;i<pool.length;i++){
+      var w = winnerOf(pool[i]);
+      if(w && pool[i][w] && pool[i][w].name === teamName) return i;
+    }
+    return -1;
+  }
+  function placeholder(){
+    return { id:'tbd', team1:null, team2:null, score:null, winner:null, status:'scheduled' };
+  }
+  function pickAt(pool, idx){
+    return (idx >= 0 && idx < pool.length) ? normalizeMatch(pool[idx]) : placeholder();
+  }
+
+  function buildBracket(data){
+    var all = (data && data.matches) || [];
+    var byStage = { r32:[], r16:[], qf:[], sf:[], final:[], bronze:[] };
+    all.forEach(function(m){ if(byStage[m.stage]) byStage[m.stage].push(m); });
+    Object.keys(byStage).forEach(function(k){ byStage[k] = chronoSort(byStage[k]); });
+
+    // Feeders: for each R16 slot, find which R32 slots produced its two teams.
+    // Same for QF ← R16. Unknown teams keep -1 (renders as ?).
+    var r16Feeders = byStage.r16.map(function(m){
+      var t1 = m.team1 && m.team1.name !== 'TBD' ? m.team1.name : null;
+      var t2 = m.team2 && m.team2.name !== 'TBD' ? m.team2.name : null;
+      return {
+        match: m,
+        topR32Idx: findIndexByWinnerName(byStage.r32, t1),
+        botR32Idx: findIndexByWinnerName(byStage.r32, t2)
+      };
+    });
+    var qfFeeders = byStage.qf.map(function(m){
+      var t1 = m.team1 && m.team1.name !== 'TBD' ? m.team1.name : null;
+      var t2 = m.team2 && m.team2.name !== 'TBD' ? m.team2.name : null;
+      return {
+        match: m,
+        topR16Idx: findIndexByWinnerName(byStage.r16, t1),
+        botR16Idx: findIndexByWinnerName(byStage.r16, t2)
+      };
+    });
+
+    // Halve the QFs by chronological order (standard FIFA convention).
+    var leftQFs  = qfFeeders.slice(0, 2);
+    var rightQFs = qfFeeders.slice(2, 4);
+    while(leftQFs.length < 2)  leftQFs.push(null);
+    while(rightQFs.length < 2) rightQFs.push(null);
+
+    function r16IndicesFor(qfList){
+      var out = [];
+      qfList.forEach(function(qf){
+        if(!qf){ out.push(-1, -1); }
+        else   { out.push(qf.topR16Idx, qf.botR16Idx); }
+      });
+      return out;
+    }
+    function r32IndicesFor(r16IdxList){
+      var out = [];
+      r16IdxList.forEach(function(idx){
+        if(idx < 0){ out.push(-1, -1); return; }
+        var f = r16Feeders[idx];
+        out.push(f ? f.topR32Idx : -1, f ? f.botR32Idx : -1);
+      });
+      return out;
+    }
+
+    var leftR16Idx  = r16IndicesFor(leftQFs);   // 4
+    var rightR16Idx = r16IndicesFor(rightQFs);  // 4
+    var leftR32Idx  = r32IndicesFor(leftR16Idx);   // 8
+    var rightR32Idx = r32IndicesFor(rightR16Idx);  // 8
+
+    var rounds = {
+      r32:    leftR32Idx.concat(rightR32Idx).map(function(i){ return pickAt(byStage.r32, i); }),
+      r16:    leftR16Idx.concat(rightR16Idx).map(function(i){ return pickAt(byStage.r16, i); }),
+      qf:     leftQFs.concat(rightQFs).map(function(qf){ return qf ? normalizeMatch(qf.match) : placeholder(); }),
+      sf:     byStage.sf.map(normalizeMatch),
+      final:  byStage.final.map(normalizeMatch),
+      bronze: byStage.bronze.map(normalizeMatch)
+    };
+    // Pad to exact counts
+    while(rounds.r32.length < 16)    rounds.r32.push(placeholder());
+    while(rounds.r16.length < 8)     rounds.r16.push(placeholder());
+    while(rounds.qf.length  < 4)     rounds.qf.push(placeholder());
+    while(rounds.sf.length  < 2)     rounds.sf.push(placeholder());
+    while(rounds.final.length  < 1)  rounds.final.push(placeholder());
+    while(rounds.bronze.length < 1)  rounds.bronze.push(placeholder());
+    return rounds;
+  }
+
+  // Poll for window.MATCHES_DATA (populated by the standings-module fetch).
+  // Falls through to placeholders if the fetch fails / data is empty.
+  var polls = 0;
+  function boot(){
+    if(!window.MATCHES_DATA){
+      if(++polls > 40){ // ~12s timeout
+        if(badge) badge.textContent = 'Bracket unavailable';
+        board.innerHTML = '<div style="padding:24px;text-align:center;color:var(--text3);font-size:12px;">Bracket populates when knockout fixtures are set.</div>';
+        return;
+      }
+      setTimeout(boot, 300);
+      return;
+    }
+    var data = window.MATCHES_DATA;
+    var rounds = buildBracket(data);
+    var updatedAt = data.meta && data.meta.updated ? new Date(data.meta.updated) : null;
+    if(badge) badge.textContent = updatedAt ? ('Updated ' + updatedAt.toLocaleDateString()) : 'Live';
+    apply(rounds);
+    var t; window.addEventListener('resize', function(){ clearTimeout(t); t=setTimeout(function(){apply(rounds);},200); });
+  }
+  boot();
 })();
 
 (function tickClock(){
