@@ -1,5 +1,199 @@
 {
-  "meta": { "updated": "2026-07-06T00:00:00Z", "source": "manual" },
-  "scorers": [],
-  "assists": []
+  "meta": {
+    "updated": "2026-07-09T21:00:00Z",
+    "source": "manual (FIFA + ESPN cross-ref, post QF1)"
+  },
+  "scorers": [
+    {
+      "player": "K. Mbappé",
+      "team": "France",
+      "flag": "🇫🇷",
+      "goals": 8,
+      "penalties": 1
+    },
+    {
+      "player": "L. Messi",
+      "team": "Argentina",
+      "flag": "🇦🇷",
+      "goals": 8,
+      "penalties": 0
+    },
+    {
+      "player": "E. Haaland",
+      "team": "Norway",
+      "flag": "🇳🇴",
+      "goals": 7,
+      "penalties": 0
+    },
+    {
+      "player": "H. Kane",
+      "team": "England",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "goals": 6,
+      "penalties": 1
+    },
+    {
+      "player": "O. Dembélé",
+      "team": "France",
+      "flag": "🇫🇷",
+      "goals": 5,
+      "penalties": 0
+    },
+    {
+      "player": "J. Bellingham",
+      "team": "England",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "goals": 4,
+      "penalties": 0
+    },
+    {
+      "player": "Vinícius Jr",
+      "team": "Brazil",
+      "flag": "🇧🇷",
+      "goals": 4,
+      "penalties": 0
+    },
+    {
+      "player": "J. Quiñones",
+      "team": "Mexico",
+      "flag": "🇲🇽",
+      "goals": 4,
+      "penalties": 0
+    },
+    {
+      "player": "M. Oyarzabal",
+      "team": "Spain",
+      "flag": "🇪🇸",
+      "goals": 4,
+      "penalties": 0
+    },
+    {
+      "player": "R. Jiménez",
+      "team": "Mexico",
+      "flag": "🇲🇽",
+      "goals": 3,
+      "penalties": 0
+    },
+    {
+      "player": "I. Saibari",
+      "team": "Morocco",
+      "flag": "🇲🇦",
+      "goals": 3,
+      "penalties": 0
+    },
+    {
+      "player": "K. Havertz",
+      "team": "Germany",
+      "flag": "🇩🇪",
+      "goals": 3,
+      "penalties": 0
+    },
+    {
+      "player": "J. David",
+      "team": "Canada",
+      "flag": "🇨🇦",
+      "goals": 3,
+      "penalties": 0
+    },
+    {
+      "player": "Y. Wissa",
+      "team": "DR Congo",
+      "flag": "🇨🇩",
+      "goals": 3,
+      "penalties": 0
+    },
+    {
+      "player": "M. Arnautović",
+      "team": "Austria",
+      "flag": "🇦🇹",
+      "goals": 3,
+      "penalties": 0
+    }
+  ],
+  "assists": [
+    {
+      "player": "M. Olise",
+      "team": "France",
+      "flag": "🇫🇷",
+      "assists": 5
+    },
+    {
+      "player": "B. Guimarães",
+      "team": "Brazil",
+      "flag": "🇧🇷",
+      "assists": 4
+    },
+    {
+      "player": "B. Díaz",
+      "team": "Morocco",
+      "flag": "🇲🇦",
+      "assists": 4
+    },
+    {
+      "player": "R. Alvarado",
+      "team": "Mexico",
+      "flag": "🇲🇽",
+      "assists": 3
+    },
+    {
+      "player": "A. Isak",
+      "team": "Sweden",
+      "flag": "🇸🇪",
+      "assists": 3
+    },
+    {
+      "player": "M. Ødegaard",
+      "team": "Norway",
+      "flag": "🇳🇴",
+      "assists": 3
+    },
+    {
+      "player": "B. Saka",
+      "team": "England",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "assists": 3
+    },
+    {
+      "player": "A. Schjelderup",
+      "team": "Norway",
+      "flag": "🇳🇴",
+      "assists": 3
+    },
+    {
+      "player": "F. Wirtz",
+      "team": "Germany",
+      "flag": "🇩🇪",
+      "assists": 3
+    },
+    {
+      "player": "A. Hakimi",
+      "team": "Morocco",
+      "flag": "🇲🇦",
+      "assists": 2
+    },
+    {
+      "player": "L. Messi",
+      "team": "Argentina",
+      "flag": "🇦🇷",
+      "assists": 2
+    },
+    {
+      "player": "K. Mbappé",
+      "team": "France",
+      "flag": "🇫🇷",
+      "assists": 2
+    },
+    {
+      "player": "L. Trossard",
+      "team": "Belgium",
+      "flag": "🇧🇪",
+      "assists": 2
+    },
+    {
+      "player": "M. Cucurella",
+      "team": "Spain",
+      "flag": "🇪🇸",
+      "assists": 2
+    }
+  ]
 }
