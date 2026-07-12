@@ -1,7 +1,7 @@
 {
   "meta": {
-    "updated": "2026-07-09T21:00:00Z",
-    "source": "manual (FIFA + ESPN cross-ref, post QF1)"
+    "updated": "2026-07-12T09:00:00Z",
+    "source": "manual (FIFA + ESPN cross-ref, post QF)"
   },
   "scorers": [
     {
@@ -33,17 +33,17 @@
       "penalties": 1
     },
     {
+      "player": "J. Bellingham",
+      "team": "England",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "goals": 6,
+      "penalties": 0
+    },
+    {
       "player": "O. Dembélé",
       "team": "France",
       "flag": "🇫🇷",
       "goals": 5,
-      "penalties": 0
-    },
-    {
-      "player": "J. Bellingham",
-      "team": "England",
-      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-      "goals": 4,
       "penalties": 0
     },
     {

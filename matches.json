@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated": "2026-07-06T13:30:00Z",
+    "updated": "2026-07-12T09:00:00Z",
     "source": "manual"
   },
   "matches": [
@@ -2534,7 +2534,13 @@
       "city": "Boston, USA",
       "istLabel": "Jul 10 · 01:30 IST",
       "previewId": null,
-      "status": "scheduled"
+      "status": "final",
+      "score": {
+        "ft": [
+          2,
+          0
+        ]
+      }
     },
     {
       "id": "m98",
@@ -2554,7 +2560,13 @@
       "city": "Los Angeles, USA",
       "istLabel": "Jul 11 · 00:30 IST",
       "previewId": null,
-      "status": "scheduled"
+      "status": "final",
+      "score": {
+        "ft": [
+          2,
+          1
+        ]
+      }
     },
     {
       "id": "m99",
@@ -2574,7 +2586,13 @@
       "city": "Miami, USA",
       "istLabel": "Jul 12 · 02:30 IST",
       "previewId": null,
-      "status": "scheduled"
+      "status": "final",
+      "score": {
+        "ft": [
+          1,
+          2
+        ]
+      }
     },
     {
       "id": "m100",
@@ -2594,7 +2612,13 @@
       "city": "Kansas City, USA",
       "istLabel": "Jul 12 · 06:30 IST",
       "previewId": null,
-      "status": "scheduled"
+      "status": "final",
+      "score": {
+        "ft": [
+          3,
+          1
+        ]
+      }
     },
     {
       "id": "m101",
@@ -2603,12 +2627,12 @@
       "koUTC": "2026-07-14T19:00:00Z",
       "endUTC": "2026-07-14T20:50:00Z",
       "team1": {
-        "name": "TBD",
-        "flag": "❔"
+        "name": "France",
+        "flag": "🇫🇷"
       },
       "team2": {
-        "name": "TBD",
-        "flag": "❔"
+        "name": "Spain",
+        "flag": "🇪🇸"
       },
       "venue": "AT&T Stadium",
       "city": "Dallas, USA",
@@ -2623,12 +2647,12 @@
       "koUTC": "2026-07-15T19:00:00Z",
       "endUTC": "2026-07-15T20:50:00Z",
       "team1": {
-        "name": "TBD",
-        "flag": "❔"
+        "name": "England",
+        "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
       },
       "team2": {
-        "name": "TBD",
-        "flag": "❔"
+        "name": "Argentina",
+        "flag": "🇦🇷"
       },
       "venue": "Mercedes-Benz Stadium",
       "city": "Atlanta, USA",
