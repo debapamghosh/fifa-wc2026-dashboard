@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated": "2026-07-12T09:00:00Z",
+    "updated": "2026-07-17T12:00:00Z",
     "source": "manual"
   },
   "matches": [
@@ -2638,7 +2638,13 @@
       "city": "Dallas, USA",
       "istLabel": "Jul 15 · 00:30 IST",
       "previewId": null,
-      "status": "scheduled"
+      "status": "final",
+      "score": {
+        "ft": [
+          0,
+          2
+        ]
+      }
     },
     {
       "id": "m102",
@@ -2658,7 +2664,13 @@
       "city": "Atlanta, USA",
       "istLabel": "Jul 16 · 00:30 IST",
       "previewId": null,
-      "status": "scheduled"
+      "status": "final",
+      "score": {
+        "ft": [
+          1,
+          2
+        ]
+      }
     },
     {
       "id": "m103",
@@ -2667,12 +2679,12 @@
       "koUTC": "2026-07-18T21:00:00Z",
       "endUTC": "2026-07-18T22:50:00Z",
       "team1": {
-        "name": "TBD",
-        "flag": "❔"
+        "name": "France",
+        "flag": "🇫🇷"
       },
       "team2": {
-        "name": "TBD",
-        "flag": "❔"
+        "name": "England",
+        "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿"
       },
       "venue": "Hard Rock Stadium",
       "city": "Miami, USA",
@@ -2687,12 +2699,12 @@
       "koUTC": "2026-07-19T19:00:00Z",
       "endUTC": "2026-07-19T20:50:00Z",
       "team1": {
-        "name": "TBD",
-        "flag": "❔"
+        "name": "Spain",
+        "flag": "🇪🇸"
       },
       "team2": {
-        "name": "TBD",
-        "flag": "❔"
+        "name": "Argentina",
+        "flag": "🇦🇷"
       },
       "venue": "MetLife Stadium",
       "city": "East Rutherford, USA",
