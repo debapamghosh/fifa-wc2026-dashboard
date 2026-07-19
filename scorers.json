@@ -1,14 +1,14 @@
 {
   "meta": {
-    "updated": "2026-07-12T09:00:00Z",
-    "source": "manual (FIFA + ESPN cross-ref, post QF)"
+    "updated": "2026-07-20T00:00:00Z",
+    "source": "manual (FIFA + ESPN + FotMob + Yahoo cross-ref, post-final)"
   },
   "scorers": [
     {
       "player": "K. Mbappé",
       "team": "France",
       "flag": "🇫🇷",
-      "goals": 8,
+      "goals": 10,
       "penalties": 1
     },
     {
@@ -19,10 +19,24 @@
       "penalties": 0
     },
     {
+      "player": "J. Bellingham",
+      "team": "England",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "goals": 7,
+      "penalties": 0
+    },
+    {
       "player": "E. Haaland",
       "team": "Norway",
       "flag": "🇳🇴",
       "goals": 7,
+      "penalties": 0
+    },
+    {
+      "player": "O. Dembélé",
+      "team": "France",
+      "flag": "🇫🇷",
+      "goals": 6,
       "penalties": 0
     },
     {
@@ -33,18 +47,11 @@
       "penalties": 1
     },
     {
-      "player": "J. Bellingham",
-      "team": "England",
-      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-      "goals": 6,
-      "penalties": 0
-    },
-    {
-      "player": "O. Dembélé",
-      "team": "France",
-      "flag": "🇫🇷",
+      "player": "M. Oyarzabal",
+      "team": "Spain",
+      "flag": "🇪🇸",
       "goals": 5,
-      "penalties": 0
+      "penalties": 1
     },
     {
       "player": "Vinícius Jr",
@@ -61,11 +68,11 @@
       "penalties": 0
     },
     {
-      "player": "M. Oyarzabal",
-      "team": "Spain",
-      "flag": "🇪🇸",
-      "goals": 4,
-      "penalties": 0
+      "player": "B. Saka",
+      "team": "England",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "goals": 3,
+      "penalties": 1
     },
     {
       "player": "R. Jiménez",
@@ -115,12 +122,30 @@
       "player": "M. Olise",
       "team": "France",
       "flag": "🇫🇷",
-      "assists": 5
+      "assists": 7
+    },
+    {
+      "player": "L. Messi",
+      "team": "Argentina",
+      "flag": "🇦🇷",
+      "assists": 4
+    },
+    {
+      "player": "K. Mbappé",
+      "team": "France",
+      "flag": "🇫🇷",
+      "assists": 4
     },
     {
       "player": "B. Guimarães",
       "team": "Brazil",
       "flag": "🇧🇷",
+      "assists": 4
+    },
+    {
+      "player": "M. Ødegaard",
+      "team": "Norway",
+      "flag": "🇳🇴",
       "assists": 4
     },
     {
@@ -139,12 +164,6 @@
       "player": "A. Isak",
       "team": "Sweden",
       "flag": "🇸🇪",
-      "assists": 3
-    },
-    {
-      "player": "M. Ødegaard",
-      "team": "Norway",
-      "flag": "🇳🇴",
       "assists": 3
     },
     {
@@ -169,18 +188,6 @@
       "player": "A. Hakimi",
       "team": "Morocco",
       "flag": "🇲🇦",
-      "assists": 2
-    },
-    {
-      "player": "L. Messi",
-      "team": "Argentina",
-      "flag": "🇦🇷",
-      "assists": 2
-    },
-    {
-      "player": "K. Mbappé",
-      "team": "France",
-      "flag": "🇫🇷",
       "assists": 2
     },
     {

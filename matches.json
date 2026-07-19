@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updated": "2026-07-17T12:00:00Z",
+    "updated": "2026-07-20T00:00:00Z",
     "source": "manual"
   },
   "matches": [
@@ -2690,7 +2690,13 @@
       "city": "Miami, USA",
       "istLabel": "Jul 19 · 02:30 IST",
       "previewId": null,
-      "status": "scheduled"
+      "status": "final",
+      "score": {
+        "ft": [
+          4,
+          6
+        ]
+      }
     },
     {
       "id": "m104",
@@ -2710,7 +2716,13 @@
       "city": "East Rutherford, USA",
       "istLabel": "Jul 20 · 00:30 IST",
       "previewId": null,
-      "status": "scheduled"
+      "status": "final",
+      "score": {
+        "ft": [
+          1,
+          0
+        ]
+      }
     }
   ]
 }
